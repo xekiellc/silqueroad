@@ -11,7 +11,7 @@ exports.handler = async (event) => {
     return { statusCode: 405, body: 'Method Not Allowed' };
   }
 
-  // Verify the request is from NOWPayments using IPN secret
+  // Verify IPN signature
   const ipnSecret = process.env.NOWPAYMENTS_IPN_SECRET;
   const receivedSig = event.headers['x-nowpayments-sig'];
 
@@ -27,7 +27,7 @@ exports.handler = async (event) => {
         .digest('hex');
 
       if (receivedSig !== expectedSig) {
-        console.log('IPN signature mismatch — rejecting request');
+        console.log('IPN signature mismatch — rejecting');
         return { statusCode: 401, body: 'Unauthorized' };
       }
     } catch {
@@ -42,18 +42,16 @@ exports.handler = async (event) => {
     return { statusCode: 400, body: 'Invalid JSON' };
   }
 
-  // Only act on confirmed or finished payments
   const confirmedStatuses = ['confirmed', 'finished'];
   if (!confirmedStatuses.includes(payload.payment_status)) {
-    console.log('Payment status not confirmed:', payload.payment_status);
-    return { statusCode: 200, body: 'Ignored — payment not yet confirmed' };
+    return { statusCode: 200, body: 'Ignored — not confirmed' };
   }
 
   const nowpaymentsId = String(payload.payment_id);
   const amountUsd = parseFloat(payload.price_amount) || 0;
 
   try {
-    // Find the order by NOWPayments payment ID
+    // Find the order
     const { data: orders, error: orderError } = await supabase
       .from('orders')
       .select('*')
@@ -61,47 +59,37 @@ exports.handler = async (event) => {
       .limit(1);
 
     if (orderError) throw orderError;
-
     if (!orders || orders.length === 0) {
-      console.log('No order found for payment_id:', nowpaymentsId);
-      return { statusCode: 200, body: 'No matching order found' };
+      return { statusCode: 200, body: 'No matching order' };
     }
 
     const order = orders[0];
 
-    // Skip if already processed
     if (order.payment_status === 'confirmed' || order.payment_status === 'finished') {
       return { statusCode: 200, body: 'Already processed' };
     }
 
-    // Update order payment status
-    const { error: updateError } = await supabase
+    // Update order
+    await supabase
       .from('orders')
-      .update({
-        payment_status: payload.payment_status,
-        amount_usd: amountUsd
-      })
+      .update({ payment_status: payload.payment_status, amount_usd: amountUsd })
       .eq('id', order.id);
 
-    if (updateError) throw updateError;
-
-    // Get seller commission rate and wallet info
+    // Get seller info
     const { data: sellers } = await supabase
       .from('sellers')
-      .select('commission_rate, crypto_wallet, crypto_currency')
+      .select('commission_rate, crypto_wallet, crypto_currency, email')
       .eq('id', order.seller_id)
       .limit(1);
 
-    const commissionRate = (sellers && sellers[0]?.commission_rate)
-      ? parseFloat(sellers[0].commission_rate)
-      : 0.10;
-
+    const seller = sellers?.[0] || {};
+    const commissionRate = parseFloat(seller.commission_rate) || 0.10;
     const commissionAmount = parseFloat((amountUsd * commissionRate).toFixed(2));
     const sellerAmount = parseFloat((amountUsd - commissionAmount).toFixed(2));
-    const cryptoWallet = sellers?.[0]?.crypto_wallet || null;
-    const cryptoCurrency = sellers?.[0]?.crypto_currency || payload.pay_currency || null;
+    const cryptoWallet = seller.crypto_wallet || null;
+    const cryptoCurrency = seller.crypto_currency || payload.pay_currency || null;
 
-    // Check if payout already exists for this order
+    // Check for existing payout
     const { data: existingPayouts } = await supabase
       .from('payouts')
       .select('id')
@@ -109,34 +97,60 @@ exports.handler = async (event) => {
       .limit(1);
 
     if (!existingPayouts || existingPayouts.length === 0) {
-      const { error: payoutError } = await supabase
-        .from('payouts')
-        .insert({
-          seller_id: order.seller_id,
-          order_id: order.id,
-          gross_amount: amountUsd,
-          commission_rate: commissionRate,
-          commission_amount: commissionAmount,
-          seller_amount: sellerAmount,
-          crypto_currency: cryptoCurrency,
-          crypto_wallet: cryptoWallet,
-          status: 'pending',
-          notes: `Auto-created from NOWPayments webhook. Payment ID: ${nowpaymentsId}`
-        });
+      await supabase.from('payouts').insert({
+        seller_id: order.seller_id,
+        order_id: order.id,
+        gross_amount: amountUsd,
+        commission_rate: commissionRate,
+        commission_amount: commissionAmount,
+        seller_amount: sellerAmount,
+        crypto_currency: cryptoCurrency,
+        crypto_wallet: cryptoWallet,
+        status: 'pending',
+        notes: `Auto-created from NOWPayments. Payment ID: ${nowpaymentsId}`
+      });
+    }
 
-      if (payoutError) throw payoutError;
+    // Get product name for notification
+    const { data: products } = await supabase
+      .from('products')
+      .select('name')
+      .eq('id', order.product_id)
+      .limit(1);
+
+    const productName = products?.[0]?.name || 'Your product';
+
+    // Fire seller notification if they have an email
+    if (seller.email) {
+      try {
+        await fetch('https://silqueroad.com/.netlify/functions/send-notification', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            type: 'new_order',
+            data: {
+              seller_email: seller.email,
+              product_name: productName,
+              amount_usd: amountUsd.toFixed(2),
+              seller_amount: sellerAmount.toFixed(2),
+              shipping_name: order.shipping_name,
+              shipping_address: order.shipping_address,
+              shipping_city: order.shipping_city,
+              shipping_state: order.shipping_state,
+              shipping_zip: order.shipping_zip
+            }
+          })
+        });
+      } catch (notifErr) {
+        console.error('Order notification failed:', notifErr);
+      }
     }
 
     console.log(`Processed: $${amountUsd} — seller $${sellerAmount} / platform $${commissionAmount}`);
 
     return {
       statusCode: 200,
-      body: JSON.stringify({
-        success: true,
-        order_id: order.id,
-        seller_amount: sellerAmount,
-        commission_amount: commissionAmount
-      })
+      body: JSON.stringify({ success: true, order_id: order.id, seller_amount: sellerAmount })
     };
 
   } catch (err) {
