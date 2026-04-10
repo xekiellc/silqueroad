@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Seller Dashboard — Silque Road</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inconsolata:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0a0806;
+      --obsidian: #111009;
+      --charcoal: #1c1a16;
+      --gold: #c9a84c;
+      --gold-dim: #8a6e2a;
+      --gold-pale: #e8d08a;
+      --cream: #f0e8d8;
+      --cream-dim: #9a907e;
+      --border: rgba(201, 168, 76, 0.15);
+      --border-hover: rgba(201, 168, 76, 0.35);
+      --green: #2a6b3a;
+      --green-text: #6fcf7f;
+      --red: #8b2222;
+      --red-text: #e07070;
+      --yellow-text: #f0c040;
+      --yellow-border: #7a6010;
+    }
+
+    body {
+      background-color: var(--black);
+      color: var(--cream);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 300;
+      min-height: 100vh;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      z-index: 100;
+    }
+
+    /* ── LOGIN ── */
+    #loginScreen {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 24px;
+    }
+
+    .login-box {
+      width: 100%;
+      max-width: 400px;
+      background: var(--charcoal);
+      border: 1px solid var(--border);
+      padding: 48px 40px;
+    }
+
+    .login-logo {
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .login-sub {
+      font-family: 'Inconsolata', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      color: var(--cream-dim);
+      text-transform: uppercase;
+      margin-bottom: 36px;
+    }
+
+    .login-box h2 {
+      font-size: 1.3rem;
+      font-weight: 300;
+      color: var(--cream);
+      margin-bottom: 8px;
+    }
+
+    .login-box p {
+      font-size: 0.88rem;
+      color: var(--cream-dim);
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+
+    .field-group { margin-bottom: 16px; }
+
+    .field-group label {
+      display: block;
+      font-family: 'Inconsolata', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-bottom: 8px;
+    }
+
+    .field-group input, .field-group select, .field-group textarea {
+      width: 100%;
+      background: var(--obsidian);
+      border: 1px solid var(--border);
+      color: var(--cream);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      padding: 11px 14px;
+      outline: none;
+      border-radius: 0;
+      -webkit-appearance: none;
+      transition: border-color 0.2s;
+    }
+
+    .field-group input:focus,
+    .field-group select:focus,
+    .field-group textarea:focus { border-color: var(--gold-dim); }
+
+    .field-group input::placeholder,
+    .field-group textarea::placeholder {
+      color: rgba(154,144,126,0.4);
+      font-style: italic;
+    }
+
+    .field-group select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238a6e2a' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+      cursor: pointer;
+    }
+
+    .field-group select option { background: var(--charcoal); }
+    .field-group textarea { resize: vertical; min-height: 90px; }
+
+    .primary-btn {
+      width: 100%;
+      margin-top: 8px;
+      padding: 14px;
+      background: transparent;
+      border: 1px solid var(--gold-dim);
+      color: var(--gold-pale);
+      font-family: 'Inconsolata', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+
+    .primary-btn:hover { background: var(--gold); color: var(--black); border-color: var(--gold); }
+    .primary-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+    .primary-btn:disabled:hover { background: transparent; color: var(--gold-pale); border-color: var(--gold-dim); }
+
+    .login-error {
+      display: none;
+      margin-top: 14px;
+      padding: 10px 14px;
+      background: rgba(139,34,34,0.15);
+      border: 1px solid var(--red);
+      color: var(--red-text);
+      font-size: 0.85rem;
+    }
+
+    /* ── DASHBOARD SHELL ── */
+    #dashboard { display: none; }
+
+    .dash-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 40px;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: var(--black);
+      z-index: 50;
+    }
+
+    .dash-header-left { display: flex; flex-direction: column; gap: 2px; }
+
+    .dash-logo {
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+
+    .dash-seller-name {
+      font-family: 'Inconsolata', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      color: var(--cream-dim);
+      text-transform: uppercase;
+    }
+
+    .logout-btn {
+      font-family: 'Inconsolata', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--cream-dim);
+      background: none;
+      border: 1px solid var(--border);
+      padding: 8px 16px;
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .logout-btn:hover { color: var(--red-text); border-color: var(--red); }
+
+    /* ── TABS ── */
+    .dash-tabs {
+      display: flex;
+      border-bottom: 1px solid var(--border);
+      padding: 0 40px;
+      gap: 0;
+    }
+
+    .dash-tab {
+      font-family: 'Inconsolata', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 16px 24px;
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      color: var(--cream-dim);
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+      margin-bottom: -1px;
+    }
+
+    .dash-tab:hover { color: var(--cream); }
+    .dash-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+    /* ── BODY ── */
+    .dash-body { padding: 40px; max-width: 1000px; margin: 0 auto; }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* stats */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 36px;
+    }
+
+    @media (max-width: 700px) {
+      .stats-row { grid-template-columns: 1fr 1fr; }
+      .dash-header { padding: 20px; }
+      .dash-tabs { padding: 0 20px; }
+      .dash-body { padding: 20px; }
+    }
+
+    .stat-card {
+      background: var(--charcoal);
+      border: 1px solid var(--border);
+      padding: 20px;
+    }
+
+    .stat-number {
+      font-size: 1.8rem;
+      font-weight: 300;
+      color: var(--gold-pale);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-family: 'Inconsolata', monospace;
+      font-size: 0.55rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--cream-dim);
+    }
+
+    /* section titles */
+    .section-title {
+      font-family: 'Inconsolata', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-bottom: 16px;
+    }
+
+    /* product form */
+    .product-form-box {
+      background: var(--charcoal);
+      border: 1px solid var(--border);
+      padding: 28px;
+      margin-bottom: 36px;
+    }
+
+    .product-form-box h3 {
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: var(--cream);
+      margin-bottom: 20px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
+
+    .form-grid .full { grid-column: 1 / -1; }
+
+    .form-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+
+    .save-btn {
+      padding: 11px 28px;
+      background: transparent;
+      border: 1px solid var(--gold-dim);
+      color: var(--gold-pale);
+      font-family: 'Inconsolata', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .save-btn:hover { background: var(--gold); color: var(--black); border-color: var(--gold); }
+    .save-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    .cancel-btn {
+      padding: 11px 20px;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--cream-dim);
+      font-family: 'Inconsolata', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .cancel-btn:hover { border-color: var(--red); color: var(--red-text); }
+
+    /* product cards */
+    .product-card {
+      background: var(--charcoal);
+      border: 1px solid var(--border);
+      padding: 20px 24px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      transition: border-color 0.2s;
+    }
+
+    .product-card:hover { border-color: var(--border-hover); }
+
+    .product-card-info { flex: 1; }
+
+    .product-name {
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 4px;
+    }
+
+    .product-meta {
+      font-family: 'Inconsolata', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      color: var(--cream-dim);
+    }
+
+    .product-card-actions { display: flex; gap: 8px; flex-shrink: 0; }
+
+    .mini-btn {
+      font-family: 'Inconsolata', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--cream-dim);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .mini-btn:hover { border-color: var(--gold-dim); color: var(--gold); }
+    .mini-btn.danger:hover { border-color: var(--red); color: var(--red-text); }
+
+    /* order rows */
+    .order-row {
+      background: var(--charcoal);
+      border: 1px solid var(--border);
+      padding: 18px 24px;
+      margin-bottom: 8px;
+    }
+
+    .order-row-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .order-id {
+      font-family: 'Inconsolata', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      color: var(--cream-dim);
+    }
+
+    .order-amount {
+      font-size: 1.1rem;
+      color: var(--gold-pale);
+    }
+
+    .order-details {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 8px 16px;
+      font-size: 0.85rem;
+      color: var(--cream-dim);
+    }
+
+    @media (max-width: 600px) { .order-details { grid-template-columns: 1fr 1fr; } }
+
+    .order-detail-label {
+      font-family: 'Inconsolata', monospace;
+      font-size: 0.55rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-bottom: 1px;
+    }
+
+    /* payout rows */
+    .payout-row {
+      background: var(--charcoal);
+      border: 1px solid var(--border);
+      padding: 18px 24px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .payout-amount {
+      font-size: 1.2rem;
+      color: var(--gold-pale);
+    }
+
+    .payout-info {
+      font-family: 'Inconsolata', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      color: var(--cream-dim);
+      margin-top: 2px;
+    }
+
+    /* badges */
+    .badge {
+      font-family: 'Inconsolata', monospace;
+      font-size: 0.55rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border: 1px solid;
+    }
+
+    .badge.active, .badge.approved, .badge.paid { color: var(--green-text); border-color: var(--green); }
+    .badge.pending, .badge.new { color: var(--yellow-text); border-color: var(--yellow-border); }
+    .badge.inactive, .badge.rejected { color: var(--red-text); border-color: var(--red); }
+    .badge.completed { color: #80b0e0; border-color: #2a5080; }
+
+    /* empty / loading */
+    .empty-state {
+      text-align: center;
+      padding: 48px 20px;
+      color: var(--cream-dim);
+      font-style: italic;
+    }
+
+    .loading-line {
+      font-family: 'Inconsolata', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--cream-dim);
+      padding: 32px 0;
+      text-align: center;
+    }
+
+    .spinner {
+      display: inline-block;
+      width: 12px; height: 12px;
+      border: 1px solid rgba(201,168,76,0.3);
+      border-top-color: var(--gold);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .toast {
+      position: fixed;
+      bottom: 28px; right: 28px;
+      padding: 12px 18px;
+      font-family: 'Inconsolata', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border: 1px solid;
+      z-index: 999;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: all 0.3s;
+      pointer-events: none;
+    }
+
+    .toast.show { opacity: 1; transform: translateY(0); }
+    .toast.success { background: rgba(42,107,58,0.92); border-color: var(--green); color: var(--green-text); }
+    .toast.error { background: rgba(139,34,34,0.92); border-color: var(--red); color: var(--red-text); }
+
+    .info-box {
+      background: var(--charcoal);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold-dim);
+      padding: 16px 20px;
+      margin-bottom: 24px;
+      font-size: 0.88rem;
+      color: var(--cream-dim);
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+<!-- LOGIN SCREEN -->
+<div id="loginScreen">
+  <div class="login-box">
+    <div class="login-logo">Silque Road</div>
+    <div class="login-sub">Seller Portal</div>
+    <h2>Seller Login</h2>
+    <p>Enter the email address associated with your approved seller account.</p>
+    <div class="field-group">
+      <label>Email Address</label>
+      <input type="email" id="loginEmail" placeholder="your@email.com" onkeydown="if(event.key==='Enter') sellerLogin()" />
+    </div>
+    <button class="primary-btn" onclick="sellerLogin()">Access Dashboard</button>
+    <div class="login-error" id="loginError">No approved seller account found for that email address.</div>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboard">
+
+  <header class="dash-header">
+    <div class="dash-header-left">
+      <span class="dash-logo">Silque Road</span>
+      <span class="dash-seller-name" id="headerSellerName">Seller Dashboard</span>
+    </div>
+    <button class="logout-btn" onclick="sellerLogout()">Log Out</button>
+  </header>
+
+  <div class="dash-tabs">
+    <button class="dash-tab active" onclick="switchTab('overview', this)">Overview</button>
+    <button class="dash-tab" onclick="switchTab('products', this)">Products</button>
+    <button class="dash-tab" onclick="switchTab('orders', this)">Orders</button>
+    <button class="dash-tab" onclick="switchTab('payouts', this)">Payouts</button>
+  </div>
+
+  <div class="dash-body">
+
+    <!-- OVERVIEW TAB -->
+    <div class="tab-panel active" id="tab-overview">
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-number" id="ovTotalOrders">—</div>
+          <div class="stat-label">Total Orders</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="ovTotalRevenue">—</div>
+          <div class="stat-label">Gross Revenue</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="ovTotalEarnings">—</div>
+          <div class="stat-label">Your Earnings</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" id="ovActiveProducts">—</div>
+          <div class="stat-label">Active Products</div>
+        </div>
+      </div>
+
+      <p class="section-title">Account Info</p>
+      <div class="product-form-box" style="margin-bottom:0">
+        <div class="form-grid">
+          <div>
+            <div class="order-detail-label">Business Name</div>
+            <div id="ovBusiness" style="font-size:1rem;color:var(--cream);margin-top:4px">—</div>
+          </div>
+          <div>
+            <div class="order-detail-label">Account Status</div>
+            <div style="margin-top:4px"><span class="badge" id="ovStatus">—</span></div>
+          </div>
+          <div>
+            <div class="order-detail-label">Category</div>
+            <div id="ovCategory" style="font-size:0.9rem;color:var(--cream-dim);margin-top:4px">—</div>
+          </div>
+          <div>
+            <div class="order-detail-label">Commission Rate</div>
+            <div id="ovCommission" style="font-size:0.9rem;color:var(--cream-dim);margin-top:4px">—</div>
+          </div>
+          <div>
+            <div class="order-detail-label">Crypto Wallet</div>
+            <div id="ovWallet" style="font-size:0.82rem;color:var(--cream-dim);margin-top:4px;word-break:break-all">—</div>
+          </div>
+          <div>
+            <div class="order-detail-label">Preferred Currency</div>
+            <div id="ovCrypto" style="font-size:0.9rem;color:var(--cream-dim);margin-top:4px">—</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRODUCTS TAB -->
+    <div class="tab-panel" id="tab-products">
+
+      <div class="product-form-box">
+        <h3 id="productFormTitle">Add a New Product</h3>
+        <input type="hidden" id="editingProductId" value="" />
+        <div class="form-grid">
+          <div class="full">
+            <div class="field-group">
+              <label>Product Name ✦</label>
+              <input type="text" id="pName" placeholder="e.g. BPC-157 5mg Peptide" />
+            </div>
+          </div>
+          <div class="full">
+            <div class="field-group">
+              <label>Description ✦</label>
+              <textarea id="pDescription" rows="3" placeholder="Describe your product clearly. Include dosage, format, quantity, etc."></textarea>
+            </div>
+          </div>
+          <div>
+            <div class="field-group">
+              <label>Price (USD) ✦</label>
+              <input type="text" id="pPrice" placeholder="e.g. 49.99" />
+            </div>
+          </div>
+          <div>
+            <div class="field-group">
+              <label>Category ✦</label>
+              <select id="pCategory">
+                <option value="" disabled selected>Select category</option>
+                <option>Health Freedom / Peptides</option>
+                <option>Kratom / Kava / Botanicals</option>
+                <option>Delta-8 / THCA / Hemp</option>
+                <option>Longevity & Biohacking</option>
+                <option>Privacy & Counter-Surveillance</option>
+                <option>Blades / Stun Guns / Accessories</option>
+                <option>Men's Health & Wellness</option>
+                <option>Women's Wellness & HRT</option>
+                <option>Taboo Foods / Raw Dairy</option>
+                <option>Tobacco & Nicotine</option>
+                <option>Off-Grid & Prepper</option>
+                <option>Adult Wellness & Intimacy</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <div class="field-group">
+              <label>Subcategory</label>
+              <input type="text" id="pSubcategory" placeholder="Optional subcategory" />
+            </div>
+          </div>
+          <div>
+            <div class="field-group">
+              <label>Stock Status</label>
+              <select id="pStockStatus">
+                <option value="in_stock">In Stock</option>
+                <option value="low_stock">Low Stock</option>
+                <option value="out_of_stock">Out of Stock</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <div class="field-group">
+              <label>Image URL</label>
+              <input type="url" id="pImageUrl" placeholder="https://..." />
+            </div>
+          </div>
+          <div>
+            <div class="field-group">
+              <label>Listing Status</label>
+              <select id="pStatus">
+                <option value="pending">Pending Review</option>
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+              </select>
+            </div>
+          </div>
+          <div class="full">
+            <div class="field-group">
+              <label>Legal Disclaimer</label>
+              <textarea id="pDisclaimer" rows="2" placeholder="Optional — e.g. 'For research purposes only. Not for human consumption.'"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button class="save-btn" id="saveProductBtn" onclick="saveProduct()">Save Product</button>
+          <button class="cancel-btn" id="cancelEditBtn" style="display:none" onclick="cancelEdit()">Cancel</button>
+        </div>
+        <div id="productFormMsg" style="margin-top:12px;font-size:0.88rem;display:none"></div>
+      </div>
+
+      <p class="section-title">Your Products</p>
+      <div id="productList"><div class="loading-line"><span class="spinner"></span>Loading...</div></div>
+    </div>
+
+    <!-- ORDERS TAB -->
+    <div class="tab-panel" id="tab-orders">
+      <div class="info-box">Orders are created automatically when a buyer completes payment through NOWPayments. Contact <a href="mailto:info@silqueroad.com" style="color:var(--gold)">info@silqueroad.com</a> with any fulfillment questions.</div>
+      <div id="orderList"><div class="loading-line"><span class="spinner"></span>Loading...</div></div>
+    </div>
+
+    <!-- PAYOUTS TAB -->
+    <div class="tab-panel" id="tab-payouts">
+      <div class="info-box">Payouts represent your 90% share of each completed order. They are processed to your crypto wallet on file. To update your wallet address, email <a href="mailto:info@silqueroad.com" style="color:var(--gold)">info@silqueroad.com</a>.</div>
+      <div id="payoutList"><div class="loading-line"><span class="spinner"></span>Loading...</div></div>
+    </div>
+
+  </div><!-- end dash-body -->
+</div><!-- end dashboard -->
+
+<div class="toast" id="toast"></div>
+
+<script>
+  const SUPABASE_URL = 'https://pmtfqbefrsplvoriirru.supabase.co';
+  const ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBtdGZxYmVmcnNwbHZvcmlpcnJ1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU4Mzk5MzEsImV4cCI6MjA5MTQxNTkzMX0.xgIVCGtB1Elp8ywjQhUAHdAVXOMoZJRmxWXM6vpZBB0';
+  const SERVICE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBtdGZxYmVmcnNwbHZvcmlpcnJ1Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3NTgzOTkzMSwiZXhwIjoyMDkxNDE1OTMxfQ.4WN8uqRF0pVbkTnhAck4d-Narq8d0zXbjhfKijnsweI';
+
+  let currentSeller = null;
+  let sellerProducts = [];
+  let sellerOrders = [];
+  let sellerPayouts = [];
+
+  // ── LOGIN ──
+  async function sellerLogin() {
+    const email = document.getElementById('loginEmail').value.trim().toLowerCase();
+    if (!email) return;
+
+    document.getElementById('loginError').style.display = 'none';
+
+    try {
+      const res = await fetch(
+        `${SUPABASE_URL}/rest/v1/sellers?email=eq.${encodeURIComponent(email)}&status=eq.approved&select=*`,
+        { headers: { 'apikey': ANON_KEY, 'Authorization': `Bearer ${ANON_KEY}` } }
+      );
+      const sellers = await res.json();
+
+      if (!sellers || sellers.length === 0) {
+        document.getElementById('loginError').style.display = 'block';
+        return;
+      }
+
+      currentSeller = sellers[0];
+      document.getElementById('loginScreen').style.display = 'none';
+      document.getElementById('dashboard').style.display = 'block';
+      document.getElementById('headerSellerName').textContent = currentSeller.business_name;
+
+      loadAllData();
+
+    } catch (err) {
+      document.getElementById('loginError').style.display = 'block';
+    }
+  }
+
+  function sellerLogout() {
+    currentSeller = null;
+    sellerProducts = []; sellerOrders = []; sellerPayouts = [];
+    document.getElementById('dashboard').style.display = 'none';
+    document.getElementById('loginScreen').style.display = 'flex';
+    document.getElementById('loginEmail').value = '';
+    switchTab('overview', document.querySelector('.dash-tab'));
+  }
+
+  // ── TABS ──
+  function switchTab(name, btn) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.dash-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('tab-' + name).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  // ── LOAD DATA ──
+  async function loadAllData() {
+    await Promise.all([loadProducts(), loadOrders(), loadPayouts()]);
+    renderOverview();
+  }
+
+  async function loadProducts() {
+    try {
+      const res = await fetch(
+        `${SUPABASE_URL}/rest/v1/products?seller_id=eq.${currentSeller.id}&order=created_at.desc`,
+        { headers: { 'apikey': SERVICE_KEY, 'Authorization': `Bearer ${SERVICE_KEY}` } }
+      );
+      sellerProducts = await res.json();
+      renderProducts();
+    } catch { document.getElementById('productList').innerHTML = '<div class="empty-state">Failed to load products.</div>'; }
+  }
+
+  async function loadOrders() {
+    try {
+      const res = await fetch(
+        `${SUPABASE_URL}/rest/v1/orders?seller_id=eq.${currentSeller.id}&order=created_at.desc`,
+        { headers: { 'apikey': SERVICE_KEY, 'Authorization': `Bearer ${SERVICE_KEY}` } }
+      );
+      sellerOrders = await res.json();
+      renderOrders();
+    } catch { document.getElementById('orderList').innerHTML = '<div class="empty-state">Failed to load orders.</div>'; }
+  }
+
+  async function loadPayouts() {
+    try {
+      const res = await fetch(
+        `${SUPABASE_URL}/rest/v1/payouts?seller_id=eq.${currentSeller.id}&order=created_at.desc`,
+        { headers: { 'apikey': SERVICE_KEY, 'Authorization': `Bearer ${SERVICE_KEY}` } }
+      );
+      sellerPayouts = await res.json();
+      renderPayouts();
+    } catch { document.getElementById('payoutList').innerHTML = '<div class="empty-state">Failed to load payouts.</div>'; }
+  }
+
+  // ── OVERVIEW ──
+  function renderOverview() {
+    const totalRevenue = sellerOrders.reduce((s, o) => s + (parseFloat(o.amount_usd) || 0), 0);
+    const totalEarnings = sellerPayouts.reduce((s, p) => s + (parseFloat(p.seller_amount) || 0), 0);
+    const activeProducts = sellerProducts.filter(p => p.status === 'active').length;
+
+    document.getElementById('ovTotalOrders').textContent = sellerOrders.length;
+    document.getElementById('ovTotalRevenue').textContent = '$' + totalRevenue.toFixed(2);
+    document.getElementById('ovTotalEarnings').textContent = '$' + totalEarnings.toFixed(2);
+    document.getElementById('ovActiveProducts').textContent = activeProducts;
+
+    document.getElementById('ovBusiness').textContent = currentSeller.business_name || '—';
+    const statusEl = document.getElementById('ovStatus');
+    statusEl.textContent = currentSeller.status || '—';
+    statusEl.className = 'badge ' + (currentSeller.status || '');
+    document.getElementById('ovCategory').textContent = currentSeller.category || '—';
+    document.getElementById('ovCommission').textContent = currentSeller.commission_rate
+      ? (currentSeller.commission_rate * 100).toFixed(0) + '%' : '10%';
+    document.getElementById('ovWallet').textContent = currentSeller.crypto_wallet || 'Not set — email info@silqueroad.com';
+    document.getElementById('ovCrypto').textContent = currentSeller.crypto_currency || 'Not set';
+  }
+
+  // ── PRODUCTS ──
+  function renderProducts() {
+    const el = document.getElementById('productList');
+    if (sellerProducts.length === 0) {
+      el.innerHTML = '<div class="empty-state">No products yet. Add your first product above.</div>';
+      return;
+    }
+    el.innerHTML = sellerProducts.map(p => `
+      <div class="product-card">
+        <div class="product-card-info">
+          <div class="product-name">${esc(p.name)}</div>
+          <div class="product-meta">
+            $${parseFloat(p.price || 0).toFixed(2)} &nbsp;·&nbsp; ${esc(p.category || '—')}
+            &nbsp;·&nbsp; <span class="badge ${p.status}">${p.status}</span>
+            &nbsp;·&nbsp; ${esc(p.stock_status || 'in_stock').replace('_', ' ')}
+          </div>
+          ${p.description ? `<div style="font-size:0.88rem;color:var(--cream-dim);margin-top:6px;line-height:1.5">${esc(p.description).substring(0, 120)}${p.description.length > 120 ? '...' : ''}</div>` : ''}
+        </div>
+        <div class="product-card-actions">
+          <button class="mini-btn" onclick="editProduct('${p.id}')">Edit</button>
+          <button class="mini-btn danger" onclick="deleteProduct('${p.id}', '${esc(p.name)}')">Remove</button>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  async function saveProduct() {
+    const editingId = document.getElementById('editingProductId').value;
+    const name = document.getElementById('pName').value.trim();
+    const description = document.getElementById('pDescription').value.trim();
+    const price = parseFloat(document.getElementById('pPrice').value);
+    const category = document.getElementById('pCategory').value;
+    const subcategory = document.getElementById('pSubcategory').value.trim();
+    const stock_status = document.getElementById('pStockStatus').value;
+    const image_url = document.getElementById('pImageUrl').value.trim();
+    const status = document.getElementById('pStatus').value;
+    const disclaimer = document.getElementById('pDisclaimer').value.trim();
+
+    if (!name) { showFormMsg('Please enter a product name.', 'error'); return; }
+    if (!description) { showFormMsg('Please enter a description.', 'error'); return; }
+    if (!price || isNaN(price) || price <= 0) { showFormMsg('Please enter a valid price.', 'error'); return; }
+    if (!category) { showFormMsg('Please select a category.', 'error'); return; }
+
+    const btn = document.getElementById('saveProductBtn');
+    btn.disabled = true;
+    btn.textContent = 'Saving...';
+
+    const payload = {
+      seller_id: currentSeller.id,
+      name, description, price, category,
+      subcategory: subcategory || null,
+      stock_status,
+      image_url: image_url || null,
+      status,
+      disclaimer: disclaimer || null
+    };
+
+    try {
+      let res;
+      if (editingId) {
+        res = await fetch(`${SUPABASE_URL}/rest/v1/products?id=eq.${editingId}`, {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+            'apikey': SERVICE_KEY,
+            'Authorization': `Bearer ${SERVICE_KEY}`,
+            'Prefer': 'return=minimal'
+          },
+          body: JSON.stringify(payload)
+        });
+      } else {
+        res = await fetch(`${SUPABASE_URL}/rest/v1/products`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'apikey': SERVICE_KEY,
+            'Authorization': `Bearer ${SERVICE_KEY}`,
+            'Prefer': 'return=minimal'
+          },
+          body: JSON.stringify(payload)
+        });
+      }
+
+      if (!res.ok) throw new Error('Save failed');
+
+      clearProductForm();
+      await loadProducts();
+      renderOverview();
+      showToast(editingId ? 'Product updated' : 'Product added', 'success');
+
+    } catch (err) {
+      showFormMsg('Save failed. Please try again.', 'error');
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Save Product';
+    }
+  }
+
+  function editProduct(id) {
+    const p = sellerProducts.find(x => x.id === id);
+    if (!p) return;
+    document.getElementById('editingProductId').value = id;
+    document.getElementById('productFormTitle').textContent = 'Edit Product';
+    document.getElementById('pName').value = p.name || '';
+    document.getElementById('pDescription').value = p.description || '';
+    document.getElementById('pPrice').value = p.price || '';
+    document.getElementById('pCategory').value = p.category || '';
+    document.getElementById('pSubcategory').value = p.subcategory || '';
+    document.getElementById('pStockStatus').value = p.stock_status || 'in_stock';
+    document.getElementById('pImageUrl').value = p.image_url || '';
+    document.getElementById('pStatus').value = p.status || 'pending';
+    document.getElementById('pDisclaimer').value = p.disclaimer || '';
+    document.getElementById('cancelEditBtn').style.display = 'inline-block';
+    document.querySelector('.product-form-box').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function cancelEdit() {
+    clearProductForm();
+  }
+
+  function clearProductForm() {
+    document.getElementById('editingProductId').value = '';
+    document.getElementById('productFormTitle').textContent = 'Add a New Product';
+    document.getElementById('pName').value = '';
+    document.getElementById('pDescription').value = '';
+    document.getElementById('pPrice').value = '';
+    document.getElementById('pCategory').value = '';
+    document.getElementById('pSubcategory').value = '';
+    document.getElementById('pStockStatus').value = 'in_stock';
+    document.getElementById('pImageUrl').value = '';
+    document.getElementById('pStatus').value = 'pending';
+    document.getElementById('pDisclaimer').value = '';
+    document.getElementById('cancelEditBtn').style.display = 'none';
+    document.getElementById('productFormMsg').style.display = 'none';
+  }
+
+  async function deleteProduct(id, name) {
+    if (!confirm(`Remove "${name}" from your listings? This cannot be undone.`)) return;
+    try {
+      await fetch(`${SUPABASE_URL}/rest/v1/products?id=eq.${id}`, {
+        method: 'DELETE',
+        headers: { 'apikey': SERVICE_KEY, 'Authorization': `Bearer ${SERVICE_KEY}` }
+      });
+      await loadProducts();
+      renderOverview();
+      showToast('Product removed', 'success');
+    } catch { showToast('Remove failed', 'error'); }
+  }
+
+  function showFormMsg(msg, type) {
+    const el = document.getElementById('productFormMsg');
+    el.style.display = 'block';
+    el.style.color = type === 'error' ? 'var(--red-text)' : 'var(--green-text)';
+    el.textContent = msg;
+  }
+
+  // ── ORDERS ──
+  function renderOrders() {
+    const el = document.getElementById('orderList');
+    if (sellerOrders.length === 0) {
+      el.innerHTML = '<div class="empty-state">No orders yet.</div>';
+      return;
+    }
+    el.innerHTML = sellerOrders.map(o => `
+      <div class="order-row">
+        <div class="order-row-top">
+          <div>
+            <div class="order-id">${o.id.substring(0, 8).toUpperCase()}</div>
+            <div style="font-size:0.8rem;color:var(--cream-dim)">${formatDate(o.created_at)}</div>
+          </div>
+          <div class="order-amount">$${parseFloat(o.amount_usd || 0).toFixed(2)}</div>
+        </div>
+        <div class="order-details">
+          <div>
+            <div class="order-detail-label">Buyer</div>
+            <div>${esc(o.buyer_email || '—')}</div>
+          </div>
+          <div>
+            <div class="order-detail-label">Payment</div>
+            <div><span class="badge ${o.payment_status}">${o.payment_status || '—'}</span></div>
+          </div>
+          <div>
+            <div class="order-detail-label">Fulfillment</div>
+            <div><span class="badge ${o.fulfillment_status}">${o.fulfillment_status || 'pending'}</span></div>
+          </div>
+          <div>
+            <div class="order-detail-label">Ship To</div>
+            <div>${esc(o.shipping_name || '—')}</div>
+          </div>
+          <div>
+            <div class="order-detail-label">Address</div>
+            <div>${esc([o.shipping_city, o.shipping_state, o.shipping_zip].filter(Boolean).join(', ') || '—')}</div>
+          </div>
+          <div>
+            <div class="order-detail-label">Tracking</div>
+            <div>${esc(o.tracking_number || 'Not yet set')}</div>
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // ── PAYOUTS ──
+  function renderPayouts() {
+    const el = document.getElementById('payoutList');
+    if (sellerPayouts.length === 0) {
+      el.innerHTML = '<div class="empty-state">No payouts yet. Payouts are issued after order completion.</div>';
+      return;
+    }
+    el.innerHTML = sellerPayouts.map(p => `
+      <div class="payout-row">
+        <div>
+          <div class="payout-amount">$${parseFloat(p.seller_amount || 0).toFixed(2)}</div>
+          <div class="payout-info">
+            Gross: $${parseFloat(p.gross_amount || 0).toFixed(2)} &nbsp;·&nbsp;
+            Commission: $${parseFloat(p.commission_amount || 0).toFixed(2)} &nbsp;·&nbsp;
+            ${esc(p.crypto_currency || '—')}
+          </div>
+          ${p.tx_hash ? `<div class="payout-info" style="margin-top:4px">TX: ${esc(p.tx_hash)}</div>` : ''}
+          <div class="payout-info" style="margin-top:4px">${formatDate(p.created_at)}</div>
+        </div>
+        <span class="badge ${p.status}">${p.status || '—'}</span>
+      </div>
+    `).join('');
+  }
+
+  // ── UTILS ──
+  function formatDate(ts) {
+    if (!ts) return '—';
+    return new Date(ts).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+  }
+
+  function esc(str) {
+    if (!str) return '';
+    return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  function showToast(msg, type) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.className = `toast ${type} show`;
+    setTimeout(() => { t.className = `toast ${type}`; }, 3000);
+  }
+</script>
+
+</body>
+</html>
