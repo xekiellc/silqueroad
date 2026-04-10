@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Become a Seller — Silque Road</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inconsolata:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0a0806;
+      --obsidian: #111009;
+      --charcoal: #1c1a16;
+      --ash: #2a2720;
+      --gold: #c9a84c;
+      --gold-dim: #8a6e2a;
+      --gold-pale: #e8d08a;
+      --cream: #f0e8d8;
+      --cream-dim: #9a907e;
+      --red: #8b2222;
+      --green: #2a6b3a;
+      --border: rgba(201, 168, 76, 0.15);
+      --border-hover: rgba(201, 168, 76, 0.4);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--black);
+      color: var(--cream);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 300;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.6;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      z-index: 100;
+    }
+
+    .page-wrap {
+      position: relative;
+      z-index: 1;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    .site-header {
+      padding: 40px 0 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo-link {
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .logo-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+
+    .logo-sub {
+      font-family: 'Inconsolata', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      color: var(--cream-dim);
+      text-transform: uppercase;
+    }
+
+    .back-link {
+      font-family: 'Inconsolata', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      color: var(--cream-dim);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--gold); }
+    .back-link::before { content: '← '; }
+
+    .hero {
+      padding: 64px 0 40px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-eyebrow {
+      font-family: 'Inconsolata', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      color: var(--gold-dim);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--cream);
+      margin-bottom: 20px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold-pale);
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--cream-dim);
+      line-height: 1.7;
+      max-width: 560px;
+    }
+
+    .eligibility {
+      padding: 40px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-label {
+      font-family: 'Inconsolata', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      color: var(--gold-dim);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .eligibility-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    @media (max-width: 520px) {
+      .eligibility-grid { grid-template-columns: 1fr; }
+    }
+
+    .elig-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 14px 16px;
+      background: var(--charcoal);
+      border: 1px solid var(--border);
+      font-size: 0.9rem;
+      line-height: 1.4;
+      color: var(--cream-dim);
+    }
+
+    .elig-item .dot {
+      flex-shrink: 0;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      margin-top: 5px;
+      opacity: 0.7;
+    }
+
+    .form-section {
+      padding: 48px 0 0;
+    }
+
+    .form-section h2 {
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: var(--cream);
+      margin-bottom: 8px;
+    }
+
+    .form-section .form-intro {
+      font-size: 0.9rem;
+      color: var(--cream-dim);
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+
+    .form-block {
+      margin-bottom: 32px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-family: 'Inconsolata', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-bottom: 8px;
+    }
+
+    label .req { color: var(--gold); margin-left: 3px; }
+
+    label .hint {
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      color: var(--cream-dim);
+      text-transform: none;
+      font-style: italic;
+      margin-left: 6px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="url"],
+    select,
+    textarea {
+      width: 100%;
+      background: var(--obsidian);
+      border: 1px solid var(--border);
+      color: var(--cream);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      font-weight: 300;
+      padding: 12px 16px;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+      -webkit-appearance: none;
+      appearance: none;
+      border-radius: 0;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="url"]:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--gold-dim);
+      background: var(--charcoal);
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: rgba(154, 144, 126, 0.4);
+      font-style: italic;
+    }
+
+    select {
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238a6e2a' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+    }
+
+    select option {
+      background: var(--charcoal);
+      color: var(--cream);
+    }
+
+    textarea { resize: vertical; min-height: 100px; }
+
+    .checkbox-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    @media (max-width: 480px) {
+      .checkbox-grid { grid-template-columns: 1fr; }
+    }
+
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--obsidian);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+    }
+
+    .checkbox-item:hover {
+      border-color: var(--border-hover);
+      background: var(--charcoal);
+    }
+
+    .checkbox-item input[type="checkbox"] {
+      width: 14px;
+      height: 14px;
+      accent-color: var(--gold);
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+
+    .checkbox-item span {
+      font-size: 0.88rem;
+      color: var(--cream-dim);
+      line-height: 1.3;
+    }
+
+    .radio-group { display: flex; flex-direction: column; gap: 8px; }
+
+    .radio-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--obsidian);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+    }
+
+    .radio-item:hover {
+      border-color: var(--border-hover);
+      background: var(--charcoal);
+    }
+
+    .radio-item input[type="radio"] {
+      accent-color: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .radio-item span { font-size: 0.92rem; color: var(--cream-dim); }
+
+    .form-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 36px 0;
+    }
+
+    .affirmation-block {
+      background: var(--charcoal);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold-dim);
+      padding: 20px 20px 20px 22px;
+      margin-bottom: 24px;
+    }
+
+    .affirmation-block p {
+      font-size: 0.88rem;
+      color: var(--cream-dim);
+      line-height: 1.65;
+      margin-bottom: 16px;
+    }
+
+    .affirmation-check {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+
+    .affirmation-check input[type="checkbox"] {
+      margin-top: 3px;
+      accent-color: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .affirmation-check span {
+      font-size: 0.88rem;
+      color: var(--cream-dim);
+      line-height: 1.55;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 18px 32px;
+      background: transparent;
+      border: 1px solid var(--gold-dim);
+      color: var(--gold-pale);
+      font-family: 'Inconsolata', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .submit-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gold);
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+      z-index: 0;
+    }
+
+    .submit-btn:hover::before { transform: translateX(0); }
+    .submit-btn:hover { color: var(--black); border-color: var(--gold); }
+    .submit-btn span { position: relative; z-index: 1; }
+    .submit-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+    .submit-btn:disabled::before { display: none; }
+
+    .status-msg {
+      display: none;
+      padding: 16px 20px;
+      margin-top: 16px;
+      font-size: 0.9rem;
+      line-height: 1.55;
+      border: 1px solid;
+    }
+
+    .status-msg.success {
+      display: block;
+      background: rgba(42, 107, 58, 0.15);
+      border-color: var(--green);
+      color: #6fcf7f;
+    }
+
+    .status-msg.error {
+      display: block;
+      background: rgba(139, 34, 34, 0.15);
+      border-color: var(--red);
+      color: #e07070;
+    }
+
+    .page-footer {
+      margin-top: 64px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      color: var(--gold-dim);
+      text-transform: uppercase;
+    }
+
+    .footer-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 0.85rem;
+      color: var(--cream-dim);
+      opacity: 0.6;
+    }
+
+    .footer-links { display: flex; gap: 24px; margin-top: 4px; }
+
+    .footer-links a {
+      font-family: 'Inconsolata', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--cream-dim);
+      text-decoration: none;
+      opacity: 0.5;
+      transition: opacity 0.2s;
+    }
+
+    .footer-links a:hover { opacity: 1; }
+
+    .spinner {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border: 1px solid rgba(201, 168, 76, 0.3);
+      border-top-color: var(--gold);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeUp 0.7s ease forwards;
+    }
+
+    .fade-in:nth-child(2) { animation-delay: 0.1s; }
+    .fade-in:nth-child(3) { animation-delay: 0.2s; }
+    .fade-in:nth-child(4) { animation-delay: 0.3s; }
+
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+  <header class="site-header">
+    <a href="/" class="logo-link" aria-label="Silque Road home">
+      <span class="logo-name">Silque Road</span>
+      <span class="logo-sub">Legal &amp; Available</span>
+    </a>
+    <a href="/" class="back-link">Return to Market</a>
+  </header>
+
+  <section class="hero fade-in">
+    <p class="hero-eyebrow">Seller Application</p>
+    <h1>Sell what the<br><em>others won't carry.</em></h1>
+    <p class="hero-desc">
+      Silque Road is a compliance-first marketplace built for legal products that mainstream platforms refuse. If your goods are legal to sell, you belong here. Applications are reviewed manually — typically within 3–5 business days.
+    </p>
+  </section>
+
+  <section class="eligibility fade-in">
+    <p class="section-label">Who we accept</p>
+    <div class="eligibility-grid">
+      <div class="elig-item"><span class="dot"></span><span>Health &amp; longevity supplements</span></div>
+      <div class="elig-item"><span class="dot"></span><span>Kratom, kava, botanicals</span></div>
+      <div class="elig-item"><span class="dot"></span><span>Delta-8, THCA &amp; hemp products</span></div>
+      <div class="elig-item"><span class="dot"></span><span>Privacy &amp; counter-surveillance</span></div>
+      <div class="elig-item"><span class="dot"></span><span>Men's &amp; women's wellness</span></div>
+      <div class="elig-item"><span class="dot"></span><span>Blades, stun guns &amp; accessories</span></div>
+      <div class="elig-item"><span class="dot"></span><span>Off-grid, prepper &amp; survival</span></div>
+      <div class="elig-item"><span class="dot"></span><span>Adult wellness &amp; intimacy</span></div>
+    </div>
+  </section>
+
+  <section class="form-section fade-in">
+    <h2>Your Application</h2>
+    <p class="form-intro">All fields marked <span style="color:var(--gold)">✦</span> are required. Your information is stored securely and never shared.</p>
+
+    <div id="applicationForm">
+
+      <div class="form-block">
+        <p class="section-label">01 — Contact</p>
+
+        <div class="form-group">
+          <label for="contact_name">Your Name <span class="req">✦</span></label>
+          <input type="text" id="contact_name" placeholder="First and last name" autocomplete="off" />
+        </div>
+
+        <div class="form-group">
+          <label for="contact_email">Email Address <span class="req">✦</span> <span class="hint">— for application status only</span></label>
+          <input type="email" id="contact_email" placeholder="your@email.com" autocomplete="off" />
+        </div>
+
+        <div class="form-group">
+          <label for="business_name">Business / Brand Name <span class="req">✦</span></label>
+          <input type="text" id="business_name" placeholder="How your store will appear on Silque Road" />
+        </div>
+
+        <div class="form-group">
+          <label for="website">Website or Social URL <span class="hint">— optional</span></label>
+          <input type="url" id="website" placeholder="https://" />
+        </div>
+      </div>
+
+      <div class="form-divider"></div>
+
+      <div class="form-block">
+        <p class="section-label">02 — Products</p>
+
+        <div class="form-group">
+          <label>Product Category <span class="req">✦</span> <span class="hint">— select your primary category</span></label>
+          <select id="category">
+            <option value="" disabled selected>Select a category</option>
+            <option value="Health Freedom / Peptides">Health Freedom / Peptides</option>
+            <option value="Kratom / Kava / Botanicals">Kratom / Kava / Botanicals</option>
+            <option value="Delta-8 / THCA / Hemp">Delta-8 / THCA / Hemp</option>
+            <option value="Longevity & Biohacking">Longevity &amp; Biohacking</option>
+            <option value="Privacy & Counter-Surveillance">Privacy &amp; Counter-Surveillance</option>
+            <option value="Blades / Stun Guns / Accessories">Blades / Stun Guns / Accessories</option>
+            <option value="Men's Health & Wellness">Men's Health &amp; Wellness</option>
+            <option value="Women's Wellness & HRT">Women's Wellness &amp; HRT</option>
+            <option value="Taboo Foods / Raw Dairy">Taboo Foods / Raw Dairy</option>
+            <option value="Tobacco & Nicotine">Tobacco &amp; Nicotine</option>
+            <option value="Off-Grid & Prepper">Off-Grid &amp; Prepper</option>
+            <option value="Adult Wellness & Intimacy">Adult Wellness &amp; Intimacy</option>
+            <option value="Multiple Categories">Multiple Categories</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="products_description">Describe Your Products <span class="req">✦</span></label>
+          <textarea id="products_description" rows="4" placeholder="What do you sell? Be specific — include brand names, SKUs, or product lines if applicable."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="monthly_volume">Estimated Monthly Revenue <span class="req">✦</span></label>
+          <select id="monthly_volume">
+            <option value="" disabled selected>Select a range</option>
+            <option value="Under $1,000/month">Under $1,000/month</option>
+            <option value="$1,000 – $5,000/month">$1,000 – $5,000/month</option>
+            <option value="$5,000 – $25,000/month">$5,000 – $25,000/month</option>
+            <option value="$25,000 – $100,000/month">$25,000 – $100,000/month</option>
+            <option value="Over $100,000/month">Over $100,000/month</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-divider"></div>
+
+      <div class="form-block">
+        <p class="section-label">03 — Payments & Background</p>
+
+        <div class="form-group">
+          <label>Preferred Crypto Currency <span class="hint">— optional</span></label>
+          <select id="crypto_currency">
+            <option value="" selected>No preference / not sure yet</option>
+            <option value="BTC">Bitcoin (BTC)</option>
+            <option value="ETH">Ethereum (ETH)</option>
+            <option value="USDC">USD Coin (USDC)</option>
+            <option value="SOL">Solana (SOL)</option>
+            <option value="DOGE">Dogecoin (DOGE)</option>
+            <option value="LTC">Litecoin (LTC)</option>
+            <option value="XMR">Monero (XMR)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="crypto_wallet">Crypto Wallet Address <span class="hint">— optional, can provide later</span></label>
+          <input type="text" id="crypto_wallet" placeholder="Your receiving wallet address" autocomplete="off" />
+        </div>
+
+        <div class="form-group">
+          <label for="notes">Anything else we should know? <span class="hint">— optional</span></label>
+          <textarea id="notes" rows="3" placeholder="Questions, context, whether you've been deplatformed elsewhere, referral source..."></textarea>
+        </div>
+      </div>
+
+      <div class="form-divider"></div>
+
+      <div class="affirmation-block">
+        <p>
+          Silque Road is a <strong>legal goods marketplace only.</strong> By submitting this application, you affirm that all products you intend to sell are legal at the federal level and, to your knowledge, legal in your state of operation. Applications are reviewed manually and approval is not guaranteed.
+        </p>
+
+        <label class="affirmation-check">
+          <input type="checkbox" id="affirm_legal" />
+          <span>I confirm that all products I intend to sell on Silque Road are legal goods. I understand that listing illegal products will result in immediate removal and reporting to authorities where required.</span>
+        </label>
+
+        <label class="affirmation-check">
+          <input type="checkbox" id="affirm_terms" />
+          <span>I understand that Silque Road charges a 10% commission on completed sales and that payments are processed via cryptocurrency through NOWPayments.</span>
+        </label>
+
+        <label class="affirmation-check">
+          <input type="checkbox" id="affirm_review" />
+          <span>I understand this application will be reviewed manually and that I will be contacted at the email address provided if approved.</span>
+        </label>
+      </div>
+
+      <button class="submit-btn" id="submitBtn" onclick="submitApplication()">
+        <span id="submitBtnText">Submit Application</span>
+      </button>
+
+      <div id="statusMsg" class="status-msg"></div>
+
+    </div>
+  </section>
+
+  <footer class="page-footer">
+    <span class="footer-logo">Silque Road</span>
+    <span class="footer-tagline">We carry what the internet won't.</span>
+    <div class="footer-links">
+      <a href="/">Marketplace</a>
+      <a href="/seller-apply.html">Sell</a>
+      <a href="mailto:info@silqueroad.com">Contact</a>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  const SUPABASE_URL = 'https://pmtfqbefrsplvoriirru.supabase.co';
+  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBtdGZxYmVmcnNwbHZvcmlpcnJ1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU4Mzk5MzEsImV4cCI6MjA5MTQxNTkzMX0.xgIVCGtB1Elp8ywjQhUAHdAVXOMoZJRmxWXM6vpZBB0';
+
+  function getVal(id) {
+    return document.getElementById(id)?.value?.trim() || '';
+  }
+
+  function setStatus(type, message) {
+    const el = document.getElementById('statusMsg');
+    el.className = 'status-msg ' + type;
+    el.innerHTML = message;
+    el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function clearStatus() {
+    const el = document.getElementById('statusMsg');
+    el.className = 'status-msg';
+    el.innerHTML = '';
+  }
+
+  async function submitApplication() {
+    clearStatus();
+
+    const contact_name = getVal('contact_name');
+    const contact_email = getVal('contact_email');
+    const business_name = getVal('business_name');
+    const website = getVal('website');
+    const category = getVal('category');
+    const products_description = getVal('products_description');
+    const monthly_volume = getVal('monthly_volume');
+    const crypto_currency = getVal('crypto_currency');
+    const crypto_wallet = getVal('crypto_wallet');
+    const notes = getVal('notes');
+    const affirm_legal = document.getElementById('affirm_legal').checked;
+    const affirm_terms = document.getElementById('affirm_terms').checked;
+    const affirm_review = document.getElementById('affirm_review').checked;
+
+    // Validation
+    if (!contact_name) { setStatus('error', 'Please enter your name.'); return; }
+    if (!contact_email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact_email)) {
+      setStatus('error', 'Please enter a valid email address.'); return;
+    }
+    if (!business_name) { setStatus('error', 'Please enter your business or brand name.'); return; }
+    if (!category) { setStatus('error', 'Please select a product category.'); return; }
+    if (!products_description) { setStatus('error', 'Please describe your products.'); return; }
+    if (!monthly_volume) { setStatus('error', 'Please select your estimated monthly revenue.'); return; }
+    if (!affirm_legal || !affirm_terms || !affirm_review) {
+      setStatus('error', 'Please check all three affirmation boxes to proceed.'); return;
+    }
+
+    const btn = document.getElementById('submitBtn');
+    const btnText = document.getElementById('submitBtnText');
+    btn.disabled = true;
+    btnText.innerHTML = '<span class="spinner"></span>Submitting...';
+
+    try {
+      const payload = {
+        contact_name,
+        email: contact_email,
+        business_name,
+        website: website || null,
+        category,
+        products_description,
+        monthly_volume,
+        crypto_currency: crypto_currency || null,
+        crypto_wallet: crypto_wallet || null,
+        notes: notes || null,
+        affirm_legal,
+        affirm_terms,
+        affirm_review,
+        status: 'new',
+        submitted_at: new Date().toISOString()
+      };
+
+      const res = await fetch(`${SUPABASE_URL}/rest/v1/seller_applications`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': SUPABASE_ANON_KEY,
+          'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+          'Prefer': 'return=minimal'
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.message || `Server error ${res.status}`);
+      }
+
+      document.getElementById('applicationForm').style.display = 'none';
+      setStatus('success',
+        `<strong>Application received.</strong><br>
+        Thank you, ${contact_name}. We've received your application for <em>${business_name}</em> and will review it within 3–5 business days.
+        You'll hear from us at <strong>${contact_email}</strong> if approved.<br><br>
+        Questions? Email <a href="mailto:info@silqueroad.com" style="color:var(--gold)">info@silqueroad.com</a>.`
+      );
+
+    } catch (err) {
+      console.error('Submission error:', err);
+      btn.disabled = false;
+      btnText.textContent = 'Submit Application';
+      setStatus('error',
+        `Something went wrong: ${err.message}. Please try again or email <a href="mailto:info@silqueroad.com" style="color:#e07070">info@silqueroad.com</a> directly.`
+      );
+    }
+  }
+</script>
+
+</body>
+</html>
