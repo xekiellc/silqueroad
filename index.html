@@ -138,7 +138,14 @@ a { color: inherit; text-decoration: none; }
 .telehealth-right { text-align: center; }
 .rx-display { font-family: var(--font-display); font-size: 80px; font-weight: 700; color: var(--gold); opacity: 0.12; line-height: 1; margin-bottom: 16px; }
 
-.email-section { background: var(--ink); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 60px 24px; text-align: center; }
+.payment-section { background: var(--ink); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 52px 24px; text-align: center; }
+.payment-title { font-family: var(--font-display); font-size: clamp(18px, 2.5vw, 26px); font-weight: 600; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 10px; }
+.payment-sub { font-family: var(--font-body); font-size: 17px; font-style: italic; color: var(--sand-muted); margin-bottom: 28px; max-width: 520px; margin-left: auto; margin-right: auto; }
+.payment-grid { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+.payment-badge { font-family: var(--font-ui); font-size: 10px; letter-spacing: 1px; color: var(--gold); border: 1px solid var(--border-strong); padding: 8px 18px; text-transform: uppercase; }
+.payment-note { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--sand-muted); opacity: 0.4; text-transform: uppercase; }
+
+.email-section { background: var(--smoke); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 60px 24px; text-align: center; }
 .email-title { font-family: var(--font-display); font-size: clamp(20px, 3vw, 28px); font-weight: 600; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 10px; }
 .email-sub { font-family: var(--font-body); font-size: 17px; font-style: italic; color: var(--sand-muted); margin-bottom: 28px; }
 .email-form { display: flex; gap: 0; max-width: 480px; margin: 0 auto; }
@@ -158,16 +165,9 @@ a { color: inherit; text-decoration: none; }
 .seller-perk { font-family: var(--font-ui); font-size: 9px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; opacity: 0.7; display: flex; align-items: center; gap: 8px; }
 .perk-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); opacity: 0.5; flex-shrink: 0; }
 
-.payment-section { background: var(--ink); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 52px 24px; text-align: center; }
-.payment-title { font-family: var(--font-display); font-size: clamp(18px, 2.5vw, 26px); font-weight: 600; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 10px; }
-.payment-sub { font-family: var(--font-body); font-size: 17px; font-style: italic; color: var(--sand-muted); margin-bottom: 28px; max-width: 520px; margin-left: auto; margin-right: auto; }
-.payment-grid { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
-.payment-badge { font-family: var(--font-ui); font-size: 10px; letter-spacing: 1px; color: var(--gold); border: 1px solid var(--border-strong); padding: 8px 18px; text-transform: uppercase; }
-.payment-note { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--sand-muted); opacity: 0.4; text-transform: uppercase; }
-
 .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 2000; align-items: center; justify-content: center; padding: 24px; }
 .modal-overlay.open { display: flex; }
-.modal { background: var(--ink-mid); border: 1px solid var(--border-strong); max-width: 520px; width: 100%; padding: 40px; position: relative; }
+.modal { background: var(--ink-mid); border: 1px solid var(--border-strong); max-width: 520px; width: 100%; padding: 40px; position: relative; max-height: 90vh; overflow-y: auto; }
 .modal-close { position: absolute; top: 16px; right: 20px; background: none; border: none; color: var(--sand-muted); font-size: 22px; cursor: pointer; line-height: 1; }
 .modal-title { font-family: var(--font-display); font-size: 20px; font-weight: 600; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
 .modal-sub { font-family: var(--font-body); font-size: 15px; font-style: italic; color: var(--sand-muted); margin-bottom: 24px; line-height: 1.5; }
@@ -182,6 +182,9 @@ a { color: inherit; text-decoration: none; }
 .crypto-option.selected { border-color: var(--gold); background: var(--gold-faint); }
 .crypto-symbol { font-family: var(--font-ui); font-size: 18px; font-weight: 700; color: var(--gold); margin-bottom: 4px; }
 .crypto-name { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--sand-muted); text-transform: uppercase; }
+.amount-input { width: 100%; background: var(--ink-light); border: 1px solid var(--border-strong); color: var(--sand); font-family: var(--font-ui); font-size: 14px; padding: 12px 16px; outline: none; margin-bottom: 16px; transition: border-color var(--transition); }
+.amount-input:focus { border-color: var(--gold); }
+.amount-input::placeholder { color: var(--sand-muted); opacity: 0.5; }
 .card-form { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
 .card-input { background: var(--ink-light); border: 1px solid var(--border-strong); color: var(--sand); font-family: var(--font-ui); font-size: 12px; padding: 12px 16px; outline: none; transition: border-color var(--transition); width: 100%; }
 .card-input::placeholder { color: var(--sand-muted); opacity: 0.5; }
@@ -189,8 +192,13 @@ a { color: inherit; text-decoration: none; }
 .card-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .modal-proceed { width: 100%; background: var(--gold); color: var(--ink); font-family: var(--font-ui); font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 14px; border: none; cursor: pointer; transition: background var(--transition); }
 .modal-proceed:hover { background: var(--gold-light); }
+.modal-proceed:disabled { opacity: 0.5; cursor: not-allowed; }
 .modal-note { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--sand-muted); opacity: 0.4; text-align: center; margin-top: 12px; text-transform: uppercase; }
 .processor-note { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--green-ok); text-align: center; margin-top: 8px; text-transform: uppercase; opacity: 0.8; }
+.payment-status { font-family: var(--font-ui); font-size: 11px; letter-spacing: 1px; color: var(--gold); text-align: center; margin-top: 12px; text-transform: uppercase; display: none; }
+.payment-url-box { background: var(--ink-light); border: 1px solid var(--border); padding: 16px; margin-top: 16px; text-align: center; display: none; }
+.payment-url-box p { font-family: var(--font-ui); font-size: 10px; color: var(--sand-muted); margin-bottom: 8px; letter-spacing: 1px; text-transform: uppercase; }
+.payment-url-box a { font-family: var(--font-ui); font-size: 12px; color: var(--gold); word-break: break-all; }
 
 .footer { background: var(--ink); border-top: 1px solid var(--border); padding: 52px 24px 32px; }
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; max-width: var(--max-w); margin: 0 auto 40px; }
@@ -341,7 +349,7 @@ a { color: inherit; text-decoration: none; }
     <div class="step">
       <div class="step-num">03</div>
       <div class="step-title">Pay Your Way</div>
-      <p class="step-body">Crypto or card — your choice. BTC, ETH, USDC, XMR for full anonymity, or card via our deplatform-proof payment partner.</p>
+      <p class="step-body">Crypto for full anonymity or card for convenience. BTC, ETH, USDC, XMR accepted. Both processed by partners who believe legal means legal.</p>
     </div>
     <div class="step">
       <div class="step-num">04</div>
@@ -462,7 +470,7 @@ a { color: inherit; text-decoration: none; }
     <div class="seller-perk"><div class="perk-dot"></div>No deplatforming. Ever.</div>
     <div class="seller-perk"><div class="perk-dot"></div>Deplatform-proof payments</div>
   </div>
-  <a href="mailto:zach@xekie.com?subject=Silque Road Founding Seller Application" class="btn-primary">Apply as a Founding Seller</a>
+  <a href="mailto:info@silqueroad.com?subject=Silque Road Founding Seller Application" class="btn-primary">Apply as a Founding Seller</a>
 </section>
 
 <footer class="footer">
@@ -531,12 +539,12 @@ a { color: inherit; text-decoration: none; }
 <div class="modal-overlay" id="modal" onclick="closeModalOutside(event)">
   <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
     <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
-    <h2 class="modal-title" id="modal-title">Choose Payment</h2>
+    <h2 class="modal-title" id="modal-title">Checkout</h2>
     <p class="modal-sub">Crypto for full anonymity. Card for convenience. Both accepted.</p>
 
     <div class="payment-tabs">
-      <button class="payment-tab active" onclick="switchTab('crypto')">Crypto</button>
-      <button class="payment-tab" onclick="switchTab('card')">Card</button>
+      <button class="payment-tab active" id="tab-btn-crypto" onclick="switchTab('crypto', this)">Crypto</button>
+      <button class="payment-tab" id="tab-btn-card" onclick="switchTab('card', this)">Card</button>
     </div>
 
     <div class="tab-content active" id="tab-crypto">
@@ -555,10 +563,16 @@ a { color: inherit; text-decoration: none; }
         </div>
         <div class="crypto-option" onclick="selectCrypto(this,'XMR')">
           <div class="crypto-symbol">&#9672;</div>
-          <div class="crypto-name">Monero Private</div>
+          <div class="crypto-name">Monero</div>
         </div>
       </div>
-      <button class="modal-proceed" onclick="proceedCrypto()">Proceed with Crypto &rarr;</button>
+      <input type="number" class="amount-input" id="crypto-amount" placeholder="Enter amount in USD (e.g. 49.00)" min="1" step="0.01">
+      <button class="modal-proceed" id="crypto-btn" onclick="proceedCrypto()">Pay with Crypto &rarr;</button>
+      <div class="payment-status" id="crypto-status">Generating payment address...</div>
+      <div class="payment-url-box" id="payment-url-box">
+        <p>Click below to complete your payment</p>
+        <a id="payment-link" href="#" target="_blank">Open Payment Page &rarr;</a>
+      </div>
       <p class="modal-note">Powered by NOWPayments &nbsp;&bull;&nbsp; 0.5% fee &nbsp;&bull;&nbsp; Fully anonymous</p>
     </div>
 
@@ -573,13 +587,15 @@ a { color: inherit; text-decoration: none; }
         <input type="text" class="card-input" placeholder="ZIP code" autocomplete="postal-code" maxlength="10">
       </div>
       <button class="modal-proceed" onclick="proceedCard()">Pay with Card &rarr;</button>
-      <p class="modal-note">Processed by our high-risk payment partner</p>
+      <p class="modal-note">Card processing coming soon — contact info@silqueroad.com</p>
       <p class="processor-note">&#10003; Our card processor does not deplatform legal products</p>
     </div>
   </div>
 </div>
 
 <script>
+const NOWPAYMENTS_API_KEY = 'SB9A1D5-AV4MD1B-MGGZZ12-163HTQF';
+
 function toggleMobile() {
   document.getElementById('mobile-menu').classList.toggle('open');
 }
@@ -594,17 +610,22 @@ function openModal() {
 function closeModal() {
   document.getElementById('modal').classList.remove('open');
   document.body.style.overflow = '';
+  document.getElementById('crypto-status').style.display = 'none';
+  document.getElementById('payment-url-box').style.display = 'none';
+  document.getElementById('crypto-btn').disabled = false;
+  document.getElementById('crypto-btn').textContent = 'Pay with Crypto →';
+  document.getElementById('crypto-amount').value = '';
 }
 
 function closeModalOutside(e) {
   if (e.target === document.getElementById('modal')) closeModal();
 }
 
-function switchTab(tab) {
+function switchTab(tab, btn) {
   document.querySelectorAll('.payment-tab').forEach(t => t.classList.remove('active'));
   document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
   document.getElementById('tab-' + tab).classList.add('active');
-  event.target.classList.add('active');
+  btn.classList.add('active');
 }
 
 function selectCrypto(el, currency) {
@@ -613,16 +634,64 @@ function selectCrypto(el, currency) {
   selectedCrypto = currency;
 }
 
-function proceedCrypto() {
-  // NOWPayments integration — add your API key from nowpayments.io
-  // Replace this alert with your NOWPayments payment flow
-  alert('NOWPayments integration coming soon.\nSelected: ' + selectedCrypto + '\nContact info@silqueroad.com to purchase.');
+async function proceedCrypto() {
+  const amountInput = document.getElementById('crypto-amount');
+  const amount = parseFloat(amountInput.value);
+
+  if (!amount || amount < 1) {
+    amountInput.style.borderColor = '#c44';
+    amountInput.placeholder = 'Please enter an amount';
+    return;
+  }
+
+  const btn = document.getElementById('crypto-btn');
+  const status = document.getElementById('crypto-status');
+  const urlBox = document.getElementById('payment-url-box');
+
+  btn.disabled = true;
+  btn.textContent = 'Generating payment...';
+  status.style.display = 'block';
+  status.textContent = 'Creating your payment address...';
+
+  try {
+    const response = await fetch('https://api.nowpayments.io/v1/payment', {
+      method: 'POST',
+      headers: {
+        'x-api-key': NOWPAYMENTS_API_KEY,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        price_amount: amount,
+        price_currency: 'usd',
+        pay_currency: selectedCrypto.toLowerCase(),
+        order_description: 'Silque Road Purchase',
+        ipn_callback_url: 'https://silqueroad.com'
+      })
+    });
+
+    const data = await response.json();
+
+    if (data.payment_id) {
+      status.textContent = '✓ Payment address generated successfully';
+      status.style.color = '#3a8a3a';
+      const paymentUrl = `https://nowpayments.io/payment/?iid=${data.payment_id}`;
+      const link = document.getElementById('payment-link');
+      link.href = paymentUrl;
+      urlBox.style.display = 'block';
+      btn.textContent = 'Payment Ready →';
+    } else {
+      throw new Error('Payment creation failed');
+    }
+  } catch (err) {
+    status.textContent = 'Error generating payment. Please contact info@silqueroad.com';
+    status.style.color = '#c44';
+    btn.disabled = false;
+    btn.textContent = 'Try Again →';
+  }
 }
 
 function proceedCard() {
-  // High-risk card processor integration
-  // Replace with Durango Merchant Services or PayKings integration
-  alert('Card processing integration coming soon.\nContact info@silqueroad.com to purchase.');
+  alert('Card processing coming soon.\nContact info@silqueroad.com to purchase by card.');
 }
 
 document.addEventListener('keydown', function(e) {
