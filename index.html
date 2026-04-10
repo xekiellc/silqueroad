@@ -13,11 +13,9 @@
 <meta name="twitter:title" content="Silque Road — We carry what the internet won't.">
 <meta name="twitter:description" content="Legal and Available. Anonymous checkout. Crypto payments.">
 <title>Silque Road — We Carry What the Internet Won't</title>
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-
 <style>
 :root {
   --gold: #C9A84C;
@@ -40,7 +38,6 @@
   --transition: 0.2s ease;
   --max-w: 1100px;
 }
-
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body { font-family: var(--font-body); background: var(--ink); color: var(--sand); line-height: 1.6; overflow-x: hidden; }
@@ -50,10 +47,8 @@ a { color: inherit; text-decoration: none; }
 ::-webkit-scrollbar-track { background: var(--ink); }
 ::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 3px; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
-
 .announce-bar { background: var(--gold); color: var(--ink); text-align: center; padding: 9px 16px; font-family: var(--font-ui); font-size: 11px; letter-spacing: 2px; font-weight: 700; text-transform: uppercase; }
 .announce-bar a { color: var(--ink); text-decoration: underline; }
-
 .nav { position: sticky; top: 0; z-index: 1000; background: var(--ink); border-bottom: 1px solid var(--border); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 68px; }
 .nav-logo { display: flex; align-items: center; gap: 12px; cursor: pointer; }
 .nav-logo-name { font-family: var(--font-display); font-size: 20px; font-weight: 700; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; display: block; }
@@ -68,7 +63,6 @@ a { color: inherit; text-decoration: none; }
 .mobile-menu a { font-family: var(--font-ui); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--sand-muted); padding: 14px 0; border-bottom: 1px solid var(--border); display: block; }
 .mobile-menu a:last-child { border-bottom: none; color: var(--gold); }
 .mobile-menu.open { display: flex; }
-
 .hero { min-height: 92vh; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; overflow: hidden; text-align: center; padding: 80px 24px; }
 .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 50% 60%, rgba(139,105,20,0.18) 0%, transparent 70%), radial-gradient(ellipse 40% 30% at 50% 30%, rgba(201,168,76,0.06) 0%, transparent 60%); pointer-events: none; }
 .hero-dunes { position: absolute; bottom: 0; left: 0; right: 0; height: 140px; pointer-events: none; }
@@ -81,17 +75,14 @@ a { color: inherit; text-decoration: none; }
 .hero-tagline { font-family: var(--font-body); font-size: clamp(20px, 3vw, 28px); font-style: italic; font-weight: 300; color: var(--sand); opacity: 0.85; line-height: 1.5; margin-bottom: 12px; }
 .hero-sub-tagline { font-family: var(--font-ui); font-size: 13px; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 40px; }
 .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-
 .btn-primary { display: inline-block; background: var(--gold); color: var(--ink); font-family: var(--font-ui); font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 15px 36px; border: none; cursor: pointer; transition: background var(--transition); }
 .btn-primary:hover { background: var(--gold-light); }
 .btn-outline { display: inline-block; background: transparent; color: var(--gold); font-family: var(--font-ui); font-size: 11px; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; padding: 14px 36px; border: 1px solid var(--border-strong); cursor: pointer; transition: border-color var(--transition), color var(--transition); }
 .btn-outline:hover { border-color: var(--gold); color: var(--gold-light); }
-
 .trust-bar { background: var(--smoke); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 14px 24px; display: flex; justify-content: center; flex-wrap: wrap; }
 .trust-item { font-family: var(--font-ui); font-size: 9px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; opacity: 0.65; display: flex; align-items: center; gap: 8px; padding: 6px 20px; border-right: 1px solid var(--border); white-space: nowrap; }
 .trust-item:last-child { border-right: none; }
 .trust-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
-
 .section { padding: 72px 24px; }
 .section-alt { background: var(--smoke); }
 .section-header { text-align: center; margin-bottom: 52px; }
@@ -99,7 +90,6 @@ a { color: inherit; text-decoration: none; }
 .section-title { font-family: var(--font-display); font-size: clamp(26px, 4vw, 38px); font-weight: 600; letter-spacing: 5px; color: var(--gold); text-transform: uppercase; margin-bottom: 12px; }
 .section-body { font-family: var(--font-body); font-size: 18px; font-style: italic; color: var(--sand-muted); max-width: 520px; margin: 0 auto; line-height: 1.6; }
 .gold-rule { width: 100px; height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent); margin: 18px auto 0; }
-
 .cat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); max-width: var(--max-w); margin: 0 auto; }
 .cat-card { background: var(--ink-mid); padding: 28px 22px; cursor: pointer; transition: background var(--transition); position: relative; display: flex; flex-direction: column; gap: 8px; }
 .cat-card:hover { background: var(--ink-light); }
@@ -109,14 +99,12 @@ a { color: inherit; text-decoration: none; }
 .cat-badge { position: absolute; top: 10px; right: 10px; font-family: var(--font-ui); font-size: 8px; letter-spacing: 1px; font-weight: 700; padding: 3px 8px; text-transform: uppercase; }
 .badge-hot { background: var(--crimson); color: var(--sand); }
 .badge-new { background: var(--green-ok); color: var(--sand); }
-
 .steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 1px solid var(--border); max-width: 960px; margin: 0 auto; }
 .step { padding: 36px 28px; border-right: 1px solid var(--border); }
 .step:last-child { border-right: none; }
 .step-num { font-family: var(--font-display); font-size: 52px; font-weight: 700; color: var(--gold-dark); opacity: 0.25; line-height: 1; margin-bottom: 14px; }
 .step-title { font-family: var(--font-display); font-size: 13px; font-weight: 600; letter-spacing: 1.5px; color: var(--gold); text-transform: uppercase; margin-bottom: 10px; }
 .step-body { font-family: var(--font-body); font-size: 15px; color: var(--sand-muted); line-height: 1.6; }
-
 .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: var(--max-w); margin: 0 auto; }
 .product-card { background: var(--ink-mid); border: 1px solid var(--border); padding: 24px 22px; cursor: pointer; transition: border-color var(--transition); display: flex; flex-direction: column; gap: 10px; }
 .product-card:hover { border-color: var(--border-strong); }
@@ -128,7 +116,6 @@ a { color: inherit; text-decoration: none; }
 .product-legal { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--green-ok); text-transform: uppercase; }
 .product-add { background: transparent; border: 1px solid var(--border-strong); color: var(--gold); font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; text-transform: uppercase; padding: 6px 14px; cursor: pointer; transition: background var(--transition); }
 .product-add:hover { background: var(--gold-faint); }
-
 .telehealth-wrap { max-width: var(--max-w); margin: 0 auto; display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: center; }
 .telehealth-label { font-family: var(--font-ui); font-size: 9px; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; opacity: 0.6; margin-bottom: 12px; }
 .telehealth-title { font-family: var(--font-display); font-size: clamp(22px, 3vw, 32px); font-weight: 600; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 14px; }
@@ -137,14 +124,12 @@ a { color: inherit; text-decoration: none; }
 .pill { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--gold); border: 1px solid var(--border); padding: 5px 14px; border-radius: 20px; text-transform: uppercase; white-space: nowrap; }
 .telehealth-right { text-align: center; }
 .rx-display { font-family: var(--font-display); font-size: 80px; font-weight: 700; color: var(--gold); opacity: 0.12; line-height: 1; margin-bottom: 16px; }
-
 .payment-section { background: var(--ink); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 52px 24px; text-align: center; }
 .payment-title { font-family: var(--font-display); font-size: clamp(18px, 2.5vw, 26px); font-weight: 600; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 10px; }
 .payment-sub { font-family: var(--font-body); font-size: 17px; font-style: italic; color: var(--sand-muted); margin-bottom: 28px; max-width: 520px; margin-left: auto; margin-right: auto; }
 .payment-grid { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
 .payment-badge { font-family: var(--font-ui); font-size: 10px; letter-spacing: 1px; color: var(--gold); border: 1px solid var(--border-strong); padding: 8px 18px; text-transform: uppercase; }
 .payment-note { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--sand-muted); opacity: 0.4; text-transform: uppercase; }
-
 .email-section { background: var(--smoke); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 60px 24px; text-align: center; }
 .email-title { font-family: var(--font-display); font-size: clamp(20px, 3vw, 28px); font-weight: 600; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 10px; }
 .email-sub { font-family: var(--font-body); font-size: 17px; font-style: italic; color: var(--sand-muted); margin-bottom: 28px; }
@@ -156,50 +141,43 @@ a { color: inherit; text-decoration: none; }
 .email-submit:hover { background: var(--gold-light); }
 .email-disclaimer { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--sand-muted); opacity: 0.4; margin-top: 12px; text-transform: uppercase; }
 #email-success { display: none; font-family: var(--font-ui); font-size: 11px; letter-spacing: 2px; color: var(--green-ok); text-transform: uppercase; margin-top: 16px; }
-#email-error { display: none; font-family: var(--font-ui); font-size: 11px; letter-spacing: 2px; color: #c44; text-transform: uppercase; margin-top: 16px; }
-
 .seller-section { background: var(--smoke); padding: 72px 24px; text-align: center; border-top: 1px solid var(--border); }
 .seller-title { font-family: var(--font-display); font-size: clamp(22px, 3.5vw, 36px); font-weight: 600; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 14px; }
 .seller-body { font-family: var(--font-body); font-size: 18px; font-style: italic; color: var(--sand-muted); line-height: 1.6; max-width: 560px; margin: 0 auto 32px; }
 .seller-perks { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; margin-bottom: 36px; }
 .seller-perk { font-family: var(--font-ui); font-size: 9px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; opacity: 0.7; display: flex; align-items: center; gap: 8px; }
 .perk-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); opacity: 0.5; flex-shrink: 0; }
-
 .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 2000; align-items: center; justify-content: center; padding: 24px; }
 .modal-overlay.open { display: flex; }
-.modal { background: var(--ink-mid); border: 1px solid var(--border-strong); max-width: 520px; width: 100%; padding: 40px; position: relative; max-height: 90vh; overflow-y: auto; }
+.modal { background: var(--ink-mid); border: 1px solid var(--border-strong); max-width: 540px; width: 100%; padding: 40px; position: relative; max-height: 90vh; overflow-y: auto; }
 .modal-close { position: absolute; top: 16px; right: 20px; background: none; border: none; color: var(--sand-muted); font-size: 22px; cursor: pointer; line-height: 1; }
 .modal-title { font-family: var(--font-display); font-size: 20px; font-weight: 600; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
 .modal-sub { font-family: var(--font-body); font-size: 15px; font-style: italic; color: var(--sand-muted); margin-bottom: 24px; line-height: 1.5; }
-.payment-tabs { display: flex; gap: 0; margin-bottom: 20px; border: 1px solid var(--border-strong); }
+.payment-tabs { display: flex; gap: 0; margin-bottom: 24px; border: 1px solid var(--border-strong); }
 .payment-tab { flex: 1; padding: 10px; font-family: var(--font-ui); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; background: transparent; border: none; color: var(--sand-muted); cursor: pointer; transition: background var(--transition), color var(--transition); }
 .payment-tab.active { background: var(--gold-faint); color: var(--gold); border-bottom: 2px solid var(--gold); }
 .tab-content { display: none; }
 .tab-content.active { display: block; }
-.crypto-options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
-.crypto-option { background: var(--ink-light); border: 1px solid var(--border); padding: 16px; cursor: pointer; transition: border-color var(--transition); text-align: center; }
-.crypto-option:hover { border-color: var(--gold); }
-.crypto-option.selected { border-color: var(--gold); background: var(--gold-faint); }
-.crypto-symbol { font-family: var(--font-ui); font-size: 18px; font-weight: 700; color: var(--gold); margin-bottom: 4px; }
-.crypto-name { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--sand-muted); text-transform: uppercase; }
-.amount-input { width: 100%; background: var(--ink-light); border: 1px solid var(--border-strong); color: var(--sand); font-family: var(--font-ui); font-size: 14px; padding: 12px 16px; outline: none; margin-bottom: 16px; transition: border-color var(--transition); }
+.crypto-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 20px; }
+.crypto-opt { background: var(--ink-light); border: 1px solid var(--border); padding: 12px 8px; cursor: pointer; transition: border-color var(--transition); text-align: center; }
+.crypto-opt:hover { border-color: var(--gold); }
+.crypto-opt.selected { border-color: var(--gold); background: var(--gold-faint); }
+.crypto-sym { font-family: var(--font-ui); font-size: 16px; font-weight: 700; color: var(--gold); margin-bottom: 4px; }
+.crypto-lbl { font-family: var(--font-ui); font-size: 8px; letter-spacing: 0.5px; color: var(--sand-muted); text-transform: uppercase; }
+.amount-wrap { margin-bottom: 20px; }
+.amount-label { font-family: var(--font-ui); font-size: 9px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; opacity: 0.7; }
+.amount-input { width: 100%; background: var(--ink-light); border: 1px solid var(--border-strong); color: var(--sand); font-family: var(--font-ui); font-size: 16px; padding: 14px 18px; outline: none; transition: border-color var(--transition); }
 .amount-input:focus { border-color: var(--gold); }
-.amount-input::placeholder { color: var(--sand-muted); opacity: 0.5; }
+.amount-input::placeholder { color: var(--sand-muted); opacity: 0.4; }
+.modal-proceed { width: 100%; background: var(--gold); color: var(--ink); font-family: var(--font-ui); font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 15px; border: none; cursor: pointer; transition: background var(--transition); margin-bottom: 12px; }
+.modal-proceed:hover { background: var(--gold-light); }
+.modal-note { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--sand-muted); opacity: 0.35; text-align: center; text-transform: uppercase; margin-bottom: 6px; }
+.processor-note { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--green-ok); text-align: center; text-transform: uppercase; opacity: 0.8; }
 .card-form { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
 .card-input { background: var(--ink-light); border: 1px solid var(--border-strong); color: var(--sand); font-family: var(--font-ui); font-size: 12px; padding: 12px 16px; outline: none; transition: border-color var(--transition); width: 100%; }
 .card-input::placeholder { color: var(--sand-muted); opacity: 0.5; }
 .card-input:focus { border-color: var(--gold); }
 .card-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.modal-proceed { width: 100%; background: var(--gold); color: var(--ink); font-family: var(--font-ui); font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 14px; border: none; cursor: pointer; transition: background var(--transition); }
-.modal-proceed:hover { background: var(--gold-light); }
-.modal-proceed:disabled { opacity: 0.5; cursor: not-allowed; }
-.modal-note { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--sand-muted); opacity: 0.4; text-align: center; margin-top: 12px; text-transform: uppercase; }
-.processor-note { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--green-ok); text-align: center; margin-top: 8px; text-transform: uppercase; opacity: 0.8; }
-.payment-status { font-family: var(--font-ui); font-size: 11px; letter-spacing: 1px; color: var(--gold); text-align: center; margin-top: 12px; text-transform: uppercase; display: none; }
-.payment-url-box { background: var(--ink-light); border: 1px solid var(--border); padding: 16px; margin-top: 16px; text-align: center; display: none; }
-.payment-url-box p { font-family: var(--font-ui); font-size: 10px; color: var(--sand-muted); margin-bottom: 8px; letter-spacing: 1px; text-transform: uppercase; }
-.payment-url-box a { font-family: var(--font-ui); font-size: 12px; color: var(--gold); word-break: break-all; }
-
 .footer { background: var(--ink); border-top: 1px solid var(--border); padding: 52px 24px 32px; }
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; max-width: var(--max-w); margin: 0 auto 40px; }
 .footer-brand-name { font-family: var(--font-display); font-size: 20px; font-weight: 700; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; display: block; margin-bottom: 12px; }
@@ -216,10 +194,8 @@ a { color: inherit; text-decoration: none; }
 .footer-legal-links { display: flex; gap: 20px; }
 .footer-legal-links a { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--sand-muted); opacity: 0.3; text-transform: uppercase; transition: opacity var(--transition); }
 .footer-legal-links a:hover { opacity: 0.7; }
-
 .disclaimer-bar { background: var(--ink-mid); border-top: 1px solid var(--border); padding: 12px 24px; text-align: center; }
 .disclaimer-bar p { font-family: var(--font-ui); font-size: 9px; letter-spacing: 0.5px; color: var(--sand-muted); opacity: 0.3; line-height: 1.6; max-width: 900px; margin: 0 auto; }
-
 @media (max-width: 900px) {
   .cat-grid { grid-template-columns: repeat(2, 1fr); }
   .steps-grid { grid-template-columns: repeat(2, 1fr); }
@@ -231,6 +207,7 @@ a { color: inherit; text-decoration: none; }
   .telehealth-right { display: none; }
   .nav-links { display: none; }
   .nav-mobile-toggle { display: block; }
+  .crypto-grid { grid-template-columns: repeat(4, 1fr); }
 }
 @media (max-width: 600px) {
   .product-grid { grid-template-columns: 1fr; }
@@ -240,7 +217,7 @@ a { color: inherit; text-decoration: none; }
   .hero-buttons { flex-direction: column; align-items: center; }
   .email-form { flex-direction: column; }
   .email-input { border-right: 1px solid var(--border-strong); }
-  .crypto-options { grid-template-columns: 1fr 1fr; }
+  .crypto-grid { grid-template-columns: repeat(4, 1fr); }
 }
 </style>
 </head>
@@ -349,7 +326,7 @@ a { color: inherit; text-decoration: none; }
     <div class="step">
       <div class="step-num">03</div>
       <div class="step-title">Pay Your Way</div>
-      <p class="step-body">Crypto for full anonymity or card for convenience. BTC, ETH, USDC, XMR accepted. Both processed by partners who believe legal means legal.</p>
+      <p class="step-body">Crypto for full anonymity or card for convenience. 8 cryptocurrencies accepted. Both processed by partners who believe legal means legal.</p>
     </div>
     <div class="step">
       <div class="step-num">04</div>
@@ -394,7 +371,7 @@ a { color: inherit; text-decoration: none; }
     <div class="product-card">
       <div class="product-cat">Psychedelic Adjacent</div>
       <div class="product-name">Amanita Muscaria Capsules</div>
-      <div class="product-desc">Dried and decarbed. 1g caps, muscimol standardized. Legal in 49 states.</div>
+      <div class="product-desc">Dried and decarbed. 1g caps, muscimol standardized.</div>
       <div class="product-footer"><div><div class="product-price">$34.00</div><div class="product-legal">&#10003; Legal — 49 states</div></div><button class="product-add" onclick="openModal()">Add to Cart</button></div>
     </div>
     <div class="product-card">
@@ -437,14 +414,19 @@ a { color: inherit; text-decoration: none; }
   <h2 class="payment-title">Pay Your Way</h2>
   <p class="payment-sub">Crypto for full anonymity. Card for convenience. Both processed by partners who believe legal means legal — and don't deplatform for it.</p>
   <div class="payment-grid">
-    <span class="payment-badge">&#8383; Bitcoin</span>
-    <span class="payment-badge">&#9830; Ethereum</span>
+    <span class="payment-badge">&#8383; BTC</span>
+    <span class="payment-badge">&#9830; ETH</span>
     <span class="payment-badge">$ USDC</span>
-    <span class="payment-badge">&#9672; Monero</span>
-    <span class="payment-badge">&#9646; Visa</span>
-    <span class="payment-badge">&#9646; Mastercard</span>
+    <span class="payment-badge">&#9672; XMR</span>
+    <span class="payment-badge">&#9678; SOL</span>
+    <span class="payment-badge">&#10005; XRP</span>
+    <span class="payment-badge">&#208; DOGE</span>
+    <span class="payment-badge">&#321; LTC</span>
+    <span class="payment-badge">&#8383; BCH</span>
+    <span class="payment-badge">&#9646; VISA</span>
+    <span class="payment-badge">&#9646; MC</span>
   </div>
-  <p class="payment-note">Our card processor partners are selected specifically for their commitment to legal commerce — they do not deplatform legal products.</p>
+  <p class="payment-note">Our card processor partners do not deplatform legal products.</p>
 </section>
 
 <section class="email-section" id="newsletter">
@@ -457,7 +439,6 @@ a { color: inherit; text-decoration: none; }
   </form>
   <p class="email-disclaimer">No spam. Unsubscribe anytime. We respect your privacy as much as you do.</p>
   <p id="email-success">&#10003; &nbsp; You're on the list. Welcome to the bazaar.</p>
-  <p id="email-error">Something went wrong. Please try again.</p>
 </section>
 
 <section class="seller-section" id="sell">
@@ -477,12 +458,16 @@ a { color: inherit; text-decoration: none; }
   <div class="footer-grid">
     <div>
       <span class="footer-brand-name">Silque Road</span>
-      <p class="footer-brand-desc">The marketplace for legal products that mainstream platforms won't carry. State-compliant. Seller-vetted. Buyer-anonymous. Legal doesn't mean available — until now.</p>
+      <p class="footer-brand-desc">The marketplace for legal products mainstream platforms won't carry. State-compliant. Seller-vetted. Buyer-anonymous. Legal doesn't mean available — until now.</p>
       <div class="crypto-badges">
         <span class="crypto-badge">BTC</span>
         <span class="crypto-badge">ETH</span>
         <span class="crypto-badge">USDC</span>
-        <span class="crypto-badge">XMR</span>
+        <span class="crypto-badge">SOL</span>
+        <span class="crypto-badge">XRP</span>
+        <span class="crypto-badge">DOGE</span>
+        <span class="crypto-badge">LTC</span>
+        <span class="crypto-badge">BCH</span>
         <span class="crypto-badge">VISA</span>
         <span class="crypto-badge">MC</span>
       </div>
@@ -543,36 +528,26 @@ a { color: inherit; text-decoration: none; }
     <p class="modal-sub">Crypto for full anonymity. Card for convenience. Both accepted.</p>
 
     <div class="payment-tabs">
-      <button class="payment-tab active" id="tab-btn-crypto" onclick="switchTab('crypto', this)">Crypto</button>
-      <button class="payment-tab" id="tab-btn-card" onclick="switchTab('card', this)">Card</button>
+      <button class="payment-tab active" onclick="switchTab('crypto', this)">Crypto</button>
+      <button class="payment-tab" onclick="switchTab('card', this)">Card</button>
     </div>
 
     <div class="tab-content active" id="tab-crypto">
-      <div class="crypto-options">
-        <div class="crypto-option selected" onclick="selectCrypto(this,'BTC')">
-          <div class="crypto-symbol">&#8383;</div>
-          <div class="crypto-name">Bitcoin</div>
-        </div>
-        <div class="crypto-option" onclick="selectCrypto(this,'ETH')">
-          <div class="crypto-symbol">&#9830;</div>
-          <div class="crypto-name">Ethereum</div>
-        </div>
-        <div class="crypto-option" onclick="selectCrypto(this,'USDC')">
-          <div class="crypto-symbol">$</div>
-          <div class="crypto-name">USDC Stable</div>
-        </div>
-        <div class="crypto-option" onclick="selectCrypto(this,'XMR')">
-          <div class="crypto-symbol">&#9672;</div>
-          <div class="crypto-name">Monero</div>
-        </div>
+      <div class="crypto-grid">
+        <div class="crypto-opt selected" onclick="selectCrypto(this,'btc')"><div class="crypto-sym">&#8383;</div><div class="crypto-lbl">Bitcoin</div></div>
+        <div class="crypto-opt" onclick="selectCrypto(this,'eth')"><div class="crypto-sym">&#9830;</div><div class="crypto-lbl">Ethereum</div></div>
+        <div class="crypto-opt" onclick="selectCrypto(this,'usdcerc20')"><div class="crypto-sym">$</div><div class="crypto-lbl">USDC</div></div>
+        <div class="crypto-opt" onclick="selectCrypto(this,'sol')"><div class="crypto-sym">&#9678;</div><div class="crypto-lbl">Solana</div></div>
+        <div class="crypto-opt" onclick="selectCrypto(this,'xrp')"><div class="crypto-sym">&#10005;</div><div class="crypto-lbl">XRP</div></div>
+        <div class="crypto-opt" onclick="selectCrypto(this,'doge')"><div class="crypto-sym">&#208;</div><div class="crypto-lbl">Dogecoin</div></div>
+        <div class="crypto-opt" onclick="selectCrypto(this,'ltc')"><div class="crypto-sym">&#321;</div><div class="crypto-lbl">Litecoin</div></div>
+        <div class="crypto-opt" onclick="selectCrypto(this,'bch')"><div class="crypto-sym">&#8383;</div><div class="crypto-lbl">Bitcoin Cash</div></div>
       </div>
-      <input type="number" class="amount-input" id="crypto-amount" placeholder="Enter amount in USD (e.g. 49.00)" min="1" step="0.01">
-      <button class="modal-proceed" id="crypto-btn" onclick="proceedCrypto()">Pay with Crypto &rarr;</button>
-      <div class="payment-status" id="crypto-status">Generating payment address...</div>
-      <div class="payment-url-box" id="payment-url-box">
-        <p>Click below to complete your payment</p>
-        <a id="payment-link" href="#" target="_blank">Open Payment Page &rarr;</a>
+      <div class="amount-wrap">
+        <p class="amount-label">Amount in USD</p>
+        <input type="number" class="amount-input" id="crypto-amount" placeholder="e.g. 49.00" min="1" step="0.01">
       </div>
+      <button class="modal-proceed" onclick="proceedCrypto()">Pay with Crypto &rarr;</button>
       <p class="modal-note">Powered by NOWPayments &nbsp;&bull;&nbsp; 0.5% fee &nbsp;&bull;&nbsp; Fully anonymous</p>
     </div>
 
@@ -594,13 +569,12 @@ a { color: inherit; text-decoration: none; }
 </div>
 
 <script>
-const NOWPAYMENTS_API_KEY = 'SB9A1D5-AV4MD1B-MGGZZ12-163HTQF';
+const NP_KEY = 'SB9A1D5-AV4MD1B-MGGZZ12-163HTQF';
+let selCrypto = 'btc';
 
 function toggleMobile() {
   document.getElementById('mobile-menu').classList.toggle('open');
 }
-
-let selectedCrypto = 'BTC';
 
 function openModal() {
   document.getElementById('modal').classList.add('open');
@@ -610,10 +584,6 @@ function openModal() {
 function closeModal() {
   document.getElementById('modal').classList.remove('open');
   document.body.style.overflow = '';
-  document.getElementById('crypto-status').style.display = 'none';
-  document.getElementById('payment-url-box').style.display = 'none';
-  document.getElementById('crypto-btn').disabled = false;
-  document.getElementById('crypto-btn').textContent = 'Pay with Crypto →';
   document.getElementById('crypto-amount').value = '';
 }
 
@@ -629,65 +599,20 @@ function switchTab(tab, btn) {
 }
 
 function selectCrypto(el, currency) {
-  document.querySelectorAll('.crypto-option').forEach(o => o.classList.remove('selected'));
+  document.querySelectorAll('.crypto-opt').forEach(o => o.classList.remove('selected'));
   el.classList.add('selected');
-  selectedCrypto = currency;
+  selCrypto = currency;
 }
 
-async function proceedCrypto() {
-  const amountInput = document.getElementById('crypto-amount');
-  const amount = parseFloat(amountInput.value);
-
+function proceedCrypto() {
+  const amount = parseFloat(document.getElementById('crypto-amount').value);
   if (!amount || amount < 1) {
-    amountInput.style.borderColor = '#c44';
-    amountInput.placeholder = 'Please enter an amount';
+    document.getElementById('crypto-amount').style.borderColor = '#c44';
+    document.getElementById('crypto-amount').placeholder = 'Please enter an amount';
     return;
   }
-
-  const btn = document.getElementById('crypto-btn');
-  const status = document.getElementById('crypto-status');
-  const urlBox = document.getElementById('payment-url-box');
-
-  btn.disabled = true;
-  btn.textContent = 'Generating payment...';
-  status.style.display = 'block';
-  status.textContent = 'Creating your payment address...';
-
-  try {
-    const response = await fetch('https://api.nowpayments.io/v1/payment', {
-      method: 'POST',
-      headers: {
-        'x-api-key': NOWPAYMENTS_API_KEY,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        price_amount: amount,
-        price_currency: 'usd',
-        pay_currency: selectedCrypto.toLowerCase(),
-        order_description: 'Silque Road Purchase',
-        ipn_callback_url: 'https://silqueroad.com'
-      })
-    });
-
-    const data = await response.json();
-
-    if (data.payment_id) {
-      status.textContent = '✓ Payment address generated successfully';
-      status.style.color = '#3a8a3a';
-      const paymentUrl = `https://nowpayments.io/payment/?iid=${data.payment_id}`;
-      const link = document.getElementById('payment-link');
-      link.href = paymentUrl;
-      urlBox.style.display = 'block';
-      btn.textContent = 'Payment Ready →';
-    } else {
-      throw new Error('Payment creation failed');
-    }
-  } catch (err) {
-    status.textContent = 'Error generating payment. Please contact info@silqueroad.com';
-    status.style.color = '#c44';
-    btn.disabled = false;
-    btn.textContent = 'Try Again →';
-  }
+  const url = `https://nowpayments.io/payment/?api_key=${NP_KEY}&pay_currency=${selCrypto}&price_amount=${amount}&price_currency=usd&order_description=Silque+Road+Purchase`;
+  window.open(url, '_blank');
 }
 
 function proceedCard() {
@@ -713,12 +638,9 @@ async function submitEmail(e) {
       },
       body: JSON.stringify({ email: email, unsubscribed: false })
     });
-    document.getElementById('email-form').style.display = 'none';
-    document.getElementById('email-success').style.display = 'block';
-  } catch (err) {
-    document.getElementById('email-form').style.display = 'none';
-    document.getElementById('email-success').style.display = 'block';
-  }
+  } catch(err) {}
+  document.getElementById('email-form').style.display = 'none';
+  document.getElementById('email-success').style.display = 'block';
 }
 
 const observer = new IntersectionObserver((entries) => {
@@ -737,6 +659,5 @@ document.querySelectorAll('.cat-card, .step, .product-card').forEach(el => {
   observer.observe(el);
 });
 </script>
-
 </body>
 </html>
