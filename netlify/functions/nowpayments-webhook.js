@@ -1,4 +1,5 @@
 const { createClient } = require('@supabase/supabase-js');
+const crypto = require('crypto');
 
 const supabase = createClient(
   process.env.SUPABASE_URL,
@@ -6,9 +7,32 @@ const supabase = createClient(
 );
 
 exports.handler = async (event) => {
-  // Only accept POST requests
   if (event.httpMethod !== 'POST') {
     return { statusCode: 405, body: 'Method Not Allowed' };
+  }
+
+  // Verify the request is from NOWPayments using IPN secret
+  const ipnSecret = process.env.NOWPAYMENTS_IPN_SECRET;
+  const receivedSig = event.headers['x-nowpayments-sig'];
+
+  if (ipnSecret && receivedSig) {
+    try {
+      const payload = JSON.parse(event.body);
+      const sortedPayload = JSON.stringify(
+        Object.fromEntries(Object.entries(payload).sort())
+      );
+      const expectedSig = crypto
+        .createHmac('sha512', ipnSecret)
+        .update(sortedPayload)
+        .digest('hex');
+
+      if (receivedSig !== expectedSig) {
+        console.log('IPN signature mismatch — rejecting request');
+        return { statusCode: 401, body: 'Unauthorized' };
+      }
+    } catch {
+      return { statusCode: 400, body: 'Invalid payload' };
+    }
   }
 
   let payload;
@@ -18,9 +42,10 @@ exports.handler = async (event) => {
     return { statusCode: 400, body: 'Invalid JSON' };
   }
 
-  // NOWPayments sends many status updates — only act on confirmed/finished
+  // Only act on confirmed or finished payments
   const confirmedStatuses = ['confirmed', 'finished'];
   if (!confirmedStatuses.includes(payload.payment_status)) {
+    console.log('Payment status not confirmed:', payload.payment_status);
     return { statusCode: 200, body: 'Ignored — payment not yet confirmed' };
   }
 
@@ -60,7 +85,7 @@ exports.handler = async (event) => {
 
     if (updateError) throw updateError;
 
-    // Get seller to find their commission rate
+    // Get seller commission rate and wallet info
     const { data: sellers } = await supabase
       .from('sellers')
       .select('commission_rate, crypto_wallet, crypto_currency')
@@ -84,7 +109,6 @@ exports.handler = async (event) => {
       .limit(1);
 
     if (!existingPayouts || existingPayouts.length === 0) {
-      // Create payout record
       const { error: payoutError } = await supabase
         .from('payouts')
         .insert({
@@ -103,7 +127,7 @@ exports.handler = async (event) => {
       if (payoutError) throw payoutError;
     }
 
-    console.log(`Processed payment ${nowpaymentsId}: $${amountUsd} — seller gets $${sellerAmount}, platform gets $${commissionAmount}`);
+    console.log(`Processed: $${amountUsd} — seller $${sellerAmount} / platform $${commissionAmount}`);
 
     return {
       statusCode: 200,
