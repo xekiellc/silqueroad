@@ -18,14 +18,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-34RJL84J55"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-34RJL84J55');
-</script>
-
 <style>
 :root {
   --gold: #C9A84C;
@@ -166,28 +158,47 @@ a { color: inherit; text-decoration: none; }
 .seller-perk { font-family: var(--font-ui); font-size: 9px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; opacity: 0.7; display: flex; align-items: center; gap: 8px; }
 .perk-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); opacity: 0.5; flex-shrink: 0; }
 
+.payment-section { background: var(--ink); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 52px 24px; text-align: center; }
+.payment-title { font-family: var(--font-display); font-size: clamp(18px, 2.5vw, 26px); font-weight: 600; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 10px; }
+.payment-sub { font-family: var(--font-body); font-size: 17px; font-style: italic; color: var(--sand-muted); margin-bottom: 28px; max-width: 520px; margin-left: auto; margin-right: auto; }
+.payment-grid { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+.payment-badge { font-family: var(--font-ui); font-size: 10px; letter-spacing: 1px; color: var(--gold); border: 1px solid var(--border-strong); padding: 8px 18px; text-transform: uppercase; }
+.payment-note { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--sand-muted); opacity: 0.4; text-transform: uppercase; }
+
 .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 2000; align-items: center; justify-content: center; padding: 24px; }
 .modal-overlay.open { display: flex; }
-.modal { background: var(--ink-mid); border: 1px solid var(--border-strong); max-width: 480px; width: 100%; padding: 40px; position: relative; }
+.modal { background: var(--ink-mid); border: 1px solid var(--border-strong); max-width: 520px; width: 100%; padding: 40px; position: relative; }
 .modal-close { position: absolute; top: 16px; right: 20px; background: none; border: none; color: var(--sand-muted); font-size: 22px; cursor: pointer; line-height: 1; }
 .modal-title { font-family: var(--font-display); font-size: 20px; font-weight: 600; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
 .modal-sub { font-family: var(--font-body); font-size: 15px; font-style: italic; color: var(--sand-muted); margin-bottom: 24px; line-height: 1.5; }
+.payment-tabs { display: flex; gap: 0; margin-bottom: 20px; border: 1px solid var(--border-strong); }
+.payment-tab { flex: 1; padding: 10px; font-family: var(--font-ui); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; background: transparent; border: none; color: var(--sand-muted); cursor: pointer; transition: background var(--transition), color var(--transition); }
+.payment-tab.active { background: var(--gold-faint); color: var(--gold); border-bottom: 2px solid var(--gold); }
+.tab-content { display: none; }
+.tab-content.active { display: block; }
 .crypto-options { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
 .crypto-option { background: var(--ink-light); border: 1px solid var(--border); padding: 16px; cursor: pointer; transition: border-color var(--transition); text-align: center; }
 .crypto-option:hover { border-color: var(--gold); }
 .crypto-option.selected { border-color: var(--gold); background: var(--gold-faint); }
 .crypto-symbol { font-family: var(--font-ui); font-size: 18px; font-weight: 700; color: var(--gold); margin-bottom: 4px; }
 .crypto-name { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--sand-muted); text-transform: uppercase; }
+.card-form { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
+.card-input { background: var(--ink-light); border: 1px solid var(--border-strong); color: var(--sand); font-family: var(--font-ui); font-size: 12px; padding: 12px 16px; outline: none; transition: border-color var(--transition); width: 100%; }
+.card-input::placeholder { color: var(--sand-muted); opacity: 0.5; }
+.card-input:focus { border-color: var(--gold); }
+.card-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .modal-proceed { width: 100%; background: var(--gold); color: var(--ink); font-family: var(--font-ui); font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 14px; border: none; cursor: pointer; transition: background var(--transition); }
 .modal-proceed:hover { background: var(--gold-light); }
 .modal-note { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--sand-muted); opacity: 0.4; text-align: center; margin-top: 12px; text-transform: uppercase; }
+.processor-note { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--green-ok); text-align: center; margin-top: 8px; text-transform: uppercase; opacity: 0.8; }
 
 .footer { background: var(--ink); border-top: 1px solid var(--border); padding: 52px 24px 32px; }
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; max-width: var(--max-w); margin: 0 auto 40px; }
 .footer-brand-name { font-family: var(--font-display); font-size: 20px; font-weight: 700; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; display: block; margin-bottom: 12px; }
 .footer-brand-desc { font-family: var(--font-body); font-size: 14px; font-style: italic; color: var(--sand-muted); opacity: 0.5; line-height: 1.6; margin-bottom: 20px; }
-.crypto-badges { display: flex; gap: 6px; flex-wrap: wrap; }
+.crypto-badges { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
 .crypto-badge { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--gold); border: 1px solid var(--border); padding: 4px 10px; text-transform: uppercase; }
+.no-track { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--green-ok); opacity: 0.7; text-transform: uppercase; }
 .footer-col-title { font-family: var(--font-ui); font-size: 9px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; opacity: 0.55; margin-bottom: 18px; }
 .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
 .footer-links li a { font-family: var(--font-body); font-size: 15px; color: var(--sand-muted); opacity: 0.5; transition: opacity var(--transition), color var(--transition); }
@@ -221,13 +232,14 @@ a { color: inherit; text-decoration: none; }
   .hero-buttons { flex-direction: column; align-items: center; }
   .email-form { flex-direction: column; }
   .email-input { border-right: 1px solid var(--border-strong); }
+  .crypto-options { grid-template-columns: 1fr 1fr; }
 }
 </style>
 </head>
 <body>
 
 <div class="announce-bar">
-  Founding Sellers Wanted — <a href="#sell">Zero commission for 6 months. Apply now.</a>
+  Founding Sellers Wanted — <a href="#sell">Apply now. info@silqueroad.com</a>
 </div>
 
 <nav class="nav">
@@ -281,7 +293,7 @@ a { color: inherit; text-decoration: none; }
   <div class="trust-item"><div class="trust-dot"></div>100% legal products only</div>
   <div class="trust-item"><div class="trust-dot"></div>Anonymous checkout</div>
   <div class="trust-item"><div class="trust-dot"></div>Vetted sellers only</div>
-  <div class="trust-item"><div class="trust-dot"></div>No bans. No judgment.</div>
+  <div class="trust-item"><div class="trust-dot"></div>No tracking. No cookies.</div>
   <div class="trust-item"><div class="trust-dot"></div>Shop without permission</div>
 </div>
 
@@ -293,70 +305,18 @@ a { color: inherit; text-decoration: none; }
     <div class="gold-rule"></div>
   </div>
   <div class="cat-grid">
-    <div class="cat-card" onclick="gtag('event','category_click',{category:'health_freedom'})">
-      <span class="cat-emoji">🌿</span>
-      <div class="cat-name">Health Freedom</div>
-      <div class="cat-desc">Ivermectin · Peptides · Methylene Blue · Fenbendazole</div>
-      <span class="cat-badge badge-hot">Hot</span>
-    </div>
-    <div class="cat-card" onclick="gtag('event','category_click',{category:'psychedelic'})">
-      <span class="cat-emoji">🍄</span>
-      <div class="cat-name">Psychedelic Adjacent</div>
-      <div class="cat-desc">Kratom · Amanita · Kava · Blue Lotus · Salvia</div>
-    </div>
-    <div class="cat-card" onclick="gtag('event','category_click',{category:'cannabis'})">
-      <span class="cat-emoji">🌱</span>
-      <div class="cat-name">Cannabis Adjacent</div>
-      <div class="cat-desc">Delta-8 · THCA · HHC · CBN · Hemp Flower</div>
-      <span class="cat-badge badge-new">New</span>
-    </div>
-    <div class="cat-card" onclick="gtag('event','category_click',{category:'longevity'})">
-      <span class="cat-emoji">⚗️</span>
-      <div class="cat-name">Longevity &amp; Biohack</div>
-      <div class="cat-desc">NAD+ · Turkesterone · Nootropics · Shilajit</div>
-    </div>
-    <div class="cat-card" onclick="gtag('event','category_click',{category:'privacy'})">
-      <span class="cat-emoji">🔒</span>
-      <div class="cat-name">Privacy &amp; Comms</div>
-      <div class="cat-desc">Burner Phones · Faraday Bags · Counter-Surveillance</div>
-    </div>
-    <div class="cat-card" onclick="gtag('event','category_click',{category:'weapons'})">
-      <span class="cat-emoji">⚔️</span>
-      <div class="cat-name">Weapons Adjacent</div>
-      <div class="cat-desc">Blades · Accessories · Fireworks · Stun Guns</div>
-    </div>
-    <div class="cat-card" onclick="gtag('event','category_click',{category:'mens_health'})">
-      <span class="cat-emoji">💪</span>
-      <div class="cat-name">Men's Health</div>
-      <div class="cat-desc">Tongkat Ali · Enhancement · Fadogia · TRT Support</div>
-      <span class="cat-badge badge-hot">Hot</span>
-    </div>
-    <div class="cat-card" onclick="gtag('event','category_click',{category:'womens_wellness'})">
-      <span class="cat-emoji">🌸</span>
-      <div class="cat-name">Women's Wellness</div>
-      <div class="cat-desc">Hormonal Balance · Libido · HRT Support · CBD Intimacy</div>
-      <span class="cat-badge badge-new">New</span>
-    </div>
-    <div class="cat-card" onclick="gtag('event','category_click',{category:'foods'})">
-      <span class="cat-emoji">🥛</span>
-      <div class="cat-name">Taboo Foods</div>
-      <div class="cat-desc">Raw Dairy · Exotic Meats · Absinthe · High-Proof Spirits</div>
-    </div>
-    <div class="cat-card" onclick="gtag('event','category_click',{category:'nicotine'})">
-      <span class="cat-emoji">🚬</span>
-      <div class="cat-name">Tobacco &amp; Nicotine</div>
-      <div class="cat-desc">Flavored Vape · High-Proof · Nicotine Pouches</div>
-    </div>
-    <div class="cat-card" onclick="gtag('event','category_click',{category:'offgrid'})">
-      <span class="cat-emoji">🏕️</span>
-      <div class="cat-name">Off-Grid &amp; Prepper</div>
-      <div class="cat-desc">Homestead · Seed Banks · Survival · Lockpicking</div>
-    </div>
-    <div class="cat-card" onclick="gtag('event','category_click',{category:'adult'})">
-      <span class="cat-emoji">🔞</span>
-      <div class="cat-name">Adult Products</div>
-      <div class="cat-desc">Enhancement · Wellness · Intimacy · Age-Verified</div>
-    </div>
+    <div class="cat-card"><span class="cat-emoji">🌿</span><div class="cat-name">Health Freedom</div><div class="cat-desc">Ivermectin · Peptides · Methylene Blue · Fenbendazole</div><span class="cat-badge badge-hot">Hot</span></div>
+    <div class="cat-card"><span class="cat-emoji">🍄</span><div class="cat-name">Psychedelic Adjacent</div><div class="cat-desc">Kratom · Amanita · Kava · Blue Lotus · Salvia</div></div>
+    <div class="cat-card"><span class="cat-emoji">🌱</span><div class="cat-name">Cannabis Adjacent</div><div class="cat-desc">Delta-8 · THCA · HHC · CBN · Hemp Flower</div><span class="cat-badge badge-new">New</span></div>
+    <div class="cat-card"><span class="cat-emoji">⚗️</span><div class="cat-name">Longevity &amp; Biohack</div><div class="cat-desc">NAD+ · Turkesterone · Nootropics · Shilajit</div></div>
+    <div class="cat-card"><span class="cat-emoji">🔒</span><div class="cat-name">Privacy &amp; Comms</div><div class="cat-desc">Burner Phones · Faraday Bags · Counter-Surveillance</div></div>
+    <div class="cat-card"><span class="cat-emoji">⚔️</span><div class="cat-name">Weapons Adjacent</div><div class="cat-desc">Blades · Accessories · Fireworks · Stun Guns</div></div>
+    <div class="cat-card"><span class="cat-emoji">💪</span><div class="cat-name">Men's Health</div><div class="cat-desc">Tongkat Ali · Enhancement · Fadogia · TRT Support</div><span class="cat-badge badge-hot">Hot</span></div>
+    <div class="cat-card"><span class="cat-emoji">🌸</span><div class="cat-name">Women's Wellness</div><div class="cat-desc">Hormonal Balance · Libido · HRT Support · CBD Intimacy</div><span class="cat-badge badge-new">New</span></div>
+    <div class="cat-card"><span class="cat-emoji">🥛</span><div class="cat-name">Taboo Foods</div><div class="cat-desc">Raw Dairy · Exotic Meats · Absinthe · High-Proof Spirits</div></div>
+    <div class="cat-card"><span class="cat-emoji">🚬</span><div class="cat-name">Tobacco &amp; Nicotine</div><div class="cat-desc">Flavored Vape · High-Proof · Nicotine Pouches</div></div>
+    <div class="cat-card"><span class="cat-emoji">🏕️</span><div class="cat-name">Off-Grid &amp; Prepper</div><div class="cat-desc">Homestead · Seed Banks · Survival · Lockpicking</div></div>
+    <div class="cat-card"><span class="cat-emoji">🔞</span><div class="cat-name">Adult Products</div><div class="cat-desc">Enhancement · Wellness · Intimacy · Age-Verified</div></div>
   </div>
 </section>
 
@@ -380,8 +340,8 @@ a { color: inherit; text-decoration: none; }
     </div>
     <div class="step">
       <div class="step-num">03</div>
-      <div class="step-title">Pay Anonymously</div>
-      <p class="step-body">Crypto accepted across all purchases. BTC, ETH, USDC, XMR. No payment processor. No record. No judgment.</p>
+      <div class="step-title">Pay Your Way</div>
+      <p class="step-body">Crypto or card — your choice. BTC, ETH, USDC, XMR for full anonymity, or card via our deplatform-proof payment partner.</p>
     </div>
     <div class="step">
       <div class="step-num">04</div>
@@ -402,56 +362,38 @@ a { color: inherit; text-decoration: none; }
     <div class="product-card">
       <div class="product-cat">Health Freedom</div>
       <div class="product-name">Veterinary Ivermectin 1.87%</div>
-      <div class="product-desc">Apple-flavored paste, 6.08g applicator. The most requested item on the old road — legal everywhere.</div>
-      <div class="product-footer">
-        <div><div class="product-price">$12.99</div><div class="product-legal">&#10003; Legal — 50 states</div></div>
-        <button class="product-add" onclick="openModal()">Add to Cart</button>
-      </div>
+      <div class="product-desc">Apple-flavored paste, 6.08g applicator. Legal everywhere.</div>
+      <div class="product-footer"><div><div class="product-price">$12.99</div><div class="product-legal">&#10003; Legal — 50 states</div></div><button class="product-add" onclick="openModal()">Add to Cart</button></div>
     </div>
     <div class="product-card">
       <div class="product-cat">Longevity</div>
       <div class="product-name">BPC-157 Research Peptide</div>
-      <div class="product-desc">5mg lyophilized powder. Lab-verified purity. For research purposes. What Huberman talks about.</div>
-      <div class="product-footer">
-        <div><div class="product-price">$49.00</div><div class="product-legal">&#10003; Research grade</div></div>
-        <button class="product-add" onclick="openModal()">Add to Cart</button>
-      </div>
+      <div class="product-desc">5mg lyophilized powder. Lab-verified purity. For research purposes.</div>
+      <div class="product-footer"><div><div class="product-price">$49.00</div><div class="product-legal">&#10003; Research grade</div></div><button class="product-add" onclick="openModal()">Add to Cart</button></div>
     </div>
     <div class="product-card">
       <div class="product-cat">Men's Health</div>
       <div class="product-name">Tongkat Ali 400:1 Extract</div>
-      <div class="product-desc">Standardized eurycomanone. Premium Malaysian sourced. As discussed on Joe Rogan #1914.</div>
-      <div class="product-footer">
-        <div><div class="product-price">$38.00</div><div class="product-legal">&#10003; Legal — 50 states</div></div>
-        <button class="product-add" onclick="openModal()">Add to Cart</button>
-      </div>
+      <div class="product-desc">Standardized eurycomanone. Premium Malaysian sourced.</div>
+      <div class="product-footer"><div><div class="product-price">$38.00</div><div class="product-legal">&#10003; Legal — 50 states</div></div><button class="product-add" onclick="openModal()">Add to Cart</button></div>
     </div>
     <div class="product-card">
       <div class="product-cat">Privacy</div>
       <div class="product-name">Prepaid Burner Phone Kit</div>
-      <div class="product-desc">Unlocked Android + no-ID SIM. Complete anonymous communication stack. Activate without registration.</div>
-      <div class="product-footer">
-        <div><div class="product-price">$79.00</div><div class="product-legal">&#10003; Legal — 50 states</div></div>
-        <button class="product-add" onclick="openModal()">Add to Cart</button>
-      </div>
+      <div class="product-desc">Unlocked Android + no-ID SIM. Activate without registration.</div>
+      <div class="product-footer"><div><div class="product-price">$79.00</div><div class="product-legal">&#10003; Legal — 50 states</div></div><button class="product-add" onclick="openModal()">Add to Cart</button></div>
     </div>
     <div class="product-card">
       <div class="product-cat">Psychedelic Adjacent</div>
       <div class="product-name">Amanita Muscaria Capsules</div>
-      <div class="product-desc">Dried and decarbed. 1g caps, muscimol standardized. Legal in 49 states. Not psilocybin.</div>
-      <div class="product-footer">
-        <div><div class="product-price">$34.00</div><div class="product-legal">&#10003; Legal — 49 states</div></div>
-        <button class="product-add" onclick="openModal()">Add to Cart</button>
-      </div>
+      <div class="product-desc">Dried and decarbed. 1g caps, muscimol standardized. Legal in 49 states.</div>
+      <div class="product-footer"><div><div class="product-price">$34.00</div><div class="product-legal">&#10003; Legal — 49 states</div></div><button class="product-add" onclick="openModal()">Add to Cart</button></div>
     </div>
     <div class="product-card">
       <div class="product-cat">Women's Wellness</div>
       <div class="product-name">Shatavari + Maca Blend</div>
-      <div class="product-desc">Hormonal balance. Libido support. Organic sourced. What mainstream wellness won't talk about directly.</div>
-      <div class="product-footer">
-        <div><div class="product-price">$42.00</div><div class="product-legal">&#10003; Legal — 50 states</div></div>
-        <button class="product-add" onclick="openModal()">Add to Cart</button>
-      </div>
+      <div class="product-desc">Hormonal balance. Libido support. Organic sourced.</div>
+      <div class="product-footer"><div><div class="product-price">$42.00</div><div class="product-legal">&#10003; Legal — 50 states</div></div><button class="product-add" onclick="openModal()">Add to Cart</button></div>
     </div>
   </div>
 </section>
@@ -473,13 +415,28 @@ a { color: inherit; text-decoration: none; }
         <span class="pill">Hair Loss</span>
         <span class="pill">Menopause</span>
       </div>
-      <a href="#" class="btn-primary" onclick="gtag('event','telehealth_click'); return false;">Find a Provider</a>
+      <a href="#" class="btn-primary" onclick="return false;">Find a Provider</a>
     </div>
     <div class="telehealth-right">
       <div class="rx-display">Rx</div>
       <p style="font-family:var(--font-ui);font-size:9px;color:var(--sand-muted);opacity:0.35;letter-spacing:1px;text-transform:uppercase;">Referral fees disclosed</p>
     </div>
   </div>
+</section>
+
+<section class="payment-section" id="payments">
+  <p class="section-label">Payment Options</p>
+  <h2 class="payment-title">Pay Your Way</h2>
+  <p class="payment-sub">Crypto for full anonymity. Card for convenience. Both processed by partners who believe legal means legal — and don't deplatform for it.</p>
+  <div class="payment-grid">
+    <span class="payment-badge">&#8383; Bitcoin</span>
+    <span class="payment-badge">&#9830; Ethereum</span>
+    <span class="payment-badge">$ USDC</span>
+    <span class="payment-badge">&#9672; Monero</span>
+    <span class="payment-badge">&#9646; Visa</span>
+    <span class="payment-badge">&#9646; Mastercard</span>
+  </div>
+  <p class="payment-note">Our card processor partners are selected specifically for their commitment to legal commerce — they do not deplatform legal products.</p>
 </section>
 
 <section class="email-section" id="newsletter">
@@ -500,13 +457,12 @@ a { color: inherit; text-decoration: none; }
   <h2 class="seller-title">Deplatformed? You're Home.</h2>
   <p class="seller-body">Kicked off Amazon. Dropped by PayPal. Banned from Etsy. If you sell a legal product the mainstream won't carry — you belong here. Sell without apology.</p>
   <div class="seller-perks">
-    <div class="seller-perk"><div class="perk-dot"></div>Zero commission — first 6 months</div>
-    <div class="seller-perk"><div class="perk-dot"></div>Founding Seller badge</div>
-    <div class="seller-perk"><div class="perk-dot"></div>Featured placement at launch</div>
     <div class="seller-perk"><div class="perk-dot"></div>Crypto payouts weekly</div>
-    <div class="seller-perk"><div class="perk-dot"></div>Compliance handled for you</div>
+    <div class="seller-perk"><div class="perk-dot"></div>State compliance handled</div>
+    <div class="seller-perk"><div class="perk-dot"></div>No deplatforming. Ever.</div>
+    <div class="seller-perk"><div class="perk-dot"></div>Deplatform-proof payments</div>
   </div>
-  <a href="mailto:zach@xekie.com?subject=Silque Road Founding Seller Application" class="btn-primary" onclick="gtag('event','seller_apply_click')">Apply as a Founding Seller</a>
+  <a href="mailto:zach@xekie.com?subject=Silque Road Founding Seller Application" class="btn-primary">Apply as a Founding Seller</a>
 </section>
 
 <footer class="footer">
@@ -519,7 +475,10 @@ a { color: inherit; text-decoration: none; }
         <span class="crypto-badge">ETH</span>
         <span class="crypto-badge">USDC</span>
         <span class="crypto-badge">XMR</span>
+        <span class="crypto-badge">VISA</span>
+        <span class="crypto-badge">MC</span>
       </div>
+      <p class="no-track">&#10003; No tracking &nbsp;&bull;&nbsp; No cookies &nbsp;&bull;&nbsp; No analytics</p>
     </div>
     <div>
       <p class="footer-col-title">Markets</p>
@@ -539,7 +498,7 @@ a { color: inherit; text-decoration: none; }
         <li><a href="#sell">Sell With Us</a></li>
         <li><a href="#health-network">Health Network</a></li>
         <li><a href="#newsletter">Newsletter</a></li>
-        <li><a href="#marketplace">Crypto Payments</a></li>
+        <li><a href="#payments">Payments</a></li>
         <li><a href="#marketplace">State Compliance</a></li>
       </ul>
     </div>
@@ -551,12 +510,12 @@ a { color: inherit; text-decoration: none; }
         <li><a href="#">Seller Agreement</a></li>
         <li><a href="#">Privacy Policy</a></li>
         <li><a href="#">Disclaimer</a></li>
-        <li><a href="mailto:zach@xekie.com">Contact</a></li>
+        <li><a href="mailto:info@silqueroad.com">Contact</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <p class="footer-copy">&copy; 2026 Silque Road &nbsp;&bull;&nbsp; XEKIE LLC &nbsp;&bull;&nbsp; All products legal in buyer's jurisdiction &nbsp;&bull;&nbsp; Platform is not responsible for misuse</p>
+    <p class="footer-copy">&copy; 2026 Silque Road &nbsp;&bull;&nbsp; XEKIE LLC &nbsp;&bull;&nbsp; All products legal in buyer's jurisdiction &nbsp;&bull;&nbsp; No tracking. No cookies. No analytics.</p>
     <div class="footer-legal-links">
       <a href="#">Privacy</a>
       <a href="#">Terms</a>
@@ -573,27 +532,50 @@ a { color: inherit; text-decoration: none; }
   <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
     <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
     <h2 class="modal-title" id="modal-title">Choose Payment</h2>
-    <p class="modal-sub">Anonymous checkout. No account required. Select your preferred cryptocurrency.</p>
-    <div class="crypto-options">
-      <div class="crypto-option selected" onclick="selectCrypto(this,'BTC')">
-        <div class="crypto-symbol">&#8383;</div>
-        <div class="crypto-name">Bitcoin</div>
-      </div>
-      <div class="crypto-option" onclick="selectCrypto(this,'ETH')">
-        <div class="crypto-symbol">&#9830;</div>
-        <div class="crypto-name">Ethereum</div>
-      </div>
-      <div class="crypto-option" onclick="selectCrypto(this,'USDC')">
-        <div class="crypto-symbol">$</div>
-        <div class="crypto-name">USDC Stable</div>
-      </div>
-      <div class="crypto-option" onclick="selectCrypto(this,'XMR')">
-        <div class="crypto-symbol">&#9672;</div>
-        <div class="crypto-name">Monero Private</div>
-      </div>
+    <p class="modal-sub">Crypto for full anonymity. Card for convenience. Both accepted.</p>
+
+    <div class="payment-tabs">
+      <button class="payment-tab active" onclick="switchTab('crypto')">Crypto</button>
+      <button class="payment-tab" onclick="switchTab('card')">Card</button>
     </div>
-    <button class="modal-proceed" onclick="proceedToPayment()">Proceed to Checkout &rarr;</button>
-    <p class="modal-note">Powered by NOWPayments &nbsp;&bull;&nbsp; 0.5% fee &nbsp;&bull;&nbsp; No account needed</p>
+
+    <div class="tab-content active" id="tab-crypto">
+      <div class="crypto-options">
+        <div class="crypto-option selected" onclick="selectCrypto(this,'BTC')">
+          <div class="crypto-symbol">&#8383;</div>
+          <div class="crypto-name">Bitcoin</div>
+        </div>
+        <div class="crypto-option" onclick="selectCrypto(this,'ETH')">
+          <div class="crypto-symbol">&#9830;</div>
+          <div class="crypto-name">Ethereum</div>
+        </div>
+        <div class="crypto-option" onclick="selectCrypto(this,'USDC')">
+          <div class="crypto-symbol">$</div>
+          <div class="crypto-name">USDC Stable</div>
+        </div>
+        <div class="crypto-option" onclick="selectCrypto(this,'XMR')">
+          <div class="crypto-symbol">&#9672;</div>
+          <div class="crypto-name">Monero Private</div>
+        </div>
+      </div>
+      <button class="modal-proceed" onclick="proceedCrypto()">Proceed with Crypto &rarr;</button>
+      <p class="modal-note">Powered by NOWPayments &nbsp;&bull;&nbsp; 0.5% fee &nbsp;&bull;&nbsp; Fully anonymous</p>
+    </div>
+
+    <div class="tab-content" id="tab-card">
+      <div class="card-form">
+        <input type="text" class="card-input" placeholder="Name on card" autocomplete="cc-name">
+        <input type="text" class="card-input" placeholder="Card number" autocomplete="cc-number" maxlength="19">
+        <div class="card-row">
+          <input type="text" class="card-input" placeholder="MM / YY" autocomplete="cc-exp" maxlength="7">
+          <input type="text" class="card-input" placeholder="CVV" autocomplete="cc-csc" maxlength="4">
+        </div>
+        <input type="text" class="card-input" placeholder="ZIP code" autocomplete="postal-code" maxlength="10">
+      </div>
+      <button class="modal-proceed" onclick="proceedCard()">Pay with Card &rarr;</button>
+      <p class="modal-note">Processed by our high-risk payment partner</p>
+      <p class="processor-note">&#10003; Our card processor does not deplatform legal products</p>
+    </div>
   </div>
 </div>
 
@@ -607,7 +589,6 @@ let selectedCrypto = 'BTC';
 function openModal() {
   document.getElementById('modal').classList.add('open');
   document.body.style.overflow = 'hidden';
-  gtag('event', 'checkout_modal_open');
 }
 
 function closeModal() {
@@ -619,15 +600,29 @@ function closeModalOutside(e) {
   if (e.target === document.getElementById('modal')) closeModal();
 }
 
+function switchTab(tab) {
+  document.querySelectorAll('.payment-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + tab).classList.add('active');
+  event.target.classList.add('active');
+}
+
 function selectCrypto(el, currency) {
   document.querySelectorAll('.crypto-option').forEach(o => o.classList.remove('selected'));
   el.classList.add('selected');
   selectedCrypto = currency;
 }
 
-function proceedToPayment() {
-  gtag('event', 'checkout_initiated', { crypto: selectedCrypto });
-  alert('Payment system coming soon. Contact zach@xekie.com to purchase.');
+function proceedCrypto() {
+  // NOWPayments integration — add your API key from nowpayments.io
+  // Replace this alert with your NOWPayments payment flow
+  alert('NOWPayments integration coming soon.\nSelected: ' + selectedCrypto + '\nContact info@silqueroad.com to purchase.');
+}
+
+function proceedCard() {
+  // High-risk card processor integration
+  // Replace with Durango Merchant Services or PayKings integration
+  alert('Card processing integration coming soon.\nContact info@silqueroad.com to purchase.');
 }
 
 document.addEventListener('keydown', function(e) {
@@ -651,7 +646,6 @@ async function submitEmail(e) {
     });
     document.getElementById('email-form').style.display = 'none';
     document.getElementById('email-success').style.display = 'block';
-    gtag('event', 'newsletter_signup', { email_domain: email.split('@')[1] });
   } catch (err) {
     document.getElementById('email-form').style.display = 'none';
     document.getElementById('email-success').style.display = 'block';
@@ -672,15 +666,6 @@ document.querySelectorAll('.cat-card, .step, .product-card').forEach(el => {
   el.style.transform = 'translateY(16px)';
   el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
   observer.observe(el);
-});
-
-let depths = [25, 50, 75, 90];
-window.addEventListener('scroll', function() {
-  const pct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
-  depths = depths.filter(d => {
-    if (pct >= d) { gtag('event', 'scroll_depth', { depth: d }); return false; }
-    return true;
-  });
 });
 </script>
 
