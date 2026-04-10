@@ -109,7 +109,6 @@ a { color: inherit; text-decoration: none; }
 .product-card { background: var(--ink-mid); border: 1px solid var(--border); padding: 24px 22px; cursor: pointer; transition: border-color var(--transition); display: flex; flex-direction: column; gap: 10px; }
 .product-card:hover { border-color: var(--border-strong); }
 .product-img { width: 100%; height: 160px; object-fit: cover; background: var(--ink-light); display: block; }
-.product-img-placeholder { width: 100%; height: 160px; background: var(--ink-light); display: flex; align-items: center; justify-content: center; font-size: 36px; }
 .product-cat { font-family: var(--font-ui); font-size: 9px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; opacity: 0.6; }
 .product-name { font-family: var(--font-display); font-size: 16px; font-weight: 600; color: var(--sand); line-height: 1.3; }
 .product-desc { font-family: var(--font-body); font-size: 14px; font-style: italic; color: var(--sand-muted); line-height: 1.5; flex: 1; }
@@ -151,37 +150,41 @@ a { color: inherit; text-decoration: none; }
 .seller-perks { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; margin-bottom: 36px; }
 .seller-perk { font-family: var(--font-ui); font-size: 9px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; opacity: 0.7; display: flex; align-items: center; gap: 8px; }
 .perk-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); opacity: 0.5; flex-shrink: 0; }
-.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 2000; align-items: center; justify-content: center; padding: 24px; }
+
+/* ── CHECKOUT MODAL ── */
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 2000; align-items: center; justify-content: center; padding: 24px; overflow-y: auto; }
 .modal-overlay.open { display: flex; }
-.modal { background: var(--ink-mid); border: 1px solid var(--border-strong); max-width: 540px; width: 100%; padding: 40px; position: relative; max-height: 90vh; overflow-y: auto; }
+.modal { background: var(--ink-mid); border: 1px solid var(--border-strong); max-width: 560px; width: 100%; padding: 40px; position: relative; max-height: 90vh; overflow-y: auto; margin: auto; }
 .modal-close { position: absolute; top: 16px; right: 20px; background: none; border: none; color: var(--sand-muted); font-size: 22px; cursor: pointer; line-height: 1; }
-.modal-title { font-family: var(--font-display); font-size: 20px; font-weight: 600; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
-.modal-sub { font-family: var(--font-body); font-size: 15px; font-style: italic; color: var(--sand-muted); margin-bottom: 24px; line-height: 1.5; }
-.payment-tabs { display: flex; gap: 0; margin-bottom: 24px; border: 1px solid var(--border-strong); }
-.payment-tab { flex: 1; padding: 10px; font-family: var(--font-ui); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; background: transparent; border: none; color: var(--sand-muted); cursor: pointer; transition: background var(--transition), color var(--transition); }
-.payment-tab.active { background: var(--gold-faint); color: var(--gold); border-bottom: 2px solid var(--gold); }
-.tab-content { display: none; }
-.tab-content.active { display: block; }
-.crypto-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 20px; }
-.crypto-opt { background: var(--ink-light); border: 1px solid var(--border); padding: 12px 8px; cursor: pointer; transition: border-color var(--transition); text-align: center; }
+.modal-title { font-family: var(--font-display); font-size: 18px; font-weight: 600; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 4px; }
+.modal-product-sub { font-family: var(--font-body); font-size: 14px; font-style: italic; color: var(--sand-muted); margin-bottom: 20px; }
+.checkout-steps { display: flex; gap: 0; margin-bottom: 24px; border-bottom: 1px solid var(--border); }
+.checkout-step-btn { flex: 1; padding: 10px; font-family: var(--font-ui); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; background: transparent; border: none; color: var(--sand-muted); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: all var(--transition); }
+.checkout-step-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
+.checkout-panel { display: none; }
+.checkout-panel.active { display: block; }
+.form-field { margin-bottom: 14px; }
+.form-field label { display: block; font-family: var(--font-ui); font-size: 8px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 6px; }
+.form-field input { width: 100%; background: var(--ink-light); border: 1px solid var(--border-strong); color: var(--sand); font-family: var(--font-ui); font-size: 12px; padding: 11px 14px; outline: none; transition: border-color var(--transition); border-radius: 0; -webkit-appearance: none; }
+.form-field input:focus { border-color: var(--gold); }
+.form-field input::placeholder { color: var(--sand-muted); opacity: 0.4; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.anon-note { font-family: var(--font-ui); font-size: 8px; letter-spacing: 1px; color: var(--green-ok); text-transform: uppercase; opacity: 0.7; margin-bottom: 16px; }
+.crypto-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 16px; }
+.crypto-opt { background: var(--ink-light); border: 1px solid var(--border); padding: 10px 6px; cursor: pointer; transition: border-color var(--transition); text-align: center; }
 .crypto-opt:hover { border-color: var(--gold); }
 .crypto-opt.selected { border-color: var(--gold); background: var(--gold-faint); }
-.crypto-sym { font-family: var(--font-ui); font-size: 16px; font-weight: 700; color: var(--gold); margin-bottom: 4px; }
-.crypto-lbl { font-family: var(--font-ui); font-size: 8px; letter-spacing: 0.5px; color: var(--sand-muted); text-transform: uppercase; }
-.amount-wrap { margin-bottom: 20px; }
-.amount-label { font-family: var(--font-ui); font-size: 9px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; opacity: 0.7; }
-.amount-input { width: 100%; background: var(--ink-light); border: 1px solid var(--border-strong); color: var(--sand); font-family: var(--font-ui); font-size: 16px; padding: 14px 18px; outline: none; transition: border-color var(--transition); }
-.amount-input:focus { border-color: var(--gold); }
-.amount-input::placeholder { color: var(--sand-muted); opacity: 0.4; }
-.modal-proceed { width: 100%; background: var(--gold); color: var(--ink); font-family: var(--font-ui); font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 15px; border: none; cursor: pointer; transition: background var(--transition); margin-bottom: 12px; }
+.crypto-sym { font-family: var(--font-ui); font-size: 14px; font-weight: 700; color: var(--gold); margin-bottom: 3px; }
+.crypto-lbl { font-family: var(--font-ui); font-size: 7px; letter-spacing: 0.5px; color: var(--sand-muted); text-transform: uppercase; }
+.modal-proceed { width: 100%; background: var(--gold); color: var(--ink); font-family: var(--font-ui); font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 15px; border: none; cursor: pointer; transition: background var(--transition); margin-top: 8px; margin-bottom: 10px; }
 .modal-proceed:hover { background: var(--gold-light); }
-.modal-note { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--sand-muted); opacity: 0.35; text-align: center; text-transform: uppercase; margin-bottom: 6px; }
-.processor-note { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--green-ok); text-align: center; text-transform: uppercase; opacity: 0.8; }
-.card-form { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
-.card-input { background: var(--ink-light); border: 1px solid var(--border-strong); color: var(--sand); font-family: var(--font-ui); font-size: 12px; padding: 12px 16px; outline: none; transition: border-color var(--transition); width: 100%; }
-.card-input::placeholder { color: var(--sand-muted); opacity: 0.5; }
-.card-input:focus { border-color: var(--gold); }
-.card-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.modal-proceed:disabled { opacity: 0.5; cursor: not-allowed; }
+.modal-note { font-family: var(--font-ui); font-size: 8px; letter-spacing: 1px; color: var(--sand-muted); opacity: 0.35; text-align: center; text-transform: uppercase; }
+.modal-error { display: none; padding: 10px 14px; background: rgba(139,34,34,0.2); border: 1px solid #8b2222; color: #e07070; font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; margin-bottom: 12px; }
+.order-summary { background: var(--ink-light); border: 1px solid var(--border); padding: 14px 16px; margin-bottom: 16px; }
+.order-summary-row { display: flex; justify-content: space-between; font-family: var(--font-ui); font-size: 10px; letter-spacing: 1px; color: var(--sand-muted); margin-bottom: 6px; }
+.order-summary-row:last-child { margin-bottom: 0; color: var(--gold); font-weight: 700; border-top: 1px solid var(--border); padding-top: 6px; margin-top: 6px; }
+
 .footer { background: var(--ink); border-top: 1px solid var(--border); padding: 52px 24px 32px; }
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; max-width: var(--max-w); margin: 0 auto 40px; }
 .footer-brand-name { font-family: var(--font-display); font-size: 20px; font-weight: 700; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; display: block; margin-bottom: 12px; }
@@ -211,7 +214,6 @@ a { color: inherit; text-decoration: none; }
   .telehealth-right { display: none; }
   .nav-links { display: none; }
   .nav-mobile-toggle { display: block; }
-  .crypto-grid { grid-template-columns: repeat(4, 1fr); }
 }
 @media (max-width: 600px) {
   .product-grid { grid-template-columns: 1fr; }
@@ -221,6 +223,7 @@ a { color: inherit; text-decoration: none; }
   .hero-buttons { flex-direction: column; align-items: center; }
   .email-form { flex-direction: column; }
   .email-input { border-right: 1px solid var(--border-strong); }
+  .form-row { grid-template-columns: 1fr; }
   .crypto-grid { grid-template-columns: repeat(4, 1fr); }
 }
 </style>
@@ -317,26 +320,10 @@ a { color: inherit; text-decoration: none; }
     <div class="gold-rule"></div>
   </div>
   <div class="steps-grid">
-    <div class="step">
-      <div class="step-num">01</div>
-      <div class="step-title">Verify Your State</div>
-      <p class="step-body">Your location determines what's available to you. We show only products legal in your state. No guesswork. No gray areas.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">02</div>
-      <div class="step-title">Browse &amp; Choose</div>
-      <p class="step-body">Every seller is vetted. Every product is compliance-tagged. Shop what others won't carry with full confidence.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">03</div>
-      <div class="step-title">Pay Your Way</div>
-      <p class="step-body">Crypto for full anonymity or card for convenience. 8 cryptocurrencies accepted. Both processed by partners who believe legal means legal.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">04</div>
-      <div class="step-title">Delivered Legally</div>
-      <p class="step-body">Sellers ship directly to you in compliance with all applicable state laws. Your freedom. Delivered.</p>
-    </div>
+    <div class="step"><div class="step-num">01</div><div class="step-title">Verify Your State</div><p class="step-body">Your location determines what's available to you. We show only products legal in your state. No guesswork. No gray areas.</p></div>
+    <div class="step"><div class="step-num">02</div><div class="step-title">Browse &amp; Choose</div><p class="step-body">Every seller is vetted. Every product is compliance-tagged. Shop what others won't carry with full confidence.</p></div>
+    <div class="step"><div class="step-num">03</div><div class="step-title">Pay Your Way</div><p class="step-body">Crypto for full anonymity or card for convenience. 8 cryptocurrencies accepted. Both processed by partners who believe legal means legal.</p></div>
+    <div class="step"><div class="step-num">04</div><div class="step-title">Delivered Legally</div><p class="step-body">Sellers ship directly to you in compliance with all applicable state laws. Your freedom. Delivered.</p></div>
   </div>
 </section>
 
@@ -360,15 +347,7 @@ a { color: inherit; text-decoration: none; }
       <h2 class="telehealth-title">Need a Prescription?</h2>
       <p class="telehealth-body">Our curated telehealth network connects you with providers who prescribe what mainstream medicine ignores. Discreet. Affordable. Legal.</p>
       <div class="pill-row">
-        <span class="pill">Ivermectin Rx</span>
-        <span class="pill">Low-Dose Naltrexone</span>
-        <span class="pill">Testosterone</span>
-        <span class="pill">HRT</span>
-        <span class="pill">GLP-1 / Ozempic</span>
-        <span class="pill">ED Treatment</span>
-        <span class="pill">Peptides Rx</span>
-        <span class="pill">Hair Loss</span>
-        <span class="pill">Menopause</span>
+        <span class="pill">Ivermectin Rx</span><span class="pill">Low-Dose Naltrexone</span><span class="pill">Testosterone</span><span class="pill">HRT</span><span class="pill">GLP-1 / Ozempic</span><span class="pill">ED Treatment</span><span class="pill">Peptides Rx</span><span class="pill">Hair Loss</span><span class="pill">Menopause</span>
       </div>
       <a href="#" class="btn-primary" onclick="return false;">Find a Provider</a>
     </div>
@@ -384,17 +363,7 @@ a { color: inherit; text-decoration: none; }
   <h2 class="payment-title">Pay Your Way</h2>
   <p class="payment-sub">Crypto for full anonymity. Card for convenience. Both processed by partners who believe legal means legal — and don't deplatform for it.</p>
   <div class="payment-grid">
-    <span class="payment-badge">&#8383; BTC</span>
-    <span class="payment-badge">&#9830; ETH</span>
-    <span class="payment-badge">$ USDC</span>
-    <span class="payment-badge">&#9672; XMR</span>
-    <span class="payment-badge">&#9678; SOL</span>
-    <span class="payment-badge">&#10005; XRP</span>
-    <span class="payment-badge">&#208; DOGE</span>
-    <span class="payment-badge">&#321; LTC</span>
-    <span class="payment-badge">&#8383; BCH</span>
-    <span class="payment-badge">&#9646; VISA</span>
-    <span class="payment-badge">&#9646; MC</span>
+    <span class="payment-badge">&#8383; BTC</span><span class="payment-badge">&#9830; ETH</span><span class="payment-badge">$ USDC</span><span class="payment-badge">&#9672; XMR</span><span class="payment-badge">&#9678; SOL</span><span class="payment-badge">&#10005; XRP</span><span class="payment-badge">&#208; DOGE</span><span class="payment-badge">&#321; LTC</span><span class="payment-badge">&#8383; BCH</span><span class="payment-badge">&#9646; VISA</span><span class="payment-badge">&#9646; MC</span>
   </div>
   <p class="payment-note">Our card processor partners do not deplatform legal products.</p>
 </section>
@@ -430,16 +399,7 @@ a { color: inherit; text-decoration: none; }
       <span class="footer-brand-name">Silque Road</span>
       <p class="footer-brand-desc">The marketplace for legal products mainstream platforms won't carry. State-compliant. Seller-vetted. Buyer-anonymous. Legal doesn't mean available — until now.</p>
       <div class="crypto-badges">
-        <span class="crypto-badge">BTC</span>
-        <span class="crypto-badge">ETH</span>
-        <span class="crypto-badge">USDC</span>
-        <span class="crypto-badge">SOL</span>
-        <span class="crypto-badge">XRP</span>
-        <span class="crypto-badge">DOGE</span>
-        <span class="crypto-badge">LTC</span>
-        <span class="crypto-badge">BCH</span>
-        <span class="crypto-badge">VISA</span>
-        <span class="crypto-badge">MC</span>
+        <span class="crypto-badge">BTC</span><span class="crypto-badge">ETH</span><span class="crypto-badge">USDC</span><span class="crypto-badge">SOL</span><span class="crypto-badge">XRP</span><span class="crypto-badge">DOGE</span><span class="crypto-badge">LTC</span><span class="crypto-badge">BCH</span><span class="crypto-badge">VISA</span><span class="crypto-badge">MC</span>
       </div>
       <p class="no-track">&#10003; No tracking &nbsp;&bull;&nbsp; No cookies &nbsp;&bull;&nbsp; No analytics</p>
     </div>
@@ -479,11 +439,7 @@ a { color: inherit; text-decoration: none; }
   </div>
   <div class="footer-bottom">
     <p class="footer-copy">&copy; 2026 Silque Road &nbsp;&bull;&nbsp; XEKIE LLC &nbsp;&bull;&nbsp; All products legal in buyer's jurisdiction &nbsp;&bull;&nbsp; No tracking. No cookies. No analytics.</p>
-    <div class="footer-legal-links">
-      <a href="#">Privacy</a>
-      <a href="#">Terms</a>
-      <a href="#">Disclaimer</a>
-    </div>
+    <div class="footer-legal-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Disclaimer</a></div>
   </div>
 </footer>
 
@@ -493,17 +449,59 @@ a { color: inherit; text-decoration: none; }
 
 <!-- CHECKOUT MODAL -->
 <div class="modal-overlay" id="modal" onclick="closeModalOutside(event)">
-  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal" role="dialog" aria-modal="true">
     <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
-    <h2 class="modal-title" id="modal-title">Checkout</h2>
-    <p class="modal-sub" id="modal-product-name">Crypto for full anonymity. Card for convenience.</p>
+    <div class="modal-title" id="modalTitle">Checkout</div>
+    <div class="modal-product-sub" id="modalSub">Complete your purchase below.</div>
 
-    <div class="payment-tabs">
-      <button class="payment-tab active" onclick="switchTab('crypto', this)">Crypto</button>
-      <button class="payment-tab" onclick="switchTab('card', this)">Card</button>
+    <div class="order-summary" id="orderSummary" style="display:none">
+      <div class="order-summary-row"><span>Product</span><span id="summaryProduct">—</span></div>
+      <div class="order-summary-row"><span>Total</span><span id="summaryPrice">—</span></div>
     </div>
 
-    <div class="tab-content active" id="tab-crypto">
+    <div class="checkout-steps">
+      <button class="checkout-step-btn active" id="stepBtn1" onclick="goToStep(1)">1. Shipping</button>
+      <button class="checkout-step-btn" id="stepBtn2" onclick="goToStep(2)">2. Payment</button>
+    </div>
+
+    <div class="modal-error" id="modalError"></div>
+
+    <!-- STEP 1: Shipping -->
+    <div class="checkout-panel active" id="panel1">
+      <p class="anon-note">&#10003; All fields optional — checkout anonymously if you prefer</p>
+      <div class="form-field">
+        <label>Email — for order updates only</label>
+        <input type="email" id="buyerEmail" placeholder="your@email.com (optional)" autocomplete="off" />
+      </div>
+      <div class="form-field">
+        <label>Ship To — Full Name</label>
+        <input type="text" id="shipName" placeholder="Name on package (optional)" autocomplete="off" />
+      </div>
+      <div class="form-field">
+        <label>Street Address</label>
+        <input type="text" id="shipAddress" placeholder="123 Main St (optional)" autocomplete="off" />
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          <label>City</label>
+          <input type="text" id="shipCity" placeholder="City" autocomplete="off" />
+        </div>
+        <div class="form-field">
+          <label>State</label>
+          <input type="text" id="shipState" placeholder="OH" maxlength="2" autocomplete="off" />
+        </div>
+      </div>
+      <div class="form-field">
+        <label>ZIP Code</label>
+        <input type="text" id="shipZip" placeholder="44223" maxlength="10" autocomplete="off" />
+      </div>
+      <button class="modal-proceed" onclick="goToStep(2)">Continue to Payment &rarr;</button>
+      <p class="modal-note">Your shipping info is used only to fulfill your order.</p>
+    </div>
+
+    <!-- STEP 2: Payment -->
+    <div class="checkout-panel" id="panel2">
+      <p style="font-family:var(--font-ui);font-size:9px;letter-spacing:1px;color:var(--sand-muted);text-transform:uppercase;margin-bottom:12px;">Select Cryptocurrency</p>
       <div class="crypto-grid">
         <div class="crypto-opt selected" onclick="selectCrypto(this,'btc')"><div class="crypto-sym">&#8383;</div><div class="crypto-lbl">Bitcoin</div></div>
         <div class="crypto-opt" onclick="selectCrypto(this,'eth')"><div class="crypto-sym">&#9830;</div><div class="crypto-lbl">Ethereum</div></div>
@@ -514,27 +512,8 @@ a { color: inherit; text-decoration: none; }
         <div class="crypto-opt" onclick="selectCrypto(this,'ltc')"><div class="crypto-sym">&#321;</div><div class="crypto-lbl">Litecoin</div></div>
         <div class="crypto-opt" onclick="selectCrypto(this,'bch')"><div class="crypto-sym">&#8383;</div><div class="crypto-lbl">Bitcoin Cash</div></div>
       </div>
-      <div class="amount-wrap">
-        <p class="amount-label">Amount in USD</p>
-        <input type="number" class="amount-input" id="crypto-amount" placeholder="e.g. 49.00" min="1" step="0.01">
-      </div>
-      <button class="modal-proceed" onclick="proceedCrypto()">Pay with Crypto &rarr;</button>
-      <p class="modal-note">Powered by NOWPayments &nbsp;&bull;&nbsp; 0.5% fee &nbsp;&bull;&nbsp; Fully anonymous</p>
-    </div>
-
-    <div class="tab-content" id="tab-card">
-      <div class="card-form">
-        <input type="text" class="card-input" placeholder="Name on card" autocomplete="cc-name">
-        <input type="text" class="card-input" placeholder="Card number" autocomplete="cc-number" maxlength="19">
-        <div class="card-row">
-          <input type="text" class="card-input" placeholder="MM / YY" autocomplete="cc-exp" maxlength="7">
-          <input type="text" class="card-input" placeholder="CVV" autocomplete="cc-csc" maxlength="4">
-        </div>
-        <input type="text" class="card-input" placeholder="ZIP code" autocomplete="postal-code" maxlength="10">
-      </div>
-      <button class="modal-proceed" onclick="proceedCard()">Pay with Card &rarr;</button>
-      <p class="modal-note">Card processing coming soon — contact info@silqueroad.com</p>
-      <p class="processor-note">&#10003; Our card processor does not deplatform legal products</p>
+      <button class="modal-proceed" id="payBtn" onclick="proceedToPayment()">Pay with Crypto &rarr;</button>
+      <p class="modal-note">Powered by NOWPayments &nbsp;&bull;&nbsp; 0.5% fee &nbsp;&bull;&nbsp; Order recorded securely</p>
     </div>
   </div>
 </div>
@@ -542,50 +521,36 @@ a { color: inherit; text-decoration: none; }
 <script>
 const SUPABASE_URL = 'https://pmtfqbefrsplvoriirru.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBtdGZxYmVmcnNwbHZvcmlpcnJ1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU4Mzk5MzEsImV4cCI6MjA5MTQxNTkzMX0.xgIVCGtB1Elp8ywjQhUAHdAVXOMoZJRmxWXM6vpZBB0';
-const NP_KEY = 'SB9A1D5-AV4MD1B-MGGZZ12-163HTQF';
+
+let currentProduct = null;
 let selCrypto = 'btc';
-let currentProductPrice = null;
-let currentProductName = '';
 
 // ── LOAD LIVE PRODUCTS ──
 async function loadProducts() {
   try {
     const res = await fetch(
       `${SUPABASE_URL}/rest/v1/products?status=eq.active&stock_status=neq.out_of_stock&order=featured.desc,created_at.desc&limit=6`,
-      {
-        headers: {
-          'apikey': SUPABASE_ANON_KEY,
-          'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
-        }
-      }
+      { headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` } }
     );
     const products = await res.json();
     renderProducts(products);
-  } catch (err) {
-    renderFallbackProducts();
-  }
+  } catch { renderFallbackProducts(); }
 }
 
 function renderProducts(products) {
   const grid = document.getElementById('productGrid');
-
-  if (!products || products.length === 0) {
-    renderFallbackProducts();
-    return;
-  }
-
+  if (!products || products.length === 0) { renderFallbackProducts(); return; }
   grid.innerHTML = products.map(p => {
     const price = parseFloat(p.price || 0).toFixed(2);
-    const disclaimer = p.disclaimer
-      ? `<div style="font-family:var(--font-ui);font-size:8px;letter-spacing:0.5px;color:var(--sand-muted);opacity:0.45;margin-top:4px">${esc(p.disclaimer)}</div>`
-      : '';
-    const imageHtml = p.image_url
+    const imgHtml = p.image_url
       ? `<img class="product-img" src="${esc(p.image_url)}" alt="${esc(p.name)}" loading="lazy" onerror="this.style.display='none'">`
       : '';
-
+    const disclaimer = p.disclaimer
+      ? `<div style="font-family:var(--font-ui);font-size:8px;color:var(--sand-muted);opacity:0.45;margin-top:4px">${esc(p.disclaimer)}</div>`
+      : '';
     return `
       <div class="product-card">
-        ${imageHtml}
+        ${imgHtml}
         <div class="product-cat">${esc(p.category || '')}</div>
         <div class="product-name">${esc(p.name)}</div>
         <div class="product-desc">${esc(p.description || '')}</div>
@@ -593,15 +558,12 @@ function renderProducts(products) {
         <div class="product-footer">
           <div>
             <div class="product-price">$${price}</div>
-            <div class="product-legal">&#10003; Legal — Vetted Seller</div>
+            <div class="product-legal">&#10003; Vetted Seller</div>
           </div>
-          <button class="product-add" onclick="openModal('${esc(p.name)}', ${price})">Buy Now</button>
+          <button class="product-add" onclick='openModal(${JSON.stringify({id: p.id, seller_id: p.seller_id, name: p.name, price: parseFloat(price), category: p.category})})'>Buy Now</button>
         </div>
-      </div>
-    `;
+      </div>`;
   }).join('');
-
-  // Re-run scroll animation on new cards
   document.querySelectorAll('.product-card').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(16px)';
@@ -611,14 +573,11 @@ function renderProducts(products) {
 }
 
 function renderFallbackProducts() {
-  // Show placeholder cards when no live products exist yet
-  const grid = document.getElementById('productGrid');
-  grid.innerHTML = `
+  document.getElementById('productGrid').innerHTML = `
     <div class="products-empty" style="grid-column:1/-1">
       <p style="margin-bottom:16px">Products coming soon.</p>
       <a href="/seller-apply.html" class="btn-primary" style="display:inline-block">Become a Founding Seller</a>
-    </div>
-  `;
+    </div>`;
 }
 
 function esc(str) {
@@ -627,23 +586,27 @@ function esc(str) {
 }
 
 // ── MODAL ──
-function toggleMobile() {
-  document.getElementById('mobile-menu').classList.toggle('open');
-}
+function toggleMobile() { document.getElementById('mobile-menu').classList.toggle('open'); }
 
-function openModal(productName, price) {
-  currentProductName = productName || '';
-  currentProductPrice = price || null;
+function openModal(product) {
+  currentProduct = product;
+  selCrypto = 'btc';
 
-  document.getElementById('modal-title').textContent = productName ? productName : 'Checkout';
-  document.getElementById('modal-product-name').textContent = productName
-    ? 'Complete your purchase below.'
-    : 'Crypto for full anonymity. Card for convenience.';
+  document.getElementById('modalTitle').textContent = product ? product.name : 'Checkout';
+  document.getElementById('modalSub').textContent = product
+    ? `$${parseFloat(product.price).toFixed(2)} — ${product.category || ''}`
+    : 'Complete your purchase below.';
 
-  if (price) {
-    document.getElementById('crypto-amount').value = price;
+  if (product) {
+    document.getElementById('orderSummary').style.display = 'block';
+    document.getElementById('summaryProduct').textContent = product.name;
+    document.getElementById('summaryPrice').textContent = `$${parseFloat(product.price).toFixed(2)}`;
+  } else {
+    document.getElementById('orderSummary').style.display = 'none';
   }
 
+  goToStep(1);
+  document.getElementById('modalError').style.display = 'none';
   document.getElementById('modal').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
@@ -651,20 +614,18 @@ function openModal(productName, price) {
 function closeModal() {
   document.getElementById('modal').classList.remove('open');
   document.body.style.overflow = '';
-  document.getElementById('crypto-amount').value = '';
-  currentProductPrice = null;
-  currentProductName = '';
+  currentProduct = null;
 }
 
 function closeModalOutside(e) {
   if (e.target === document.getElementById('modal')) closeModal();
 }
 
-function switchTab(tab, btn) {
-  document.querySelectorAll('.payment-tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-  document.getElementById('tab-' + tab).classList.add('active');
-  btn.classList.add('active');
+function goToStep(step) {
+  document.querySelectorAll('.checkout-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.checkout-step-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('panel' + step).classList.add('active');
+  document.getElementById('stepBtn' + step).classList.add('active');
 }
 
 function selectCrypto(el, currency) {
@@ -673,27 +634,58 @@ function selectCrypto(el, currency) {
   selCrypto = currency;
 }
 
-function proceedCrypto() {
-  const amount = parseFloat(document.getElementById('crypto-amount').value);
-  if (!amount || amount < 1) {
-    document.getElementById('crypto-amount').style.borderColor = '#c44';
-    document.getElementById('crypto-amount').placeholder = 'Please enter an amount';
-    return;
+function showError(msg) {
+  const el = document.getElementById('modalError');
+  el.textContent = msg;
+  el.style.display = 'block';
+}
+
+async function proceedToPayment() {
+  if (!currentProduct) { showError('No product selected.'); return; }
+
+  const btn = document.getElementById('payBtn');
+  btn.disabled = true;
+  btn.textContent = 'Creating order...';
+  document.getElementById('modalError').style.display = 'none';
+
+  const payload = {
+    product_id: currentProduct.id,
+    seller_id: currentProduct.seller_id,
+    buyer_email: document.getElementById('buyerEmail').value.trim() || null,
+    shipping_name: document.getElementById('shipName').value.trim() || null,
+    shipping_address: document.getElementById('shipAddress').value.trim() || null,
+    shipping_city: document.getElementById('shipCity').value.trim() || null,
+    shipping_state: document.getElementById('shipState').value.trim() || null,
+    shipping_zip: document.getElementById('shipZip').value.trim() || null,
+    amount_usd: currentProduct.price,
+    crypto_currency: selCrypto,
+    product_name: currentProduct.name
+  };
+
+  try {
+    const res = await fetch('/.netlify/functions/create-order', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    const data = await res.json();
+
+    if (!res.ok || !data.invoice_url) {
+      throw new Error(data.error || 'Failed to create order');
+    }
+
+    // Redirect to NOWPayments invoice
+    window.location.href = data.invoice_url;
+
+  } catch (err) {
+    showError('Payment setup failed: ' + err.message + '. Please try again or email info@silqueroad.com');
+    btn.disabled = false;
+    btn.textContent = 'Pay with Crypto →';
   }
-  const desc = currentProductName
-    ? encodeURIComponent('Silque Road: ' + currentProductName)
-    : 'Silque+Road+Purchase';
-  const url = `https://nowpayments.io/payment/?api_key=${NP_KEY}&pay_currency=${selCrypto}&price_amount=${amount}&price_currency=usd&order_description=${desc}`;
-  window.open(url, '_blank');
 }
 
-function proceedCard() {
-  alert('Card processing coming soon.\nContact info@silqueroad.com to purchase by card.');
-}
-
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') closeModal();
-});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
 async function submitEmail(e) {
   e.preventDefault();
@@ -704,13 +696,10 @@ async function submitEmail(e) {
   try {
     await fetch('https://api.resend.com/contacts', {
       method: 'POST',
-      headers: {
-        'Authorization': 'Bearer re_DsYwW8r2_FM1jadYVqoEWzGofrRpNQ7H7',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ email: email, unsubscribed: false })
+      headers: { 'Authorization': 'Bearer re_DsYwW8r2_FM1jadYVqoEWzGofrRpNQ7H7', 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, unsubscribed: false })
     });
-  } catch(err) {}
+  } catch {}
   document.getElementById('email-form').style.display = 'none';
   document.getElementById('email-success').style.display = 'block';
 }
@@ -731,7 +720,6 @@ document.querySelectorAll('.cat-card, .step').forEach(el => {
   observer.observe(el);
 });
 
-// Load live products on page load
 loadProducts();
 </script>
 </body>
