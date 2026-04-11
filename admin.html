@@ -27,8 +27,8 @@
       --green-text: #6fcf7f;
       --red: #8b2222;
       --red-text: #e07070;
-      --yellow: #7a6010;
       --yellow-text: #f0c040;
+      --yellow-border: #7a6010;
     }
 
     body {
@@ -48,7 +48,6 @@
       z-index: 100;
     }
 
-    /* ── LOGIN SCREEN ── */
     #loginScreen {
       display: flex;
       align-items: center;
@@ -90,9 +89,7 @@
       margin-bottom: 24px;
     }
 
-    .login-group {
-      margin-bottom: 16px;
-    }
+    .login-group { margin-bottom: 16px; }
 
     .login-group label {
       display: block;
@@ -148,7 +145,6 @@
       text-align: center;
     }
 
-    /* ── ADMIN DASHBOARD ── */
     #adminDashboard { display: none; }
 
     .admin-header {
@@ -198,7 +194,6 @@
 
     .admin-body { padding: 40px; max-width: 1100px; margin: 0 auto; }
 
-    /* stats bar */
     .stats-bar {
       display: flex;
       gap: 16px;
@@ -230,7 +225,6 @@
       color: var(--cream-dim);
     }
 
-    /* filter tabs */
     .filter-tabs {
       display: flex;
       gap: 4px;
@@ -254,7 +248,6 @@
     .filter-tab:hover { border-color: var(--border-hover); color: var(--cream); }
     .filter-tab.active { background: var(--gold); color: var(--black); border-color: var(--gold); }
 
-    /* applications list */
     .app-list { display: flex; flex-direction: column; gap: 12px; }
 
     .app-card {
@@ -299,7 +292,7 @@
       flex-shrink: 0;
     }
 
-    .status-badge.new { color: var(--yellow-text); border-color: var(--yellow); background: rgba(122,96,16,0.15); }
+    .status-badge.new { color: var(--yellow-text); border-color: var(--yellow-border); background: rgba(122,96,16,0.15); }
     .status-badge.reviewed { color: #80b0e0; border-color: #2a5080; background: rgba(42,80,128,0.15); }
     .status-badge.approved { color: var(--green-text); border-color: var(--green); background: rgba(42,107,58,0.15); }
     .status-badge.rejected { color: var(--red-text); border-color: var(--red); background: rgba(139,34,34,0.15); }
@@ -329,9 +322,7 @@
       margin-bottom: 2px;
     }
 
-    .app-description {
-      grid-column: 1 / -1;
-    }
+    .app-description { grid-column: 1 / -1; }
 
     .app-actions {
       display: flex;
@@ -423,7 +414,6 @@
 </head>
 <body>
 
-<!-- LOGIN -->
 <div id="loginScreen">
   <div class="login-box">
     <div class="login-logo">Silque Road</div>
@@ -438,7 +428,6 @@
   </div>
 </div>
 
-<!-- DASHBOARD -->
 <div id="adminDashboard">
   <header class="admin-header">
     <div class="admin-header-left">
@@ -449,8 +438,6 @@
   </header>
 
   <div class="admin-body">
-
-    <!-- Stats -->
     <div class="stats-bar">
       <div class="stat-card">
         <div class="stat-number" id="statTotal">—</div>
@@ -470,7 +457,6 @@
       </div>
     </div>
 
-    <!-- Filter tabs -->
     <div class="filter-tabs">
       <button class="filter-tab active" onclick="setFilter('all', this)">All</button>
       <button class="filter-tab" onclick="setFilter('new', this)">Pending</button>
@@ -479,15 +465,12 @@
       <button class="filter-tab" onclick="setFilter('rejected', this)">Rejected</button>
     </div>
 
-    <!-- Application list -->
     <div class="app-list" id="appList">
       <div class="loading-state"><span class="spinner"></span>Loading applications...</div>
     </div>
-
   </div>
 </div>
 
-<!-- Toast notification -->
 <div class="toast" id="toast"></div>
 
 <script>
@@ -522,19 +505,14 @@
     try {
       const res = await fetch(
         `${SUPABASE_URL}/rest/v1/seller_applications?select=*&order=created_at.desc`,
-        {
-          headers: {
-            'apikey': SERVICE_KEY,
-            'Authorization': `Bearer ${SERVICE_KEY}`
-          }
-        }
+        { headers: { 'apikey': SERVICE_KEY, 'Authorization': `Bearer ${SERVICE_KEY}` } }
       );
       allApplications = await res.json();
       updateStats();
       renderApplications();
     } catch (err) {
       document.getElementById('appList').innerHTML =
-        '<div class="empty-state">Failed to load applications. Check your connection.</div>';
+        '<div class="empty-state">Failed to load applications.</div>';
     }
   }
 
@@ -611,15 +589,15 @@
         </div>
 
         <div class="app-actions">
-          <button class="action-btn approve" onclick="updateStatus('${app.id}', 'approved')" ${app.status === 'approved' ? 'disabled' : ''}>✓ Approve</button>
-          <button class="action-btn review" onclick="updateStatus('${app.id}', 'reviewed')" ${app.status === 'reviewed' ? 'disabled' : ''}>Mark Reviewed</button>
-          <button class="action-btn reject" onclick="updateStatus('${app.id}', 'rejected')" ${app.status === 'rejected' ? 'disabled' : ''}>✕ Reject</button>
+          <button class="action-btn approve" onclick="updateStatus('${app.id}', 'approved', '${esc(app.email)}', '${esc(app.business_name)}')" ${app.status === 'approved' ? 'disabled' : ''}>✓ Approve</button>
+          <button class="action-btn review" onclick="updateStatus('${app.id}', 'reviewed', '', '')" ${app.status === 'reviewed' ? 'disabled' : ''}>Mark Reviewed</button>
+          <button class="action-btn reject" onclick="updateStatus('${app.id}', 'rejected', '', '')" ${app.status === 'rejected' ? 'disabled' : ''}>✕ Reject</button>
         </div>
       </div>
     `).join('');
   }
 
-  async function updateStatus(id, newStatus) {
+  async function updateStatus(id, newStatus, email, businessName) {
     try {
       const res = await fetch(
         `${SUPABASE_URL}/rest/v1/seller_applications?id=eq.${id}`,
@@ -637,13 +615,28 @@
 
       if (!res.ok) throw new Error('Update failed');
 
-      // Update local data
+      // If approving, fire the approval notification email
+      if (newStatus === 'approved' && email) {
+        try {
+          await fetch('/.netlify/functions/send-notification', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              type: 'seller_approved',
+              data: { email, business_name: businessName }
+            })
+          });
+        } catch (notifErr) {
+          console.error('Approval notification failed:', notifErr);
+        }
+      }
+
       const app = allApplications.find(a => a.id === id);
       if (app) app.status = newStatus;
 
       updateStats();
       renderApplications();
-      showToast(`Marked as ${newStatus}`, 'success');
+      showToast(newStatus === 'approved' ? 'Approved — seller notified' : `Marked as ${newStatus}`, 'success');
 
     } catch (err) {
       showToast('Update failed — try again', 'error');
