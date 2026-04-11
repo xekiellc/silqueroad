@@ -1,23 +1,595 @@
-{
-  "name": "Silque Road",
-  "short_name": "Silque Road",
-  "description": "We carry what the internet won't. Legal products, anonymous checkout, crypto payments.",
-  "start_url": "/",
-  "display": "standalone",
-  "background_color": "#100d05",
-  "theme_color": "#C9A84C",
-  "orientation": "portrait-primary",
-  "scope": "/",
-  "lang": "en",
-  "categories": ["shopping", "finance"],
-  "icons": [
-    { "src": "/icon-72 (3).png", "sizes": "72x72", "type": "image/png", "purpose": "any maskable" },
-    { "src": "/icon-96 (3).png", "sizes": "96x96", "type": "image/png", "purpose": "any maskable" },
-    { "src": "/icon-128 (3).png", "sizes": "128x128", "type": "image/png", "purpose": "any maskable" },
-    { "src": "/icon-144 (3).png", "sizes": "144x144", "type": "image/png", "purpose": "any maskable" },
-    { "src": "/icon-152 (3).png", "sizes": "152x152", "type": "image/png", "purpose": "any maskable" },
-    { "src": "/icon-192 (3).png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
-    { "src": "/icon-384 (3).png", "sizes": "384x384", "type": "image/png", "purpose": "any maskable" },
-    { "src": "/icon-512 (3).png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
-  ]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Silque Road — We carry what the internet won't. Legal products, anonymous checkout, crypto payments. Legal and Available.">
+<meta name="keywords" content="legal marketplace, kratom, peptides, ivermectin, privacy, hemp, anonymous shopping, crypto marketplace">
+<meta property="og:title" content="Silque Road — We carry what the internet won't.">
+<meta property="og:description" content="Legal and Available. The open market, finally. Shop without permission.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://silqueroad.com">
+<meta property="og:image" content="https://silqueroad.com/logo (4).png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Silque Road — We carry what the internet won't.">
+<meta name="twitter:description" content="Legal and Available. Anonymous checkout. Crypto payments.">
+<meta name="twitter:image" content="https://silqueroad.com/logo (4).png">
+<meta name="theme-color" content="#C9A84C">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Silque Road">
+<link rel="apple-touch-icon" href="/icon-192 (3).png">
+<link rel="icon" type="image/png" sizes="512x512" href="/icon-512 (3).png">
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192 (3).png">
+<title>Silque Road — We Carry What the Internet Won't</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #C9A84C; --gold-light: #E8C97A; --gold-dark: #8B6914; --gold-faint: rgba(201,168,76,0.12);
+  --ink: #100d05; --ink-mid: #1a1208; --ink-light: #2a2015; --smoke: #1e180a;
+  --sand: #F0E6CC; --sand-muted: rgba(240,230,204,0.6); --crimson: #8B1A1A; --green-ok: #3a8a3a;
+  --border: rgba(201,168,76,0.2); --border-strong: rgba(201,168,76,0.4);
+  --font-display: 'Cinzel', 'Georgia', serif; --font-body: 'Crimson Pro', 'Georgia', serif;
+  --font-ui: 'Space Mono', 'Courier New', monospace; --transition: 0.2s ease; --max-w: 1100px;
 }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); background: var(--ink); color: var(--sand); line-height: 1.6; overflow-x: hidden; }
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: var(--ink); } ::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 3px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+.announce-bar { background: var(--gold); color: var(--ink); text-align: center; padding: 9px 16px; font-family: var(--font-ui); font-size: 11px; letter-spacing: 2px; font-weight: 700; text-transform: uppercase; }
+.announce-bar a { color: var(--ink); text-decoration: underline; }
+.nav { position: sticky; top: 0; z-index: 1000; background: var(--ink); border-bottom: 1px solid var(--border); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.nav-logo { display: flex; align-items: center; gap: 12px; cursor: pointer; }
+.nav-logo-name { font-family: var(--font-display); font-size: 20px; font-weight: 700; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; display: block; }
+.nav-logo-tagline { font-family: var(--font-ui); font-size: 7px; letter-spacing: 3px; color: var(--gold-dark); text-transform: uppercase; display: block; }
+.nav-links { display: flex; align-items: center; gap: 32px; }
+.nav-links a { font-family: var(--font-ui); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--sand-muted); transition: color var(--transition); }
+.nav-links a:hover { color: var(--gold); }
+.nav-cta { background: var(--gold) !important; color: var(--ink) !important; padding: 9px 20px; font-weight: 700 !important; }
+.nav-cta:hover { background: var(--gold-light) !important; }
+.nav-dropdown { position: relative; }
+.nav-dropdown-toggle { font-family: var(--font-ui); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--sand-muted); background: none; border: none; cursor: pointer; transition: color var(--transition); display: flex; align-items: center; gap: 6px; padding: 0; }
+.nav-dropdown-toggle:hover { color: var(--gold); }
+.nav-dropdown-toggle svg { transition: transform var(--transition); }
+.nav-dropdown.open .nav-dropdown-toggle { color: var(--gold); }
+.nav-dropdown.open .nav-dropdown-toggle svg { transform: rotate(180deg); }
+.nav-dropdown-menu { display: none; position: absolute; top: calc(100% + 16px); right: 0; background: var(--ink-mid); border: 1px solid var(--border-strong); min-width: 200px; z-index: 200; flex-direction: column; }
+.nav-dropdown.open .nav-dropdown-menu { display: flex; }
+.nav-dropdown-menu a { font-family: var(--font-ui); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--sand-muted); padding: 13px 18px; border-bottom: 1px solid var(--border); transition: background var(--transition), color var(--transition); display: block; }
+.nav-dropdown-menu a:last-child { border-bottom: none; }
+.nav-dropdown-menu a:hover { background: var(--gold-faint); color: var(--gold); }
+.nav-mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; color: var(--gold); font-size: 22px; }
+.mobile-menu { display: none; flex-direction: column; background: var(--smoke); border-bottom: 1px solid var(--border); padding: 16px 24px; gap: 0; }
+.mobile-menu a { font-family: var(--font-ui); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--sand-muted); padding: 14px 0; border-bottom: 1px solid var(--border); display: block; }
+.mobile-menu a:last-child { border-bottom: none; color: var(--gold); }
+.mobile-menu.open { display: flex; }
+.mobile-legal-divider { font-family: var(--font-ui); font-size: 8px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold-dark); opacity: 0.5; padding: 12px 0 4px; border-bottom: none !important; cursor: default; }
+.hero { min-height: 92vh; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; overflow: hidden; text-align: center; padding: 80px 24px; }
+.hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 50% 60%, rgba(139,105,20,0.18) 0%, transparent 70%), radial-gradient(ellipse 40% 30% at 50% 30%, rgba(201,168,76,0.06) 0%, transparent 60%); pointer-events: none; }
+.hero-dunes { position: absolute; bottom: 0; left: 0; right: 0; height: 140px; pointer-events: none; }
+.hero-content { position: relative; z-index: 1; max-width: 820px; animation: fadeUp 1s ease both; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+.hero-logo { width: 320px; height: auto; margin: 0 auto 32px; display: block; }
+.hero-eyebrow { font-family: var(--font-ui); font-size: 10px; letter-spacing: 6px; color: var(--gold); text-transform: uppercase; margin-bottom: 20px; opacity: 0.7; }
+.hero-rule { width: 180px; height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent); margin: 0 auto 28px; }
+.hero-tagline { font-family: var(--font-body); font-size: clamp(20px, 3vw, 28px); font-style: italic; font-weight: 300; color: var(--sand); opacity: 0.85; line-height: 1.5; margin-bottom: 12px; }
+.hero-sub-tagline { font-family: var(--font-ui); font-size: 13px; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 40px; }
+.hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.btn-primary { display: inline-block; background: var(--gold); color: var(--ink); font-family: var(--font-ui); font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 15px 36px; border: none; cursor: pointer; transition: background var(--transition); }
+.btn-primary:hover { background: var(--gold-light); }
+.btn-outline { display: inline-block; background: transparent; color: var(--gold); font-family: var(--font-ui); font-size: 11px; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; padding: 14px 36px; border: 1px solid var(--border-strong); cursor: pointer; transition: border-color var(--transition), color var(--transition); }
+.btn-outline:hover { border-color: var(--gold); color: var(--gold-light); }
+.trust-bar { background: var(--smoke); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 14px 24px; display: flex; justify-content: center; flex-wrap: wrap; }
+.trust-item { font-family: var(--font-ui); font-size: 9px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; opacity: 0.65; display: flex; align-items: center; gap: 8px; padding: 6px 20px; border-right: 1px solid var(--border); white-space: nowrap; }
+.trust-item:last-child { border-right: none; }
+.trust-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+.section { padding: 72px 24px; } .section-alt { background: var(--smoke); }
+.section-header { text-align: center; margin-bottom: 52px; }
+.section-label { font-family: var(--font-ui); font-size: 9px; letter-spacing: 5px; color: var(--gold); text-transform: uppercase; opacity: 0.65; margin-bottom: 14px; }
+.section-title { font-family: var(--font-display); font-size: clamp(26px, 4vw, 38px); font-weight: 600; letter-spacing: 5px; color: var(--gold); text-transform: uppercase; margin-bottom: 12px; }
+.section-body { font-family: var(--font-body); font-size: 18px; font-style: italic; color: var(--sand-muted); max-width: 520px; margin: 0 auto; line-height: 1.6; }
+.gold-rule { width: 100px; height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent); margin: 18px auto 0; }
+.cat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); max-width: var(--max-w); margin: 0 auto; }
+.cat-card { background: var(--ink-mid); padding: 28px 22px; cursor: pointer; transition: background var(--transition); position: relative; display: flex; flex-direction: column; gap: 8px; }
+.cat-card:hover { background: var(--ink-light); }
+.cat-emoji { font-size: 26px; line-height: 1; }
+.cat-name { font-family: var(--font-display); font-size: 13px; font-weight: 600; letter-spacing: 1.5px; color: var(--gold); text-transform: uppercase; line-height: 1.3; }
+.cat-desc { font-family: var(--font-ui); font-size: 9px; letter-spacing: 0.5px; color: var(--sand-muted); line-height: 1.6; }
+.cat-badge { position: absolute; top: 10px; right: 10px; font-family: var(--font-ui); font-size: 8px; letter-spacing: 1px; font-weight: 700; padding: 3px 8px; text-transform: uppercase; }
+.badge-hot { background: var(--crimson); color: var(--sand); } .badge-new { background: var(--green-ok); color: var(--sand); }
+.steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 1px solid var(--border); max-width: 960px; margin: 0 auto; }
+.step { padding: 36px 28px; border-right: 1px solid var(--border); } .step:last-child { border-right: none; }
+.step-num { font-family: var(--font-display); font-size: 52px; font-weight: 700; color: var(--gold-dark); opacity: 0.25; line-height: 1; margin-bottom: 14px; }
+.step-title { font-family: var(--font-display); font-size: 13px; font-weight: 600; letter-spacing: 1.5px; color: var(--gold); text-transform: uppercase; margin-bottom: 10px; }
+.step-body { font-family: var(--font-body); font-size: 15px; color: var(--sand-muted); line-height: 1.6; }
+.product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: var(--max-w); margin: 0 auto; }
+.product-card { background: var(--ink-mid); border: 1px solid var(--border); padding: 24px 22px; cursor: pointer; transition: border-color var(--transition); display: flex; flex-direction: column; gap: 10px; }
+.product-card:hover { border-color: var(--border-strong); }
+.product-img { width: 100%; height: 160px; object-fit: cover; background: var(--ink-light); display: block; }
+.product-cat { font-family: var(--font-ui); font-size: 9px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; opacity: 0.6; }
+.product-name { font-family: var(--font-display); font-size: 16px; font-weight: 600; color: var(--sand); line-height: 1.3; }
+.product-desc { font-family: var(--font-body); font-size: 14px; font-style: italic; color: var(--sand-muted); line-height: 1.5; flex: 1; }
+.product-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 10px; border-top: 1px solid var(--border); }
+.product-price { font-family: var(--font-ui); font-size: 18px; font-weight: 700; color: var(--gold); }
+.product-legal { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--green-ok); text-transform: uppercase; }
+.product-add { background: transparent; border: 1px solid var(--border-strong); color: var(--gold); font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; text-transform: uppercase; padding: 6px 14px; cursor: pointer; transition: background var(--transition); }
+.product-add:hover { background: var(--gold-faint); }
+.products-loading { text-align: center; padding: 60px 20px; font-family: var(--font-ui); font-size: 10px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; opacity: 0.5; }
+.products-empty { text-align: center; padding: 60px 20px; font-family: var(--font-body); font-size: 18px; font-style: italic; color: var(--sand-muted); opacity: 0.5; }
+.telehealth-wrap { max-width: var(--max-w); margin: 0 auto; display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: center; }
+.telehealth-label { font-family: var(--font-ui); font-size: 9px; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; opacity: 0.6; margin-bottom: 12px; }
+.telehealth-title { font-family: var(--font-display); font-size: clamp(22px, 3vw, 32px); font-weight: 600; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 14px; }
+.telehealth-body { font-family: var(--font-body); font-size: 18px; font-style: italic; color: var(--sand-muted); line-height: 1.6; max-width: 460px; margin-bottom: 20px; }
+.pill-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+.pill { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--gold); border: 1px solid var(--border); padding: 5px 14px; border-radius: 20px; text-transform: uppercase; white-space: nowrap; }
+.telehealth-right { text-align: center; }
+.rx-display { font-family: var(--font-display); font-size: 80px; font-weight: 700; color: var(--gold); opacity: 0.12; line-height: 1; margin-bottom: 16px; }
+.payment-section { background: var(--ink); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 52px 24px; text-align: center; }
+.payment-title { font-family: var(--font-display); font-size: clamp(18px, 2.5vw, 26px); font-weight: 600; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 10px; }
+.payment-sub { font-family: var(--font-body); font-size: 17px; font-style: italic; color: var(--sand-muted); margin-bottom: 28px; max-width: 520px; margin-left: auto; margin-right: auto; }
+.payment-grid { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+.payment-badge { font-family: var(--font-ui); font-size: 10px; letter-spacing: 1px; color: var(--gold); border: 1px solid var(--border-strong); padding: 8px 18px; text-transform: uppercase; }
+.payment-note { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--sand-muted); opacity: 0.4; text-transform: uppercase; }
+.email-section { background: var(--smoke); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 60px 24px; text-align: center; }
+.email-title { font-family: var(--font-display); font-size: clamp(20px, 3vw, 28px); font-weight: 600; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 10px; }
+.email-sub { font-family: var(--font-body); font-size: 17px; font-style: italic; color: var(--sand-muted); margin-bottom: 28px; }
+.email-form { display: flex; gap: 0; max-width: 480px; margin: 0 auto; }
+.email-input { flex: 1; background: var(--ink-mid); border: 1px solid var(--border-strong); border-right: none; color: var(--sand); font-family: var(--font-ui); font-size: 12px; padding: 14px 18px; outline: none; transition: border-color var(--transition); }
+.email-input::placeholder { color: var(--sand-muted); opacity: 0.5; }
+.email-input:focus { border-color: var(--gold); }
+.email-submit { background: var(--gold); color: var(--ink); font-family: var(--font-ui); font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 14px 24px; border: none; cursor: pointer; transition: background var(--transition); white-space: nowrap; }
+.email-submit:hover { background: var(--gold-light); }
+.email-disclaimer { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--sand-muted); opacity: 0.4; margin-top: 12px; text-transform: uppercase; }
+#email-success { display: none; font-family: var(--font-ui); font-size: 11px; letter-spacing: 2px; color: var(--green-ok); text-transform: uppercase; margin-top: 16px; }
+.seller-section { background: var(--smoke); padding: 72px 24px; text-align: center; border-top: 1px solid var(--border); }
+.seller-title { font-family: var(--font-display); font-size: clamp(22px, 3.5vw, 36px); font-weight: 600; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 14px; }
+.seller-body { font-family: var(--font-body); font-size: 18px; font-style: italic; color: var(--sand-muted); line-height: 1.6; max-width: 560px; margin: 0 auto 32px; }
+.seller-perks { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; margin-bottom: 36px; }
+.seller-perk { font-family: var(--font-ui); font-size: 9px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; opacity: 0.7; display: flex; align-items: center; gap: 8px; }
+.perk-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); opacity: 0.5; flex-shrink: 0; }
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 2000; align-items: center; justify-content: center; padding: 24px; overflow-y: auto; }
+.modal-overlay.open { display: flex; }
+.modal { background: var(--ink-mid); border: 1px solid var(--border-strong); max-width: 560px; width: 100%; padding: 40px; position: relative; max-height: 90vh; overflow-y: auto; margin: auto; }
+.modal-close { position: absolute; top: 16px; right: 20px; background: none; border: none; color: var(--sand-muted); font-size: 22px; cursor: pointer; line-height: 1; }
+.modal-title { font-family: var(--font-display); font-size: 18px; font-weight: 600; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 4px; }
+.modal-product-sub { font-family: var(--font-body); font-size: 14px; font-style: italic; color: var(--sand-muted); margin-bottom: 20px; }
+.checkout-steps { display: flex; gap: 0; margin-bottom: 24px; border-bottom: 1px solid var(--border); }
+.checkout-step-btn { flex: 1; padding: 10px; font-family: var(--font-ui); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; background: transparent; border: none; color: var(--sand-muted); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: all var(--transition); }
+.checkout-step-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
+.checkout-panel { display: none; } .checkout-panel.active { display: block; }
+.form-field { margin-bottom: 14px; }
+.form-field label { display: block; font-family: var(--font-ui); font-size: 8px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 6px; }
+.form-field input { width: 100%; background: var(--ink-light); border: 1px solid var(--border-strong); color: var(--sand); font-family: var(--font-ui); font-size: 12px; padding: 11px 14px; outline: none; transition: border-color var(--transition); border-radius: 0; -webkit-appearance: none; }
+.form-field input:focus { border-color: var(--gold); }
+.form-field input::placeholder { color: var(--sand-muted); opacity: 0.4; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.anon-note { font-family: var(--font-ui); font-size: 8px; letter-spacing: 1px; color: var(--green-ok); text-transform: uppercase; opacity: 0.7; margin-bottom: 16px; }
+.crypto-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 16px; }
+.crypto-opt { background: var(--ink-light); border: 1px solid var(--border); padding: 10px 6px; cursor: pointer; transition: border-color var(--transition); text-align: center; }
+.crypto-opt:hover { border-color: var(--gold); }
+.crypto-opt.selected { border-color: var(--gold); background: var(--gold-faint); }
+.crypto-sym { font-family: var(--font-ui); font-size: 14px; font-weight: 700; color: var(--gold); margin-bottom: 3px; }
+.crypto-lbl { font-family: var(--font-ui); font-size: 7px; letter-spacing: 0.5px; color: var(--sand-muted); text-transform: uppercase; }
+.modal-proceed { width: 100%; background: var(--gold); color: var(--ink); font-family: var(--font-ui); font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 15px; border: none; cursor: pointer; transition: background var(--transition); margin-top: 8px; margin-bottom: 10px; }
+.modal-proceed:hover { background: var(--gold-light); }
+.modal-proceed:disabled { opacity: 0.5; cursor: not-allowed; }
+.modal-note { font-family: var(--font-ui); font-size: 8px; letter-spacing: 1px; color: var(--sand-muted); opacity: 0.35; text-align: center; text-transform: uppercase; }
+.modal-error { display: none; padding: 10px 14px; background: rgba(139,34,34,0.2); border: 1px solid #8b2222; color: #e07070; font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; margin-bottom: 12px; }
+.order-summary { background: var(--ink-light); border: 1px solid var(--border); padding: 14px 16px; margin-bottom: 16px; }
+.order-summary-row { display: flex; justify-content: space-between; font-family: var(--font-ui); font-size: 10px; letter-spacing: 1px; color: var(--sand-muted); margin-bottom: 6px; }
+.order-summary-row:last-child { margin-bottom: 0; color: var(--gold); font-weight: 700; border-top: 1px solid var(--border); padding-top: 6px; margin-top: 6px; }
+.footer { background: var(--ink); border-top: 1px solid var(--border); padding: 52px 24px 32px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; max-width: var(--max-w); margin: 0 auto 40px; }
+.footer-brand-name { font-family: var(--font-display); font-size: 20px; font-weight: 700; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; display: block; margin-bottom: 12px; }
+.footer-brand-desc { font-family: var(--font-body); font-size: 14px; font-style: italic; color: var(--sand-muted); opacity: 0.5; line-height: 1.6; margin-bottom: 20px; }
+.crypto-badges { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+.crypto-badge { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--gold); border: 1px solid var(--border); padding: 4px 10px; text-transform: uppercase; }
+.no-track { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--green-ok); opacity: 0.7; text-transform: uppercase; }
+.footer-col-title { font-family: var(--font-ui); font-size: 9px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; opacity: 0.55; margin-bottom: 18px; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-links li a { font-family: var(--font-body); font-size: 15px; color: var(--sand-muted); opacity: 0.5; transition: opacity var(--transition), color var(--transition); }
+.footer-links li a:hover { opacity: 0.9; color: var(--gold); }
+.footer-bottom { border-top: 1px solid var(--border); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; max-width: var(--max-w); margin: 0 auto; flex-wrap: wrap; gap: 12px; }
+.footer-copy { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--sand-muted); opacity: 0.3; }
+.footer-legal-links { display: flex; gap: 20px; }
+.footer-legal-links a { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--sand-muted); opacity: 0.3; text-transform: uppercase; transition: opacity var(--transition); }
+.footer-legal-links a:hover { opacity: 0.7; }
+.disclaimer-bar { background: var(--ink-mid); border-top: 1px solid var(--border); padding: 12px 24px; text-align: center; }
+.disclaimer-bar p { font-family: var(--font-ui); font-size: 9px; letter-spacing: 0.5px; color: var(--sand-muted); opacity: 0.3; line-height: 1.6; max-width: 900px; margin: 0 auto; }
+@media (max-width: 900px) {
+  .cat-grid { grid-template-columns: repeat(2, 1fr); }
+  .steps-grid { grid-template-columns: repeat(2, 1fr); }
+  .step { border-bottom: 1px solid var(--border); }
+  .step:nth-child(even) { border-right: none; }
+  .product-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .telehealth-wrap { grid-template-columns: 1fr; }
+  .telehealth-right { display: none; }
+  .nav-links { display: none; }
+  .nav-mobile-toggle { display: block; }
+}
+@media (max-width: 600px) {
+  .hero-logo { width: 240px; }
+  .product-grid { grid-template-columns: 1fr; }
+  .steps-grid { grid-template-columns: 1fr; }
+  .step { border-right: none; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .hero-buttons { flex-direction: column; align-items: center; }
+  .email-form { flex-direction: column; }
+  .email-input { border-right: 1px solid var(--border-strong); }
+  .form-row { grid-template-columns: 1fr; }
+  .crypto-grid { grid-template-columns: repeat(4, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<div class="announce-bar">
+  Founding Sellers Wanted — <a href="/seller-apply.html">Apply now &rarr;</a>
+</div>
+
+<nav class="nav">
+  <a href="/" class="nav-logo">
+    <div>
+      <span class="nav-logo-name">Silque Road</span>
+      <span class="nav-logo-tagline">Legal &amp; Available</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="#marketplace">Marketplace</a>
+    <a href="#health-network">Health Network</a>
+    <a href="#how-it-works">How It Works</a>
+    <a href="/seller-apply.html">Sell With Us</a>
+    <div class="nav-dropdown" id="legalDropdown">
+      <button class="nav-dropdown-toggle" onclick="toggleLegalDropdown()">
+        Legal
+        <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+      <div class="nav-dropdown-menu">
+        <a href="/terms.html">Terms of Service</a>
+        <a href="/seller-agreement.html">Seller Agreement</a>
+        <a href="/privacy.html">Privacy Policy</a>
+        <a href="/disclaimer.html">Disclaimer</a>
+      </div>
+    </div>
+    <a href="#featured" class="nav-cta">Shop Now</a>
+  </div>
+  <button class="nav-mobile-toggle" onclick="toggleMobile()" aria-label="Toggle menu">&#9776;</button>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#marketplace" onclick="toggleMobile()">Marketplace</a>
+  <a href="#health-network" onclick="toggleMobile()">Health Network</a>
+  <a href="#how-it-works" onclick="toggleMobile()">How It Works</a>
+  <a href="/seller-apply.html" onclick="toggleMobile()">Sell With Us</a>
+  <span class="mobile-legal-divider">Legal</span>
+  <a href="/terms.html" onclick="toggleMobile()">Terms of Service</a>
+  <a href="/seller-agreement.html" onclick="toggleMobile()">Seller Agreement</a>
+  <a href="/privacy.html" onclick="toggleMobile()">Privacy Policy</a>
+  <a href="/disclaimer.html" onclick="toggleMobile()">Disclaimer</a>
+  <a href="#featured" onclick="toggleMobile()">Shop Now</a>
+</div>
+
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <svg class="hero-dunes" viewBox="0 0 1400 140" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 70 Q175 20 350 70 Q525 120 700 70 Q875 20 1050 70 Q1225 120 1400 70 L1400 140 L0 140Z" fill="#C9A84C" opacity="0.18"/>
+    <path d="M0 95 Q233 50 466 95 Q700 140 933 95 Q1166 50 1400 95 L1400 140 L0 140Z" fill="#C9A84C" opacity="0.08"/>
+  </svg>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Est. 2026 &nbsp;&bull;&nbsp; The Legal Frontier &nbsp;&bull;&nbsp; Anonymous Marketplace</p>
+    <img src="/logo (4).png" alt="Silque Road" class="hero-logo">
+    <div class="hero-rule"></div>
+    <p class="hero-tagline">We carry what the internet won't.</p>
+    <p class="hero-sub-tagline">Legal &amp; Available</p>
+    <div class="hero-buttons">
+      <a href="#marketplace" class="btn-primary">Browse the Bazaar</a>
+      <a href="/seller-apply.html" class="btn-outline">Become a Founding Seller</a>
+    </div>
+  </div>
+</section>
+
+<div class="trust-bar">
+  <div class="trust-item"><div class="trust-dot"></div>Crypto payments accepted</div>
+  <div class="trust-item"><div class="trust-dot"></div>State compliance verified</div>
+  <div class="trust-item"><div class="trust-dot"></div>100% legal products only</div>
+  <div class="trust-item"><div class="trust-dot"></div>Anonymous checkout</div>
+  <div class="trust-item"><div class="trust-dot"></div>Vetted sellers only</div>
+  <div class="trust-item"><div class="trust-dot"></div>No tracking. No cookies.</div>
+  <div class="trust-item"><div class="trust-dot"></div>Shop without permission</div>
+</div>
+
+<section class="section" id="marketplace">
+  <div class="section-header">
+    <p class="section-label">The Bazaar</p>
+    <h2 class="section-title">Browse the Markets</h2>
+    <p class="section-body">Every product legal in your state. Every seller vetted. The shelf they keep moving — finally in one place.</p>
+    <div class="gold-rule"></div>
+  </div>
+  <div class="cat-grid">
+    <div class="cat-card"><span class="cat-emoji">🌿</span><div class="cat-name">Health Freedom</div><div class="cat-desc">Ivermectin · Peptides · Methylene Blue · Fenbendazole</div><span class="cat-badge badge-hot">Hot</span></div>
+    <div class="cat-card"><span class="cat-emoji">🍄</span><div class="cat-name">Psychedelic Adjacent</div><div class="cat-desc">Kratom · Amanita · Kava · Blue Lotus · Salvia</div></div>
+    <div class="cat-card"><span class="cat-emoji">🌱</span><div class="cat-name">Cannabis Adjacent</div><div class="cat-desc">Delta-8 · THCA · HHC · CBN · Hemp Flower</div><span class="cat-badge badge-new">New</span></div>
+    <div class="cat-card"><span class="cat-emoji">⚗️</span><div class="cat-name">Longevity &amp; Biohack</div><div class="cat-desc">NAD+ · Turkesterone · Nootropics · Shilajit</div></div>
+    <div class="cat-card"><span class="cat-emoji">🔒</span><div class="cat-name">Privacy &amp; Comms</div><div class="cat-desc">Burner Phones · Faraday Bags · Counter-Surveillance</div></div>
+    <div class="cat-card"><span class="cat-emoji">⚔️</span><div class="cat-name">Weapons Adjacent</div><div class="cat-desc">Blades · Accessories · Fireworks · Stun Guns</div></div>
+    <div class="cat-card"><span class="cat-emoji">💪</span><div class="cat-name">Men's Health</div><div class="cat-desc">Tongkat Ali · Enhancement · Fadogia · TRT Support</div><span class="cat-badge badge-hot">Hot</span></div>
+    <div class="cat-card"><span class="cat-emoji">🌸</span><div class="cat-name">Women's Wellness</div><div class="cat-desc">Hormonal Balance · Libido · HRT Support · CBD Intimacy</div><span class="cat-badge badge-new">New</span></div>
+    <div class="cat-card"><span class="cat-emoji">🥛</span><div class="cat-name">Taboo Foods</div><div class="cat-desc">Raw Dairy · Exotic Meats · Absinthe · High-Proof Spirits</div></div>
+    <div class="cat-card"><span class="cat-emoji">🚬</span><div class="cat-name">Tobacco &amp; Nicotine</div><div class="cat-desc">Flavored Vape · High-Proof · Nicotine Pouches</div></div>
+    <div class="cat-card"><span class="cat-emoji">🏕️</span><div class="cat-name">Off-Grid &amp; Prepper</div><div class="cat-desc">Homestead · Seed Banks · Survival · Lockpicking</div></div>
+    <div class="cat-card"><span class="cat-emoji">🔞</span><div class="cat-name">Adult Products</div><div class="cat-desc">Enhancement · Wellness · Intimacy · Age-Verified</div></div>
+  </div>
+</section>
+
+<section class="section section-alt" id="how-it-works">
+  <div class="section-header">
+    <p class="section-label">The Way</p>
+    <h2 class="section-title">How It Works</h2>
+    <p class="section-body">Legal in your state. Delivered to your door. Compliant by design. Anonymous by choice.</p>
+    <div class="gold-rule"></div>
+  </div>
+  <div class="steps-grid">
+    <div class="step"><div class="step-num">01</div><div class="step-title">Verify Your State</div><p class="step-body">Your location determines what's available to you. We show only products legal in your state. No guesswork. No gray areas.</p></div>
+    <div class="step"><div class="step-num">02</div><div class="step-title">Browse &amp; Choose</div><p class="step-body">Every seller is vetted. Every product is compliance-tagged. Shop what others won't carry with full confidence.</p></div>
+    <div class="step"><div class="step-num">03</div><div class="step-title">Pay Your Way</div><p class="step-body">Crypto for full anonymity or card for convenience. 8 cryptocurrencies accepted. Both processed by partners who believe legal means legal.</p></div>
+    <div class="step"><div class="step-num">04</div><div class="step-title">Delivered Legally</div><p class="step-body">Sellers ship directly to you in compliance with all applicable state laws. Your freedom. Delivered.</p></div>
+  </div>
+</section>
+
+<section class="section" id="featured">
+  <div class="section-header">
+    <p class="section-label">Featured Goods</p>
+    <h2 class="section-title">From the Bazaar</h2>
+    <p class="section-body">What your pharmacist won't stock. What your doctor won't prescribe. Right here.</p>
+    <div class="gold-rule"></div>
+  </div>
+  <div class="product-grid" id="productGrid">
+    <div class="products-loading" style="grid-column:1/-1">Loading products...</div>
+  </div>
+</section>
+
+<section class="section section-alt" id="health-network">
+  <div class="telehealth-wrap">
+    <div>
+      <p class="telehealth-label">The Health Network</p>
+      <h2 class="telehealth-title">Need a Prescription?</h2>
+      <p class="telehealth-body">Our curated telehealth network connects you with providers who prescribe what mainstream medicine ignores. Discreet. Affordable. Legal.</p>
+      <div class="pill-row">
+        <span class="pill">Ivermectin Rx</span><span class="pill">Low-Dose Naltrexone</span><span class="pill">Testosterone</span><span class="pill">HRT</span><span class="pill">GLP-1 / Ozempic</span><span class="pill">ED Treatment</span><span class="pill">Peptides Rx</span><span class="pill">Hair Loss</span><span class="pill">Menopause</span>
+      </div>
+      <a href="#" class="btn-primary" onclick="return false;">Find a Provider</a>
+    </div>
+    <div class="telehealth-right">
+      <div class="rx-display">Rx</div>
+      <p style="font-family:var(--font-ui);font-size:9px;color:var(--sand-muted);opacity:0.35;letter-spacing:1px;text-transform:uppercase;">Referral fees disclosed</p>
+    </div>
+  </div>
+</section>
+
+<section class="payment-section" id="payments">
+  <p class="section-label">Payment Options</p>
+  <h2 class="payment-title">Pay Your Way</h2>
+  <p class="payment-sub">Crypto for full anonymity. Card for convenience. Both processed by partners who believe legal means legal — and don't deplatform for it.</p>
+  <div class="payment-grid">
+    <span class="payment-badge">&#8383; BTC</span><span class="payment-badge">&#9830; ETH</span><span class="payment-badge">$ USDC</span><span class="payment-badge">&#9672; XMR</span><span class="payment-badge">&#9678; SOL</span><span class="payment-badge">&#10005; XRP</span><span class="payment-badge">&#208; DOGE</span><span class="payment-badge">&#321; LTC</span><span class="payment-badge">&#8383; BCH</span><span class="payment-badge">&#9646; VISA</span><span class="payment-badge">&#9646; MC</span>
+  </div>
+  <p class="payment-note">Our card processor partners do not deplatform legal products.</p>
+</section>
+
+<section class="email-section" id="newsletter">
+  <p class="section-label">Stay Informed</p>
+  <h2 class="email-title">The Open Market Newsletter</h2>
+  <p class="email-sub">New products. Compliance updates. What just got banned somewhere else — and why we still carry it.</p>
+  <form class="email-form" id="email-form" onsubmit="submitEmail(event)">
+    <input type="email" class="email-input" id="email-input" placeholder="your@email.com" required autocomplete="email">
+    <button type="submit" class="email-submit" id="email-btn">Subscribe</button>
+  </form>
+  <p class="email-disclaimer">No spam. Unsubscribe anytime. We respect your privacy as much as you do.</p>
+  <p id="email-success">&#10003; &nbsp; You're on the list. Welcome to the bazaar.</p>
+</section>
+
+<section class="seller-section" id="sell">
+  <p class="section-label">For Sellers</p>
+  <h2 class="seller-title">Deplatformed? You're Home.</h2>
+  <p class="seller-body">Kicked off Amazon. Dropped by PayPal. Banned from Etsy. If you sell a legal product the mainstream won't carry — you belong here. Sell without apology.</p>
+  <div class="seller-perks">
+    <div class="seller-perk"><div class="perk-dot"></div>Crypto payouts weekly</div>
+    <div class="seller-perk"><div class="perk-dot"></div>State compliance handled</div>
+    <div class="seller-perk"><div class="perk-dot"></div>No deplatforming. Ever.</div>
+    <div class="seller-perk"><div class="perk-dot"></div>Deplatform-proof payments</div>
+  </div>
+  <a href="/seller-apply.html" class="btn-primary">Apply as a Founding Seller</a>
+</section>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <span class="footer-brand-name">Silque Road</span>
+      <p class="footer-brand-desc">The marketplace for legal products mainstream platforms won't carry. State-compliant. Seller-vetted. Buyer-anonymous. Legal doesn't mean available — until now.</p>
+      <div class="crypto-badges">
+        <span class="crypto-badge">BTC</span><span class="crypto-badge">ETH</span><span class="crypto-badge">USDC</span><span class="crypto-badge">SOL</span><span class="crypto-badge">XRP</span><span class="crypto-badge">DOGE</span><span class="crypto-badge">LTC</span><span class="crypto-badge">BCH</span><span class="crypto-badge">VISA</span><span class="crypto-badge">MC</span>
+      </div>
+      <p class="no-track">&#10003; No tracking &nbsp;&bull;&nbsp; No cookies &nbsp;&bull;&nbsp; No analytics</p>
+    </div>
+    <div>
+      <p class="footer-col-title">Markets</p>
+      <ul class="footer-links">
+        <li><a href="#marketplace">Health Freedom</a></li>
+        <li><a href="#marketplace">Cannabis Adjacent</a></li>
+        <li><a href="#marketplace">Men's Health</a></li>
+        <li><a href="#marketplace">Women's Wellness</a></li>
+        <li><a href="#marketplace">Privacy &amp; Comms</a></li>
+        <li><a href="#marketplace">All Categories</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-col-title">Platform</p>
+      <ul class="footer-links">
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="/seller-apply.html">Sell With Us</a></li>
+        <li><a href="#health-network">Health Network</a></li>
+        <li><a href="#newsletter">Newsletter</a></li>
+        <li><a href="#payments">Payments</a></li>
+        <li><a href="#marketplace">State Compliance</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-col-title">Company</p>
+      <ul class="footer-links">
+        <li><a href="#">About</a></li>
+        <li><a href="/terms.html">Terms of Service</a></li>
+        <li><a href="/seller-agreement.html">Seller Agreement</a></li>
+        <li><a href="/privacy.html">Privacy Policy</a></li>
+        <li><a href="/disclaimer.html">Disclaimer</a></li>
+        <li><a href="mailto:info@silqueroad.com">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">&copy; 2026 Silque Road &nbsp;&bull;&nbsp; XEKIE LLC &nbsp;&bull;&nbsp; All products legal in buyer's jurisdiction &nbsp;&bull;&nbsp; No tracking. No cookies. No analytics.</p>
+    <div class="footer-legal-links">
+      <a href="/privacy.html">Privacy</a>
+      <a href="/terms.html">Terms</a>
+      <a href="/disclaimer.html">Disclaimer</a>
+    </div>
+  </div>
+</footer>
+
+<div class="disclaimer-bar">
+  <p>Silque Road is a platform connecting buyers and sellers of legal products. All products displayed are legal under applicable federal and state law. Availability varies by state and is determined at checkout based on shipping address. Products listed as &ldquo;for research purposes&rdquo; or &ldquo;veterinary use&rdquo; are sold exclusively for those purposes. Nothing on this site constitutes medical, legal, or financial advice. Silque Road is not responsible for the use or misuse of any product purchased through this platform. Buyers are responsible for knowing and complying with their local laws.</p>
+</div>
+
+<div class="modal-overlay" id="modal" onclick="closeModalOutside(event)">
+  <div class="modal" role="dialog" aria-modal="true">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
+    <div class="modal-title" id="modalTitle">Checkout</div>
+    <div class="modal-product-sub" id="modalSub">Complete your purchase below.</div>
+    <div class="order-summary" id="orderSummary" style="display:none">
+      <div class="order-summary-row"><span>Product</span><span id="summaryProduct">—</span></div>
+      <div class="order-summary-row"><span>Total</span><span id="summaryPrice">—</span></div>
+    </div>
+    <div class="checkout-steps">
+      <button class="checkout-step-btn active" id="stepBtn1" onclick="goToStep(1)">1. Shipping</button>
+      <button class="checkout-step-btn" id="stepBtn2" onclick="goToStep(2)">2. Payment</button>
+    </div>
+    <div class="modal-error" id="modalError"></div>
+    <div class="checkout-panel active" id="panel1">
+      <p class="anon-note">&#10003; All fields optional — checkout anonymously if you prefer</p>
+      <div class="form-field"><label>Email — for order updates only</label><input type="email" id="buyerEmail" placeholder="your@email.com (optional)" autocomplete="off" /></div>
+      <div class="form-field"><label>Ship To — Full Name</label><input type="text" id="shipName" placeholder="Name on package (optional)" autocomplete="off" /></div>
+      <div class="form-field"><label>Street Address</label><input type="text" id="shipAddress" placeholder="123 Main St (optional)" autocomplete="off" /></div>
+      <div class="form-row">
+        <div class="form-field"><label>City</label><input type="text" id="shipCity" placeholder="City" autocomplete="off" /></div>
+        <div class="form-field"><label>State</label><input type="text" id="shipState" placeholder="OH" maxlength="2" autocomplete="off" /></div>
+      </div>
+      <div class="form-field"><label>ZIP Code</label><input type="text" id="shipZip" placeholder="44223" maxlength="10" autocomplete="off" /></div>
+      <button class="modal-proceed" onclick="goToStep(2)">Continue to Payment &rarr;</button>
+      <p class="modal-note">Your shipping info is used only to fulfill your order.</p>
+    </div>
+    <div class="checkout-panel" id="panel2">
+      <p style="font-family:var(--font-ui);font-size:9px;letter-spacing:1px;color:var(--sand-muted);text-transform:uppercase;margin-bottom:12px;">Select Cryptocurrency</p>
+      <div class="crypto-grid">
+        <div class="crypto-opt selected" onclick="selectCrypto(this,'btc')"><div class="crypto-sym">&#8383;</div><div class="crypto-lbl">Bitcoin</div></div>
+        <div class="crypto-opt" onclick="selectCrypto(this,'eth')"><div class="crypto-sym">&#9830;</div><div class="crypto-lbl">Ethereum</div></div>
+        <div class="crypto-opt" onclick="selectCrypto(this,'usdcerc20')"><div class="crypto-sym">$</div><div class="crypto-lbl">USDC</div></div>
+        <div class="crypto-opt" onclick="selectCrypto(this,'sol')"><div class="crypto-sym">&#9678;</div><div class="crypto-lbl">Solana</div></div>
+        <div class="crypto-opt" onclick="selectCrypto(this,'xrp')"><div class="crypto-sym">&#10005;</div><div class="crypto-lbl">XRP</div></div>
+        <div class="crypto-opt" onclick="selectCrypto(this,'doge')"><div class="crypto-sym">&#208;</div><div class="crypto-lbl">Dogecoin</div></div>
+        <div class="crypto-opt" onclick="selectCrypto(this,'ltc')"><div class="crypto-sym">&#321;</div><div class="crypto-lbl">Litecoin</div></div>
+        <div class="crypto-opt" onclick="selectCrypto(this,'bch')"><div class="crypto-sym">&#8383;</div><div class="crypto-lbl">Bitcoin Cash</div></div>
+      </div>
+      <button class="modal-proceed" id="payBtn" onclick="proceedToPayment()">Pay with Crypto &rarr;</button>
+      <p class="modal-note">Powered by NOWPayments &nbsp;&bull;&nbsp; 0.5% fee &nbsp;&bull;&nbsp; Order recorded securely</p>
+    </div>
+  </div>
+</div>
+
+<script>
+const SUPABASE_URL = 'https://pmtfqbefrsplvoriirru.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBtdGZxYmVmcnNwbHZvcmlpcnJ1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU4Mzk5MzEsImV4cCI6MjA5MTQxNTkzMX0.xgIVCGtB1Elp8ywjQhUAHdAVXOMoZJRmxWXM6vpZBB0';
+let currentProduct = null;
+let selCrypto = 'btc';
+
+function toggleLegalDropdown() { document.getElementById('legalDropdown').classList.toggle('open'); }
+document.addEventListener('click', function(e) { const d = document.getElementById('legalDropdown'); if (d && !d.contains(e.target)) d.classList.remove('open'); });
+
+async function loadProducts() {
+  try {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/products?status=eq.active&stock_status=neq.out_of_stock&order=featured.desc,created_at.desc&limit=6`, { headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` } });
+    renderProducts(await res.json());
+  } catch { renderFallbackProducts(); }
+}
+
+function renderProducts(products) {
+  const grid = document.getElementById('productGrid');
+  if (!products || products.length === 0) { renderFallbackProducts(); return; }
+  grid.innerHTML = products.map(p => {
+    const price = parseFloat(p.price || 0).toFixed(2);
+    const imgHtml = p.image_url ? `<img class="product-img" src="${esc(p.image_url)}" alt="${esc(p.name)}" loading="lazy" onerror="this.style.display='none'">` : '';
+    const disclaimer = p.disclaimer ? `<div style="font-family:var(--font-ui);font-size:8px;color:var(--sand-muted);opacity:0.45;margin-top:4px">${esc(p.disclaimer)}</div>` : '';
+    return `<div class="product-card" onclick="window.location.href='/product.html?id=${p.id}'">${imgHtml}<div class="product-cat">${esc(p.category || '')}</div><div class="product-name">${esc(p.name)}</div><div class="product-desc">${esc(p.description || '')}</div>${disclaimer}<div class="product-footer"><div><div class="product-price">$${price}</div><div class="product-legal">&#10003; Vetted Seller</div></div><button class="product-add" onclick='event.stopPropagation(); openModal(${JSON.stringify({id: p.id, seller_id: p.seller_id, name: p.name, price: parseFloat(price), category: p.category})})'>Buy Now</button></div></div>`;
+  }).join('');
+  document.querySelectorAll('.product-card').forEach(el => { el.style.opacity='0'; el.style.transform='translateY(16px)'; el.style.transition='opacity 0.5s ease, transform 0.5s ease'; observer.observe(el); });
+}
+
+function renderFallbackProducts() { document.getElementById('productGrid').innerHTML = `<div class="products-empty" style="grid-column:1/-1"><p style="margin-bottom:16px">Products coming soon.</p><a href="/seller-apply.html" class="btn-primary" style="display:inline-block">Become a Founding Seller</a></div>`; }
+function esc(str) { if (!str) return ''; return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+function toggleMobile() { document.getElementById('mobile-menu').classList.toggle('open'); }
+
+function openModal(product) {
+  currentProduct = product; selCrypto = 'btc';
+  document.getElementById('modalTitle').textContent = product ? product.name : 'Checkout';
+  document.getElementById('modalSub').textContent = product ? `$${parseFloat(product.price).toFixed(2)} — ${product.category || ''}` : 'Complete your purchase below.';
+  if (product) { document.getElementById('orderSummary').style.display='block'; document.getElementById('summaryProduct').textContent=product.name; document.getElementById('summaryPrice').textContent=`$${parseFloat(product.price).toFixed(2)}`; }
+  else { document.getElementById('orderSummary').style.display='none'; }
+  goToStep(1); document.getElementById('modalError').style.display='none'; document.getElementById('modal').classList.add('open'); document.body.style.overflow='hidden';
+}
+function closeModal() { document.getElementById('modal').classList.remove('open'); document.body.style.overflow=''; currentProduct=null; }
+function closeModalOutside(e) { if (e.target===document.getElementById('modal')) closeModal(); }
+function goToStep(step) { document.querySelectorAll('.checkout-panel').forEach(p=>p.classList.remove('active')); document.querySelectorAll('.checkout-step-btn').forEach(b=>b.classList.remove('active')); document.getElementById('panel'+step).classList.add('active'); document.getElementById('stepBtn'+step).classList.add('active'); }
+function selectCrypto(el, currency) { document.querySelectorAll('.crypto-opt').forEach(o=>o.classList.remove('selected')); el.classList.add('selected'); selCrypto=currency; }
+function showError(msg) { const el=document.getElementById('modalError'); el.textContent=msg; el.style.display='block'; }
+
+async function proceedToPayment() {
+  if (!currentProduct) { showError('No product selected.'); return; }
+  const btn=document.getElementById('payBtn'); btn.disabled=true; btn.textContent='Creating order...'; document.getElementById('modalError').style.display='none';
+  const payload = { product_id: currentProduct.id, seller_id: currentProduct.seller_id, buyer_email: document.getElementById('buyerEmail').value.trim()||null, shipping_name: document.getElementById('shipName').value.trim()||null, shipping_address: document.getElementById('shipAddress').value.trim()||null, shipping_city: document.getElementById('shipCity').value.trim()||null, shipping_state: document.getElementById('shipState').value.trim()||null, shipping_zip: document.getElementById('shipZip').value.trim()||null, amount_usd: currentProduct.price, crypto_currency: selCrypto, product_name: currentProduct.name };
+  try {
+    const res = await fetch('/.netlify/functions/create-order', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+    const data = await res.json();
+    if (!res.ok || !data.invoice_url) throw new Error(data.error || 'Failed to create order');
+    window.location.href = data.invoice_url;
+  } catch (err) { showError('Payment setup failed: ' + err.message + '. Please try again or email info@silqueroad.com'); btn.disabled=false; btn.textContent='Pay with Crypto →'; }
+}
+
+document.addEventListener('keydown', e => { if (e.key==='Escape') closeModal(); });
+
+async function submitEmail(e) {
+  e.preventDefault();
+  const email=document.getElementById('email-input').value.trim(); const btn=document.getElementById('email-btn'); btn.textContent='Sending...'; btn.disabled=true;
+  try { await fetch('https://api.resend.com/contacts', { method: 'POST', headers: { 'Authorization': 'Bearer re_DsYwW8r2_FM1jadYVqoEWzGofrRpNQ7H7', 'Content-Type': 'application/json' }, body: JSON.stringify({ email, unsubscribed: false }) }); } catch {}
+  document.getElementById('email-form').style.display='none'; document.getElementById('email-success').style.display='block';
+}
+
+const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.style.opacity='1'; entry.target.style.transform='translateY(0)'; } }); }, { threshold: 0.1 });
+document.querySelectorAll('.cat-card, .step').forEach(el => { el.style.opacity='0'; el.style.transform='translateY(16px)'; el.style.transition='opacity 0.5s ease, transform 0.5s ease'; observer.observe(el); });
+loadProducts();
+</script>
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(() => console.log('SW registered'))
+      .catch(err => console.log('SW error:', err));
+  });
+}
+</script>
+</body>
+</html>
