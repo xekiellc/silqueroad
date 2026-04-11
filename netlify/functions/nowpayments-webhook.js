@@ -1,4 +1,3 @@
-const fetch = (...args) => import('node-fetch').then(({default: f}) => f(...args));
 const crypto = require('crypto');
 
 const SUPABASE_URL = 'https://pmtfqbefrsplvoriirru.supabase.co';
