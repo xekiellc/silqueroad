@@ -131,6 +131,30 @@ exports.handler = async (event) => {
         break;
       }
 
+      // Order shipped — notify buyer
+      case 'order_shipped': {
+        if (!data.buyer_email) break;
+        await sendEmail(
+          data.buyer_email,
+          `Your Order Has Shipped — Silque Road`,
+          `
+          <div style="font-family:Georgia,serif;max-width:600px;margin:0 auto;background:#0a0806;color:#f0e6cc;padding:40px;">
+            <h2 style="color:#c9a84c;letter-spacing:3px;text-transform:uppercase;font-size:18px">Your Order Has Shipped</h2>
+            <p style="color:#9a907e;margin:16px 0 24px">Good news — your Silque Road order is on its way.</p>
+            <table style="width:100%;border-collapse:collapse">
+              <tr><td style="padding:8px 0;border-bottom:1px solid rgba(201,168,76,0.2);color:#8a6e2a;font-size:12px;text-transform:uppercase;letter-spacing:1px;width:140px">Tracking Number</td><td style="padding:8px 0;border-bottom:1px solid rgba(201,168,76,0.2);color:#c9a84c;font-family:monospace;font-size:14px;font-weight:bold">${data.tracking_number}</td></tr>
+              <tr><td style="padding:8px 0;color:#8a6e2a;font-size:12px;text-transform:uppercase;letter-spacing:1px">Order Ref</td><td style="padding:8px 0;font-family:monospace;font-size:12px;color:#9a907e">${data.order_id ? data.order_id.substring(0,8).toUpperCase() : '—'}</td></tr>
+            </table>
+            <p style="color:#9a907e;margin-top:24px;font-size:14px;line-height:1.7;font-style:italic">Use your tracking number with the carrier to check delivery status. If you have any questions about your order, reply to this email.</p>
+            <hr style="border:none;border-top:1px solid rgba(201,168,76,0.2);margin:28px 0">
+            <p style="font-size:12px;color:rgba(154,144,126,0.4);line-height:1.6">This email was sent because you provided your email address at checkout. Silque Road does not store unnecessary personal data. &bull; <a href="mailto:info@silqueroad.com" style="color:#8a6e2a">info@silqueroad.com</a></p>
+            <p style="margin-top:16px;font-size:11px;color:rgba(154,144,126,0.3)">Silque Road &bull; Legal &amp; Available &bull; silqueroad.com</p>
+          </div>
+          `
+        );
+        break;
+      }
+
       default:
         return { statusCode: 400, body: 'Unknown notification type' };
     }
