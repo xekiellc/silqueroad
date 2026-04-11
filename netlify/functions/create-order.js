@@ -1,5 +1,3 @@
-const fetch = (...args) => import('node-fetch').then(({default: f}) => f(...args));
-
 const SUPABASE_URL = 'https://pmtfqbefrsplvoriirru.supabase.co';
 const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY;
 const NOWPAYMENTS_API_KEY = process.env.NOWPAYMENTS_API_KEY;
@@ -30,7 +28,6 @@ exports.handler = async (event) => {
       return { statusCode: 400, headers: CORS, body: JSON.stringify({ error: 'Missing required fields' }) };
     }
 
-    // Create order in Supabase
     const orderRes = await fetch(`${SUPABASE_URL}/rest/v1/orders`, {
       method: 'POST',
       headers: {
@@ -52,7 +49,6 @@ exports.handler = async (event) => {
     if (!orderRes.ok) throw new Error(orderData.message || 'Failed to create order');
     const order = Array.isArray(orderData) ? orderData[0] : orderData;
 
-    // Create NOWPayments invoice
     const invoiceRes = await fetch('https://api.nowpayments.io/v1/invoice', {
       method: 'POST',
       headers: {
@@ -74,7 +70,6 @@ exports.handler = async (event) => {
     const invoiceData = await invoiceRes.json();
     if (!invoiceRes.ok) throw new Error(invoiceData.message || 'Failed to create invoice');
 
-    // Update order with payment ID
     await fetch(`${SUPABASE_URL}/rest/v1/orders?id=eq.${order.id}`, {
       method: 'PATCH',
       headers: {
