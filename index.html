@@ -18,101 +18,47 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --gold: #C9A84C;
-  --gold-light: #E8C97A;
-  --gold-dark: #8B6914;
-  --gold-faint: rgba(201,168,76,0.12);
-  --ink: #100d05;
-  --ink-mid: #1a1208;
-  --ink-light: #2a2015;
-  --smoke: #1e180a;
-  --sand: #F0E6CC;
-  --sand-muted: rgba(240,230,204,0.6);
-  --crimson: #8B1A1A;
-  --green-ok: #3a8a3a;
-  --border: rgba(201,168,76,0.2);
-  --border-strong: rgba(201,168,76,0.4);
-  --font-display: 'Cinzel', 'Georgia', serif;
-  --font-body: 'Crimson Pro', 'Georgia', serif;
-  --font-ui: 'Space Mono', 'Courier New', monospace;
-  --transition: 0.2s ease;
-  --max-w: 1100px;
+  --gold: #C9A84C; --gold-light: #E8C97A; --gold-dark: #8B6914; --gold-faint: rgba(201,168,76,0.12);
+  --ink: #100d05; --ink-mid: #1a1208; --ink-light: #2a2015; --smoke: #1e180a;
+  --sand: #F0E6CC; --sand-muted: rgba(240,230,204,0.6); --crimson: #8B1A1A; --green-ok: #3a8a3a;
+  --border: rgba(201,168,76,0.2); --border-strong: rgba(201,168,76,0.4);
+  --font-display: 'Cinzel', 'Georgia', serif; --font-body: 'Crimson Pro', 'Georgia', serif;
+  --font-ui: 'Space Mono', 'Courier New', monospace; --transition: 0.2s ease; --max-w: 1100px;
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body { font-family: var(--font-body); background: var(--ink); color: var(--sand); line-height: 1.6; overflow-x: hidden; }
 img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--ink); }
-::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 3px; }
+::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: var(--ink); } ::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 3px; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
 .announce-bar { background: var(--gold); color: var(--ink); text-align: center; padding: 9px 16px; font-family: var(--font-ui); font-size: 11px; letter-spacing: 2px; font-weight: 700; text-transform: uppercase; }
 .announce-bar a { color: var(--ink); text-decoration: underline; }
-.nav { position: sticky; top: 0; z-index: 1000; background: var(--ink); border-bottom: 1px solid var(--border); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 68px; }
-.nav-logo { display: flex; align-items: center; gap: 12px; cursor: pointer; }
-.nav-logo-name { font-family: var(--font-display); font-size: 20px; font-weight: 700; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; display: block; }
-.nav-logo-tagline { font-family: var(--font-ui); font-size: 7px; letter-spacing: 3px; color: var(--gold-dark); text-transform: uppercase; display: block; }
+.nav { position: sticky; top: 0; z-index: 1000; background: var(--ink); border-bottom: 1px solid var(--border); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 72px; }
+.nav-logo { display: flex; align-items: center; cursor: pointer; }
+.nav-logo img { height: 56px; width: auto; object-fit: contain; }
 .nav-links { display: flex; align-items: center; gap: 32px; }
 .nav-links a { font-family: var(--font-ui); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--sand-muted); transition: color var(--transition); }
 .nav-links a:hover { color: var(--gold); }
 .nav-cta { background: var(--gold) !important; color: var(--ink) !important; padding: 9px 20px; font-weight: 700 !important; }
 .nav-cta:hover { background: var(--gold-light) !important; }
-
-/* ── LEGAL DROPDOWN ── */
 .nav-dropdown { position: relative; }
-.nav-dropdown-toggle {
-  font-family: var(--font-ui);
-  font-size: 10px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--sand-muted);
-  background: none;
-  border: none;
-  cursor: pointer;
-  transition: color var(--transition);
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 0;
-}
+.nav-dropdown-toggle { font-family: var(--font-ui); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--sand-muted); background: none; border: none; cursor: pointer; transition: color var(--transition); display: flex; align-items: center; gap: 6px; padding: 0; }
 .nav-dropdown-toggle:hover { color: var(--gold); }
 .nav-dropdown-toggle svg { transition: transform var(--transition); }
 .nav-dropdown.open .nav-dropdown-toggle { color: var(--gold); }
 .nav-dropdown.open .nav-dropdown-toggle svg { transform: rotate(180deg); }
-.nav-dropdown-menu {
-  display: none;
-  position: absolute;
-  top: calc(100% + 16px);
-  right: 0;
-  background: var(--ink-mid);
-  border: 1px solid var(--border-strong);
-  min-width: 200px;
-  z-index: 200;
-  flex-direction: column;
-}
+.nav-dropdown-menu { display: none; position: absolute; top: calc(100% + 16px); right: 0; background: var(--ink-mid); border: 1px solid var(--border-strong); min-width: 200px; z-index: 200; flex-direction: column; }
 .nav-dropdown.open .nav-dropdown-menu { display: flex; }
-.nav-dropdown-menu a {
-  font-family: var(--font-ui);
-  font-size: 9px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--sand-muted);
-  padding: 13px 18px;
-  border-bottom: 1px solid var(--border);
-  transition: background var(--transition), color var(--transition);
-  display: block;
-}
+.nav-dropdown-menu a { font-family: var(--font-ui); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--sand-muted); padding: 13px 18px; border-bottom: 1px solid var(--border); transition: background var(--transition), color var(--transition); display: block; }
 .nav-dropdown-menu a:last-child { border-bottom: none; }
 .nav-dropdown-menu a:hover { background: var(--gold-faint); color: var(--gold); }
-
 .nav-mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; color: var(--gold); font-size: 22px; }
 .mobile-menu { display: none; flex-direction: column; background: var(--smoke); border-bottom: 1px solid var(--border); padding: 16px 24px; gap: 0; }
 .mobile-menu a { font-family: var(--font-ui); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--sand-muted); padding: 14px 0; border-bottom: 1px solid var(--border); display: block; }
 .mobile-menu a:last-child { border-bottom: none; color: var(--gold); }
 .mobile-menu.open { display: flex; }
 .mobile-legal-divider { font-family: var(--font-ui); font-size: 8px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold-dark); opacity: 0.5; padding: 12px 0 4px; border-bottom: none !important; cursor: default; }
-
 .hero { min-height: 92vh; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; overflow: hidden; text-align: center; padding: 80px 24px; }
 .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 50% 60%, rgba(139,105,20,0.18) 0%, transparent 70%), radial-gradient(ellipse 40% 30% at 50% 30%, rgba(201,168,76,0.06) 0%, transparent 60%); pointer-events: none; }
 .hero-dunes { position: absolute; bottom: 0; left: 0; right: 0; height: 140px; pointer-events: none; }
@@ -133,8 +79,7 @@ a { color: inherit; text-decoration: none; }
 .trust-item { font-family: var(--font-ui); font-size: 9px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; opacity: 0.65; display: flex; align-items: center; gap: 8px; padding: 6px 20px; border-right: 1px solid var(--border); white-space: nowrap; }
 .trust-item:last-child { border-right: none; }
 .trust-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
-.section { padding: 72px 24px; }
-.section-alt { background: var(--smoke); }
+.section { padding: 72px 24px; } .section-alt { background: var(--smoke); }
 .section-header { text-align: center; margin-bottom: 52px; }
 .section-label { font-family: var(--font-ui); font-size: 9px; letter-spacing: 5px; color: var(--gold); text-transform: uppercase; opacity: 0.65; margin-bottom: 14px; }
 .section-title { font-family: var(--font-display); font-size: clamp(26px, 4vw, 38px); font-weight: 600; letter-spacing: 5px; color: var(--gold); text-transform: uppercase; margin-bottom: 12px; }
@@ -147,11 +92,9 @@ a { color: inherit; text-decoration: none; }
 .cat-name { font-family: var(--font-display); font-size: 13px; font-weight: 600; letter-spacing: 1.5px; color: var(--gold); text-transform: uppercase; line-height: 1.3; }
 .cat-desc { font-family: var(--font-ui); font-size: 9px; letter-spacing: 0.5px; color: var(--sand-muted); line-height: 1.6; }
 .cat-badge { position: absolute; top: 10px; right: 10px; font-family: var(--font-ui); font-size: 8px; letter-spacing: 1px; font-weight: 700; padding: 3px 8px; text-transform: uppercase; }
-.badge-hot { background: var(--crimson); color: var(--sand); }
-.badge-new { background: var(--green-ok); color: var(--sand); }
+.badge-hot { background: var(--crimson); color: var(--sand); } .badge-new { background: var(--green-ok); color: var(--sand); }
 .steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 1px solid var(--border); max-width: 960px; margin: 0 auto; }
-.step { padding: 36px 28px; border-right: 1px solid var(--border); }
-.step:last-child { border-right: none; }
+.step { padding: 36px 28px; border-right: 1px solid var(--border); } .step:last-child { border-right: none; }
 .step-num { font-family: var(--font-display); font-size: 52px; font-weight: 700; color: var(--gold-dark); opacity: 0.25; line-height: 1; margin-bottom: 14px; }
 .step-title { font-family: var(--font-display); font-size: 13px; font-weight: 600; letter-spacing: 1.5px; color: var(--gold); text-transform: uppercase; margin-bottom: 10px; }
 .step-body { font-family: var(--font-body); font-size: 15px; color: var(--sand-muted); line-height: 1.6; }
@@ -209,8 +152,7 @@ a { color: inherit; text-decoration: none; }
 .checkout-steps { display: flex; gap: 0; margin-bottom: 24px; border-bottom: 1px solid var(--border); }
 .checkout-step-btn { flex: 1; padding: 10px; font-family: var(--font-ui); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; background: transparent; border: none; color: var(--sand-muted); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: all var(--transition); }
 .checkout-step-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
-.checkout-panel { display: none; }
-.checkout-panel.active { display: block; }
+.checkout-panel { display: none; } .checkout-panel.active { display: block; }
 .form-field { margin-bottom: 14px; }
 .form-field label { display: block; font-family: var(--font-ui); font-size: 8px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 6px; }
 .form-field input { width: 100%; background: var(--ink-light); border: 1px solid var(--border-strong); color: var(--sand); font-family: var(--font-ui); font-size: 12px; padding: 11px 14px; outline: none; transition: border-color var(--transition); border-radius: 0; -webkit-appearance: none; }
@@ -283,10 +225,7 @@ a { color: inherit; text-decoration: none; }
 
 <nav class="nav">
   <a href="/" class="nav-logo">
-    <div>
-      <span class="nav-logo-name">Silque Road</span>
-      <span class="nav-logo-tagline">Legal &amp; Available</span>
-    </div>
+    <img src="data:image/png;base64,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" style="height:56px;width:auto;" alt="Silque Road">
   </a>
   <div class="nav-links">
     <a href="#marketplace">Marketplace</a>
@@ -296,9 +235,7 @@ a { color: inherit; text-decoration: none; }
     <div class="nav-dropdown" id="legalDropdown">
       <button class="nav-dropdown-toggle" onclick="toggleLegalDropdown()">
         Legal
-        <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
+        <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
       </button>
       <div class="nav-dropdown-menu">
         <a href="/terms.html">Terms of Service</a>
@@ -516,7 +453,6 @@ a { color: inherit; text-decoration: none; }
   <p>Silque Road is a platform connecting buyers and sellers of legal products. All products displayed are legal under applicable federal and state law. Availability varies by state and is determined at checkout based on shipping address. Products listed as &ldquo;for research purposes&rdquo; or &ldquo;veterinary use&rdquo; are sold exclusively for those purposes. Nothing on this site constitutes medical, legal, or financial advice. Silque Road is not responsible for the use or misuse of any product purchased through this platform. Buyers are responsible for knowing and complying with their local laws.</p>
 </div>
 
-<!-- CHECKOUT MODAL -->
 <div class="modal-overlay" id="modal" onclick="closeModalOutside(event)">
   <div class="modal" role="dialog" aria-modal="true">
     <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
@@ -533,32 +469,14 @@ a { color: inherit; text-decoration: none; }
     <div class="modal-error" id="modalError"></div>
     <div class="checkout-panel active" id="panel1">
       <p class="anon-note">&#10003; All fields optional — checkout anonymously if you prefer</p>
-      <div class="form-field">
-        <label>Email — for order updates only</label>
-        <input type="email" id="buyerEmail" placeholder="your@email.com (optional)" autocomplete="off" />
-      </div>
-      <div class="form-field">
-        <label>Ship To — Full Name</label>
-        <input type="text" id="shipName" placeholder="Name on package (optional)" autocomplete="off" />
-      </div>
-      <div class="form-field">
-        <label>Street Address</label>
-        <input type="text" id="shipAddress" placeholder="123 Main St (optional)" autocomplete="off" />
-      </div>
+      <div class="form-field"><label>Email — for order updates only</label><input type="email" id="buyerEmail" placeholder="your@email.com (optional)" autocomplete="off" /></div>
+      <div class="form-field"><label>Ship To — Full Name</label><input type="text" id="shipName" placeholder="Name on package (optional)" autocomplete="off" /></div>
+      <div class="form-field"><label>Street Address</label><input type="text" id="shipAddress" placeholder="123 Main St (optional)" autocomplete="off" /></div>
       <div class="form-row">
-        <div class="form-field">
-          <label>City</label>
-          <input type="text" id="shipCity" placeholder="City" autocomplete="off" />
-        </div>
-        <div class="form-field">
-          <label>State</label>
-          <input type="text" id="shipState" placeholder="OH" maxlength="2" autocomplete="off" />
-        </div>
+        <div class="form-field"><label>City</label><input type="text" id="shipCity" placeholder="City" autocomplete="off" /></div>
+        <div class="form-field"><label>State</label><input type="text" id="shipState" placeholder="OH" maxlength="2" autocomplete="off" /></div>
       </div>
-      <div class="form-field">
-        <label>ZIP Code</label>
-        <input type="text" id="shipZip" placeholder="44223" maxlength="10" autocomplete="off" />
-      </div>
+      <div class="form-field"><label>ZIP Code</label><input type="text" id="shipZip" placeholder="44223" maxlength="10" autocomplete="off" /></div>
       <button class="modal-proceed" onclick="goToStep(2)">Continue to Payment &rarr;</button>
       <p class="modal-note">Your shipping info is used only to fulfill your order.</p>
     </div>
@@ -583,32 +501,16 @@ a { color: inherit; text-decoration: none; }
 <script>
 const SUPABASE_URL = 'https://pmtfqbefrsplvoriirru.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBtdGZxYmVmcnNwbHZvcmlpcnJ1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU4Mzk5MzEsImV4cCI6MjA5MTQxNTkzMX0.xgIVCGtB1Elp8ywjQhUAHdAVXOMoZJRmxWXM6vpZBB0';
-
 let currentProduct = null;
 let selCrypto = 'btc';
 
-// ── LEGAL DROPDOWN ──
-function toggleLegalDropdown() {
-  const dropdown = document.getElementById('legalDropdown');
-  dropdown.classList.toggle('open');
-}
+function toggleLegalDropdown() { document.getElementById('legalDropdown').classList.toggle('open'); }
+document.addEventListener('click', function(e) { const d = document.getElementById('legalDropdown'); if (d && !d.contains(e.target)) d.classList.remove('open'); });
 
-document.addEventListener('click', function(e) {
-  const dropdown = document.getElementById('legalDropdown');
-  if (dropdown && !dropdown.contains(e.target)) {
-    dropdown.classList.remove('open');
-  }
-});
-
-// ── PRODUCTS ──
 async function loadProducts() {
   try {
-    const res = await fetch(
-      `${SUPABASE_URL}/rest/v1/products?status=eq.active&stock_status=neq.out_of_stock&order=featured.desc,created_at.desc&limit=6`,
-      { headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` } }
-    );
-    const products = await res.json();
-    renderProducts(products);
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/products?status=eq.active&stock_status=neq.out_of_stock&order=featured.desc,created_at.desc&limit=6`, { headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` } });
+    renderProducts(await res.json());
   } catch { renderFallbackProducts(); }
 }
 
@@ -617,170 +519,54 @@ function renderProducts(products) {
   if (!products || products.length === 0) { renderFallbackProducts(); return; }
   grid.innerHTML = products.map(p => {
     const price = parseFloat(p.price || 0).toFixed(2);
-    const imgHtml = p.image_url
-      ? `<img class="product-img" src="${esc(p.image_url)}" alt="${esc(p.name)}" loading="lazy" onerror="this.style.display='none'">`
-      : '';
-    const disclaimer = p.disclaimer
-      ? `<div style="font-family:var(--font-ui);font-size:8px;color:var(--sand-muted);opacity:0.45;margin-top:4px">${esc(p.disclaimer)}</div>`
-      : '';
-    return `
-      <div class="product-card" onclick="window.location.href='/product.html?id=${p.id}'">
-        ${imgHtml}
-        <div class="product-cat">${esc(p.category || '')}</div>
-        <div class="product-name">${esc(p.name)}</div>
-        <div class="product-desc">${esc(p.description || '')}</div>
-        ${disclaimer}
-        <div class="product-footer">
-          <div>
-            <div class="product-price">$${price}</div>
-            <div class="product-legal">&#10003; Vetted Seller</div>
-          </div>
-          <button class="product-add" onclick='event.stopPropagation(); openModal(${JSON.stringify({id: p.id, seller_id: p.seller_id, name: p.name, price: parseFloat(price), category: p.category})})'>Buy Now</button>
-        </div>
-      </div>`;
+    const imgHtml = p.image_url ? `<img class="product-img" src="${esc(p.image_url)}" alt="${esc(p.name)}" loading="lazy" onerror="this.style.display='none'">` : '';
+    const disclaimer = p.disclaimer ? `<div style="font-family:var(--font-ui);font-size:8px;color:var(--sand-muted);opacity:0.45;margin-top:4px">${esc(p.disclaimer)}</div>` : '';
+    return `<div class="product-card" onclick="window.location.href='/product.html?id=${p.id}'">${imgHtml}<div class="product-cat">${esc(p.category || '')}</div><div class="product-name">${esc(p.name)}</div><div class="product-desc">${esc(p.description || '')}</div>${disclaimer}<div class="product-footer"><div><div class="product-price">$${price}</div><div class="product-legal">&#10003; Vetted Seller</div></div><button class="product-add" onclick='event.stopPropagation(); openModal(${JSON.stringify({id: p.id, seller_id: p.seller_id, name: p.name, price: parseFloat(price), category: p.category})})'>Buy Now</button></div></div>`;
   }).join('');
-  document.querySelectorAll('.product-card').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(16px)';
-    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    observer.observe(el);
-  });
+  document.querySelectorAll('.product-card').forEach(el => { el.style.opacity='0'; el.style.transform='translateY(16px)'; el.style.transition='opacity 0.5s ease, transform 0.5s ease'; observer.observe(el); });
 }
 
-function renderFallbackProducts() {
-  document.getElementById('productGrid').innerHTML = `
-    <div class="products-empty" style="grid-column:1/-1">
-      <p style="margin-bottom:16px">Products coming soon.</p>
-      <a href="/seller-apply.html" class="btn-primary" style="display:inline-block">Become a Founding Seller</a>
-    </div>`;
-}
-
-function esc(str) {
-  if (!str) return '';
-  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
-}
-
+function renderFallbackProducts() { document.getElementById('productGrid').innerHTML = `<div class="products-empty" style="grid-column:1/-1"><p style="margin-bottom:16px">Products coming soon.</p><a href="/seller-apply.html" class="btn-primary" style="display:inline-block">Become a Founding Seller</a></div>`; }
+function esc(str) { if (!str) return ''; return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
 function toggleMobile() { document.getElementById('mobile-menu').classList.toggle('open'); }
 
 function openModal(product) {
-  currentProduct = product;
-  selCrypto = 'btc';
+  currentProduct = product; selCrypto = 'btc';
   document.getElementById('modalTitle').textContent = product ? product.name : 'Checkout';
-  document.getElementById('modalSub').textContent = product
-    ? `$${parseFloat(product.price).toFixed(2)} — ${product.category || ''}`
-    : 'Complete your purchase below.';
-  if (product) {
-    document.getElementById('orderSummary').style.display = 'block';
-    document.getElementById('summaryProduct').textContent = product.name;
-    document.getElementById('summaryPrice').textContent = `$${parseFloat(product.price).toFixed(2)}`;
-  } else {
-    document.getElementById('orderSummary').style.display = 'none';
-  }
-  goToStep(1);
-  document.getElementById('modalError').style.display = 'none';
-  document.getElementById('modal').classList.add('open');
-  document.body.style.overflow = 'hidden';
+  document.getElementById('modalSub').textContent = product ? `$${parseFloat(product.price).toFixed(2)} — ${product.category || ''}` : 'Complete your purchase below.';
+  if (product) { document.getElementById('orderSummary').style.display='block'; document.getElementById('summaryProduct').textContent=product.name; document.getElementById('summaryPrice').textContent=`$${parseFloat(product.price).toFixed(2)}`; }
+  else { document.getElementById('orderSummary').style.display='none'; }
+  goToStep(1); document.getElementById('modalError').style.display='none'; document.getElementById('modal').classList.add('open'); document.body.style.overflow='hidden';
 }
-
-function closeModal() {
-  document.getElementById('modal').classList.remove('open');
-  document.body.style.overflow = '';
-  currentProduct = null;
-}
-
-function closeModalOutside(e) {
-  if (e.target === document.getElementById('modal')) closeModal();
-}
-
-function goToStep(step) {
-  document.querySelectorAll('.checkout-panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.checkout-step-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('panel' + step).classList.add('active');
-  document.getElementById('stepBtn' + step).classList.add('active');
-}
-
-function selectCrypto(el, currency) {
-  document.querySelectorAll('.crypto-opt').forEach(o => o.classList.remove('selected'));
-  el.classList.add('selected');
-  selCrypto = currency;
-}
-
-function showError(msg) {
-  const el = document.getElementById('modalError');
-  el.textContent = msg;
-  el.style.display = 'block';
-}
+function closeModal() { document.getElementById('modal').classList.remove('open'); document.body.style.overflow=''; currentProduct=null; }
+function closeModalOutside(e) { if (e.target===document.getElementById('modal')) closeModal(); }
+function goToStep(step) { document.querySelectorAll('.checkout-panel').forEach(p=>p.classList.remove('active')); document.querySelectorAll('.checkout-step-btn').forEach(b=>b.classList.remove('active')); document.getElementById('panel'+step).classList.add('active'); document.getElementById('stepBtn'+step).classList.add('active'); }
+function selectCrypto(el, currency) { document.querySelectorAll('.crypto-opt').forEach(o=>o.classList.remove('selected')); el.classList.add('selected'); selCrypto=currency; }
+function showError(msg) { const el=document.getElementById('modalError'); el.textContent=msg; el.style.display='block'; }
 
 async function proceedToPayment() {
   if (!currentProduct) { showError('No product selected.'); return; }
-  const btn = document.getElementById('payBtn');
-  btn.disabled = true;
-  btn.textContent = 'Creating order...';
-  document.getElementById('modalError').style.display = 'none';
-  const payload = {
-    product_id: currentProduct.id,
-    seller_id: currentProduct.seller_id,
-    buyer_email: document.getElementById('buyerEmail').value.trim() || null,
-    shipping_name: document.getElementById('shipName').value.trim() || null,
-    shipping_address: document.getElementById('shipAddress').value.trim() || null,
-    shipping_city: document.getElementById('shipCity').value.trim() || null,
-    shipping_state: document.getElementById('shipState').value.trim() || null,
-    shipping_zip: document.getElementById('shipZip').value.trim() || null,
-    amount_usd: currentProduct.price,
-    crypto_currency: selCrypto,
-    product_name: currentProduct.name
-  };
+  const btn=document.getElementById('payBtn'); btn.disabled=true; btn.textContent='Creating order...'; document.getElementById('modalError').style.display='none';
+  const payload = { product_id: currentProduct.id, seller_id: currentProduct.seller_id, buyer_email: document.getElementById('buyerEmail').value.trim()||null, shipping_name: document.getElementById('shipName').value.trim()||null, shipping_address: document.getElementById('shipAddress').value.trim()||null, shipping_city: document.getElementById('shipCity').value.trim()||null, shipping_state: document.getElementById('shipState').value.trim()||null, shipping_zip: document.getElementById('shipZip').value.trim()||null, amount_usd: currentProduct.price, crypto_currency: selCrypto, product_name: currentProduct.name };
   try {
-    const res = await fetch('/.netlify/functions/create-order', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    });
+    const res = await fetch('/.netlify/functions/create-order', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
     const data = await res.json();
     if (!res.ok || !data.invoice_url) throw new Error(data.error || 'Failed to create order');
     window.location.href = data.invoice_url;
-  } catch (err) {
-    showError('Payment setup failed: ' + err.message + '. Please try again or email info@silqueroad.com');
-    btn.disabled = false;
-    btn.textContent = 'Pay with Crypto →';
-  }
+  } catch (err) { showError('Payment setup failed: ' + err.message + '. Please try again or email info@silqueroad.com'); btn.disabled=false; btn.textContent='Pay with Crypto →'; }
 }
 
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+document.addEventListener('keydown', e => { if (e.key==='Escape') closeModal(); });
 
 async function submitEmail(e) {
   e.preventDefault();
-  const email = document.getElementById('email-input').value.trim();
-  const btn = document.getElementById('email-btn');
-  btn.textContent = 'Sending...';
-  btn.disabled = true;
-  try {
-    await fetch('https://api.resend.com/contacts', {
-      method: 'POST',
-      headers: { 'Authorization': 'Bearer re_DsYwW8r2_FM1jadYVqoEWzGofrRpNQ7H7', 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, unsubscribed: false })
-    });
-  } catch {}
-  document.getElementById('email-form').style.display = 'none';
-  document.getElementById('email-success').style.display = 'block';
+  const email=document.getElementById('email-input').value.trim(); const btn=document.getElementById('email-btn'); btn.textContent='Sending...'; btn.disabled=true;
+  try { await fetch('https://api.resend.com/contacts', { method: 'POST', headers: { 'Authorization': 'Bearer re_DsYwW8r2_FM1jadYVqoEWzGofrRpNQ7H7', 'Content-Type': 'application/json' }, body: JSON.stringify({ email, unsubscribed: false }) }); } catch {}
+  document.getElementById('email-form').style.display='none'; document.getElementById('email-success').style.display='block';
 }
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.style.opacity = '1';
-      entry.target.style.transform = 'translateY(0)';
-    }
-  });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('.cat-card, .step').forEach(el => {
-  el.style.opacity = '0';
-  el.style.transform = 'translateY(16px)';
-  el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-  observer.observe(el);
-});
-
+const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.style.opacity='1'; entry.target.style.transform='translateY(0)'; } }); }, { threshold: 0.1 });
+document.querySelectorAll('.cat-card, .step').forEach(el => { el.style.opacity='0'; el.style.transform='translateY(16px)'; el.style.transition='opacity 0.5s ease, transform 0.5s ease'; observer.observe(el); });
 loadProducts();
 </script>
 </body>
