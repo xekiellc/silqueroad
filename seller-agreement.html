@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Silque Road Seller Agreement — Terms for sellers on the Silque Road anonymous marketplace.">
+<title>Seller Agreement — Silque Road</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #C9A84C; --gold-light: #E8C97A; --gold-dark: #8B6914; --ink: #100d05; --ink-mid: #1a1208; --ink-light: #2a2015; --smoke: #1e180a; --sand: #F0E6CC; --sand-muted: rgba(240,230,204,0.6); --border: rgba(201,168,76,0.2); --border-strong: rgba(201,168,76,0.4); --green-ok: #3a8a3a; --crimson: #8B1A1A; --font-display: 'Cinzel', 'Georgia', serif; --font-body: 'Crimson Pro', 'Georgia', serif; --font-ui: 'Space Mono', 'Courier New', monospace; --transition: 0.2s ease; --max-w: 1100px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); background: var(--ink); color: var(--sand); line-height: 1.6; overflow-x: hidden; }
+a { color: inherit; text-decoration: none; }
+::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: var(--ink); } ::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 3px; }
+.announce-bar { background: var(--gold); color: var(--ink); text-align: center; padding: 9px 16px; font-family: var(--font-ui); font-size: 11px; letter-spacing: 2px; font-weight: 700; text-transform: uppercase; }
+.announce-bar a { color: var(--ink); text-decoration: underline; }
+.nav { position: sticky; top: 0; z-index: 1000; background: var(--ink); border-bottom: 1px solid var(--border); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.nav-logo { display: flex; align-items: center; gap: 12px; }
+.nav-logo-name { font-family: var(--font-display); font-size: 20px; font-weight: 700; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; display: block; }
+.nav-logo-tagline { font-family: var(--font-ui); font-size: 7px; letter-spacing: 3px; color: var(--gold-dark); text-transform: uppercase; display: block; }
+.nav-links { display: flex; align-items: center; gap: 32px; }
+.nav-links a { font-family: var(--font-ui); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--sand-muted); transition: color var(--transition); }
+.nav-links a:hover { color: var(--gold); }
+.nav-cta { background: var(--gold) !important; color: var(--ink) !important; padding: 9px 20px; font-weight: 700 !important; }
+.nav-mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; color: var(--gold); font-size: 22px; }
+.mobile-menu { display: none; flex-direction: column; background: var(--smoke); border-bottom: 1px solid var(--border); padding: 16px 24px; }
+.mobile-menu a { font-family: var(--font-ui); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--sand-muted); padding: 14px 0; border-bottom: 1px solid var(--border); display: block; }
+.mobile-menu a:last-child { border-bottom: none; color: var(--gold); }
+.mobile-menu.open { display: flex; }
+.legal-hero { background: var(--smoke); border-bottom: 1px solid var(--border); padding: 64px 24px 52px; text-align: center; }
+.legal-eyebrow { font-family: var(--font-ui); font-size: 9px; letter-spacing: 5px; color: var(--gold); text-transform: uppercase; opacity: 0.65; margin-bottom: 16px; }
+.legal-title { font-family: var(--font-display); font-size: clamp(28px, 5vw, 48px); font-weight: 700; letter-spacing: 6px; color: var(--gold); text-transform: uppercase; margin-bottom: 12px; }
+.legal-meta { font-family: var(--font-ui); font-size: 10px; letter-spacing: 2px; color: var(--sand-muted); opacity: 0.45; text-transform: uppercase; }
+.gold-rule { width: 120px; height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent); margin: 20px auto 0; }
+.legal-wrap { max-width: 820px; margin: 0 auto; padding: 64px 24px 80px; }
+.seller-highlight { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); margin-bottom: 52px; }
+.seller-highlight-item { background: var(--ink-mid); padding: 24px 20px; text-align: center; }
+.seller-highlight-num { font-family: var(--font-display); font-size: 32px; font-weight: 700; color: var(--gold); margin-bottom: 6px; }
+.seller-highlight-label { font-family: var(--font-ui); font-size: 9px; letter-spacing: 2px; color: var(--sand-muted); text-transform: uppercase; opacity: 0.6; }
+.legal-toc { background: var(--ink-mid); border: 1px solid var(--border); padding: 28px 32px; margin-bottom: 52px; }
+.legal-toc-title { font-family: var(--font-ui); font-size: 9px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 16px; opacity: 0.7; }
+.legal-toc ol { list-style: none; counter-reset: toc; display: flex; flex-direction: column; gap: 8px; }
+.legal-toc ol li { counter-increment: toc; }
+.legal-toc ol li a { font-family: var(--font-ui); font-size: 11px; letter-spacing: 1px; color: var(--sand-muted); opacity: 0.7; transition: opacity var(--transition), color var(--transition); display: flex; align-items: center; gap: 10px; }
+.legal-toc ol li a:hover { opacity: 1; color: var(--gold); }
+.legal-toc ol li a::before { content: counter(toc, decimal-leading-zero); font-family: var(--font-display); font-size: 10px; color: var(--gold-dark); opacity: 0.6; }
+.legal-section { margin-bottom: 52px; }
+.legal-section-title { font-family: var(--font-display); font-size: 16px; font-weight: 600; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 12px; }
+.legal-section-num { font-family: var(--font-display); font-size: 11px; color: var(--gold-dark); opacity: 0.6; }
+.legal-section p { font-family: var(--font-body); font-size: 17px; color: var(--sand-muted); line-height: 1.75; margin-bottom: 14px; }
+.legal-section p:last-child { margin-bottom: 0; }
+.legal-section ul { list-style: none; display: flex; flex-direction: column; gap: 10px; margin: 14px 0; }
+.legal-section ul li { font-family: var(--font-body); font-size: 17px; color: var(--sand-muted); line-height: 1.7; padding-left: 20px; position: relative; }
+.legal-section ul li::before { content: '—'; position: absolute; left: 0; color: var(--gold-dark); opacity: 0.6; }
+.legal-section a { color: var(--gold); opacity: 0.8; }
+.legal-section a:hover { opacity: 1; }
+.legal-callout { background: var(--ink-mid); border: 1px solid var(--border); border-left: 3px solid var(--gold); padding: 20px 24px; margin: 20px 0; }
+.legal-callout p { font-family: var(--font-ui); font-size: 11px; letter-spacing: 0.5px; color: var(--sand-muted); line-height: 1.7; margin: 0; }
+.payout-box { background: var(--ink-mid); border: 1px solid var(--border); padding: 24px 28px; margin: 20px 0; }
+.payout-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--border); font-family: var(--font-ui); font-size: 11px; }
+.payout-row:last-child { border-bottom: none; color: var(--gold); font-weight: 700; }
+.payout-label { color: var(--sand-muted); letter-spacing: 1px; text-transform: uppercase; }
+.payout-val { color: var(--sand); }
+.seller-cta-box { background: var(--smoke); border: 1px solid var(--border); padding: 36px 32px; text-align: center; margin-top: 52px; }
+.seller-cta-box h3 { font-family: var(--font-display); font-size: 18px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 12px; }
+.seller-cta-box p { font-family: var(--font-body); font-size: 17px; font-style: italic; color: var(--sand-muted); margin-bottom: 24px; }
+.btn-primary { display: inline-block; background: var(--gold); color: var(--ink); font-family: var(--font-ui); font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 15px 36px; transition: background var(--transition); }
+.btn-primary:hover { background: var(--gold-light); }
+.footer { background: var(--ink); border-top: 1px solid var(--border); padding: 52px 24px 32px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; max-width: var(--max-w); margin: 0 auto 40px; }
+.footer-brand-name { font-family: var(--font-display); font-size: 20px; font-weight: 700; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; display: block; margin-bottom: 12px; }
+.footer-brand-desc { font-family: var(--font-body); font-size: 14px; font-style: italic; color: var(--sand-muted); opacity: 0.5; line-height: 1.6; margin-bottom: 20px; }
+.footer-col-title { font-family: var(--font-ui); font-size: 9px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; opacity: 0.55; margin-bottom: 18px; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-links li a { font-family: var(--font-body); font-size: 15px; color: var(--sand-muted); opacity: 0.5; transition: opacity var(--transition), color var(--transition); }
+.footer-links li a:hover { opacity: 0.9; color: var(--gold); }
+.footer-bottom { border-top: 1px solid var(--border); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; max-width: var(--max-w); margin: 0 auto; flex-wrap: wrap; gap: 12px; }
+.footer-copy { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--sand-muted); opacity: 0.3; }
+.footer-legal-links { display: flex; gap: 20px; }
+.footer-legal-links a { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--sand-muted); opacity: 0.3; text-transform: uppercase; transition: opacity var(--transition); }
+.footer-legal-links a:hover { opacity: 0.7; }
+.disclaimer-bar { background: var(--ink-mid); border-top: 1px solid var(--border); padding: 12px 24px; text-align: center; }
+.disclaimer-bar p { font-family: var(--font-ui); font-size: 9px; color: var(--sand-muted); opacity: 0.3; line-height: 1.6; max-width: 900px; margin: 0 auto; }
+@media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr; } .nav-links { display: none; } .nav-mobile-toggle { display: block; } .seller-highlight { grid-template-columns: 1fr; } }
+@media (max-width: 600px) { .footer-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="announce-bar">Founding Sellers Wanted — <a href="/seller-apply.html">Apply now &rarr;</a></div>
+<nav class="nav">
+  <a href="/" class="nav-logo"><div><span class="nav-logo-name">Silque Road</span><span class="nav-logo-tagline">Legal &amp; Available</span></div></a>
+  <div class="nav-links"><a href="/#marketplace">Marketplace</a><a href="/#health-network">Health Network</a><a href="/#how-it-works">How It Works</a><a href="/seller-apply.html">Sell With Us</a><a href="/#featured" class="nav-cta">Shop Now</a></div>
+  <button class="nav-mobile-toggle" onclick="document.getElementById('mobile-menu').classList.toggle('open')" aria-label="Toggle menu">&#9776;</button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="/#marketplace">Marketplace</a><a href="/#health-network">Health Network</a><a href="/#how-it-works">How It Works</a><a href="/seller-apply.html">Sell With Us</a><a href="/#featured">Shop Now</a>
+</div>
+
+<div class="legal-hero">
+  <p class="legal-eyebrow">Legal Documents &nbsp;&bull;&nbsp; XEKIE LLC</p>
+  <h1 class="legal-title">Seller Agreement</h1>
+  <p class="legal-meta">Effective Date: April 10, 2026 &nbsp;&bull;&nbsp; Last Updated: April 10, 2026</p>
+  <div class="gold-rule"></div>
+</div>
+
+<div class="legal-wrap">
+  <div class="seller-highlight">
+    <div class="seller-highlight-item"><div class="seller-highlight-num">90%</div><div class="seller-highlight-label">Seller Payout</div></div>
+    <div class="seller-highlight-item"><div class="seller-highlight-num">10%</div><div class="seller-highlight-label">Platform Commission</div></div>
+    <div class="seller-highlight-item"><div class="seller-highlight-num">0</div><div class="seller-highlight-label">Deplatforming. Ever.</div></div>
+  </div>
+
+  <div class="legal-toc">
+    <p class="legal-toc-title">Table of Contents</p>
+    <ol>
+      <li><a href="#agreement-overview">Agreement Overview</a></li>
+      <li><a href="#seller-eligibility">Seller Eligibility &amp; Vetting</a></li>
+      <li><a href="#permitted-products">Permitted Products</a></li>
+      <li><a href="#prohibited-products">Prohibited Products</a></li>
+      <li><a href="#seller-obligations">Seller Obligations</a></li>
+      <li><a href="#commission-payouts">Commission &amp; Payouts</a></li>
+      <li><a href="#fulfillment">Fulfillment &amp; Shipping</a></li>
+      <li><a href="#compliance">Legal Compliance</a></li>
+      <li><a href="#representations">Representations &amp; Warranties</a></li>
+      <li><a href="#indemnification">Indemnification</a></li>
+      <li><a href="#termination">Termination</a></li>
+      <li><a href="#disputes">Disputes</a></li>
+      <li><a href="#seller-contact">Contact</a></li>
+    </ol>
+  </div>
+
+  <div class="legal-section" id="agreement-overview">
+    <h2 class="legal-section-title"><span class="legal-section-num">01</span> Agreement Overview</h2>
+    <p>This Seller Agreement ("Agreement") governs your participation as a seller on the Silque Road marketplace platform operated by XEKIE LLC. By submitting a seller application, accepting approval, or listing any product on Silque Road, you ("Seller") agree to be bound by this Agreement in its entirety.</p>
+    <p>This Agreement incorporates by reference the Silque Road <a href="/terms.html">Terms of Service</a> and <a href="/privacy.html">Privacy Policy</a>.</p>
+    <div class="legal-callout"><p>Silque Road exists because mainstream platforms fail legal sellers. We will never deplatform a seller for selling a legal product.</p></div>
+  </div>
+
+  <div class="legal-section" id="seller-eligibility">
+    <h2 class="legal-section-title"><span class="legal-section-num">02</span> Seller Eligibility &amp; Vetting</h2>
+    <p>To sell on Silque Road, you must:</p>
+    <ul>
+      <li>Be at least 18 years of age or a legally formed business entity</li>
+      <li>Be legally permitted to sell the products you wish to list</li>
+      <li>Hold any licenses, permits, or certifications required by law for your product category</li>
+      <li>Operate in good faith and without intent to defraud buyers</li>
+      <li>Submit a complete and truthful seller application</li>
+    </ul>
+    <p>Silque Road reserves the right to approve or deny any seller application at its sole discretion. Providing false information in a seller application is grounds for immediate and permanent termination.</p>
+  </div>
+
+  <div class="legal-section" id="permitted-products">
+    <h2 class="legal-section-title"><span class="legal-section-num">03</span> Permitted Products</h2>
+    <p>Permitted categories currently include:</p>
+    <ul>
+      <li>Health freedom products (ivermectin, peptides, methylene blue, fenbendazole, and similar)</li>
+      <li>Psychedelic-adjacent botanicals (kratom, amanita muscaria, kava, blue lotus, salvia — where legal)</li>
+      <li>Cannabis-adjacent products (Delta-8 THC, THCA, HHC, CBN, hemp flower — where legal)</li>
+      <li>Longevity and biohacking supplements (NAD+, BPC-157, shilajit, nootropics)</li>
+      <li>Privacy and communications products (burner phones, faraday bags, counter-surveillance tools)</li>
+      <li>Legal weapons-adjacent products (blades, stun guns, fireworks — where legal)</li>
+      <li>Men's health and women's wellness products</li>
+      <li>Adult wellness products (age-verified)</li>
+      <li>Taboo foods (raw dairy, exotic meats, high-proof spirits — where legal)</li>
+      <li>Tobacco and nicotine products (where legal and properly labeled)</li>
+      <li>Off-grid, prepper, and homestead products</li>
+    </ul>
+  </div>
+
+  <div class="legal-section" id="prohibited-products">
+    <h2 class="legal-section-title"><span class="legal-section-num">04</span> Prohibited Products</h2>
+    <p>The following are strictly prohibited regardless of claimed legality:</p>
+    <ul>
+      <li>Controlled substances under the federal Controlled Substances Act (Schedule I–V) without valid prescription fulfillment framework</li>
+      <li>Prescription medications sold without a valid prescription from a licensed provider</li>
+      <li>Firearms or components regulated under the National Firearms Act</li>
+      <li>Products containing undisclosed or mislabeled active pharmaceutical ingredients</li>
+      <li>Fraudulently described, mislabeled, or misrepresented products</li>
+      <li>Products intended to facilitate harm to another person</li>
+      <li>Counterfeit goods or goods infringing on third-party intellectual property</li>
+    </ul>
+  </div>
+
+  <div class="legal-section" id="seller-obligations">
+    <h2 class="legal-section-title"><span class="legal-section-num">05</span> Seller Obligations</h2>
+    <p>As an approved seller, you agree to:</p>
+    <ul>
+      <li>List only products you are legally authorized to sell and ship</li>
+      <li>Accurately describe all products including ingredients, intended use, and required disclaimers</li>
+      <li>Tag all products with accurate state availability and prohibited states information</li>
+      <li>Ship only to buyers in states where your product is legal</li>
+      <li>Fulfill orders promptly and in compliance with all applicable shipping laws</li>
+      <li>Maintain a cryptocurrency wallet capable of receiving payouts</li>
+      <li>Notify Silque Road promptly if any product's legal status changes</li>
+      <li>Maintain any required licenses and permits in good standing</li>
+    </ul>
+  </div>
+
+  <div class="legal-section" id="commission-payouts">
+    <h2 class="legal-section-title"><span class="legal-section-num">06</span> Commission &amp; Payouts</h2>
+    <p>Standard commission structure:</p>
+    <div class="payout-box">
+      <div class="payout-row"><span class="payout-label">Gross Sale Price</span><span class="payout-val">100%</span></div>
+      <div class="payout-row"><span class="payout-label">NOWPayments Processing Fee</span><span class="payout-val">0.5%</span></div>
+      <div class="payout-row"><span class="payout-label">Platform Commission (Standard)</span><span class="payout-val">10%</span></div>
+      <div class="payout-row"><span class="payout-label">Seller Payout</span><span class="payout-val">90% of sale price</span></div>
+    </div>
+    <p>Commission rates may be negotiated for high-volume sellers. Payouts are issued in cryptocurrency to the wallet address on file in your seller account on a weekly basis.</p>
+  </div>
+
+  <div class="legal-section" id="fulfillment">
+    <h2 class="legal-section-title"><span class="legal-section-num">07</span> Fulfillment &amp; Shipping</h2>
+    <p>You, the seller, are solely responsible for order fulfillment. Silque Road does not warehouse, handle, or ship products. You agree to ship orders within your stated processing time, package products in compliance with applicable regulations, and not ship products to states where they are prohibited.</p>
+    <p>Disputes arising from shipping failures are between you and the buyer. Silque Road is not a party to the shipping contract between you and your carrier.</p>
+  </div>
+
+  <div class="legal-section" id="compliance">
+    <h2 class="legal-section-title"><span class="legal-section-num">08</span> Legal Compliance</h2>
+    <p>You are solely responsible for ensuring that every product you sell is legal under all applicable federal, state, and local laws in the jurisdictions to which you ship. Silque Road does not provide legal advice and does not verify the legality of your products in every jurisdiction. It is your obligation to stay current on applicable laws and update your listings accordingly.</p>
+    <p>Silque Road reserves the right to remove any listing at any time if we have reason to believe it may violate applicable law, without liability to the seller.</p>
+  </div>
+
+  <div class="legal-section" id="representations">
+    <h2 class="legal-section-title"><span class="legal-section-num">09</span> Representations &amp; Warranties</h2>
+    <p>By listing on Silque Road, you represent and warrant that:</p>
+    <ul>
+      <li>You have full legal authority to sell and ship the products you list</li>
+      <li>All product descriptions, ingredient lists, and claims are accurate and not misleading</li>
+      <li>Your products comply with all applicable federal, state, and local regulations</li>
+      <li>You hold all required licenses and permits in good standing</li>
+      <li>Your products do not infringe on any third-party intellectual property rights</li>
+      <li>All information provided in your seller application is true and accurate</li>
+    </ul>
+  </div>
+
+  <div class="legal-section" id="indemnification">
+    <h2 class="legal-section-title"><span class="legal-section-num">10</span> Indemnification</h2>
+    <p>You agree to indemnify, defend, and hold harmless XEKIE LLC from and against any claims, damages, losses, and expenses (including attorneys' fees) arising from your products, your violation of this Agreement or applicable law, any dispute between you and a buyer, or any false representation made in your seller application or product listings.</p>
+  </div>
+
+  <div class="legal-section" id="termination">
+    <h2 class="legal-section-title"><span class="legal-section-num">11</span> Termination</h2>
+    <p>XEKIE LLC will never terminate a seller account solely because a product category receives negative attention from third parties or is deplatformed elsewhere — provided the products remain legal.</p>
+    <p>XEKIE LLC reserves the right to suspend or terminate a seller account immediately for: listing prohibited products, providing false information, fraudulent conduct toward buyers, failure to fulfill orders, any conduct creating legal liability for XEKIE LLC, or violation of applicable law.</p>
+    <p>Upon termination, pending payouts for confirmed orders will be processed. Payouts for orders in dispute at termination may be held pending resolution.</p>
+  </div>
+
+  <div class="legal-section" id="disputes">
+    <h2 class="legal-section-title"><span class="legal-section-num">12</span> Disputes</h2>
+    <p>Disputes between sellers and buyers are primarily the seller's responsibility to resolve. Any dispute between a seller and XEKIE LLC shall be governed by the laws of the State of Ohio and subject to the exclusive jurisdiction of courts located in Ohio.</p>
+  </div>
+
+  <div class="legal-section" id="seller-contact">
+    <h2 class="legal-section-title"><span class="legal-section-num">13</span> Contact</h2>
+    <ul>
+      <li>Email: <a href="mailto:info@silqueroad.com">info@silqueroad.com</a></li>
+      <li>Subject line: "Seller Agreement" or "Seller Account"</li>
+      <li>Entity: XEKIE LLC — Ohio Limited Liability Company</li>
+    </ul>
+  </div>
+
+  <div class="seller-cta-box">
+    <h3>Ready to Sell?</h3>
+    <p>Deplatformed elsewhere? You're home. Apply as a founding seller and start reaching buyers who are looking for exactly what you carry.</p>
+    <a href="/seller-apply.html" class="btn-primary">Apply as a Founding Seller</a>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div><span class="footer-brand-name">Silque Road</span><p class="footer-brand-desc">The marketplace for legal products mainstream platforms won't carry. State-compliant. Seller-vetted. Buyer-anonymous.</p></div>
+    <div><p class="footer-col-title">Markets</p><ul class="footer-links"><li><a href="/#marketplace">Health Freedom</a></li><li><a href="/#marketplace">Cannabis Adjacent</a></li><li><a href="/#marketplace">Men's Health</a></li><li><a href="/#marketplace">All Categories</a></li></ul></div>
+    <div><p class="footer-col-title">Platform</p><ul class="footer-links"><li><a href="/#how-it-works">How It Works</a></li><li><a href="/seller-apply.html">Sell With Us</a></li><li><a href="/#health-network">Health Network</a></li><li><a href="/#newsletter">Newsletter</a></li></ul></div>
+    <div><p class="footer-col-title">Legal</p><ul class="footer-links"><li><a href="/terms.html">Terms of Service</a></li><li><a href="/seller-agreement.html">Seller Agreement</a></li><li><a href="/privacy.html">Privacy Policy</a></li><li><a href="/disclaimer.html">Disclaimer</a></li><li><a href="mailto:info@silqueroad.com">Contact</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">&copy; 2026 Silque Road &nbsp;&bull;&nbsp; XEKIE LLC &nbsp;&bull;&nbsp; No tracking. No cookies. No analytics.</p>
+    <div class="footer-legal-links"><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/disclaimer.html">Disclaimer</a></div>
+  </div>
+</footer>
+<div class="disclaimer-bar"><p>Silque Road is a platform connecting buyers and sellers of legal products. Nothing on this site constitutes medical, legal, or financial advice. Buyers are responsible for knowing and complying with their local laws.</p></div>
+</body>
+</html>
