@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Order Confirmation — Silque Road">
+<title>Order Confirmation — Silque Road</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #C9A84C; --gold-light: #E8C97A; --gold-dark: #8B6914; --gold-faint: rgba(201,168,76,0.12);
+  --ink: #100d05; --ink-mid: #1a1208; --ink-light: #2a2015; --smoke: #1e180a;
+  --sand: #F0E6CC; --sand-muted: rgba(240,230,204,0.6); --green-ok: #3a8a3a;
+  --border: rgba(201,168,76,0.2); --border-strong: rgba(201,168,76,0.4);
+  --font-display: 'Cinzel', 'Georgia', serif; --font-body: 'Crimson Pro', 'Georgia', serif;
+  --font-ui: 'Space Mono', 'Courier New', monospace;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); background: var(--ink); color: var(--sand); line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; }
+a { color: inherit; text-decoration: none; }
+.nav { background: var(--ink); border-bottom: 1px solid var(--border); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.nav-logo-name { font-family: var(--font-display); font-size: 20px; font-weight: 700; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; }
+.nav-logo-tagline { font-family: var(--font-ui); font-size: 7px; letter-spacing: 3px; color: var(--gold-dark); text-transform: uppercase; display: block; }
+.nav-back { font-family: var(--font-ui); font-size: 10px; letter-spacing: 2px; color: var(--sand-muted); text-transform: uppercase; transition: color 0.2s; }
+.nav-back:hover { color: var(--gold); }
+.main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 60px 24px; }
+.card { background: var(--ink-mid); border: 1px solid var(--border-strong); max-width: 600px; width: 100%; padding: 52px 44px; text-align: center; }
+.status-icon { font-size: 52px; margin-bottom: 20px; line-height: 1; }
+.card-title { font-family: var(--font-display); font-size: 24px; font-weight: 600; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 10px; }
+.card-sub { font-family: var(--font-body); font-size: 17px; font-style: italic; color: var(--sand-muted); margin-bottom: 32px; line-height: 1.6; }
+.gold-rule { width: 100px; height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent); margin: 0 auto 32px; }
+.order-details { background: var(--ink-light); border: 1px solid var(--border); padding: 20px 24px; margin-bottom: 28px; text-align: left; }
+.order-row { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; gap: 16px; }
+.order-row:last-child { margin-bottom: 0; padding-top: 12px; border-top: 1px solid var(--border); }
+.order-label { font-family: var(--font-ui); font-size: 8px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-dark); flex-shrink: 0; }
+.order-value { font-family: var(--font-ui); font-size: 11px; color: var(--sand); text-align: right; word-break: break-all; }
+.order-value.gold { color: var(--gold); font-weight: 700; }
+.status-badge { display: inline-block; font-family: var(--font-ui); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; padding: 4px 12px; border-radius: 2px; }
+.status-pending { background: rgba(201,168,76,0.15); color: var(--gold); border: 1px solid var(--border-strong); }
+.status-confirmed { background: rgba(58,138,58,0.15); color: var(--green-ok); border: 1px solid rgba(58,138,58,0.4); }
+.status-shipped { background: rgba(58,138,58,0.2); color: var(--green-ok); border: 1px solid rgba(58,138,58,0.5); }
+.status-completed { background: rgba(58,138,58,0.25); color: var(--green-ok); border: 1px solid rgba(58,138,58,0.6); }
+.info-box { background: var(--smoke); border: 1px solid var(--border); padding: 16px 20px; margin-bottom: 28px; text-align: left; }
+.info-box p { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--sand-muted); line-height: 1.8; text-transform: uppercase; }
+.info-box strong { color: var(--gold); }
+.btn-primary { display: inline-block; background: var(--gold); color: var(--ink); font-family: var(--font-ui); font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 14px 32px; border: none; cursor: pointer; transition: background 0.2s; margin-bottom: 12px; }
+.btn-primary:hover { background: var(--gold-light); }
+.btn-outline { display: inline-block; background: transparent; color: var(--sand-muted); font-family: var(--font-ui); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; padding: 10px 24px; border: 1px solid var(--border); cursor: pointer; transition: border-color 0.2s, color 0.2s; }
+.btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+.btn-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.loading { text-align: center; padding: 60px 20px; }
+.loading p { font-family: var(--font-ui); font-size: 10px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; opacity: 0.5; }
+.error-state { text-align: center; }
+.error-state p { font-family: var(--font-body); font-size: 17px; font-style: italic; color: var(--sand-muted); margin-bottom: 24px; }
+.tracking-box { background: rgba(58,138,58,0.1); border: 1px solid rgba(58,138,58,0.3); padding: 14px 20px; margin-bottom: 20px; text-align: left; }
+.tracking-box .track-label { font-family: var(--font-ui); font-size: 8px; letter-spacing: 2px; text-transform: uppercase; color: var(--green-ok); margin-bottom: 4px; }
+.tracking-box .track-number { font-family: var(--font-ui); font-size: 13px; color: var(--sand); }
+.footer { background: var(--ink); border-top: 1px solid var(--border); padding: 20px 24px; text-align: center; }
+.footer p { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--sand-muted); opacity: 0.3; text-transform: uppercase; }
+@media (max-width: 600px) {
+  .card { padding: 36px 24px; }
+  .order-row { flex-direction: column; gap: 4px; }
+  .order-value { text-align: left; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/">
+    <span class="nav-logo-name">Silque Road</span>
+    <span class="nav-logo-tagline">Legal &amp; Available</span>
+  </a>
+  <a href="/" class="nav-back">&larr; Back to Bazaar</a>
+</nav>
+
+<main class="main">
+  <div class="card" id="cardContent">
+    <div class="loading">
+      <p>Loading your order...</p>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <p>Silque Road &nbsp;&bull;&nbsp; XEKIE LLC &nbsp;&bull;&nbsp; No tracking. No cookies. No analytics.</p>
+</footer>
+
+<script>
+const SUPABASE_URL = 'https://pmtfqbefrsplvoriirru.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBtdGZxYmVmcnNwbHZvcmlpcnJ1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU4Mzk5MzEsImV4cCI6MjA5MTQxNTkzMX0.xgIVCGtB1Elp8ywjQhUAHdAVXOMoZJRmxWXM6vpZBB0';
+
+function getParam(name) {
+  return new URLSearchParams(window.location.search).get(name);
+}
+
+function statusClass(status) {
+  const map = { pending: 'status-pending', confirmed: 'status-confirmed', paid: 'status-confirmed', shipped: 'status-shipped', completed: 'status-completed' };
+  return map[status] || 'status-pending';
+}
+
+function statusLabel(status) {
+  const map = { pending: 'Awaiting Payment', confirmed: 'Payment Confirmed', paid: 'Payment Confirmed', shipped: 'Shipped', completed: 'Completed' };
+  return map[status] || status;
+}
+
+function formatDate(str) {
+  if (!str) return '—';
+  return new Date(str).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+}
+
+function showError(msg) {
+  document.getElementById('cardContent').innerHTML = `
+    <div class="status-icon">&#9888;</div>
+    <div class="card-title">Order Not Found</div>
+    <div class="card-sub">${msg}</div>
+    <div class="gold-rule"></div>
+    <div class="error-state">
+      <p>If you believe this is an error, please contact us with your order reference.</p>
+      <div class="btn-row">
+        <a href="/" class="btn-primary">Back to Bazaar</a>
+        <a href="mailto:info@silqueroad.com" class="btn-outline">Contact Support</a>
+      </div>
+    </div>`;
+}
+
+async function loadOrder() {
+  const orderId = getParam('order_id');
+  const paymentId = getParam('payment_id');
+
+  if (!orderId && !paymentId) {
+    showError('No order ID provided.');
+    return;
+  }
+
+  try {
+    let url;
+    if (orderId) {
+      url = `${SUPABASE_URL}/rest/v1/orders?id=eq.${encodeURIComponent(orderId)}&select=*`;
+    } else {
+      url = `${SUPABASE_URL}/rest/v1/orders?nowpayments_payment_id=eq.${encodeURIComponent(paymentId)}&select=*`;
+    }
+
+    const res = await fetch(url, {
+      headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` }
+    });
+
+    const data = await res.json();
+
+    if (!data || data.length === 0) {
+      showError('We couldn\'t find an order with that reference. It may still be processing — please check back in a few minutes.');
+      return;
+    }
+
+    const order = data[0];
+    const isPaid = ['confirmed', 'paid', 'shipped', 'completed'].includes(order.status);
+    const isShipped = ['shipped', 'completed'].includes(order.status);
+
+    const trackingHtml = isShipped && order.tracking_number ? `
+      <div class="tracking-box">
+        <div class="track-label">Tracking Number</div>
+        <div class="track-number">${order.tracking_number}</div>
+      </div>` : '';
+
+    document.getElementById('cardContent').innerHTML = `
+      <div class="status-icon">${isPaid ? '&#10003;' : '&#8987;'}</div>
+      <div class="card-title">${isPaid ? 'Order Confirmed' : 'Payment Pending'}</div>
+      <div class="card-sub">${isPaid
+        ? 'Your payment has been received. Your seller has been notified and will ship your order.'
+        : 'Your order has been created. Complete your crypto payment to confirm it.'
+      }</div>
+      <div class="gold-rule"></div>
+      <div class="order-details">
+        <div class="order-row">
+          <span class="order-label">Order Ref</span>
+          <span class="order-value">${order.id.substring(0, 8).toUpperCase()}</span>
+        </div>
+        <div class="order-row">
+          <span class="order-label">Product</span>
+          <span class="order-value">${order.product_name || '—'}</span>
+        </div>
+        <div class="order-row">
+          <span class="order-label">Amount</span>
+          <span class="order-value gold">$${parseFloat(order.amount_usd || 0).toFixed(2)}</span>
+        </div>
+        <div class="order-row">
+          <span class="order-label">Payment</span>
+          <span class="order-value">${(order.crypto_currency || 'crypto').toUpperCase()}</span>
+        </div>
+        <div class="order-row">
+          <span class="order-label">Date</span>
+          <span class="order-value">${formatDate(order.created_at)}</span>
+        </div>
+        <div class="order-row">
+          <span class="order-label">Status</span>
+          <span class="order-value"><span class="status-badge ${statusClass(order.status)}">${statusLabel(order.status)}</span></span>
+        </div>
+      </div>
+      ${trackingHtml}
+      <div class="info-box">
+        <p>
+          ${isPaid
+            ? `Your seller will ship within their stated timeframe. <strong>Save your order ref: ${order.id.substring(0, 8).toUpperCase()}</strong> for support requests. If you provided an email, you will receive shipping updates.`
+            : `Complete payment at the NOWPayments link you were sent. Your order will be confirmed automatically once payment is detected on-chain. This may take <strong>10–30 minutes</strong> depending on network congestion.`
+          }
+        </p>
+      </div>
+      <div class="btn-row">
+        <a href="/" class="btn-primary">Continue Shopping</a>
+        <a href="mailto:info@silqueroad.com?subject=Order ${order.id.substring(0, 8).toUpperCase()}" class="btn-outline">Contact Support</a>
+      </div>`;
+
+  } catch (err) {
+    showError('Something went wrong loading your order. Please try again or contact support.');
+  }
+}
+
+loadOrder();
+</script>
+</body>
+</html>
