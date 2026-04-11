@@ -150,8 +150,6 @@ a { color: inherit; text-decoration: none; }
 .seller-perks { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; margin-bottom: 36px; }
 .seller-perk { font-family: var(--font-ui); font-size: 9px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; opacity: 0.7; display: flex; align-items: center; gap: 8px; }
 .perk-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); opacity: 0.5; flex-shrink: 0; }
-
-/* ── CHECKOUT MODAL ── */
 .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 2000; align-items: center; justify-content: center; padding: 24px; overflow-y: auto; }
 .modal-overlay.open { display: flex; }
 .modal { background: var(--ink-mid); border: 1px solid var(--border-strong); max-width: 560px; width: 100%; padding: 40px; position: relative; max-height: 90vh; overflow-y: auto; margin: auto; }
@@ -184,7 +182,6 @@ a { color: inherit; text-decoration: none; }
 .order-summary { background: var(--ink-light); border: 1px solid var(--border); padding: 14px 16px; margin-bottom: 16px; }
 .order-summary-row { display: flex; justify-content: space-between; font-family: var(--font-ui); font-size: 10px; letter-spacing: 1px; color: var(--sand-muted); margin-bottom: 6px; }
 .order-summary-row:last-child { margin-bottom: 0; color: var(--gold); font-weight: 700; border-top: 1px solid var(--border); padding-top: 6px; margin-top: 6px; }
-
 .footer { background: var(--ink); border-top: 1px solid var(--border); padding: 52px 24px 32px; }
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; max-width: var(--max-w); margin: 0 auto 40px; }
 .footer-brand-name { font-family: var(--font-display); font-size: 20px; font-weight: 700; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; display: block; margin-bottom: 12px; }
@@ -327,7 +324,6 @@ a { color: inherit; text-decoration: none; }
   </div>
 </section>
 
-<!-- LIVE PRODUCT LISTINGS -->
 <section class="section" id="featured">
   <div class="section-header">
     <p class="section-label">Featured Goods</p>
@@ -429,17 +425,21 @@ a { color: inherit; text-decoration: none; }
       <p class="footer-col-title">Company</p>
       <ul class="footer-links">
         <li><a href="#">About</a></li>
-        <li><a href="#">Terms of Service</a></li>
-        <li><a href="#">Seller Agreement</a></li>
-        <li><a href="#">Privacy Policy</a></li>
-        <li><a href="#">Disclaimer</a></li>
+        <li><a href="/terms.html">Terms of Service</a></li>
+        <li><a href="/seller-agreement.html">Seller Agreement</a></li>
+        <li><a href="/privacy.html">Privacy Policy</a></li>
+        <li><a href="/disclaimer.html">Disclaimer</a></li>
         <li><a href="mailto:info@silqueroad.com">Contact</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
     <p class="footer-copy">&copy; 2026 Silque Road &nbsp;&bull;&nbsp; XEKIE LLC &nbsp;&bull;&nbsp; All products legal in buyer's jurisdiction &nbsp;&bull;&nbsp; No tracking. No cookies. No analytics.</p>
-    <div class="footer-legal-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Disclaimer</a></div>
+    <div class="footer-legal-links">
+      <a href="/privacy.html">Privacy</a>
+      <a href="/terms.html">Terms</a>
+      <a href="/disclaimer.html">Disclaimer</a>
+    </div>
   </div>
 </footer>
 
@@ -453,20 +453,15 @@ a { color: inherit; text-decoration: none; }
     <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
     <div class="modal-title" id="modalTitle">Checkout</div>
     <div class="modal-product-sub" id="modalSub">Complete your purchase below.</div>
-
     <div class="order-summary" id="orderSummary" style="display:none">
       <div class="order-summary-row"><span>Product</span><span id="summaryProduct">—</span></div>
       <div class="order-summary-row"><span>Total</span><span id="summaryPrice">—</span></div>
     </div>
-
     <div class="checkout-steps">
       <button class="checkout-step-btn active" id="stepBtn1" onclick="goToStep(1)">1. Shipping</button>
       <button class="checkout-step-btn" id="stepBtn2" onclick="goToStep(2)">2. Payment</button>
     </div>
-
     <div class="modal-error" id="modalError"></div>
-
-    <!-- STEP 1: Shipping -->
     <div class="checkout-panel active" id="panel1">
       <p class="anon-note">&#10003; All fields optional — checkout anonymously if you prefer</p>
       <div class="form-field">
@@ -498,8 +493,6 @@ a { color: inherit; text-decoration: none; }
       <button class="modal-proceed" onclick="goToStep(2)">Continue to Payment &rarr;</button>
       <p class="modal-note">Your shipping info is used only to fulfill your order.</p>
     </div>
-
-    <!-- STEP 2: Payment -->
     <div class="checkout-panel" id="panel2">
       <p style="font-family:var(--font-ui);font-size:9px;letter-spacing:1px;color:var(--sand-muted);text-transform:uppercase;margin-bottom:12px;">Select Cryptocurrency</p>
       <div class="crypto-grid">
@@ -525,7 +518,6 @@ const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 let currentProduct = null;
 let selCrypto = 'btc';
 
-// ── LOAD LIVE PRODUCTS ──
 async function loadProducts() {
   try {
     const res = await fetch(
@@ -585,18 +577,15 @@ function esc(str) {
   return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
 }
 
-// ── MODAL ──
 function toggleMobile() { document.getElementById('mobile-menu').classList.toggle('open'); }
 
 function openModal(product) {
   currentProduct = product;
   selCrypto = 'btc';
-
   document.getElementById('modalTitle').textContent = product ? product.name : 'Checkout';
   document.getElementById('modalSub').textContent = product
     ? `$${parseFloat(product.price).toFixed(2)} — ${product.category || ''}`
     : 'Complete your purchase below.';
-
   if (product) {
     document.getElementById('orderSummary').style.display = 'block';
     document.getElementById('summaryProduct').textContent = product.name;
@@ -604,7 +593,6 @@ function openModal(product) {
   } else {
     document.getElementById('orderSummary').style.display = 'none';
   }
-
   goToStep(1);
   document.getElementById('modalError').style.display = 'none';
   document.getElementById('modal').classList.add('open');
@@ -642,12 +630,10 @@ function showError(msg) {
 
 async function proceedToPayment() {
   if (!currentProduct) { showError('No product selected.'); return; }
-
   const btn = document.getElementById('payBtn');
   btn.disabled = true;
   btn.textContent = 'Creating order...';
   document.getElementById('modalError').style.display = 'none';
-
   const payload = {
     product_id: currentProduct.id,
     seller_id: currentProduct.seller_id,
@@ -661,23 +647,15 @@ async function proceedToPayment() {
     crypto_currency: selCrypto,
     product_name: currentProduct.name
   };
-
   try {
     const res = await fetch('/.netlify/functions/create-order', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
     });
-
     const data = await res.json();
-
-    if (!res.ok || !data.invoice_url) {
-      throw new Error(data.error || 'Failed to create order');
-    }
-
-    // Redirect to NOWPayments invoice
+    if (!res.ok || !data.invoice_url) throw new Error(data.error || 'Failed to create order');
     window.location.href = data.invoice_url;
-
   } catch (err) {
     showError('Payment setup failed: ' + err.message + '. Please try again or email info@silqueroad.com');
     btn.disabled = false;
