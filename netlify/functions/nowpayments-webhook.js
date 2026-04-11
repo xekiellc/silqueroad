@@ -96,6 +96,8 @@ exports.handler = async (event) => {
       .eq('order_id', order.id)
       .limit(1);
 
+    let payoutCreated = false;
+
     if (!existingPayouts || existingPayouts.length === 0) {
       await supabase.from('payouts').insert({
         seller_id: order.seller_id,
@@ -109,9 +111,10 @@ exports.handler = async (event) => {
         status: 'pending',
         notes: `Auto-created from NOWPayments. Payment ID: ${nowpaymentsId}`
       });
+      payoutCreated = true;
     }
 
-    // Get product name for notification
+    // Get product name for notifications
     const { data: products } = await supabase
       .from('products')
       .select('name')
@@ -120,7 +123,7 @@ exports.handler = async (event) => {
 
     const productName = products?.[0]?.name || 'Your product';
 
-    // Fire seller notification if they have an email
+    // Fire seller new_order notification
     if (seller.email) {
       try {
         await fetch('https://silqueroad.com/.netlify/functions/send-notification', {
@@ -143,6 +146,27 @@ exports.handler = async (event) => {
         });
       } catch (notifErr) {
         console.error('Order notification failed:', notifErr);
+      }
+    }
+
+    // Fire seller payout_issued notification (only if payout was just created)
+    if (seller.email && payoutCreated) {
+      try {
+        await fetch('https://silqueroad.com/.netlify/functions/send-notification', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            type: 'payout_issued',
+            data: {
+              seller_email: seller.email,
+              seller_amount: sellerAmount.toFixed(2),
+              crypto_currency: cryptoCurrency,
+              crypto_wallet: cryptoWallet
+            }
+          })
+        });
+      } catch (payoutNotifErr) {
+        console.error('Payout notification failed:', payoutNotifErr);
       }
     }
 
