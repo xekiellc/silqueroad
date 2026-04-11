@@ -4,8 +4,19 @@ const SUPABASE_URL = 'https://pmtfqbefrsplvoriirru.supabase.co';
 const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY;
 const NOWPAYMENTS_API_KEY = process.env.NOWPAYMENTS_API_KEY;
 
+const CORS = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Headers': 'Content-Type',
+  'Access-Control-Allow-Methods': 'POST, OPTIONS'
+};
+
 exports.handler = async (event) => {
-  if (event.httpMethod !== 'POST') return { statusCode: 405, body: 'Method not allowed' };
+  if (event.httpMethod === 'OPTIONS') {
+    return { statusCode: 204, headers: CORS, body: '' };
+  }
+  if (event.httpMethod !== 'POST') {
+    return { statusCode: 405, headers: CORS, body: JSON.stringify({ error: 'Method not allowed' }) };
+  }
 
   try {
     const body = JSON.parse(event.body);
@@ -16,7 +27,7 @@ exports.handler = async (event) => {
     } = body;
 
     if (!product_id || !amount_usd || !crypto_currency) {
-      return { statusCode: 400, body: JSON.stringify({ error: 'Missing required fields' }) };
+      return { statusCode: 400, headers: CORS, body: JSON.stringify({ error: 'Missing required fields' }) };
     }
 
     // Create order in Supabase
@@ -76,6 +87,7 @@ exports.handler = async (event) => {
 
     return {
       statusCode: 200,
+      headers: CORS,
       body: JSON.stringify({
         order_id: order.id,
         invoice_url: invoiceData.invoice_url,
@@ -85,6 +97,6 @@ exports.handler = async (event) => {
 
   } catch (err) {
     console.error('create-order error:', err);
-    return { statusCode: 500, body: JSON.stringify({ error: err.message }) };
+    return { statusCode: 500, headers: CORS, body: JSON.stringify({ error: err.message }) };
   }
 };
