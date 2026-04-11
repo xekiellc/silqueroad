@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Silque Road Marketplace — Browse legal products. Search, filter by category, find what the internet won't carry.">
+<title>Marketplace — Silque Road</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #C9A84C; --gold-light: #E8C97A; --gold-dark: #8B6914; --gold-faint: rgba(201,168,76,0.12);
+  --ink: #100d05; --ink-mid: #1a1208; --ink-light: #2a2015; --smoke: #1e180a;
+  --sand: #F0E6CC; --sand-muted: rgba(240,230,204,0.6); --green-ok: #3a8a3a; --crimson: #8B1A1A;
+  --border: rgba(201,168,76,0.2); --border-strong: rgba(201,168,76,0.4);
+  --font-display: 'Cinzel', 'Georgia', serif; --font-body: 'Crimson Pro', 'Georgia', serif;
+  --font-ui: 'Space Mono', 'Courier New', monospace; --transition: 0.2s ease; --max-w: 1100px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); background: var(--ink); color: var(--sand); line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; }
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: var(--ink); } ::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 3px; }
+.nav { position: sticky; top: 0; z-index: 1000; background: var(--ink); border-bottom: 1px solid var(--border); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.nav-logo { display: flex; flex-direction: column; }
+.nav-logo-name { font-family: var(--font-display); font-size: 20px; font-weight: 700; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; }
+.nav-logo-tagline { font-family: var(--font-ui); font-size: 7px; letter-spacing: 3px; color: var(--gold-dark); text-transform: uppercase; }
+.nav-back { font-family: var(--font-ui); font-size: 10px; letter-spacing: 2px; color: var(--sand-muted); text-transform: uppercase; transition: color var(--transition); }
+.nav-back:hover { color: var(--gold); }
+.page-header { background: var(--smoke); border-bottom: 1px solid var(--border); padding: 40px 24px; }
+.page-header-inner { max-width: var(--max-w); margin: 0 auto; }
+.page-label { font-family: var(--font-ui); font-size: 9px; letter-spacing: 5px; color: var(--gold); text-transform: uppercase; opacity: 0.65; margin-bottom: 10px; }
+.page-title { font-family: var(--font-display); font-size: clamp(24px, 4vw, 40px); font-weight: 700; letter-spacing: 5px; color: var(--gold); text-transform: uppercase; margin-bottom: 24px; }
+.search-bar { display: flex; gap: 0; max-width: 560px; }
+.search-input { flex: 1; background: var(--ink-mid); border: 1px solid var(--border-strong); border-right: none; color: var(--sand); font-family: var(--font-ui); font-size: 12px; padding: 13px 18px; outline: none; transition: border-color var(--transition); }
+.search-input::placeholder { color: var(--sand-muted); opacity: 0.4; }
+.search-input:focus { border-color: var(--gold); }
+.search-btn { background: var(--gold); color: var(--ink); font-family: var(--font-ui); font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 13px 24px; border: none; cursor: pointer; transition: background var(--transition); white-space: nowrap; }
+.search-btn:hover { background: var(--gold-light); }
+.filters { background: var(--ink); border-bottom: 1px solid var(--border); padding: 16px 24px; overflow-x: auto; }
+.filters-inner { max-width: var(--max-w); margin: 0 auto; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.filter-label { font-family: var(--font-ui); font-size: 8px; letter-spacing: 2px; color: var(--gold-dark); text-transform: uppercase; opacity: 0.6; white-space: nowrap; margin-right: 4px; }
+.filter-btn { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--sand-muted); background: transparent; border: 1px solid var(--border); padding: 6px 14px; cursor: pointer; transition: all var(--transition); white-space: nowrap; text-transform: uppercase; }
+.filter-btn:hover { border-color: var(--gold); color: var(--gold); }
+.filter-btn.active { background: var(--gold-faint); border-color: var(--gold); color: var(--gold); }
+.price-filter { display: flex; align-items: center; gap: 8px; margin-left: 12px; padding-left: 12px; border-left: 1px solid var(--border); }
+.price-input { background: var(--ink-mid); border: 1px solid var(--border); color: var(--sand); font-family: var(--font-ui); font-size: 10px; padding: 6px 10px; width: 80px; outline: none; transition: border-color var(--transition); }
+.price-input:focus { border-color: var(--gold); }
+.price-input::placeholder { color: var(--sand-muted); opacity: 0.4; }
+.price-sep { font-family: var(--font-ui); font-size: 9px; color: var(--sand-muted); opacity: 0.5; }
+.main { flex: 1; max-width: var(--max-w); margin: 0 auto; padding: 36px 24px; width: 100%; }
+.results-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 12px; }
+.results-count { font-family: var(--font-ui); font-size: 9px; letter-spacing: 2px; color: var(--sand-muted); text-transform: uppercase; opacity: 0.6; }
+.sort-select { background: var(--ink-mid); border: 1px solid var(--border); color: var(--sand-muted); font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; padding: 7px 12px; outline: none; cursor: pointer; text-transform: uppercase; }
+.sort-select:focus { border-color: var(--gold); }
+.product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.product-card { background: var(--ink-mid); border: 1px solid var(--border); padding: 22px 20px; cursor: pointer; transition: border-color var(--transition); display: flex; flex-direction: column; gap: 10px; }
+.product-card:hover { border-color: var(--border-strong); }
+.product-img { width: 100%; height: 160px; object-fit: cover; background: var(--ink-light); display: block; }
+.product-cat { font-family: var(--font-ui); font-size: 9px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; opacity: 0.6; }
+.product-name { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--sand); line-height: 1.3; }
+.product-desc { font-family: var(--font-body); font-size: 14px; font-style: italic; color: var(--sand-muted); line-height: 1.5; flex: 1; }
+.product-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 10px; border-top: 1px solid var(--border); }
+.product-price { font-family: var(--font-ui); font-size: 17px; font-weight: 700; color: var(--gold); }
+.product-legal { font-family: var(--font-ui); font-size: 8px; letter-spacing: 1px; color: var(--green-ok); text-transform: uppercase; }
+.product-add { background: transparent; border: 1px solid var(--border-strong); color: var(--gold); font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; text-transform: uppercase; padding: 6px 14px; cursor: pointer; transition: background var(--transition); }
+.product-add:hover { background: var(--gold-faint); }
+.state-loading { grid-column: 1/-1; text-align: center; padding: 80px 20px; }
+.state-loading p { font-family: var(--font-ui); font-size: 10px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; opacity: 0.5; }
+.state-empty { grid-column: 1/-1; text-align: center; padding: 80px 20px; }
+.state-empty .empty-icon { font-size: 48px; margin-bottom: 20px; }
+.state-empty h3 { font-family: var(--font-display); font-size: 18px; font-weight: 600; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 12px; }
+.state-empty p { font-family: var(--font-body); font-size: 17px; font-style: italic; color: var(--sand-muted); margin-bottom: 24px; }
+.btn-primary { display: inline-block; background: var(--gold); color: var(--ink); font-family: var(--font-ui); font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 13px 28px; border: none; cursor: pointer; transition: background var(--transition); }
+.btn-primary:hover { background: var(--gold-light); }
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 2000; align-items: center; justify-content: center; padding: 24px; overflow-y: auto; }
+.modal-overlay.open { display: flex; }
+.modal { background: var(--ink-mid); border: 1px solid var(--border-strong); max-width: 560px; width: 100%; padding: 40px; position: relative; max-height: 90vh; overflow-y: auto; margin: auto; }
+.modal-close { position: absolute; top: 16px; right: 20px; background: none; border: none; color: var(--sand-muted); font-size: 22px; cursor: pointer; line-height: 1; }
+.modal-title { font-family: var(--font-display); font-size: 18px; font-weight: 600; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 4px; }
+.modal-product-sub { font-family: var(--font-body); font-size: 14px; font-style: italic; color: var(--sand-muted); margin-bottom: 20px; }
+.checkout-steps { display: flex; gap: 0; margin-bottom: 24px; border-bottom: 1px solid var(--border); }
+.checkout-step-btn { flex: 1; padding: 10px; font-family: var(--font-ui); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; background: transparent; border: none; color: var(--sand-muted); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: all var(--transition); }
+.checkout-step-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
+.checkout-panel { display: none; } .checkout-panel.active { display: block; }
+.form-field { margin-bottom: 14px; }
+.form-field label { display: block; font-family: var(--font-ui); font-size: 8px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 6px; }
+.form-field input { width: 100%; background: var(--ink-light); border: 1px solid var(--border-strong); color: var(--sand); font-family: var(--font-ui); font-size: 12px; padding: 11px 14px; outline: none; transition: border-color var(--transition); border-radius: 0; -webkit-appearance: none; }
+.form-field input:focus { border-color: var(--gold); }
+.form-field input::placeholder { color: var(--sand-muted); opacity: 0.4; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.anon-note { font-family: var(--font-ui); font-size: 8px; letter-spacing: 1px; color: var(--green-ok); text-transform: uppercase; opacity: 0.7; margin-bottom: 16px; }
+.crypto-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 16px; }
+.crypto-opt { background: var(--ink-light); border: 1px solid var(--border); padding: 10px 6px; cursor: pointer; transition: border-color var(--transition); text-align: center; }
+.crypto-opt:hover { border-color: var(--gold); }
+.crypto-opt.selected { border-color: var(--gold); background: var(--gold-faint); }
+.crypto-sym { font-family: var(--font-ui); font-size: 14px; font-weight: 700; color: var(--gold); margin-bottom: 3px; }
+.crypto-lbl { font-family: var(--font-ui); font-size: 7px; letter-spacing: 0.5px; color: var(--sand-muted); text-transform: uppercase; }
+.modal-proceed { width: 100%; background: var(--gold); color: var(--ink); font-family: var(--font-ui); font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 15px; border: none; cursor: pointer; transition: background var(--transition); margin-top: 8px; margin-bottom: 10px; }
+.modal-proceed:hover { background: var(--gold-light); }
+.modal-proceed:disabled { opacity: 0.5; cursor: not-allowed; }
+.modal-note { font-family: var(--font-ui); font-size: 8px; letter-spacing: 1px; color: var(--sand-muted); opacity: 0.35; text-align: center; text-transform: uppercase; }
+.modal-error { display: none; padding: 10px 14px; background: rgba(139,34,34,0.2); border: 1px solid #8b2222; color: #e07070; font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; margin-bottom: 12px; }
+.order-summary { background: var(--ink-light); border: 1px solid var(--border); padding: 14px 16px; margin-bottom: 16px; }
+.order-summary-row { display: flex; justify-content: space-between; font-family: var(--font-ui); font-size: 10px; letter-spacing: 1px; color: var(--sand-muted); margin-bottom: 6px; }
+.order-summary-row:last-child { margin-bottom: 0; color: var(--gold); font-weight: 700; border-top: 1px solid var(--border); padding-top: 6px; margin-top: 6px; }
+.footer { background: var(--ink); border-top: 1px solid var(--border); padding: 20px 24px; text-align: center; }
+.footer p { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--sand-muted); opacity: 0.3; text-transform: uppercase; }
+@media (max-width: 900px) { .product-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) {
+  .product-grid { grid-template-columns: 1fr; }
+  .search-bar { flex-direction: column; }
+  .search-input { border-right: 1px solid var(--border-strong); }
+  .price-filter { margin-left: 0; padding-left: 0; border-left: none; width: 100%; }
+  .form-row { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/" class="nav-logo">
+    <span class="nav-logo-name">Silque Road</span>
+    <span class="nav-logo-tagline">Legal &amp; Available</span>
+  </a>
+  <a href="/" class="nav-back">&larr; Back to Home</a>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <p class="page-label">The Bazaar</p>
+    <h1 class="page-title">Marketplace</h1>
+    <div class="search-bar">
+      <input type="text" class="search-input" id="searchInput" placeholder="Search products, categories, keywords..." autocomplete="off">
+      <button class="search-btn" onclick="applyFilters()">Search</button>
+    </div>
+  </div>
+</div>
+
+<div class="filters">
+  <div class="filters-inner">
+    <span class="filter-label">Category:</span>
+    <button class="filter-btn active" onclick="setCategory('', this)">All</button>
+    <button class="filter-btn" onclick="setCategory('Health Freedom', this)">🌿 Health Freedom</button>
+    <button class="filter-btn" onclick="setCategory('Psychedelic Adjacent', this)">🍄 Psychedelic</button>
+    <button class="filter-btn" onclick="setCategory('Cannabis Adjacent', this)">🌱 Cannabis</button>
+    <button class="filter-btn" onclick="setCategory('Longevity & Biohack', this)">⚗️ Longevity</button>
+    <button class="filter-btn" onclick="setCategory('Privacy & Comms', this)">🔒 Privacy</button>
+    <button class="filter-btn" onclick="setCategory('Weapons Adjacent', this)">⚔️ Weapons</button>
+    <button class="filter-btn" onclick="setCategory('Men\'s Health', this)">💪 Men\'s Health</button>
+    <button class="filter-btn" onclick="setCategory('Women\'s Wellness', this)">🌸 Women\'s</button>
+    <button class="filter-btn" onclick="setCategory('Taboo Foods', this)">🥛 Taboo Foods</button>
+    <button class="filter-btn" onclick="setCategory('Tobacco & Nicotine', this)">🚬 Tobacco</button>
+    <button class="filter-btn" onclick="setCategory('Off-Grid & Prepper', this)">🏕️ Off-Grid</button>
+    <button class="filter-btn" onclick="setCategory('Adult Products', this)">🔞 Adult</button>
+    <div class="price-filter">
+      <span class="filter-label">Price:</span>
+      <input type="number" class="price-input" id="minPrice" placeholder="Min $" min="0">
+      <span class="price-sep">—</span>
+      <input type="number" class="price-input" id="maxPrice" placeholder="Max $" min="0">
+    </div>
+  </div>
+</div>
+
+<main class="main">
+  <div class="results-header">
+    <span class="results-count" id="resultsCount">Loading...</span>
+    <select class="sort-select" id="sortSelect" onchange="applyFilters()">
+      <option value="featured">Featured First</option>
+      <option value="price_asc">Price: Low to High</option>
+      <option value="price_desc">Price: High to Low</option>
+      <option value="newest">Newest First</option>
+    </select>
+  </div>
+  <div class="product-grid" id="productGrid">
+    <div class="state-loading"><p>Loading products...</p></div>
+  </div>
+</main>
+
+<footer class="footer">
+  <p>Silque Road &nbsp;&bull;&nbsp; Legal &amp; Available &nbsp;&bull;&nbsp; No tracking. No cookies. No analytics.</p>
+</footer>
+
+<div class="modal-overlay" id="modal" onclick="closeModalOutside(event)">
+  <div class="modal" role="dialog" aria-modal="true">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
+    <div class="modal-title" id="modalTitle">Checkout</div>
+    <div class="modal-product-sub" id="modalSub">Complete your purchase below.</div>
+    <div class="order-summary" id="orderSummary" style="display:none">
+      <div class="order-summary-row"><span>Product</span><span id="summaryProduct">—</span></div>
+      <div class="order-summary-row"><span>Total</span><span id="summaryPrice">—</span></div>
+    </div>
+    <div class="checkout-steps">
+      <button class="checkout-step-btn active" id="stepBtn1" onclick="goToStep(1)">1. Shipping</button>
+      <button class="checkout-step-btn" id="stepBtn2" onclick="goToStep(2)">2. Payment</button>
+    </div>
+    <div class="modal-error" id="modalError"></div>
+    <div class="checkout-panel active" id="panel1">
+      <p class="anon-note">&#10003; All fields optional — checkout anonymously if you prefer</p>
+      <div class="form-field"><label>Email — for order updates only</label><input type="email" id="buyerEmail" placeholder="your@email.com (optional)" autocomplete="off" /></div>
+      <div class="form-field"><label>Ship To — Full Name</label><input type="text" id="shipName" placeholder="Name on package (optional)" autocomplete="off" /></div>
+      <div class="form-field"><label>Street Address</label><input type="text" id="shipAddress" placeholder="123 Main St (optional)" autocomplete="off" /></div>
+      <div class="form-row">
+        <div class="form-field"><label>City</label><input type="text" id="shipCity" placeholder="City" autocomplete="off" /></div>
+        <div class="form-field"><label>State</label><input type="text" id="shipState" placeholder="OH" maxlength="2" autocomplete="off" /></div>
+      </div>
+      <div class="form-field"><label>ZIP Code</label><input type="text" id="shipZip" placeholder="44223" maxlength="10" autocomplete="off" /></div>
+      <button class="modal-proceed" onclick="goToStep(2)">Continue to Payment &rarr;</button>
+      <p class="modal-note">Your shipping info is used only to fulfill your order.</p>
+    </div>
+    <div class="checkout-panel" id="panel2">
+      <p style="font-family:var(--font-ui);font-size:9px;letter-spacing:1px;color:var(--sand-muted);text-transform:uppercase;margin-bottom:12px;">Select Cryptocurrency</p>
+      <div class="crypto-grid">
+        <div class="crypto-opt selected" onclick="selectCrypto(this,'btc')"><div class="crypto-sym">&#8383;</div><div class="crypto-lbl">Bitcoin</div></div>
+        <div class="crypto-opt" onclick="selectCrypto(this,'eth')"><div class="crypto-sym">&#9830;</div><div class="crypto-lbl">Ethereum</div></div>
+        <div class="crypto-opt" onclick="selectCrypto(this,'usdcerc20')"><div class="crypto-sym">$</div><div class="crypto-lbl">USDC</div></div>
+        <div class="crypto-opt" onclick="selectCrypto(this,'sol')"><div class="crypto-sym">&#9678;</div><div class="crypto-lbl">Solana</div></div>
+        <div class="crypto-opt" onclick="selectCrypto(this,'xrp')"><div class="crypto-sym">&#10005;</div><div class="crypto-lbl">XRP</div></div>
+        <div class="crypto-opt" onclick="selectCrypto(this,'doge')"><div class="crypto-sym">&#208;</div><div class="crypto-lbl">Dogecoin</div></div>
+        <div class="crypto-opt" onclick="selectCrypto(this,'ltc')"><div class="crypto-sym">&#321;</div><div class="crypto-lbl">Litecoin</div></div>
+        <div class="crypto-opt" onclick="selectCrypto(this,'bch')"><div class="crypto-sym">&#8383;</div><div class="crypto-lbl">Bitcoin Cash</div></div>
+      </div>
+      <button class="modal-proceed" id="payBtn" onclick="proceedToPayment()">Pay with Crypto &rarr;</button>
+      <p class="modal-note">Powered by NOWPayments &nbsp;&bull;&nbsp; 0.5% fee &nbsp;&bull;&nbsp; Order recorded securely</p>
+    </div>
+  </div>
+</div>
+
+<script>
+const SUPABASE_URL = 'https://pmtfqbefrsplvoriirru.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBtdGZxYmVmcnNwbHZvcmlpcnJ1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU4Mzk5MzEsImV4cCI6MjA5MTQxNTkzMX0.xgIVCGtB1Elp8ywjQhUAHdAVXOMoZJRmxWXM6vpZBB0';
+
+let currentProduct = null;
+let selCrypto = 'btc';
+let activeCategory = '';
+let allProducts = [];
+
+function esc(str) { if (!str) return ''; return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+
+// Read URL params on load
+const params = new URLSearchParams(window.location.search);
+const urlCategory = params.get('category') || '';
+const urlSearch = params.get('q') || '';
+
+if (urlSearch) document.addEventListener('DOMContentLoaded', () => { document.getElementById('searchInput').value = urlSearch; });
+
+async function loadProducts() {
+  try {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/products?status=eq.active&select=*&order=featured.desc,created_at.desc`, {
+      headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` }
+    });
+    allProducts = await res.json();
+    if (!Array.isArray(allProducts)) allProducts = [];
+
+    // Apply URL category if present
+    if (urlCategory) {
+      activeCategory = urlCategory;
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.textContent.includes(urlCategory) || btn.getAttribute('onclick')?.includes(urlCategory)) {
+          btn.classList.add('active');
+        }
+      });
+    }
+
+    applyFilters();
+  } catch(e) {
+    document.getElementById('productGrid').innerHTML = `<div class="state-empty"><p>Failed to load products. Please refresh.</p></div>`;
+    document.getElementById('resultsCount').textContent = '0 products';
+  }
+}
+
+function setCategory(cat, btn) {
+  activeCategory = cat;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  applyFilters();
+}
+
+function applyFilters() {
+  const search = document.getElementById('searchInput').value.trim().toLowerCase();
+  const minPrice = parseFloat(document.getElementById('minPrice').value) || 0;
+  const maxPrice = parseFloat(document.getElementById('maxPrice').value) || Infinity;
+  const sort = document.getElementById('sortSelect').value;
+
+  let filtered = allProducts.filter(p => {
+    const matchCat = !activeCategory || p.category === activeCategory;
+    const matchSearch = !search || 
+      (p.name || '').toLowerCase().includes(search) ||
+      (p.description || '').toLowerCase().includes(search) ||
+      (p.category || '').toLowerCase().includes(search);
+    const price = parseFloat(p.price || 0);
+    const matchPrice = price >= minPrice && price <= maxPrice;
+    return matchCat && matchSearch && matchPrice;
+  });
+
+  if (sort === 'price_asc') filtered.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
+  else if (sort === 'price_desc') filtered.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
+  else if (sort === 'newest') filtered.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+  else filtered.sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0));
+
+  renderProducts(filtered);
+}
+
+function renderProducts(products) {
+  const grid = document.getElementById('productGrid');
+  const count = document.getElementById('resultsCount');
+
+  count.textContent = `${products.length} product${products.length !== 1 ? 's' : ''} found`;
+
+  if (products.length === 0) {
+    grid.innerHTML = `
+      <div class="state-empty">
+        <div class="empty-icon">🏺</div>
+        <h3>Nothing Here Yet</h3>
+        <p>No products match your search. Try a different keyword or category — or become a founding seller and stock this shelf yourself.</p>
+        <a href="/seller-apply.html" class="btn-primary">Become a Founding Seller</a>
+      </div>`;
+    return;
+  }
+
+  grid.innerHTML = products.map(p => {
+    const price = parseFloat(p.price || 0).toFixed(2);
+    const imgHtml = p.image_url ? `<img class="product-img" src="${esc(p.image_url)}" alt="${esc(p.name)}" loading="lazy" onerror="this.style.display='none'">` : '';
+    const disclaimer = p.disclaimer ? `<div style="font-family:var(--font-ui);font-size:8px;color:var(--sand-muted);opacity:0.45;margin-top:4px">${esc(p.disclaimer)}</div>` : '';
+    return `<div class="product-card" onclick="window.location.href='/product.html?id=${p.id}'">
+      ${imgHtml}
+      <div class="product-cat">${esc(p.category || '')}</div>
+      <div class="product-name">${esc(p.name)}</div>
+      <div class="product-desc">${esc(p.description || '')}</div>
+      ${disclaimer}
+      <div class="product-footer">
+        <div>
+          <div class="product-price">$${price}</div>
+          <div class="product-legal">&#10003; Vetted Seller</div>
+        </div>
+        <button class="product-add" onclick='event.stopPropagation(); openModal(${JSON.stringify({id: p.id, seller_id: p.seller_id, name: p.name, price: parseFloat(price), category: p.category})})'>Buy Now</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// Search on Enter
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('searchInput').addEventListener('keydown', e => { if (e.key === 'Enter') applyFilters(); });
+  document.getElementById('minPrice').addEventListener('change', applyFilters);
+  document.getElementById('maxPrice').addEventListener('change', applyFilters);
+});
+
+// Checkout modal
+function openModal(product) {
+  currentProduct = product; selCrypto = 'btc';
+  document.getElementById('modalTitle').textContent = product.name;
+  document.getElementById('modalSub').textContent = `$${parseFloat(product.price).toFixed(2)} — ${product.category || ''}`;
+  document.getElementById('orderSummary').style.display = 'block';
+  document.getElementById('summaryProduct').textContent = product.name;
+  document.getElementById('summaryPrice').textContent = `$${parseFloat(product.price).toFixed(2)}`;
+  goToStep(1);
+  document.getElementById('modalError').style.display = 'none';
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() { document.getElementById('modal').classList.remove('open'); document.body.style.overflow = ''; currentProduct = null; }
+function closeModalOutside(e) { if (e.target === document.getElementById('modal')) closeModal(); }
+function goToStep(step) { document.querySelectorAll('.checkout-panel').forEach(p=>p.classList.remove('active')); document.querySelectorAll('.checkout-step-btn').forEach(b=>b.classList.remove('active')); document.getElementById('panel'+step).classList.add('active'); document.getElementById('stepBtn'+step).classList.add('active'); }
+function selectCrypto(el, currency) { document.querySelectorAll('.crypto-opt').forEach(o=>o.classList.remove('selected')); el.classList.add('selected'); selCrypto = currency; }
+function showError(msg) { const el = document.getElementById('modalError'); el.textContent = msg; el.style.display = 'block'; }
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+async function proceedToPayment() {
+  if (!currentProduct) { showError('No product selected.'); return; }
+  const btn = document.getElementById('payBtn'); btn.disabled = true; btn.textContent = 'Creating order...';
+  document.getElementById('modalError').style.display = 'none';
+  const payload = { product_id: currentProduct.id, seller_id: currentProduct.seller_id, buyer_email: document.getElementById('buyerEmail').value.trim()||null, shipping_name: document.getElementById('shipName').value.trim()||null, shipping_address: document.getElementById('shipAddress').value.trim()||null, shipping_city: document.getElementById('shipCity').value.trim()||null, shipping_state: document.getElementById('shipState').value.trim()||null, shipping_zip: document.getElementById('shipZip').value.trim()||null, amount_usd: currentProduct.price, crypto_currency: selCrypto, product_name: currentProduct.name };
+  try {
+    const res = await fetch('/.netlify/functions/create-order', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+    const data = await res.json();
+    if (!res.ok || !data.invoice_url) throw new Error(data.error || 'Failed to create order');
+    window.location.href = data.invoice_url;
+  } catch (err) { showError('Payment setup failed: ' + err.message); btn.disabled = false; btn.textContent = 'Pay with Crypto →'; }
+}
+
+loadProducts();
+</script>
+</body>
+</html>
