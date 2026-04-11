@@ -58,11 +58,61 @@ a { color: inherit; text-decoration: none; }
 .nav-links a:hover { color: var(--gold); }
 .nav-cta { background: var(--gold) !important; color: var(--ink) !important; padding: 9px 20px; font-weight: 700 !important; }
 .nav-cta:hover { background: var(--gold-light) !important; }
+
+/* ── LEGAL DROPDOWN ── */
+.nav-dropdown { position: relative; }
+.nav-dropdown-toggle {
+  font-family: var(--font-ui);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--sand-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+}
+.nav-dropdown-toggle:hover { color: var(--gold); }
+.nav-dropdown-toggle svg { transition: transform var(--transition); }
+.nav-dropdown.open .nav-dropdown-toggle { color: var(--gold); }
+.nav-dropdown.open .nav-dropdown-toggle svg { transform: rotate(180deg); }
+.nav-dropdown-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 16px);
+  right: 0;
+  background: var(--ink-mid);
+  border: 1px solid var(--border-strong);
+  min-width: 200px;
+  z-index: 200;
+  flex-direction: column;
+}
+.nav-dropdown.open .nav-dropdown-menu { display: flex; }
+.nav-dropdown-menu a {
+  font-family: var(--font-ui);
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--sand-muted);
+  padding: 13px 18px;
+  border-bottom: 1px solid var(--border);
+  transition: background var(--transition), color var(--transition);
+  display: block;
+}
+.nav-dropdown-menu a:last-child { border-bottom: none; }
+.nav-dropdown-menu a:hover { background: var(--gold-faint); color: var(--gold); }
+
 .nav-mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; color: var(--gold); font-size: 22px; }
 .mobile-menu { display: none; flex-direction: column; background: var(--smoke); border-bottom: 1px solid var(--border); padding: 16px 24px; gap: 0; }
 .mobile-menu a { font-family: var(--font-ui); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--sand-muted); padding: 14px 0; border-bottom: 1px solid var(--border); display: block; }
 .mobile-menu a:last-child { border-bottom: none; color: var(--gold); }
 .mobile-menu.open { display: flex; }
+.mobile-legal-divider { font-family: var(--font-ui); font-size: 8px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold-dark); opacity: 0.5; padding: 12px 0 4px; border-bottom: none !important; cursor: default; }
+
 .hero { min-height: 92vh; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; overflow: hidden; text-align: center; padding: 80px 24px; }
 .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 50% 60%, rgba(139,105,20,0.18) 0%, transparent 70%), radial-gradient(ellipse 40% 30% at 50% 30%, rgba(201,168,76,0.06) 0%, transparent 60%); pointer-events: none; }
 .hero-dunes { position: absolute; bottom: 0; left: 0; right: 0; height: 140px; pointer-events: none; }
@@ -243,6 +293,20 @@ a { color: inherit; text-decoration: none; }
     <a href="#health-network">Health Network</a>
     <a href="#how-it-works">How It Works</a>
     <a href="/seller-apply.html">Sell With Us</a>
+    <div class="nav-dropdown" id="legalDropdown">
+      <button class="nav-dropdown-toggle" onclick="toggleLegalDropdown()">
+        Legal
+        <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <div class="nav-dropdown-menu">
+        <a href="/terms.html">Terms of Service</a>
+        <a href="/seller-agreement.html">Seller Agreement</a>
+        <a href="/privacy.html">Privacy Policy</a>
+        <a href="/disclaimer.html">Disclaimer</a>
+      </div>
+    </div>
     <a href="#featured" class="nav-cta">Shop Now</a>
   </div>
   <button class="nav-mobile-toggle" onclick="toggleMobile()" aria-label="Toggle menu">&#9776;</button>
@@ -253,6 +317,11 @@ a { color: inherit; text-decoration: none; }
   <a href="#health-network" onclick="toggleMobile()">Health Network</a>
   <a href="#how-it-works" onclick="toggleMobile()">How It Works</a>
   <a href="/seller-apply.html" onclick="toggleMobile()">Sell With Us</a>
+  <span class="mobile-legal-divider">Legal</span>
+  <a href="/terms.html" onclick="toggleMobile()">Terms of Service</a>
+  <a href="/seller-agreement.html" onclick="toggleMobile()">Seller Agreement</a>
+  <a href="/privacy.html" onclick="toggleMobile()">Privacy Policy</a>
+  <a href="/disclaimer.html" onclick="toggleMobile()">Disclaimer</a>
   <a href="#featured" onclick="toggleMobile()">Shop Now</a>
 </div>
 
@@ -518,6 +587,20 @@ const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 let currentProduct = null;
 let selCrypto = 'btc';
 
+// ── LEGAL DROPDOWN ──
+function toggleLegalDropdown() {
+  const dropdown = document.getElementById('legalDropdown');
+  dropdown.classList.toggle('open');
+}
+
+document.addEventListener('click', function(e) {
+  const dropdown = document.getElementById('legalDropdown');
+  if (dropdown && !dropdown.contains(e.target)) {
+    dropdown.classList.remove('open');
+  }
+});
+
+// ── PRODUCTS ──
 async function loadProducts() {
   try {
     const res = await fetch(
