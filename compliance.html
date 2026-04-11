@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="State Compliance — Silque Road. How we handle product legality across all 50 states.">
+<title>State Compliance — Silque Road</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #C9A84C; --gold-light: #E8C97A; --gold-dark: #8B6914; --gold-faint: rgba(201,168,76,0.12);
+  --ink: #100d05; --ink-mid: #1a1208; --ink-light: #2a2015; --smoke: #1e180a;
+  --sand: #F0E6CC; --sand-muted: rgba(240,230,204,0.6); --green-ok: #3a8a3a; --crimson: #8B1A1A;
+  --border: rgba(201,168,76,0.2); --border-strong: rgba(201,168,76,0.4);
+  --font-display: 'Cinzel', 'Georgia', serif; --font-body: 'Crimson Pro', 'Georgia', serif;
+  --font-ui: 'Space Mono', 'Courier New', monospace; --max-w: 900px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); background: var(--ink); color: var(--sand); line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; }
+a { color: inherit; text-decoration: none; }
+.nav { background: var(--ink); border-bottom: 1px solid var(--border); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.nav-logo-name { font-family: var(--font-display); font-size: 20px; font-weight: 700; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; }
+.nav-logo-tagline { font-family: var(--font-ui); font-size: 7px; letter-spacing: 3px; color: var(--gold-dark); text-transform: uppercase; display: block; }
+.nav-back { font-family: var(--font-ui); font-size: 10px; letter-spacing: 2px; color: var(--sand-muted); text-transform: uppercase; transition: color 0.2s; }
+.nav-back:hover { color: var(--gold); }
+.hero { background: var(--smoke); border-bottom: 1px solid var(--border); padding: 64px 24px; text-align: center; }
+.hero-label { font-family: var(--font-ui); font-size: 9px; letter-spacing: 5px; color: var(--gold); text-transform: uppercase; opacity: 0.65; margin-bottom: 16px; }
+.hero-title { font-family: var(--font-display); font-size: clamp(28px, 5vw, 48px); font-weight: 700; letter-spacing: 5px; color: var(--gold); text-transform: uppercase; margin-bottom: 16px; }
+.hero-sub { font-family: var(--font-body); font-size: clamp(16px, 2vw, 20px); font-style: italic; color: var(--sand-muted); max-width: 580px; margin: 0 auto; line-height: 1.6; }
+.gold-rule { width: 100px; height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent); margin: 24px auto 0; }
+.main { flex: 1; max-width: var(--max-w); margin: 0 auto; padding: 56px 24px; width: 100%; }
+.section { margin-bottom: 52px; }
+.section-label { font-family: var(--font-ui); font-size: 8px; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; opacity: 0.6; margin-bottom: 10px; }
+.section-title { font-family: var(--font-display); font-size: 20px; font-weight: 600; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; margin-bottom: 18px; }
+.section-body { font-family: var(--font-body); font-size: 18px; color: var(--sand-muted); line-height: 1.8; }
+.section-body p { margin-bottom: 16px; }
+.section-body p:last-child { margin-bottom: 0; }
+.how-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); margin: 28px 0; }
+.how-step { background: var(--ink-mid); padding: 28px 22px; }
+.how-num { font-family: var(--font-display); font-size: 40px; font-weight: 700; color: var(--gold-dark); opacity: 0.3; line-height: 1; margin-bottom: 12px; }
+.how-title { font-family: var(--font-display); font-size: 12px; font-weight: 600; letter-spacing: 1.5px; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
+.how-body { font-family: var(--font-ui); font-size: 9px; letter-spacing: 0.3px; color: var(--sand-muted); line-height: 1.7; }
+.category-table { border: 1px solid var(--border); margin: 28px 0; overflow: hidden; }
+.cat-row { display: grid; grid-template-columns: 2fr 3fr 2fr; border-bottom: 1px solid var(--border); }
+.cat-row:last-child { border-bottom: none; }
+.cat-row.header { background: var(--smoke); }
+.cat-cell { padding: 14px 18px; font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; }
+.cat-row.header .cat-cell { color: var(--gold); text-transform: uppercase; letter-spacing: 2px; opacity: 0.7; }
+.cat-row:not(.header) .cat-cell { color: var(--sand-muted); }
+.cat-row:not(.header) .cat-cell:first-child { color: var(--sand); }
+.cat-row:not(.header):hover { background: var(--ink-mid); }
+.badge { display: inline-block; font-family: var(--font-ui); font-size: 8px; letter-spacing: 1px; padding: 2px 8px; text-transform: uppercase; }
+.badge-green { background: rgba(58,138,58,0.15); color: var(--green-ok); border: 1px solid rgba(58,138,58,0.3); }
+.badge-yellow { background: rgba(201,168,76,0.15); color: var(--gold); border: 1px solid var(--border-strong); }
+.badge-red { background: rgba(139,26,26,0.15); color: #e07070; border: 1px solid rgba(139,26,26,0.3); }
+.info-box { background: var(--ink-mid); border: 1px solid var(--border-strong); padding: 24px 28px; margin: 28px 0; }
+.info-box-title { font-family: var(--font-display); font-size: 13px; font-weight: 600; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; margin-bottom: 12px; }
+.info-box-body { font-family: var(--font-ui); font-size: 9px; letter-spacing: 0.5px; color: var(--sand-muted); line-height: 1.8; }
+.responsibility-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
+.responsibility-card { background: var(--ink-mid); border: 1px solid var(--border); padding: 22px 20px; }
+.responsibility-card.platform { border-color: rgba(201,168,76,0.3); }
+.responsibility-card.seller { border-color: rgba(58,138,58,0.3); }
+.resp-title { font-family: var(--font-display); font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+.platform .resp-title { color: var(--gold); }
+.seller .resp-title { color: var(--green-ok); }
+.resp-list { list-style: none; }
+.resp-list li { font-family: var(--font-ui); font-size: 9px; letter-spacing: 0.5px; color: var(--sand-muted); line-height: 1.7; padding: 4px 0; padding-left: 14px; position: relative; }
+.resp-list li::before { content: '—'; position: absolute; left: 0; color: var(--gold-dark); opacity: 0.5; }
+.disclaimer-block { background: var(--smoke); border: 1px solid var(--border); border-left: 3px solid var(--gold-dark); padding: 20px 24px; margin-top: 40px; }
+.disclaimer-block p { font-family: var(--font-ui); font-size: 9px; letter-spacing: 0.5px; color: var(--sand-muted); opacity: 0.6; line-height: 1.8; }
+.footer { background: var(--ink); border-top: 1px solid var(--border); padding: 20px 24px; text-align: center; }
+.footer p { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--sand-muted); opacity: 0.3; text-transform: uppercase; }
+@media (max-width: 700px) {
+  .how-steps { grid-template-columns: 1fr; }
+  .responsibility-grid { grid-template-columns: 1fr; }
+  .cat-row { grid-template-columns: 1fr 1fr; }
+  .cat-row .cat-cell:nth-child(2) { display: none; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/">
+    <span class="nav-logo-name">Silque Road</span>
+    <span class="nav-logo-tagline">Legal &amp; Available</span>
+  </a>
+  <a href="/" class="nav-back">&larr; Back to Bazaar</a>
+</nav>
+
+<div class="hero">
+  <p class="hero-label">How It Works</p>
+  <h1 class="hero-title">State Compliance</h1>
+  <p class="hero-sub">Every product on Silque Road is legal somewhere. Our job is making sure you only see what's legal where you are.</p>
+  <div class="gold-rule"></div>
+</div>
+
+<main class="main">
+
+  <div class="section">
+    <p class="section-label">The Framework</p>
+    <h2 class="section-title">How We Handle Legality</h2>
+    <div class="section-body">
+      <p>Product legality in the United States is complicated. The same item can be fully legal in one state, restricted in another, and outright banned in a third — sometimes with no federal guidance at all. Mainstream platforms respond to this complexity by banning everything that might cause a problem. We respond differently.</p>
+      <p>We built a compliance framework that filters products by buyer location at checkout. When you provide a shipping address, we verify that the products in your cart are legal for delivery to that state. If a product isn't legal where you're shipping, it won't process.</p>
+    </div>
+
+    <div class="how-steps">
+      <div class="how-step">
+        <div class="how-num">01</div>
+        <div class="how-title">Seller Tags Products</div>
+        <p class="how-body">When a seller lists a product, they tag it with the states where it is legal to ship. They are contractually responsible for the accuracy of these tags under our Seller Agreement.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-num">02</div>
+        <div class="how-title">Buyer Provides Address</div>
+        <p class="how-body">At checkout, the buyer provides a shipping address. We use the state from that address to filter which products can be purchased in that transaction.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-num">03</div>
+        <div class="how-title">Compliance Verified</div>
+        <p class="how-body">If a product is not tagged as legal in the buyer's state, the transaction will not process. Buyers are also responsible for knowing their local laws.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="section-label">Product Categories</p>
+    <h2 class="section-title">Legality by Category</h2>
+    <div class="section-body">
+      <p>Below is a general overview of how our product categories typically map to state legality. This is not legal advice — legality changes and varies. Always verify your state's current laws before purchasing.</p>
+    </div>
+
+    <div class="category-table">
+      <div class="cat-row header">
+        <div class="cat-cell">Category</div>
+        <div class="cat-cell">General Status</div>
+        <div class="cat-cell">Notes</div>
+      </div>
+      <div class="cat-row">
+        <div class="cat-cell">Kratom</div>
+        <div class="cat-cell">Legal in most states</div>
+        <div class="cat-cell"><span class="badge badge-yellow">State Varies</span></div>
+      </div>
+      <div class="cat-row">
+        <div class="cat-cell">Delta-8 THC</div>
+        <div class="cat-cell">Legal federally, banned in some states</div>
+        <div class="cat-cell"><span class="badge badge-yellow">State Varies</span></div>
+      </div>
+      <div class="cat-row">
+        <div class="cat-cell">THCA Hemp Flower</div>
+        <div class="cat-cell">Federally legal under Farm Bill</div>
+        <div class="cat-cell"><span class="badge badge-green">Broadly Legal</span></div>
+      </div>
+      <div class="cat-row">
+        <div class="cat-cell">Peptides</div>
+        <div class="cat-cell">Legal for research use in all states</div>
+        <div class="cat-cell"><span class="badge badge-green">Research Use</span></div>
+      </div>
+      <div class="cat-row">
+        <div class="cat-cell">Ivermectin</div>
+        <div class="cat-cell">Legal veterinary / research grade</div>
+        <div class="cat-cell"><span class="badge badge-green">Legal</span></div>
+      </div>
+      <div class="cat-row">
+        <div class="cat-cell">Methylene Blue</div>
+        <div class="cat-cell">Legal in all states</div>
+        <div class="cat-cell"><span class="badge badge-green">Legal</span></div>
+      </div>
+      <div class="cat-row">
+        <div class="cat-cell">Amanita Muscaria</div>
+        <div class="cat-cell">Legal in all states except Louisiana</div>
+        <div class="cat-cell"><span class="badge badge-yellow">State Varies</span></div>
+      </div>
+      <div class="cat-row">
+        <div class="cat-cell">Flavored Nicotine / Vape</div>
+        <div class="cat-cell">Regulated — varies by state</div>
+        <div class="cat-cell"><span class="badge badge-yellow">State Varies</span></div>
+      </div>
+      <div class="cat-row">
+        <div class="cat-cell">Salvia Divinorum</div>
+        <div class="cat-cell">Legal federally, banned in several states</div>
+        <div class="cat-cell"><span class="badge badge-red">Multiple Bans</span></div>
+      </div>
+      <div class="cat-row">
+        <div class="cat-cell">Kava</div>
+        <div class="cat-cell">Legal in all states</div>
+        <div class="cat-cell"><span class="badge badge-green">Legal</span></div>
+      </div>
+      <div class="cat-row">
+        <div class="cat-cell">Raw Dairy</div>
+        <div class="cat-cell">Legal for sale in some states only</div>
+        <div class="cat-cell"><span class="badge badge-red">Restricted</span></div>
+      </div>
+      <div class="cat-row">
+        <div class="cat-cell">Stun Guns / Tasers</div>
+        <div class="cat-cell">Legal in most states with restrictions</div>
+        <div class="cat-cell"><span class="badge badge-yellow">State Varies</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="section-label">Responsibilities</p>
+    <h2 class="section-title">Who Is Responsible for What</h2>
+    <div class="section-body">
+      <p>Compliance is a shared responsibility between Silque Road, our sellers, and our buyers. Here is exactly how we divide it.</p>
+    </div>
+
+    <div class="responsibility-grid">
+      <div class="responsibility-card platform">
+        <div class="resp-title">Silque Road</div>
+        <ul class="resp-list">
+          <li>Vetting sellers before approval</li>
+          <li>Maintaining the state compliance filter at checkout</li>
+          <li>Reviewing product listings for obvious compliance issues</li>
+          <li>Removing products flagged as non-compliant</li>
+          <li>Updating compliance tags as laws change</li>
+          <li>Providing this compliance documentation</li>
+        </ul>
+      </div>
+      <div class="responsibility-card seller">
+        <div class="resp-title">Sellers</div>
+        <ul class="resp-list">
+          <li>Accurately tagging which states they can ship to</li>
+          <li>Staying current on product legality in their shipping states</li>
+          <li>Labeling products correctly (research use, veterinary, etc.)</li>
+          <li>Complying with all applicable shipping laws</li>
+          <li>Updating their state tags when laws change</li>
+          <li>Accuracy of all product descriptions and claims</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <div class="info-box-title">Buyer Responsibility</div>
+      <p class="info-box-body">Buyers are responsible for knowing and complying with the laws of their jurisdiction. Silque Road's compliance filter is a tool to assist — it is not a guarantee of legality in every local jurisdiction. Some municipalities have laws that differ from state law. Buyers should verify local ordinances before purchasing. Silque Road assumes no liability for purchases made in violation of local law.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="section-label">Reporting</p>
+    <h2 class="section-title">Flagging Compliance Issues</h2>
+    <div class="section-body">
+      <p>If you believe a product is listed in violation of your state's laws, or if a seller is shipping to states where their product is prohibited, we want to know. Contact us at <a href="mailto:info@silqueroad.com" style="color:var(--gold);border-bottom:1px solid var(--border-strong);">info@silqueroad.com</a> with the product name and the specific concern. We investigate all compliance reports within 48 hours.</p>
+      <p>Sellers found to be deliberately misrepresenting state legality will be removed from the platform immediately and permanently.</p>
+    </div>
+  </div>
+
+  <div class="disclaimer-block">
+    <p>This page is for informational purposes only and does not constitute legal advice. Product legality changes frequently. Laws at the federal, state, and local level may differ. Silque Road makes no warranty regarding the completeness or current accuracy of the information on this page. Buyers and sellers should consult legal counsel for questions about specific products in specific jurisdictions. Last reviewed: April 2026.</p>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <p>Silque Road &nbsp;&bull;&nbsp; Legal &amp; Available &nbsp;&bull;&nbsp; No tracking. No cookies. No analytics.</p>
+</footer>
+
+</body>
+</html>
