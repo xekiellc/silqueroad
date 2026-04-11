@@ -47,7 +47,6 @@
       z-index: 100;
     }
 
-    /* ── LOGIN ── */
     #loginScreen {
       display: flex;
       align-items: center;
@@ -172,7 +171,6 @@
       font-size: 0.85rem;
     }
 
-    /* ── DASHBOARD SHELL ── */
     #dashboard { display: none; }
 
     .dash-header {
@@ -220,7 +218,6 @@
 
     .logout-btn:hover { color: var(--red-text); border-color: var(--red); }
 
-    /* ── TABS ── */
     .dash-tabs {
       display: flex;
       border-bottom: 1px solid var(--border);
@@ -246,13 +243,11 @@
     .dash-tab:hover { color: var(--cream); }
     .dash-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
 
-    /* ── BODY ── */
     .dash-body { padding: 40px; max-width: 1000px; margin: 0 auto; }
 
     .tab-panel { display: none; }
     .tab-panel.active { display: block; }
 
-    /* stats */
     .stats-row {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -289,7 +284,6 @@
       color: var(--cream-dim);
     }
 
-    /* section titles */
     .section-title {
       font-family: 'Inconsolata', monospace;
       font-size: 0.6rem;
@@ -299,7 +293,6 @@
       margin-bottom: 16px;
     }
 
-    /* product form */
     .product-form-box {
       background: var(--charcoal);
       border: 1px solid var(--border);
@@ -363,7 +356,6 @@
 
     .cancel-btn:hover { border-color: var(--red); color: var(--red-text); }
 
-    /* product cards */
     .product-card {
       background: var(--charcoal);
       border: 1px solid var(--border);
@@ -377,7 +369,6 @@
     }
 
     .product-card:hover { border-color: var(--border-hover); }
-
     .product-card-info { flex: 1; }
 
     .product-name {
@@ -412,19 +403,22 @@
     .mini-btn:hover { border-color: var(--gold-dim); color: var(--gold); }
     .mini-btn.danger:hover { border-color: var(--red); color: var(--red-text); }
 
-    /* order rows */
+    /* ── ORDER ROWS ── */
     .order-row {
       background: var(--charcoal);
       border: 1px solid var(--border);
-      padding: 18px 24px;
-      margin-bottom: 8px;
+      padding: 20px 24px;
+      margin-bottom: 10px;
+      transition: border-color 0.2s;
     }
+
+    .order-row:hover { border-color: var(--border-hover); }
 
     .order-row-top {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 10px;
+      margin-bottom: 14px;
       flex-wrap: wrap;
       gap: 8px;
     }
@@ -444,9 +438,10 @@
     .order-details {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
-      gap: 8px 16px;
+      gap: 10px 16px;
       font-size: 0.85rem;
       color: var(--cream-dim);
+      margin-bottom: 16px;
     }
 
     @media (max-width: 600px) { .order-details { grid-template-columns: 1fr 1fr; } }
@@ -457,7 +452,72 @@
       letter-spacing: 0.15em;
       text-transform: uppercase;
       color: var(--gold-dim);
-      margin-bottom: 1px;
+      margin-bottom: 2px;
+    }
+
+    /* ── TRACKING SECTION ── */
+    .tracking-section {
+      border-top: 1px solid var(--border);
+      padding-top: 14px;
+      margin-top: 4px;
+    }
+
+    .tracking-label {
+      font-family: 'Inconsolata', monospace;
+      font-size: 0.55rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-bottom: 8px;
+    }
+
+    .tracking-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .tracking-input {
+      flex: 1;
+      background: var(--obsidian);
+      border: 1px solid var(--border);
+      color: var(--cream);
+      font-family: 'Inconsolata', monospace;
+      font-size: 0.75rem;
+      padding: 8px 12px;
+      outline: none;
+      border-radius: 0;
+      transition: border-color 0.2s;
+    }
+
+    .tracking-input:focus { border-color: var(--gold-dim); }
+    .tracking-input::placeholder { color: rgba(154,144,126,0.4); font-style: italic; }
+
+    .tracking-save-btn {
+      font-family: 'Inconsolata', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      border: 1px solid var(--gold-dim);
+      background: transparent;
+      color: var(--gold-pale);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+
+    .tracking-save-btn:hover { background: var(--gold); color: var(--black); border-color: var(--gold); }
+    .tracking-save-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    .tracking-saved {
+      font-family: 'Inconsolata', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      color: var(--green-text);
+      margin-top: 6px;
+      display: none;
     }
 
     /* payout rows */
@@ -486,7 +546,6 @@
       margin-top: 2px;
     }
 
-    /* badges */
     .badge {
       font-family: 'Inconsolata', monospace;
       font-size: 0.55rem;
@@ -496,12 +555,11 @@
       border: 1px solid;
     }
 
-    .badge.active, .badge.approved, .badge.paid { color: var(--green-text); border-color: var(--green); }
-    .badge.pending, .badge.new { color: var(--yellow-text); border-color: var(--yellow-border); }
+    .badge.active, .badge.approved, .badge.paid, .badge.shipped, .badge.delivered { color: var(--green-text); border-color: var(--green); }
+    .badge.pending, .badge.new, .badge.confirmed, .badge.finished { color: var(--yellow-text); border-color: var(--yellow-border); }
     .badge.inactive, .badge.rejected { color: var(--red-text); border-color: var(--red); }
     .badge.completed { color: #80b0e0; border-color: #2a5080; }
 
-    /* empty / loading */
     .empty-state {
       text-align: center;
       padding: 48px 20px;
@@ -656,7 +714,6 @@
 
     <!-- PRODUCTS TAB -->
     <div class="tab-panel" id="tab-products">
-
       <div class="product-form-box">
         <h3 id="productFormTitle">Add a New Product</h3>
         <input type="hidden" id="editingProductId" value="" />
@@ -751,7 +808,9 @@
 
     <!-- ORDERS TAB -->
     <div class="tab-panel" id="tab-orders">
-      <div class="info-box">Orders are created automatically when a buyer completes payment through NOWPayments. Contact <a href="mailto:info@silqueroad.com" style="color:var(--gold)">info@silqueroad.com</a> with any fulfillment questions.</div>
+      <div class="info-box">
+        Orders are created automatically when a buyer completes payment. Add a tracking number to each order once you ship — the buyer will be notified automatically if they provided an email. Contact <a href="mailto:info@silqueroad.com" style="color:var(--gold)">info@silqueroad.com</a> with any fulfillment questions.
+      </div>
       <div id="orderList"><div class="loading-line"><span class="spinner"></span>Loading...</div></div>
     </div>
 
@@ -761,8 +820,8 @@
       <div id="payoutList"><div class="loading-line"><span class="spinner"></span>Loading...</div></div>
     </div>
 
-  </div><!-- end dash-body -->
-</div><!-- end dashboard -->
+  </div>
+</div>
 
 <div class="toast" id="toast"></div>
 
@@ -780,29 +839,23 @@
   async function sellerLogin() {
     const email = document.getElementById('loginEmail').value.trim().toLowerCase();
     if (!email) return;
-
     document.getElementById('loginError').style.display = 'none';
-
     try {
       const res = await fetch(
         `${SUPABASE_URL}/rest/v1/sellers?email=eq.${encodeURIComponent(email)}&status=eq.approved&select=*`,
         { headers: { 'apikey': ANON_KEY, 'Authorization': `Bearer ${ANON_KEY}` } }
       );
       const sellers = await res.json();
-
       if (!sellers || sellers.length === 0) {
         document.getElementById('loginError').style.display = 'block';
         return;
       }
-
       currentSeller = sellers[0];
       document.getElementById('loginScreen').style.display = 'none';
       document.getElementById('dashboard').style.display = 'block';
       document.getElementById('headerSellerName').textContent = currentSeller.business_name;
-
       loadAllData();
-
-    } catch (err) {
+    } catch {
       document.getElementById('loginError').style.display = 'block';
     }
   }
@@ -899,7 +952,7 @@
           <div class="product-meta">
             $${parseFloat(p.price || 0).toFixed(2)} &nbsp;·&nbsp; ${esc(p.category || '—')}
             &nbsp;·&nbsp; <span class="badge ${p.status}">${p.status}</span>
-            &nbsp;·&nbsp; ${esc(p.stock_status || 'in_stock').replace('_', ' ')}
+            &nbsp;·&nbsp; ${esc(p.stock_status || 'in_stock').replace(/_/g, ' ')}
           </div>
           ${p.description ? `<div style="font-size:0.88rem;color:var(--cream-dim);margin-top:6px;line-height:1.5">${esc(p.description).substring(0, 120)}${p.description.length > 120 ? '...' : ''}</div>` : ''}
         </div>
@@ -947,35 +1000,22 @@
       if (editingId) {
         res = await fetch(`${SUPABASE_URL}/rest/v1/products?id=eq.${editingId}`, {
           method: 'PATCH',
-          headers: {
-            'Content-Type': 'application/json',
-            'apikey': SERVICE_KEY,
-            'Authorization': `Bearer ${SERVICE_KEY}`,
-            'Prefer': 'return=minimal'
-          },
+          headers: { 'Content-Type': 'application/json', 'apikey': SERVICE_KEY, 'Authorization': `Bearer ${SERVICE_KEY}`, 'Prefer': 'return=minimal' },
           body: JSON.stringify(payload)
         });
       } else {
         res = await fetch(`${SUPABASE_URL}/rest/v1/products`, {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'apikey': SERVICE_KEY,
-            'Authorization': `Bearer ${SERVICE_KEY}`,
-            'Prefer': 'return=minimal'
-          },
+          headers: { 'Content-Type': 'application/json', 'apikey': SERVICE_KEY, 'Authorization': `Bearer ${SERVICE_KEY}`, 'Prefer': 'return=minimal' },
           body: JSON.stringify(payload)
         });
       }
-
       if (!res.ok) throw new Error('Save failed');
-
       clearProductForm();
       await loadProducts();
       renderOverview();
       showToast(editingId ? 'Product updated' : 'Product added', 'success');
-
-    } catch (err) {
+    } catch {
       showFormMsg('Save failed. Please try again.', 'error');
     } finally {
       btn.disabled = false;
@@ -1001,9 +1041,7 @@
     document.querySelector('.product-form-box').scrollIntoView({ behavior: 'smooth' });
   }
 
-  function cancelEdit() {
-    clearProductForm();
-  }
+  function cancelEdit() { clearProductForm(); }
 
   function clearProductForm() {
     document.getElementById('editingProductId').value = '';
@@ -1068,7 +1106,7 @@
           </div>
           <div>
             <div class="order-detail-label">Fulfillment</div>
-            <div><span class="badge ${o.fulfillment_status}">${o.fulfillment_status || 'pending'}</span></div>
+            <div><span class="badge ${o.fulfillment_status || 'pending'}">${o.fulfillment_status || 'pending'}</span></div>
           </div>
           <div>
             <div class="order-detail-label">Ship To</div>
@@ -1079,12 +1117,97 @@
             <div>${esc([o.shipping_city, o.shipping_state, o.shipping_zip].filter(Boolean).join(', ') || '—')}</div>
           </div>
           <div>
-            <div class="order-detail-label">Tracking</div>
-            <div>${esc(o.tracking_number || 'Not yet set')}</div>
+            <div class="order-detail-label">Product</div>
+            <div style="font-size:0.82rem">${esc(o.product_id ? o.product_id.substring(0,8).toUpperCase() : '—')}</div>
           </div>
+        </div>
+        <div class="tracking-section">
+          <div class="tracking-label">Tracking Number ${o.tracking_number ? '&#10003; Saved' : '— Add to notify buyer'}</div>
+          <div class="tracking-row">
+            <input
+              type="text"
+              class="tracking-input"
+              id="tracking-${o.id}"
+              placeholder="Enter tracking number..."
+              value="${esc(o.tracking_number || '')}"
+            />
+            <button class="tracking-save-btn" id="tracking-btn-${o.id}" onclick="saveTracking('${o.id}', '${esc(o.buyer_email || '')}')">
+              ${o.tracking_number ? 'Update' : 'Save & Notify'}
+            </button>
+          </div>
+          <div class="tracking-saved" id="tracking-saved-${o.id}">&#10003; Saved — buyer notified if email on file</div>
         </div>
       </div>
     `).join('');
+  }
+
+  // ── SAVE TRACKING ──
+  async function saveTracking(orderId, buyerEmail) {
+    const input = document.getElementById(`tracking-${orderId}`);
+    const btn = document.getElementById(`tracking-btn-${orderId}`);
+    const savedMsg = document.getElementById(`tracking-saved-${orderId}`);
+    const trackingNumber = input.value.trim();
+
+    if (!trackingNumber) { showToast('Enter a tracking number first', 'error'); return; }
+
+    btn.disabled = true;
+    btn.textContent = 'Saving...';
+
+    try {
+      // Save tracking number to order and update fulfillment status to shipped
+      const res = await fetch(`${SUPABASE_URL}/rest/v1/orders?id=eq.${orderId}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': SERVICE_KEY,
+          'Authorization': `Bearer ${SERVICE_KEY}`,
+          'Prefer': 'return=minimal'
+        },
+        body: JSON.stringify({
+          tracking_number: trackingNumber,
+          fulfillment_status: 'shipped'
+        })
+      });
+
+      if (!res.ok) throw new Error('Save failed');
+
+      // Update local order data
+      const order = sellerOrders.find(o => o.id === orderId);
+      if (order) {
+        order.tracking_number = trackingNumber;
+        order.fulfillment_status = 'shipped';
+      }
+
+      // Fire buyer notification if they have an email
+      if (buyerEmail) {
+        try {
+          await fetch('https://silqueroad.com/.netlify/functions/send-notification', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              type: 'order_shipped',
+              data: {
+                buyer_email: buyerEmail,
+                tracking_number: trackingNumber,
+                order_id: orderId
+              }
+            })
+          });
+        } catch {
+          // Notification failure doesn't block the save
+        }
+      }
+
+      savedMsg.style.display = 'block';
+      btn.textContent = 'Update';
+      showToast('Tracking saved' + (buyerEmail ? ' — buyer notified' : ''), 'success');
+
+    } catch {
+      showToast('Save failed — try again', 'error');
+      btn.textContent = 'Save & Notify';
+    } finally {
+      btn.disabled = false;
+    }
   }
 
   // ── PAYOUTS ──
