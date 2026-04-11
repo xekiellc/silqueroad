@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="About Silque Road — We carry what the internet won't. The legal marketplace for products mainstream platforms refuse to sell.">
+<title>About — Silque Road</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #C9A84C; --gold-light: #E8C97A; --gold-dark: #8B6914; --gold-faint: rgba(201,168,76,0.12);
+  --ink: #100d05; --ink-mid: #1a1208; --ink-light: #2a2015; --smoke: #1e180a;
+  --sand: #F0E6CC; --sand-muted: rgba(240,230,204,0.6); --green-ok: #3a8a3a;
+  --border: rgba(201,168,76,0.2); --border-strong: rgba(201,168,76,0.4);
+  --font-display: 'Cinzel', 'Georgia', serif; --font-body: 'Crimson Pro', 'Georgia', serif;
+  --font-ui: 'Space Mono', 'Courier New', monospace; --max-w: 800px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); background: var(--ink); color: var(--sand); line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; }
+a { color: inherit; text-decoration: none; }
+.nav { background: var(--ink); border-bottom: 1px solid var(--border); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.nav-logo-name { font-family: var(--font-display); font-size: 20px; font-weight: 700; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; }
+.nav-logo-tagline { font-family: var(--font-ui); font-size: 7px; letter-spacing: 3px; color: var(--gold-dark); text-transform: uppercase; display: block; }
+.nav-back { font-family: var(--font-ui); font-size: 10px; letter-spacing: 2px; color: var(--sand-muted); text-transform: uppercase; transition: color 0.2s; }
+.nav-back:hover { color: var(--gold); }
+.hero { background: var(--smoke); border-bottom: 1px solid var(--border); padding: 72px 24px; text-align: center; }
+.hero-label { font-family: var(--font-ui); font-size: 9px; letter-spacing: 5px; color: var(--gold); text-transform: uppercase; opacity: 0.65; margin-bottom: 16px; }
+.hero-title { font-family: var(--font-display); font-size: clamp(32px, 6vw, 56px); font-weight: 700; letter-spacing: 6px; color: var(--gold); text-transform: uppercase; margin-bottom: 20px; line-height: 1.1; }
+.hero-sub { font-family: var(--font-body); font-size: clamp(18px, 2.5vw, 24px); font-style: italic; font-weight: 300; color: var(--sand); opacity: 0.85; max-width: 600px; margin: 0 auto; line-height: 1.6; }
+.gold-rule { width: 100px; height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent); margin: 28px auto 0; }
+.main { flex: 1; max-width: var(--max-w); margin: 0 auto; padding: 64px 24px; width: 100%; }
+.section { margin-bottom: 56px; }
+.section-label { font-family: var(--font-ui); font-size: 8px; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; opacity: 0.6; margin-bottom: 12px; }
+.section-title { font-family: var(--font-display); font-size: 22px; font-weight: 600; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 20px; }
+.section-body { font-family: var(--font-body); font-size: 19px; color: var(--sand-muted); line-height: 1.8; }
+.section-body p { margin-bottom: 18px; }
+.section-body p:last-child { margin-bottom: 0; }
+.pull-quote { border-left: 2px solid var(--gold); padding: 16px 24px; margin: 32px 0; }
+.pull-quote p { font-family: var(--font-body); font-size: 22px; font-style: italic; color: var(--sand); line-height: 1.6; }
+.principles { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); margin: 32px 0; }
+.principle { background: var(--ink-mid); padding: 28px 24px; }
+.principle-num { font-family: var(--font-display); font-size: 36px; font-weight: 700; color: var(--gold-dark); opacity: 0.3; line-height: 1; margin-bottom: 10px; }
+.principle-title { font-family: var(--font-display); font-size: 13px; font-weight: 600; letter-spacing: 1.5px; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
+.principle-body { font-family: var(--font-ui); font-size: 9px; letter-spacing: 0.5px; color: var(--sand-muted); line-height: 1.7; }
+.cta-block { background: var(--smoke); border: 1px solid var(--border-strong); padding: 40px; text-align: center; margin-top: 48px; }
+.cta-title { font-family: var(--font-display); font-size: 20px; font-weight: 600; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 12px; }
+.cta-body { font-family: var(--font-body); font-size: 17px; font-style: italic; color: var(--sand-muted); margin-bottom: 28px; line-height: 1.6; }
+.btn-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.btn-primary { display: inline-block; background: var(--gold); color: var(--ink); font-family: var(--font-ui); font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 14px 32px; border: none; cursor: pointer; transition: background 0.2s; }
+.btn-primary:hover { background: var(--gold-light); }
+.btn-outline { display: inline-block; background: transparent; color: var(--gold); font-family: var(--font-ui); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; padding: 13px 32px; border: 1px solid var(--border-strong); cursor: pointer; transition: border-color 0.2s, color 0.2s; }
+.btn-outline:hover { border-color: var(--gold); color: var(--gold-light); }
+.footer { background: var(--ink); border-top: 1px solid var(--border); padding: 20px 24px; text-align: center; }
+.footer p { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--sand-muted); opacity: 0.3; text-transform: uppercase; }
+@media (max-width: 600px) {
+  .principles { grid-template-columns: 1fr; }
+  .cta-block { padding: 28px 20px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/">
+    <span class="nav-logo-name">Silque Road</span>
+    <span class="nav-logo-tagline">Legal &amp; Available</span>
+  </a>
+  <a href="/" class="nav-back">&larr; Back to Bazaar</a>
+</nav>
+
+<div class="hero">
+  <p class="hero-label">Our Story</p>
+  <h1 class="hero-title">We Carry What<br>the Internet Won't</h1>
+  <p class="hero-sub">A marketplace built for the products that platforms ban, shadow-remove, and quietly make impossible to sell — while remaining completely legal.</p>
+  <div class="gold-rule"></div>
+</div>
+
+<main class="main">
+
+  <div class="section">
+    <p class="section-label">The Problem</p>
+    <h2 class="section-title">The Shelf Keeps Moving</h2>
+    <div class="section-body">
+      <p>Something changed in American commerce. Legal products — products sold openly, taxed like any other good, protected by state law — started disappearing from mainstream platforms. Not because they were illegal. Because they were inconvenient.</p>
+      <p>Kratom. Peptides. THCA. Ivermectin. Methylene blue. Flavored nicotine. Delta-8. Fenbendazole. Raw dairy. Each one legal in most of the country. Each one systematically de-platformed, payment-processed out of existence, or buried so deep in search results it may as well not exist.</p>
+      <p>The sellers didn't break the law. The buyers didn't break the law. But the platforms made a different calculation — that the reputational risk of carrying these products outweighed the revenue. And so they moved the shelf.</p>
+    </div>
+
+    <div class="pull-quote">
+      <p>"Legal doesn't mean available. We built Silque Road to change that."</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="section-label">The Solution</p>
+    <h2 class="section-title">The Open Market, Finally</h2>
+    <div class="section-body">
+      <p>Silque Road is a marketplace built specifically for legal products that mainstream platforms won't carry. Every product listed here is legal under applicable federal and state law. Every seller is vetted before they can list. Every buyer can check out anonymously if they choose.</p>
+      <p>We built the payment infrastructure that mainstream processors refuse to touch. We built the compliance framework that makes state-by-state legality clear. We built the seller tools that let independent operators run a real business without fear of waking up to a suspended account.</p>
+      <p>We are not a gray market. We are not a loophole. We are what commerce was always supposed to be — open, legal, and free from the politics of platform gatekeepers.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="section-label">Our Principles</p>
+    <h2 class="section-title">What We Stand For</h2>
+    <div class="principles">
+      <div class="principle">
+        <div class="principle-num">01</div>
+        <div class="principle-title">Legal Means Legal</div>
+        <p class="principle-body">If a product is legal in your state, you should be able to buy it. We don't add extra gates beyond what the law requires.</p>
+      </div>
+      <div class="principle">
+        <div class="principle-num">02</div>
+        <div class="principle-title">Anonymous by Default</div>
+        <p class="principle-body">Buyers should not have to justify their legal purchases to anyone. Anonymous checkout is a feature, not a workaround.</p>
+      </div>
+      <div class="principle">
+        <div class="principle-num">03</div>
+        <div class="principle-title">No Deplatforming</div>
+        <p class="principle-body">We do not suspend sellers for selling legal products. If you're operating legally, your store stays open. Period.</p>
+      </div>
+      <div class="principle">
+        <div class="principle-num">04</div>
+        <div class="principle-title">Seller First</div>
+        <p class="principle-body">Sellers keep 90% of every sale. We take 10% to run the platform. Payouts go out weekly in crypto to whatever wallet you choose.</p>
+      </div>
+      <div class="principle">
+        <div class="principle-num">05</div>
+        <div class="principle-title">Crypto Native</div>
+        <p class="principle-body">Crypto payments aren't an afterthought — they're the foundation. 8 cryptocurrencies accepted. Full anonymity for buyers who want it.</p>
+      </div>
+      <div class="principle">
+        <div class="principle-num">06</div>
+        <div class="principle-title">Compliance Built In</div>
+        <p class="principle-body">State compliance is our responsibility, not yours. Products are filtered by buyer location so you never accidentally sell across a legal line.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="section-label">The Name</p>
+    <h2 class="section-title">Why Silque Road</h2>
+    <div class="section-body">
+      <p>The Silk Road was history's greatest open marketplace — a 4,000-mile network of trade routes connecting East to West, where goods, ideas, and commerce flowed freely across borders that governments tried to control. It operated for over a thousand years because the demand for open trade is more durable than any attempt to restrict it.</p>
+      <p>Silque Road is named for that tradition — the belief that markets want to be open, that buyers and sellers have a right to transact freely, and that the platforms trying to control what you can buy and sell are on the wrong side of history.</p>
+      <p>We spelled it differently on purpose. This is something new.</p>
+    </div>
+  </div>
+
+  <div class="cta-block">
+    <div class="cta-title">Ready to Shop — or Sell?</div>
+    <p class="cta-body">Browse the bazaar, or apply to become a founding seller. We're building the open market, finally.</p>
+    <div class="btn-row">
+      <a href="/#featured" class="btn-primary">Browse the Bazaar</a>
+      <a href="/seller-apply.html" class="btn-outline">Become a Founding Seller</a>
+    </div>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <p>Silque Road &nbsp;&bull;&nbsp; Legal &amp; Available &nbsp;&bull;&nbsp; No tracking. No cookies. No analytics.</p>
+</footer>
+
+</body>
+</html>
