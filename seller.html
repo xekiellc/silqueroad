@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Seller Profile — Silque Road">
+<title>Seller Profile — Silque Road</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #C9A84C; --gold-light: #E8C97A; --gold-dark: #8B6914; --gold-faint: rgba(201,168,76,0.12);
+  --ink: #100d05; --ink-mid: #1a1208; --ink-light: #2a2015; --smoke: #1e180a;
+  --sand: #F0E6CC; --sand-muted: rgba(240,230,204,0.6); --green-ok: #3a8a3a;
+  --border: rgba(201,168,76,0.2); --border-strong: rgba(201,168,76,0.4);
+  --font-display: 'Cinzel', 'Georgia', serif; --font-body: 'Crimson Pro', 'Georgia', serif;
+  --font-ui: 'Space Mono', 'Courier New', monospace; --transition: 0.2s ease; --max-w: 1000px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); background: var(--ink); color: var(--sand); line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; }
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+.nav { position: sticky; top: 0; z-index: 1000; background: var(--ink); border-bottom: 1px solid var(--border); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.nav-logo { display: flex; flex-direction: column; }
+.nav-logo-name { font-family: var(--font-display); font-size: 20px; font-weight: 700; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; }
+.nav-logo-tagline { font-family: var(--font-ui); font-size: 7px; letter-spacing: 3px; color: var(--gold-dark); text-transform: uppercase; }
+.nav-back { font-family: var(--font-ui); font-size: 10px; letter-spacing: 2px; color: var(--sand-muted); text-transform: uppercase; transition: color var(--transition); }
+.nav-back:hover { color: var(--gold); }
+.main { flex: 1; max-width: var(--max-w); margin: 0 auto; padding: 48px 24px; width: 100%; }
+.seller-header { display: grid; grid-template-columns: auto 1fr; gap: 32px; align-items: start; background: var(--ink-mid); border: 1px solid var(--border-strong); padding: 36px; margin-bottom: 36px; }
+.seller-avatar { width: 80px; height: 80px; background: var(--gold-faint); border: 1px solid var(--border-strong); display: flex; align-items: center; justify-content: center; font-size: 36px; flex-shrink: 0; }
+.seller-name { font-family: var(--font-display); font-size: 26px; font-weight: 600; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; }
+.seller-meta { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 14px; }
+.seller-meta-item { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--sand-muted); text-transform: uppercase; display: flex; align-items: center; gap: 6px; }
+.meta-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); opacity: 0.4; }
+.seller-bio { font-family: var(--font-body); font-size: 17px; font-style: italic; color: var(--sand-muted); line-height: 1.6; }
+.seller-badges { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+.seller-badge { font-family: var(--font-ui); font-size: 8px; letter-spacing: 1px; color: var(--gold); border: 1px solid var(--border-strong); padding: 4px 12px; text-transform: uppercase; }
+.seller-badge.verified { background: rgba(58,138,58,0.1); color: var(--green-ok); border-color: rgba(58,138,58,0.3); }
+.stars { display: flex; gap: 2px; align-items: center; }
+.star { color: var(--gold); font-size: 14px; }
+.star.empty { color: var(--gold-dark); opacity: 0.3; }
+.rating-num { font-family: var(--font-ui); font-size: 10px; color: var(--gold); margin-left: 6px; }
+.section-title { font-family: var(--font-display); font-size: 16px; font-weight: 600; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+.product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 48px; }
+.product-card { background: var(--ink-mid); border: 1px solid var(--border); padding: 20px 18px; cursor: pointer; transition: border-color var(--transition); display: flex; flex-direction: column; gap: 8px; }
+.product-card:hover { border-color: var(--border-strong); }
+.product-img { width: 100%; height: 140px; object-fit: cover; background: var(--ink-light); display: block; }
+.product-cat { font-family: var(--font-ui); font-size: 8px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; opacity: 0.6; }
+.product-name { font-family: var(--font-display); font-size: 14px; font-weight: 600; color: var(--sand); line-height: 1.3; }
+.product-desc { font-family: var(--font-body); font-size: 13px; font-style: italic; color: var(--sand-muted); line-height: 1.5; flex: 1; }
+.product-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 8px; border-top: 1px solid var(--border); }
+.product-price { font-family: var(--font-ui); font-size: 15px; font-weight: 700; color: var(--gold); }
+.product-add { background: transparent; border: 1px solid var(--border-strong); color: var(--gold); font-family: var(--font-ui); font-size: 8px; letter-spacing: 1px; text-transform: uppercase; padding: 5px 12px; cursor: pointer; transition: background var(--transition); }
+.product-add:hover { background: var(--gold-faint); }
+.reviews-list { display: flex; flex-direction: column; gap: 16px; margin-bottom: 48px; }
+.review-card { background: var(--ink-mid); border: 1px solid var(--border); padding: 20px 22px; }
+.review-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 8px; }
+.review-product { font-family: var(--font-ui); font-size: 8px; letter-spacing: 1px; color: var(--gold); text-transform: uppercase; opacity: 0.7; }
+.review-date { font-family: var(--font-ui); font-size: 8px; letter-spacing: 1px; color: var(--sand-muted); opacity: 0.4; }
+.review-body { font-family: var(--font-body); font-size: 16px; font-style: italic; color: var(--sand-muted); line-height: 1.6; }
+.no-reviews { font-family: var(--font-body); font-size: 16px; font-style: italic; color: var(--sand-muted); opacity: 0.5; text-align: center; padding: 32px 0; }
+.loading-state { text-align: center; padding: 80px 20px; }
+.loading-state p { font-family: var(--font-ui); font-size: 10px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; opacity: 0.5; }
+.error-state { text-align: center; padding: 80px 20px; }
+.error-state h3 { font-family: var(--font-display); font-size: 18px; color: var(--gold); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 12px; }
+.error-state p { font-family: var(--font-body); font-size: 17px; font-style: italic; color: var(--sand-muted); margin-bottom: 24px; }
+.btn-primary { display: inline-block; background: var(--gold); color: var(--ink); font-family: var(--font-ui); font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 13px 28px; border: none; cursor: pointer; transition: background var(--transition); }
+.btn-primary:hover { background: var(--gold-light); }
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 2000; align-items: center; justify-content: center; padding: 24px; overflow-y: auto; }
+.modal-overlay.open { display: flex; }
+.modal { background: var(--ink-mid); border: 1px solid var(--border-strong); max-width: 560px; width: 100%; padding: 40px; position: relative; max-height: 90vh; overflow-y: auto; margin: auto; }
+.modal-close { position: absolute; top: 16px; right: 20px; background: none; border: none; color: var(--sand-muted); font-size: 22px; cursor: pointer; line-height: 1; }
+.modal-title { font-family: var(--font-display); font-size: 18px; font-weight: 600; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 4px; }
+.modal-product-sub { font-family: var(--font-body); font-size: 14px; font-style: italic; color: var(--sand-muted); margin-bottom: 20px; }
+.checkout-steps { display: flex; gap: 0; margin-bottom: 24px; border-bottom: 1px solid var(--border); }
+.checkout-step-btn { flex: 1; padding: 10px; font-family: var(--font-ui); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; background: transparent; border: none; color: var(--sand-muted); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: all var(--transition); }
+.checkout-step-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
+.checkout-panel { display: none; } .checkout-panel.active { display: block; }
+.form-field { margin-bottom: 14px; }
+.form-field label { display: block; font-family: var(--font-ui); font-size: 8px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 6px; }
+.form-field input { width: 100%; background: var(--ink-light); border: 1px solid var(--border-strong); color: var(--sand); font-family: var(--font-ui); font-size: 12px; padding: 11px 14px; outline: none; transition: border-color var(--transition); border-radius: 0; -webkit-appearance: none; }
+.form-field input:focus { border-color: var(--gold); }
+.form-field input::placeholder { color: var(--sand-muted); opacity: 0.4; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.anon-note { font-family: var(--font-ui); font-size: 8px; letter-spacing: 1px; color: var(--green-ok); text-transform: uppercase; opacity: 0.7; margin-bottom: 16px; }
+.crypto-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 16px; }
+.crypto-opt { background: var(--ink-light); border: 1px solid var(--border); padding: 10px 6px; cursor: pointer; transition: border-color var(--transition); text-align: center; }
+.crypto-opt:hover { border-color: var(--gold); }
+.crypto-opt.selected { border-color: var(--gold); background: var(--gold-faint); }
+.crypto-sym { font-family: var(--font-ui); font-size: 14px; font-weight: 700; color: var(--gold); margin-bottom: 3px; }
+.crypto-lbl { font-family: var(--font-ui); font-size: 7px; letter-spacing: 0.5px; color: var(--sand-muted); text-transform: uppercase; }
+.modal-proceed { width: 100%; background: var(--gold); color: var(--ink); font-family: var(--font-ui); font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 15px; border: none; cursor: pointer; transition: background var(--transition); margin-top: 8px; margin-bottom: 10px; }
+.modal-proceed:hover { background: var(--gold-light); }
+.modal-proceed:disabled { opacity: 0.5; cursor: not-allowed; }
+.modal-note { font-family: var(--font-ui); font-size: 8px; letter-spacing: 1px; color: var(--sand-muted); opacity: 0.35; text-align: center; text-transform: uppercase; }
+.modal-error { display: none; padding: 10px 14px; background: rgba(139,34,34,0.2); border: 1px solid #8b2222; color: #e07070; font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; margin-bottom: 12px; }
+.order-summary { background: var(--ink-light); border: 1px solid var(--border); padding: 14px 16px; margin-bottom: 16px; }
+.order-summary-row { display: flex; justify-content: space-between; font-family: var(--font-ui); font-size: 10px; letter-spacing: 1px; color: var(--sand-muted); margin-bottom: 6px; }
+.order-summary-row:last-child { margin-bottom: 0; color: var(--gold); font-weight: 700; border-top: 1px solid var(--border); padding-top: 6px; margin-top: 6px; }
+.footer { background: var(--ink); border-top: 1px solid var(--border); padding: 20px 24px; text-align: center; }
+.footer p { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--sand-muted); opacity: 0.3; text-transform: uppercase; }
+@media (max-width: 700px) {
+  .seller-header { grid-template-columns: 1fr; }
+  .product-grid { grid-template-columns: repeat(2, 1fr); }
+  .form-row { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) { .product-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/" class="nav-logo">
+    <span class="nav-logo-name">Silque Road</span>
+    <span class="nav-logo-tagline">Legal &amp; Available</span>
+  </a>
+  <a href="/marketplace.html" class="nav-back">&larr; Back to Marketplace</a>
+</nav>
+
+<main class="main" id="mainContent">
+  <div class="loading-state"><p>Loading seller profile...</p></div>
+</main>
+
+<footer class="footer">
+  <p>Silque Road &nbsp;&bull;&nbsp; Legal &amp; Available &nbsp;&bull;&nbsp; No tracking. No cookies. No analytics.</p>
+</footer>
+
+<div class="modal-overlay" id="modal" onclick="closeModalOutside(event)">
+  <div class="modal" role="dialog" aria-modal="true">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
+    <div class="modal-title" id="modalTitle">Checkout</div>
+    <div class="modal-product-sub" id="modalSub">Complete your purchase below.</div>
+    <div class="order-summary" id="orderSummary" style="display:none">
+      <div class="order-summary-row"><span>Product</span><span id="summaryProduct">—</span></div>
+      <div class="order-summary-row"><span>Total</span><span id="summaryPrice">—</span></div>
+    </div>
+    <div class="checkout-steps">
+      <button class="checkout-step-btn active" id="stepBtn1" onclick="goToStep(1)">1. Shipping</button>
+      <button class="checkout-step-btn" id="stepBtn2" onclick="goToStep(2)">2. Payment</button>
+    </div>
+    <div class="modal-error" id="modalError"></div>
+    <div class="checkout-panel active" id="panel1">
+      <p class="anon-note">&#10003; All fields optional — checkout anonymously if you prefer</p>
+      <div class="form-field"><label>Email — for order updates only</label><input type="email" id="buyerEmail" placeholder="your@email.com (optional)" autocomplete="off" /></div>
+      <div class="form-field"><label>Ship To — Full Name</label><input type="text" id="shipName" placeholder="Name on package (optional)" autocomplete="off" /></div>
+      <div class="form-field"><label>Street Address</label><input type="text" id="shipAddress" placeholder="123 Main St (optional)" autocomplete="off" /></div>
+      <div class="form-row">
+        <div class="form-field"><label>City</label><input type="text" id="shipCity" placeholder="City" autocomplete="off" /></div>
+        <div class="form-field"><label>State</label><input type="text" id="shipState" placeholder="OH" maxlength="2" autocomplete="off" /></div>
+      </div>
+      <div class="form-field"><label>ZIP Code</label><input type="text" id="shipZip" placeholder="44223" maxlength="10" autocomplete="off" /></div>
+      <button class="modal-proceed" onclick="goToStep(2)">Continue to Payment &rarr;</button>
+      <p class="modal-note">Your shipping info is used only to fulfill your order.</p>
+    </div>
+    <div class="checkout-panel" id="panel2">
+      <p style="font-family:var(--font-ui);font-size:9px;letter-spacing:1px;color:var(--sand-muted);text-transform:uppercase;margin-bottom:12px;">Select Cryptocurrency</p>
+      <div class="crypto-grid">
+        <div class="crypto-opt selected" onclick="selectCrypto(this,'btc')"><div class="crypto-sym">&#8383;</div><div class="crypto-lbl">Bitcoin</div></div>
+        <div class="crypto-opt" onclick="selectCrypto(this,'eth')"><div class="crypto-sym">&#9830;</div><div class="crypto-lbl">Ethereum</div></div>
+        <div class="crypto-opt" onclick="selectCrypto(this,'usdcerc20')"><div class="crypto-sym">$</div><div class="crypto-lbl">USDC</div></div>
+        <div class="crypto-opt" onclick="selectCrypto(this,'sol')"><div class="crypto-sym">&#9678;</div><div class="crypto-lbl">Solana</div></div>
+        <div class="crypto-opt" onclick="selectCrypto(this,'xrp')"><div class="crypto-sym">&#10005;</div><div class="crypto-lbl">XRP</div></div>
+        <div class="crypto-opt" onclick="selectCrypto(this,'doge')"><div class="crypto-sym">&#208;</div><div class="crypto-lbl">Dogecoin</div></div>
+        <div class="crypto-opt" onclick="selectCrypto(this,'ltc')"><div class="crypto-sym">&#321;</div><div class="crypto-lbl">Litecoin</div></div>
+        <div class="crypto-opt" onclick="selectCrypto(this,'bch')"><div class="crypto-sym">&#8383;</div><div class="crypto-lbl">Bitcoin Cash</div></div>
+      </div>
+      <button class="modal-proceed" id="payBtn" onclick="proceedToPayment()">Pay with Crypto &rarr;</button>
+      <p class="modal-note">Powered by NOWPayments &nbsp;&bull;&nbsp; 0.5% fee &nbsp;&bull;&nbsp; Order recorded securely</p>
+    </div>
+  </div>
+</div>
+
+<script>
+const SUPABASE_URL = 'https://pmtfqbefrsplvoriirru.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBtdGZxYmVmcnNwbHZvcmlpcnJ1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU4Mzk5MzEsImV4cCI6MjA5MTQxNTkzMX0.xgIVCGtB1Elp8ywjQhUAHdAVXOMoZJRmxWXM6vpZBB0';
+let currentProduct = null;
+let selCrypto = 'btc';
+
+function esc(str) { if (!str) return ''; return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
+
+function starsHtml(rating) {
+  const r = Math.round(rating || 0);
+  return Array.from({length: 5}, (_, i) => `<span class="star${i >= r ? ' empty' : ''}">&#9733;</span>`).join('');
+}
+
+function formatDate(str) {
+  if (!str) return '—';
+  return new Date(str).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+}
+
+async function loadProfile() {
+  const sellerId = new URLSearchParams(window.location.search).get('id');
+  if (!sellerId) { showError('No seller ID provided.'); return; }
+
+  try {
+    // Load seller
+    const sellerRes = await fetch(`${SUPABASE_URL}/rest/v1/sellers?id=eq.${encodeURIComponent(sellerId)}&select=*`, {
+      headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` }
+    });
+    const sellers = await sellerRes.json();
+    if (!sellers || sellers.length === 0) { showError('Seller not found.'); return; }
+    const seller = sellers[0];
+
+    // Load products
+    const productsRes = await fetch(`${SUPABASE_URL}/rest/v1/products?seller_id=eq.${encodeURIComponent(sellerId)}&status=eq.active&order=featured.desc,created_at.desc&select=*`, {
+      headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` }
+    });
+    const products = await productsRes.json() || [];
+
+    // Load reviews
+    let reviews = [];
+    try {
+      const reviewsRes = await fetch(`${SUPABASE_URL}/rest/v1/reviews?seller_id=eq.${encodeURIComponent(sellerId)}&order=created_at.desc&select=*`, {
+        headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` }
+      });
+      reviews = await reviewsRes.json() || [];
+    } catch {}
+
+    const avgRating = reviews.length > 0 ? reviews.reduce((s, r) => s + (r.rating || 0), 0) / reviews.length : 0;
+
+    document.title = `${seller.business_name || 'Seller'} — Silque Road`;
+
+    document.getElementById('mainContent').innerHTML = `
+      <div class="seller-header">
+        <div class="seller-avatar">🏺</div>
+        <div>
+          <div class="seller-name">${esc(seller.business_name || 'Anonymous Seller')}</div>
+          <div class="seller-meta">
+            <div class="seller-meta-item"><div class="meta-dot"></div>Member since ${formatDate(seller.created_at)}</div>
+            <div class="seller-meta-item"><div class="meta-dot"></div>${products.length} active listing${products.length !== 1 ? 's' : ''}</div>
+            ${reviews.length > 0 ? `<div class="seller-meta-item">
+              <div class="stars">${starsHtml(avgRating)}<span class="rating-num">${avgRating.toFixed(1)} (${reviews.length})</span></div>
+            </div>` : ''}
+          </div>
+          ${seller.bio ? `<div class="seller-bio">${esc(seller.bio)}</div>` : ''}
+          <div class="seller-badges">
+            <span class="seller-badge verified">&#10003; Vetted Seller</span>
+            ${seller.categories ? seller.categories.split(',').map(c => `<span class="seller-badge">${esc(c.trim())}</span>`).join('') : ''}
+          </div>
+        </div>
+      </div>
+
+      <div class="section-title">Products from this Seller</div>
+      <div class="product-grid" id="productGrid">
+        ${products.length === 0
+          ? `<div style="grid-column:1/-1;text-align:center;padding:40px;font-family:var(--font-body);font-size:17px;font-style:italic;color:var(--sand-muted);opacity:0.5;">No active listings yet.</div>`
+          : products.map(p => {
+            const price = parseFloat(p.price || 0).toFixed(2);
+            const imgHtml = p.image_url ? `<img class="product-img" src="${esc(p.image_url)}" alt="${esc(p.name)}" loading="lazy" onerror="this.style.display='none'">` : '';
+            return `<div class="product-card" onclick="window.location.href='/product.html?id=${p.id}'">
+              ${imgHtml}
+              <div class="product-cat">${esc(p.category || '')}</div>
+              <div class="product-name">${esc(p.name)}</div>
+              <div class="product-desc">${esc(p.description || '')}</div>
+              <div class="product-footer">
+                <div>
+                  <div class="product-price">$${price}</div>
+                </div>
+                <button class="product-add" onclick='event.stopPropagation(); openModal(${JSON.stringify({id: p.id, seller_id: p.seller_id, name: p.name, price: parseFloat(price), category: p.category})})'>Buy Now</button>
+              </div>
+            </div>`;
+          }).join('')
+        }
+      </div>
+
+      <div class="section-title">Buyer Reviews</div>
+      <div class="reviews-list">
+        ${reviews.length === 0
+          ? `<div class="no-reviews">No reviews yet — be the first to buy and leave one.</div>`
+          : reviews.map(r => `
+            <div class="review-card">
+              <div class="review-header">
+                <div>
+                  <div class="stars">${starsHtml(r.rating)}</div>
+                  ${r.product_name ? `<div class="review-product" style="margin-top:4px">${esc(r.product_name)}</div>` : ''}
+                </div>
+                <div class="review-date">${formatDate(r.created_at)}</div>
+              </div>
+              ${r.body ? `<div class="review-body">"${esc(r.body)}"</div>` : ''}
+            </div>`).join('')
+        }
+      </div>`;
+
+  } catch(err) {
+    showError('Failed to load seller profile. Please try again.');
+  }
+}
+
+function showError(msg) {
+  document.getElementById('mainContent').innerHTML = `
+    <div class="error-state">
+      <h3>Seller Not Found</h3>
+      <p>${msg}</p>
+      <a href="/marketplace.html" class="btn-primary">Back to Marketplace</a>
+    </div>`;
+}
+
+function openModal(product) {
+  currentProduct = product; selCrypto = 'btc';
+  document.getElementById('modalTitle').textContent = product.name;
+  document.getElementById('modalSub').textContent = `$${parseFloat(product.price).toFixed(2)} — ${product.category || ''}`;
+  document.getElementById('orderSummary').style.display = 'block';
+  document.getElementById('summaryProduct').textContent = product.name;
+  document.getElementById('summaryPrice').textContent = `$${parseFloat(product.price).toFixed(2)}`;
+  goToStep(1);
+  document.getElementById('modalError').style.display = 'none';
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() { document.getElementById('modal').classList.remove('open'); document.body.style.overflow = ''; currentProduct = null; }
+function closeModalOutside(e) { if (e.target === document.getElementById('modal')) closeModal(); }
+function goToStep(step) { document.querySelectorAll('.checkout-panel').forEach(p=>p.classList.remove('active')); document.querySelectorAll('.checkout-step-btn').forEach(b=>b.classList.remove('active')); document.getElementById('panel'+step).classList.add('active'); document.getElementById('stepBtn'+step).classList.add('active'); }
+function selectCrypto(el, currency) { document.querySelectorAll('.crypto-opt').forEach(o=>o.classList.remove('selected')); el.classList.add('selected'); selCrypto = currency; }
+function showModalError(msg) { const el = document.getElementById('modalError'); el.textContent = msg; el.style.display = 'block'; }
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+async function proceedToPayment() {
+  if (!currentProduct) { showModalError('No product selected.'); return; }
+  const btn = document.getElementById('payBtn'); btn.disabled = true; btn.textContent = 'Creating order...';
+  document.getElementById('modalError').style.display = 'none';
+  const payload = { product_id: currentProduct.id, seller_id: currentProduct.seller_id, buyer_email: document.getElementById('buyerEmail').value.trim()||null, shipping_name: document.getElementById('shipName').value.trim()||null, shipping_address: document.getElementById('shipAddress').value.trim()||null, shipping_city: document.getElementById('shipCity').value.trim()||null, shipping_state: document.getElementById('shipState').value.trim()||null, shipping_zip: document.getElementById('shipZip').value.trim()||null, amount_usd: currentProduct.price, crypto_currency: selCrypto, product_name: currentProduct.name };
+  try {
+    const res = await fetch('/.netlify/functions/create-order', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+    const data = await res.json();
+    if (!res.ok || !data.invoice_url) throw new Error(data.error || 'Failed to create order');
+    window.location.href = data.invoice_url;
+  } catch (err) { showModalError('Payment setup failed: ' + err.message); btn.disabled = false; btn.textContent = 'Pay with Crypto →'; }
+}
+
+loadProfile();
+</script>
+</body>
+</html>
