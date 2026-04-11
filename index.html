@@ -541,7 +541,7 @@ function renderProducts(products) {
       ? `<div style="font-family:var(--font-ui);font-size:8px;color:var(--sand-muted);opacity:0.45;margin-top:4px">${esc(p.disclaimer)}</div>`
       : '';
     return `
-      <div class="product-card">
+      <div class="product-card" onclick="window.location.href='/product.html?id=${p.id}'">
         ${imgHtml}
         <div class="product-cat">${esc(p.category || '')}</div>
         <div class="product-name">${esc(p.name)}</div>
@@ -552,7 +552,7 @@ function renderProducts(products) {
             <div class="product-price">$${price}</div>
             <div class="product-legal">&#10003; Vetted Seller</div>
           </div>
-          <button class="product-add" onclick='openModal(${JSON.stringify({id: p.id, seller_id: p.seller_id, name: p.name, price: parseFloat(price), category: p.category})})'>Buy Now</button>
+          <button class="product-add" onclick='event.stopPropagation(); openModal(${JSON.stringify({id: p.id, seller_id: p.seller_id, name: p.name, price: parseFloat(price), category: p.category})})'>Buy Now</button>
         </div>
       </div>`;
   }).join('');
