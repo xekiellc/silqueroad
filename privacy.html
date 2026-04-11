@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Silque Road Privacy Policy — We collect as little as possible. Anonymous by design.">
+<title>Privacy Policy — Silque Road</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #C9A84C; --gold-light: #E8C97A; --gold-dark: #8B6914; --ink: #100d05; --ink-mid: #1a1208; --ink-light: #2a2015; --smoke: #1e180a; --sand: #F0E6CC; --sand-muted: rgba(240,230,204,0.6); --border: rgba(201,168,76,0.2); --border-strong: rgba(201,168,76,0.4); --green-ok: #3a8a3a; --font-display: 'Cinzel', 'Georgia', serif; --font-body: 'Crimson Pro', 'Georgia', serif; --font-ui: 'Space Mono', 'Courier New', monospace; --transition: 0.2s ease; --max-w: 1100px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); background: var(--ink); color: var(--sand); line-height: 1.6; overflow-x: hidden; }
+a { color: inherit; text-decoration: none; }
+::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: var(--ink); } ::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 3px; }
+.announce-bar { background: var(--gold); color: var(--ink); text-align: center; padding: 9px 16px; font-family: var(--font-ui); font-size: 11px; letter-spacing: 2px; font-weight: 700; text-transform: uppercase; }
+.announce-bar a { color: var(--ink); text-decoration: underline; }
+.nav { position: sticky; top: 0; z-index: 1000; background: var(--ink); border-bottom: 1px solid var(--border); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.nav-logo { display: flex; align-items: center; gap: 12px; }
+.nav-logo-name { font-family: var(--font-display); font-size: 20px; font-weight: 700; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; display: block; }
+.nav-logo-tagline { font-family: var(--font-ui); font-size: 7px; letter-spacing: 3px; color: var(--gold-dark); text-transform: uppercase; display: block; }
+.nav-links { display: flex; align-items: center; gap: 32px; }
+.nav-links a { font-family: var(--font-ui); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--sand-muted); transition: color var(--transition); }
+.nav-links a:hover { color: var(--gold); }
+.nav-cta { background: var(--gold) !important; color: var(--ink) !important; padding: 9px 20px; font-weight: 700 !important; }
+.nav-mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; color: var(--gold); font-size: 22px; }
+.mobile-menu { display: none; flex-direction: column; background: var(--smoke); border-bottom: 1px solid var(--border); padding: 16px 24px; }
+.mobile-menu a { font-family: var(--font-ui); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--sand-muted); padding: 14px 0; border-bottom: 1px solid var(--border); display: block; }
+.mobile-menu a:last-child { border-bottom: none; color: var(--gold); }
+.mobile-menu.open { display: flex; }
+.legal-hero { background: var(--smoke); border-bottom: 1px solid var(--border); padding: 64px 24px 52px; text-align: center; }
+.legal-eyebrow { font-family: var(--font-ui); font-size: 9px; letter-spacing: 5px; color: var(--gold); text-transform: uppercase; opacity: 0.65; margin-bottom: 16px; }
+.legal-title { font-family: var(--font-display); font-size: clamp(28px, 5vw, 48px); font-weight: 700; letter-spacing: 6px; color: var(--gold); text-transform: uppercase; margin-bottom: 12px; }
+.legal-meta { font-family: var(--font-ui); font-size: 10px; letter-spacing: 2px; color: var(--sand-muted); opacity: 0.45; text-transform: uppercase; }
+.gold-rule { width: 120px; height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent); margin: 20px auto 0; }
+.legal-wrap { max-width: 820px; margin: 0 auto; padding: 64px 24px 80px; }
+.privacy-pledge { background: var(--ink-mid); border: 1px solid var(--border); border-left: 3px solid var(--green-ok); padding: 28px 32px; margin-bottom: 52px; display: flex; gap: 20px; align-items: flex-start; }
+.pledge-icon { font-size: 28px; flex-shrink: 0; margin-top: 2px; }
+.pledge-text h3 { font-family: var(--font-display); font-size: 13px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; margin-bottom: 10px; }
+.pledge-text p { font-family: var(--font-body); font-size: 16px; color: var(--sand-muted); line-height: 1.7; }
+.legal-toc { background: var(--ink-mid); border: 1px solid var(--border); padding: 28px 32px; margin-bottom: 52px; }
+.legal-toc-title { font-family: var(--font-ui); font-size: 9px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 16px; opacity: 0.7; }
+.legal-toc ol { list-style: none; counter-reset: toc; display: flex; flex-direction: column; gap: 8px; }
+.legal-toc ol li { counter-increment: toc; }
+.legal-toc ol li a { font-family: var(--font-ui); font-size: 11px; letter-spacing: 1px; color: var(--sand-muted); opacity: 0.7; transition: opacity var(--transition), color var(--transition); display: flex; align-items: center; gap: 10px; }
+.legal-toc ol li a:hover { opacity: 1; color: var(--gold); }
+.legal-toc ol li a::before { content: counter(toc, decimal-leading-zero); font-family: var(--font-display); font-size: 10px; color: var(--gold-dark); opacity: 0.6; }
+.legal-section { margin-bottom: 52px; }
+.legal-section-title { font-family: var(--font-display); font-size: 16px; font-weight: 600; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 12px; }
+.legal-section-num { font-family: var(--font-display); font-size: 11px; color: var(--gold-dark); opacity: 0.6; }
+.legal-section p { font-family: var(--font-body); font-size: 17px; color: var(--sand-muted); line-height: 1.75; margin-bottom: 14px; }
+.legal-section p:last-child { margin-bottom: 0; }
+.legal-section ul { list-style: none; display: flex; flex-direction: column; gap: 10px; margin: 14px 0; }
+.legal-section ul li { font-family: var(--font-body); font-size: 17px; color: var(--sand-muted); line-height: 1.7; padding-left: 20px; position: relative; }
+.legal-section ul li::before { content: '—'; position: absolute; left: 0; color: var(--gold-dark); opacity: 0.6; }
+.legal-section a { color: var(--gold); opacity: 0.8; transition: opacity var(--transition); }
+.legal-section a:hover { opacity: 1; }
+.legal-callout { background: var(--ink-mid); border: 1px solid var(--border); border-left: 3px solid var(--gold); padding: 20px 24px; margin: 20px 0; }
+.legal-callout p { font-family: var(--font-ui); font-size: 11px; letter-spacing: 0.5px; color: var(--sand-muted); line-height: 1.7; margin: 0; }
+.data-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+.data-table th { font-family: var(--font-ui); font-size: 9px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--border-strong); background: var(--ink-mid); }
+.data-table td { font-family: var(--font-body); font-size: 15px; color: var(--sand-muted); padding: 10px 14px; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.6; }
+.data-table tr:last-child td { border-bottom: none; }
+.legal-contact-box { background: var(--smoke); border: 1px solid var(--border); padding: 32px; text-align: center; margin-top: 52px; }
+.legal-contact-box p { font-family: var(--font-body); font-size: 17px; font-style: italic; color: var(--sand-muted); margin-bottom: 16px; }
+.legal-contact-box a { font-family: var(--font-ui); font-size: 11px; letter-spacing: 1px; color: var(--gold); text-transform: uppercase; border-bottom: 1px solid var(--border-strong); padding-bottom: 2px; }
+.footer { background: var(--ink); border-top: 1px solid var(--border); padding: 52px 24px 32px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; max-width: var(--max-w); margin: 0 auto 40px; }
+.footer-brand-name { font-family: var(--font-display); font-size: 20px; font-weight: 700; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; display: block; margin-bottom: 12px; }
+.footer-brand-desc { font-family: var(--font-body); font-size: 14px; font-style: italic; color: var(--sand-muted); opacity: 0.5; line-height: 1.6; margin-bottom: 20px; }
+.footer-col-title { font-family: var(--font-ui); font-size: 9px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; opacity: 0.55; margin-bottom: 18px; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-links li a { font-family: var(--font-body); font-size: 15px; color: var(--sand-muted); opacity: 0.5; transition: opacity var(--transition), color var(--transition); }
+.footer-links li a:hover { opacity: 0.9; color: var(--gold); }
+.footer-bottom { border-top: 1px solid var(--border); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; max-width: var(--max-w); margin: 0 auto; flex-wrap: wrap; gap: 12px; }
+.footer-copy { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--sand-muted); opacity: 0.3; }
+.footer-legal-links { display: flex; gap: 20px; }
+.footer-legal-links a { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--sand-muted); opacity: 0.3; text-transform: uppercase; transition: opacity var(--transition); }
+.footer-legal-links a:hover { opacity: 0.7; }
+.disclaimer-bar { background: var(--ink-mid); border-top: 1px solid var(--border); padding: 12px 24px; text-align: center; }
+.disclaimer-bar p { font-family: var(--font-ui); font-size: 9px; color: var(--sand-muted); opacity: 0.3; line-height: 1.6; max-width: 900px; margin: 0 auto; }
+@media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr; } .nav-links { display: none; } .nav-mobile-toggle { display: block; } .privacy-pledge { flex-direction: column; } }
+@media (max-width: 600px) { .footer-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="announce-bar">Founding Sellers Wanted — <a href="/seller-apply.html">Apply now &rarr;</a></div>
+<nav class="nav">
+  <a href="/" class="nav-logo"><div><span class="nav-logo-name">Silque Road</span><span class="nav-logo-tagline">Legal &amp; Available</span></div></a>
+  <div class="nav-links">
+    <a href="/#marketplace">Marketplace</a><a href="/#health-network">Health Network</a><a href="/#how-it-works">How It Works</a><a href="/seller-apply.html">Sell With Us</a><a href="/#featured" class="nav-cta">Shop Now</a>
+  </div>
+  <button class="nav-mobile-toggle" onclick="document.getElementById('mobile-menu').classList.toggle('open')" aria-label="Toggle menu">&#9776;</button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="/#marketplace">Marketplace</a><a href="/#health-network">Health Network</a><a href="/#how-it-works">How It Works</a><a href="/seller-apply.html">Sell With Us</a><a href="/#featured">Shop Now</a>
+</div>
+
+<div class="legal-hero">
+  <p class="legal-eyebrow">Legal Documents &nbsp;&bull;&nbsp; XEKIE LLC</p>
+  <h1 class="legal-title">Privacy Policy</h1>
+  <p class="legal-meta">Effective Date: April 10, 2026 &nbsp;&bull;&nbsp; Last Updated: April 10, 2026</p>
+  <div class="gold-rule"></div>
+</div>
+
+<div class="legal-wrap">
+  <div class="privacy-pledge">
+    <div class="pledge-icon">&#10003;</div>
+    <div class="pledge-text">
+      <h3>Our Privacy Commitment</h3>
+      <p>Silque Road is built on anonymity. We collect as little as possible, use it only to fulfill your order, and sell none of it — ever. No cookies. No tracking pixels. No analytics. You have the right to shop without being watched.</p>
+    </div>
+  </div>
+
+  <div class="legal-toc">
+    <p class="legal-toc-title">Table of Contents</p>
+    <ol>
+      <li><a href="#who-we-are">Who We Are</a></li>
+      <li><a href="#what-we-collect">What We Collect</a></li>
+      <li><a href="#what-we-dont">What We Don't Collect</a></li>
+      <li><a href="#how-we-use">How We Use Information</a></li>
+      <li><a href="#sharing">Sharing &amp; Disclosure</a></li>
+      <li><a href="#third-parties">Third-Party Services</a></li>
+      <li><a href="#retention">Data Retention</a></li>
+      <li><a href="#your-rights">Your Rights</a></li>
+      <li><a href="#security">Security</a></li>
+      <li><a href="#changes">Changes to This Policy</a></li>
+      <li><a href="#contact-privacy">Contact</a></li>
+    </ol>
+  </div>
+
+  <div class="legal-section" id="who-we-are">
+    <h2 class="legal-section-title"><span class="legal-section-num">01</span> Who We Are</h2>
+    <p>Silque Road is operated by XEKIE LLC, an Ohio limited liability company. We operate the anonymous marketplace at silqueroad.com. For privacy inquiries, contact us at <a href="mailto:info@silqueroad.com">info@silqueroad.com</a>.</p>
+  </div>
+
+  <div class="legal-section" id="what-we-collect">
+    <h2 class="legal-section-title"><span class="legal-section-num">02</span> What We Collect</h2>
+    <p>We collect only what is strictly necessary to operate the platform. All fields at checkout are optional. Here is precisely what may be collected:</p>
+    <table class="data-table">
+      <thead><tr><th>Data Type</th><th>When Collected</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>Email address</td><td>Optional at checkout or newsletter signup</td><td>Order updates or newsletter delivery</td></tr>
+        <tr><td>Shipping name &amp; address</td><td>Optional at checkout</td><td>Order fulfillment only</td></tr>
+        <tr><td>Cryptocurrency transaction ID</td><td>Generated at payment</td><td>Order verification and records</td></tr>
+        <tr><td>Product and order details</td><td>At purchase</td><td>Fulfillment and seller payment</td></tr>
+        <tr><td>Seller application data</td><td>On seller application submission</td><td>Seller vetting and account creation</td></tr>
+      </tbody>
+    </table>
+    <p>If you choose to provide no personal information, you may still complete a purchase using only cryptocurrency. Your identity is not required to shop on Silque Road.</p>
+  </div>
+
+  <div class="legal-section" id="what-we-dont">
+    <h2 class="legal-section-title"><span class="legal-section-num">03</span> What We Don't Collect</h2>
+    <p>We have deliberately built this platform to avoid collecting the following:</p>
+    <ul>
+      <li>Cookies of any kind — tracking, functional, or session</li>
+      <li>Browser fingerprints or device identifiers</li>
+      <li>IP addresses stored beyond the duration of a server request</li>
+      <li>Third-party analytics data (no Google Analytics, no Meta Pixel, no similar tools)</li>
+      <li>Behavioral data, browsing history, or click patterns</li>
+      <li>Social media login credentials or social profile data</li>
+      <li>Payment card numbers (processed entirely by third-party processors)</li>
+    </ul>
+    <div class="legal-callout"><p>&#10003; No tracking. No cookies. No analytics. This is not a disclaimer buried in fine print — it is a design decision made before writing a single line of code.</p></div>
+  </div>
+
+  <div class="legal-section" id="how-we-use">
+    <h2 class="legal-section-title"><span class="legal-section-num">04</span> How We Use Information</h2>
+    <p>Any information you provide is used exclusively for the following purposes:</p>
+    <ul>
+      <li>Fulfilling your order and communicating with your seller</li>
+      <li>Sending order status updates if you provided an email</li>
+      <li>Delivering newsletter content if you subscribed</li>
+      <li>Calculating and distributing seller payouts</li>
+      <li>Maintaining records required for business operations and legal compliance</li>
+      <li>Vetting seller applications and managing seller accounts</li>
+    </ul>
+    <p>We do not use your information for advertising, profiling, remarketing, or any purpose beyond what is listed above.</p>
+  </div>
+
+  <div class="legal-section" id="sharing">
+    <h2 class="legal-section-title"><span class="legal-section-num">05</span> Sharing &amp; Disclosure</h2>
+    <p>We do not sell, rent, or trade your personal information to any third party. Period.</p>
+    <p>We share information only in the following limited circumstances:</p>
+    <ul>
+      <li><strong style="color:var(--sand);">With your seller:</strong> Shipping name and address are shared with the seller who fulfills your order.</li>
+      <li><strong style="color:var(--sand);">With payment processors:</strong> Transaction data is shared with NOWPayments or card processors solely to process your payment.</li>
+      <li><strong style="color:var(--sand);">With email service providers:</strong> Email address is shared with Brevo or Resend solely to deliver transactional or newsletter emails.</li>
+      <li><strong style="color:var(--sand);">As required by law:</strong> We will disclose information if compelled by a valid court order, subpoena, or lawful government request. We will notify affected users where legally permitted to do so.</li>
+    </ul>
+  </div>
+
+  <div class="legal-section" id="third-parties">
+    <h2 class="legal-section-title"><span class="legal-section-num">06</span> Third-Party Services</h2>
+    <p>Silque Road uses the following third-party services, each of which has its own privacy policy:</p>
+    <ul>
+      <li><strong style="color:var(--sand);">Supabase</strong> — database hosting</li>
+      <li><strong style="color:var(--sand);">Netlify</strong> — website hosting and serverless functions</li>
+      <li><strong style="color:var(--sand);">NOWPayments</strong> — cryptocurrency payment processing</li>
+      <li><strong style="color:var(--sand);">Brevo</strong> — transactional email delivery</li>
+      <li><strong style="color:var(--sand);">Resend</strong> — newsletter email delivery</li>
+      <li><strong style="color:var(--sand);">Cloudflare</strong> — content delivery and DNS</li>
+    </ul>
+    <p>We do not authorize these providers to use your data for any purpose other than providing services to Silque Road.</p>
+  </div>
+
+  <div class="legal-section" id="retention">
+    <h2 class="legal-section-title"><span class="legal-section-num">07</span> Data Retention</h2>
+    <p>We retain order records, including any shipping information provided, for a minimum of three years to comply with business record-keeping requirements. Newsletter subscriber information is retained until you unsubscribe.</p>
+    <p>If you provided no personal information during your purchase, no personally identifiable record of your transaction exists beyond the blockchain record of your cryptocurrency payment.</p>
+  </div>
+
+  <div class="legal-section" id="your-rights">
+    <h2 class="legal-section-title"><span class="legal-section-num">08</span> Your Rights</h2>
+    <p>You have the right to request access to, correction of, or deletion of any personal information we hold about you. To make a data request, email us at <a href="mailto:info@silqueroad.com">info@silqueroad.com</a> with the subject line "Data Request." We will respond within 30 days.</p>
+    <p>Newsletter subscribers may unsubscribe at any time via the unsubscribe link in any email we send.</p>
+  </div>
+
+  <div class="legal-section" id="security">
+    <h2 class="legal-section-title"><span class="legal-section-num">09</span> Security</h2>
+    <p>We implement industry-standard security practices including encrypted database storage via Supabase, HTTPS enforced across all pages via Cloudflare, and row-level security policies on all database tables. Access to order and seller data is restricted to authorized platform functions only.</p>
+    <p>No method of transmission over the internet is 100% secure. While we take commercially reasonable precautions, we cannot guarantee absolute security of any information transmitted to or stored on our platform.</p>
+  </div>
+
+  <div class="legal-section" id="changes">
+    <h2 class="legal-section-title"><span class="legal-section-num">10</span> Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time. Changes will be posted to this page with an updated effective date. We will not reduce your privacy protections without prominent notice.</p>
+  </div>
+
+  <div class="legal-section" id="contact-privacy">
+    <h2 class="legal-section-title"><span class="legal-section-num">11</span> Contact</h2>
+    <p>Privacy questions, data requests, or concerns:</p>
+    <ul>
+      <li>Email: <a href="mailto:info@silqueroad.com">info@silqueroad.com</a></li>
+      <li>Subject line: "Privacy Request" or "Data Request"</li>
+      <li>Entity: XEKIE LLC — Ohio Limited Liability Company</li>
+    </ul>
+  </div>
+
+  <div class="legal-contact-box">
+    <p>Questions about your privacy? We take them seriously.</p>
+    <a href="mailto:info@silqueroad.com">info@silqueroad.com</a>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div><span class="footer-brand-name">Silque Road</span><p class="footer-brand-desc">The marketplace for legal products mainstream platforms won't carry. State-compliant. Seller-vetted. Buyer-anonymous.</p></div>
+    <div><p class="footer-col-title">Markets</p><ul class="footer-links"><li><a href="/#marketplace">Health Freedom</a></li><li><a href="/#marketplace">Cannabis Adjacent</a></li><li><a href="/#marketplace">Men's Health</a></li><li><a href="/#marketplace">All Categories</a></li></ul></div>
+    <div><p class="footer-col-title">Platform</p><ul class="footer-links"><li><a href="/#how-it-works">How It Works</a></li><li><a href="/seller-apply.html">Sell With Us</a></li><li><a href="/#health-network">Health Network</a></li><li><a href="/#newsletter">Newsletter</a></li></ul></div>
+    <div><p class="footer-col-title">Legal</p><ul class="footer-links"><li><a href="/terms.html">Terms of Service</a></li><li><a href="/seller-agreement.html">Seller Agreement</a></li><li><a href="/privacy.html">Privacy Policy</a></li><li><a href="/disclaimer.html">Disclaimer</a></li><li><a href="mailto:info@silqueroad.com">Contact</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">&copy; 2026 Silque Road &nbsp;&bull;&nbsp; XEKIE LLC &nbsp;&bull;&nbsp; No tracking. No cookies. No analytics.</p>
+    <div class="footer-legal-links"><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/disclaimer.html">Disclaimer</a></div>
+  </div>
+</footer>
+<div class="disclaimer-bar"><p>Silque Road is a platform connecting buyers and sellers of legal products. Nothing on this site constitutes medical, legal, or financial advice. Buyers are responsible for knowing and complying with their local laws.</p></div>
+</body>
+</html>
