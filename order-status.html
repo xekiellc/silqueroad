@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Check your order status — Silque Road">
+<title>Order Status — Silque Road</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #C9A84C; --gold-light: #E8C97A; --gold-dark: #8B6914; --gold-faint: rgba(201,168,76,0.12);
+  --ink: #100d05; --ink-mid: #1a1208; --ink-light: #2a2015; --smoke: #1e180a;
+  --sand: #F0E6CC; --sand-muted: rgba(240,230,204,0.6); --green-ok: #3a8a3a;
+  --border: rgba(201,168,76,0.2); --border-strong: rgba(201,168,76,0.4);
+  --font-display: 'Cinzel', 'Georgia', serif; --font-body: 'Crimson Pro', 'Georgia', serif;
+  --font-ui: 'Space Mono', 'Courier New', monospace;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); background: var(--ink); color: var(--sand); line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; }
+a { color: inherit; text-decoration: none; }
+.nav { background: var(--ink); border-bottom: 1px solid var(--border); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.nav-logo-name { font-family: var(--font-display); font-size: 20px; font-weight: 700; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; }
+.nav-logo-tagline { font-family: var(--font-ui); font-size: 7px; letter-spacing: 3px; color: var(--gold-dark); text-transform: uppercase; display: block; }
+.nav-back { font-family: var(--font-ui); font-size: 10px; letter-spacing: 2px; color: var(--sand-muted); text-transform: uppercase; transition: color 0.2s; }
+.nav-back:hover { color: var(--gold); }
+.main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 60px 24px; }
+.card { background: var(--ink-mid); border: 1px solid var(--border-strong); max-width: 560px; width: 100%; padding: 52px 44px; }
+.card-title { font-family: var(--font-display); font-size: 22px; font-weight: 600; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 10px; text-align: center; }
+.card-sub { font-family: var(--font-body); font-size: 16px; font-style: italic; color: var(--sand-muted); margin-bottom: 32px; line-height: 1.6; text-align: center; }
+.gold-rule { width: 100px; height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent); margin: 0 auto 32px; }
+.form-field { margin-bottom: 16px; }
+.form-field label { display: block; font-family: var(--font-ui); font-size: 8px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 8px; }
+.form-field input { width: 100%; background: var(--ink-light); border: 1px solid var(--border-strong); color: var(--sand); font-family: var(--font-ui); font-size: 12px; padding: 13px 16px; outline: none; transition: border-color 0.2s; border-radius: 0; -webkit-appearance: none; }
+.form-field input:focus { border-color: var(--gold); }
+.form-field input::placeholder { color: var(--sand-muted); opacity: 0.4; }
+.or-divider { text-align: center; font-family: var(--font-ui); font-size: 9px; letter-spacing: 3px; color: var(--sand-muted); opacity: 0.4; text-transform: uppercase; margin: 4px 0 16px; }
+.btn-primary { width: 100%; background: var(--gold); color: var(--ink); font-family: var(--font-ui); font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 15px; border: none; cursor: pointer; transition: background 0.2s; margin-top: 8px; }
+.btn-primary:hover { background: var(--gold-light); }
+.btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+.error-msg { display: none; font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: #e07070; text-transform: uppercase; margin-top: 12px; text-align: center; }
+.anon-note { font-family: var(--font-ui); font-size: 8px; letter-spacing: 1px; color: var(--green-ok); text-transform: uppercase; opacity: 0.7; margin-top: 14px; text-align: center; }
+.results { display: none; margin-top: 32px; border-top: 1px solid var(--border); padding-top: 28px; }
+.results-title { font-family: var(--font-display); font-size: 14px; font-weight: 600; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; margin-bottom: 16px; }
+.order-card { background: var(--ink-light); border: 1px solid var(--border); padding: 18px 20px; margin-bottom: 12px; }
+.order-card:last-child { margin-bottom: 0; }
+.order-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; gap: 12px; }
+.order-row:last-child { margin-bottom: 0; }
+.order-label { font-family: var(--font-ui); font-size: 8px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-dark); flex-shrink: 0; }
+.order-value { font-family: var(--font-ui); font-size: 10px; color: var(--sand); text-align: right; }
+.order-value.gold { color: var(--gold); font-weight: 700; }
+.status-badge { display: inline-block; font-family: var(--font-ui); font-size: 8px; letter-spacing: 1px; text-transform: uppercase; padding: 3px 10px; }
+.status-pending { background: rgba(201,168,76,0.15); color: var(--gold); border: 1px solid var(--border-strong); }
+.status-confirmed { background: rgba(58,138,58,0.15); color: var(--green-ok); border: 1px solid rgba(58,138,58,0.4); }
+.status-shipped { background: rgba(58,138,58,0.2); color: var(--green-ok); border: 1px solid rgba(58,138,58,0.5); }
+.status-completed { background: rgba(58,138,58,0.25); color: var(--green-ok); border: 1px solid rgba(58,138,58,0.6); }
+.tracking-box { background: rgba(58,138,58,0.08); border: 1px solid rgba(58,138,58,0.25); padding: 10px 14px; margin-top: 10px; }
+.track-label { font-family: var(--font-ui); font-size: 7px; letter-spacing: 2px; text-transform: uppercase; color: var(--green-ok); margin-bottom: 3px; }
+.track-number { font-family: var(--font-ui); font-size: 11px; color: var(--sand); }
+.no-results { font-family: var(--font-body); font-size: 16px; font-style: italic; color: var(--sand-muted); text-align: center; padding: 20px 0; }
+.view-link { font-family: var(--font-ui); font-size: 8px; letter-spacing: 1px; text-transform: uppercase; color: var(--gold); border-bottom: 1px solid var(--border-strong); padding-bottom: 1px; }
+.view-link:hover { color: var(--gold-light); }
+.footer { background: var(--ink); border-top: 1px solid var(--border); padding: 20px 24px; text-align: center; }
+.footer p { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--sand-muted); opacity: 0.3; text-transform: uppercase; }
+@media (max-width: 600px) {
+  .card { padding: 36px 20px; }
+  .order-row { flex-direction: column; align-items: flex-start; gap: 2px; }
+  .order-value { text-align: left; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/">
+    <span class="nav-logo-name">Silque Road</span>
+    <span class="nav-logo-tagline">Legal &amp; Available</span>
+  </a>
+  <a href="/" class="nav-back">&larr; Back to Bazaar</a>
+</nav>
+
+<main class="main">
+  <div class="card">
+    <div class="card-title">Order Status</div>
+    <p class="card-sub">Enter your email address or order reference to look up your order.</p>
+    <div class="gold-rule"></div>
+
+    <div class="form-field">
+      <label>Email Address</label>
+      <input type="email" id="emailInput" placeholder="your@email.com" autocomplete="off">
+    </div>
+    <div class="or-divider">— or —</div>
+    <div class="form-field">
+      <label>Order Reference</label>
+      <input type="text" id="refInput" placeholder="e.g. A1B2C3D4" autocomplete="off" style="text-transform:uppercase">
+    </div>
+
+    <button class="btn-primary" id="lookupBtn" onclick="lookupOrder()">Look Up Order &rarr;</button>
+    <div class="error-msg" id="errorMsg">Please enter your email or order reference.</div>
+    <p class="anon-note">&#10003; We only use this to look up your order — nothing else.</p>
+
+    <div class="results" id="results">
+      <div class="results-title">Your Orders</div>
+      <div id="resultsList"></div>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <p>Silque Road &nbsp;&bull;&nbsp; XEKIE LLC &nbsp;&bull;&nbsp; No tracking. No cookies. No analytics.</p>
+</footer>
+
+<script>
+const SUPABASE_URL = 'https://pmtfqbefrsplvoriirru.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBtdGZxYmVmcnNwbHZvcmlpcnJ1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU4Mzk5MzEsImV4cCI6MjA5MTQxNTkzMX0.xgIVCGtB1Elp8ywjQhUAHdAVXOMoZJRmxWXM6vpZBB0';
+
+function statusClass(s) {
+  const m = { pending:'status-pending', confirmed:'status-confirmed', paid:'status-confirmed', shipped:'status-shipped', completed:'status-completed' };
+  return m[s] || 'status-pending';
+}
+function statusLabel(s) {
+  const m = { pending:'Awaiting Payment', confirmed:'Payment Confirmed', paid:'Payment Confirmed', shipped:'Shipped', completed:'Completed' };
+  return m[s] || s;
+}
+function formatDate(str) {
+  if (!str) return '—';
+  return new Date(str).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+}
+
+document.getElementById('refInput').addEventListener('input', function() {
+  this.value = this.value.toUpperCase();
+});
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Enter') lookupOrder();
+});
+
+async function lookupOrder() {
+  const email = document.getElementById('emailInput').value.trim();
+  const ref = document.getElementById('refInput').value.trim().toLowerCase();
+  const btn = document.getElementById('lookupBtn');
+  const errorMsg = document.getElementById('errorMsg');
+
+  errorMsg.style.display = 'none';
+
+  if (!email && !ref) {
+    errorMsg.textContent = 'Please enter your email or order reference.';
+    errorMsg.style.display = 'block';
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'Looking up...';
+
+  try {
+    let url;
+    if (email) {
+      url = `${SUPABASE_URL}/rest/v1/orders?buyer_email=eq.${encodeURIComponent(email)}&order=created_at.desc&limit=10&select=*`;
+    } else {
+      // Match first 8 chars of UUID
+      url = `${SUPABASE_URL}/rest/v1/orders?id=ilike.${encodeURIComponent(ref)}*&order=created_at.desc&limit=10&select=*`;
+    }
+
+    const res = await fetch(url, {
+      headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` }
+    });
+
+    const orders = await res.json();
+    const results = document.getElementById('results');
+    const list = document.getElementById('resultsList');
+    results.style.display = 'block';
+
+    if (!orders || orders.length === 0) {
+      list.innerHTML = `<div class="no-results">No orders found. Check your email or reference and try again.</div>`;
+    } else {
+      list.innerHTML = orders.map(o => {
+        const trackingHtml = o.tracking_number ? `
+          <div class="tracking-box">
+            <div class="track-label">Tracking Number</div>
+            <div class="track-number">${o.tracking_number}</div>
+          </div>` : '';
+        return `
+          <div class="order-card">
+            <div class="order-row">
+              <span class="order-label">Ref</span>
+              <span class="order-value">${o.id.substring(0,8).toUpperCase()}</span>
+            </div>
+            <div class="order-row">
+              <span class="order-label">Product</span>
+              <span class="order-value">${o.product_name || '—'}</span>
+            </div>
+            <div class="order-row">
+              <span class="order-label">Amount</span>
+              <span class="order-value gold">$${parseFloat(o.amount_usd||0).toFixed(2)}</span>
+            </div>
+            <div class="order-row">
+              <span class="order-label">Date</span>
+              <span class="order-value">${formatDate(o.created_at)}</span>
+            </div>
+            <div class="order-row">
+              <span class="order-label">Status</span>
+              <span class="order-value"><span class="status-badge ${statusClass(o.status)}">${statusLabel(o.status)}</span></span>
+            </div>
+            <div class="order-row">
+              <span class="order-label">Details</span>
+              <a href="/order-confirmation.html?order_id=${o.id}" class="view-link">View full details &rarr;</a>
+            </div>
+            ${trackingHtml}
+          </div>`;
+      }).join('');
+    }
+
+  } catch(err) {
+    document.getElementById('errorMsg').textContent = 'Something went wrong. Please try again.';
+    document.getElementById('errorMsg').style.display = 'block';
+  }
+
+  btn.disabled = false;
+  btn.textContent = 'Look Up Order →';
+}
+</script>
+</body>
+</html>
