@@ -3,7 +3,7 @@ const crypto = require('crypto');
 const SUPABASE_URL = 'https://pmtfqbefrsplvoriirru.supabase.co';
 const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY;
 const IPN_SECRET = process.env.NOWPAYMENTS_IPN_SECRET;
-const RESEND_API_KEY = process.env.RESEND_API_KEY;
+const BREVO_API_KEY = process.env.BREVO_API_KEY;
 
 exports.handler = async (event) => {
   if (event.httpMethod !== 'POST') return { statusCode: 405, body: 'Method not allowed' };
@@ -157,15 +157,17 @@ exports.handler = async (event) => {
 
 async function sendEmail({ to, subject, html }) {
   try {
-    await fetch('https://api.resend.com/emails', {
+    await fetch('https://api.brevo.com/v3/smtp/email', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${RESEND_API_KEY || 're_DsYwW8r2_FM1jadYVqoEWzGofrRpNQ7H7'}`,
+        'api-key': BREVO_API_KEY,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        from: 'Silque Road <info@silqueroad.com>',
-        to, subject, html
+        sender: { name: 'Silque Road', email: 'info@silqueroad.com' },
+        to: [{ email: to }],
+        subject,
+        htmlContent: html
       })
     });
   } catch (err) {
