@@ -3,8 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
 <meta name="description" content="Silque Road — Legal products, anonymous checkout, crypto payments.">
 <meta property="og:type" content="website">
+<meta property="og:title" content="Silque Road — Legal &amp; Available">
 <meta name="twitter:card" content="summary_large_image">
 <title>Product — Silque Road</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -83,8 +85,6 @@ a { color: inherit; text-decoration: none; }
 .seller-info-name { font-family: var(--font-body); font-size: 16px; color: var(--sand-muted); }
 .seller-info-link { font-family: var(--font-ui); font-size: 8px; letter-spacing: 1px; color: var(--gold); text-transform: uppercase; border-bottom: 1px solid var(--border-strong); padding-bottom: 1px; margin-top: 6px; display: inline-block; }
 .seller-info-link:hover { color: var(--gold-light); }
-
-/* REVIEWS SECTION */
 .reviews-section { max-width: var(--max-w); margin: 0 auto; padding: 0 24px 72px; }
 .reviews-divider { border: none; border-top: 1px solid var(--border); margin-bottom: 48px; }
 .reviews-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px; flex-wrap: wrap; gap: 12px; }
@@ -102,8 +102,6 @@ a { color: inherit; text-decoration: none; }
 .review-date { font-family: var(--font-ui); font-size: 8px; letter-spacing: 1px; color: var(--sand-muted); opacity: 0.4; text-transform: uppercase; }
 .review-body { font-family: var(--font-body); font-size: 17px; font-style: italic; color: var(--sand-muted); line-height: 1.6; }
 .no-reviews { font-family: var(--font-body); font-size: 17px; font-style: italic; color: var(--sand-muted); opacity: 0.45; text-align: center; padding: 28px 0; }
-
-/* REVIEW FORM */
 .review-form-wrap { background: var(--ink-mid); border: 1px solid var(--border-strong); padding: 32px; }
 .review-form-title { font-family: var(--font-display); font-size: 14px; font-weight: 600; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; margin-bottom: 20px; }
 .review-form-field { margin-bottom: 16px; }
@@ -121,7 +119,6 @@ a { color: inherit; text-decoration: none; }
 .review-form-note { font-family: var(--font-ui); font-size: 8px; letter-spacing: 1px; color: var(--sand-muted); opacity: 0.4; text-transform: uppercase; margin-top: 10px; }
 .review-form-error { display: none; font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: #e07070; text-transform: uppercase; margin-top: 10px; }
 .review-form-success { display: none; font-family: var(--font-ui); font-size: 10px; letter-spacing: 2px; color: var(--green-ok); text-transform: uppercase; margin-top: 12px; }
-
 .more-section { background: var(--smoke); border-top: 1px solid var(--border); padding: 60px 24px; }
 .more-header { text-align: center; margin-bottom: 36px; }
 .more-label { font-family: var(--font-ui); font-size: 9px; letter-spacing: 5px; color: var(--gold); text-transform: uppercase; opacity: 0.65; margin-bottom: 12px; }
@@ -136,6 +133,8 @@ a { color: inherit; text-decoration: none; }
 .product-card-price { font-family: var(--font-ui); font-size: 18px; font-weight: 700; color: var(--gold); }
 .product-card-btn { background: transparent; border: 1px solid var(--border-strong); color: var(--gold); font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; text-transform: uppercase; padding: 6px 14px; cursor: pointer; transition: background var(--transition); }
 .product-card-btn:hover { background: var(--gold-faint); }
+
+/* MODAL */
 .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 2000; align-items: center; justify-content: center; padding: 24px; overflow-y: auto; }
 .modal-overlay.open { display: flex; }
 .modal { background: var(--ink-mid); border: 1px solid var(--border-strong); max-width: 560px; width: 100%; padding: 40px; position: relative; max-height: 90vh; overflow-y: auto; margin: auto; }
@@ -145,14 +144,18 @@ a { color: inherit; text-decoration: none; }
 .checkout-steps { display: flex; gap: 0; margin-bottom: 24px; border-bottom: 1px solid var(--border); }
 .checkout-step-btn { flex: 1; padding: 10px; font-family: var(--font-ui); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; background: transparent; border: none; color: var(--sand-muted); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: all var(--transition); }
 .checkout-step-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
-.checkout-panel { display: none; } .checkout-panel.active { display: block; }
+.checkout-panel { display: none; }
+.checkout-panel.active { display: block; }
 .form-field { margin-bottom: 14px; }
 .form-field label { display: block; font-family: var(--font-ui); font-size: 8px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 6px; }
 .form-field input { width: 100%; background: var(--ink-light); border: 1px solid var(--border-strong); color: var(--sand); font-family: var(--font-ui); font-size: 12px; padding: 11px 14px; outline: none; transition: border-color var(--transition); border-radius: 0; -webkit-appearance: none; }
 .form-field input:focus { border-color: var(--gold); }
 .form-field input::placeholder { color: var(--sand-muted); opacity: 0.4; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.anon-note { font-family: var(--font-ui); font-size: 8px; letter-spacing: 1px; color: var(--green-ok); text-transform: uppercase; opacity: 0.7; margin-bottom: 16px; }
+.anon-callout { background: rgba(58,138,58,0.12); border: 1px solid rgba(58,138,58,0.35); padding: 12px 16px; margin-bottom: 18px; display: flex; align-items: flex-start; gap: 10px; }
+.anon-callout-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+.anon-callout-text { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--green-ok); text-transform: uppercase; line-height: 1.6; }
+.anon-callout-text strong { color: var(--green-ok); font-weight: 700; }
 .crypto-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 16px; }
 .crypto-opt { background: var(--ink-light); border: 1px solid var(--border); padding: 10px 6px; cursor: pointer; transition: border-color var(--transition); text-align: center; }
 .crypto-opt:hover { border-color: var(--gold); }
@@ -162,6 +165,8 @@ a { color: inherit; text-decoration: none; }
 .modal-proceed { width: 100%; background: var(--gold); color: var(--ink); font-family: var(--font-ui); font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 15px; border: none; cursor: pointer; transition: background var(--transition); margin-top: 8px; margin-bottom: 10px; }
 .modal-proceed:hover { background: var(--gold-light); }
 .modal-proceed:disabled { opacity: 0.5; cursor: not-allowed; }
+.modal-back { background: transparent; border: none; color: var(--sand-muted); font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; padding: 0 0 12px 0; display: flex; align-items: center; gap: 6px; transition: color var(--transition); }
+.modal-back:hover { color: var(--gold); }
 .modal-note { font-family: var(--font-ui); font-size: 8px; letter-spacing: 1px; color: var(--sand-muted); opacity: 0.35; text-align: center; text-transform: uppercase; }
 .modal-error { display: none; padding: 10px 14px; background: rgba(139,34,34,0.2); border: 1px solid #8b2222; color: #e07070; font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; margin-bottom: 12px; }
 .order-summary { background: var(--ink-light); border: 1px solid var(--border); padding: 14px 16px; margin-bottom: 16px; }
@@ -276,7 +281,7 @@ a { color: inherit; text-decoration: none; }
       <p class="buy-note">Anonymous checkout &nbsp;&bull;&nbsp; 8 cryptocurrencies accepted &nbsp;&bull;&nbsp; Powered by NOWPayments</p>
       <div class="trust-badges">
         <div class="trust-badge"><div class="trust-badge-icon">&#10003;</div><div class="trust-badge-text">Vetted Seller</div></div>
-        <div class="trust-badge"><div class="trust-badge-icon">&#9672;</div><div class="trust-badge-text">Anonymous Checkout</div></div>
+        <div class="trust-badge"><div class="trust-badge-icon">🔒</div><div class="trust-badge-text">Anonymous Checkout</div></div>
         <div class="trust-badge"><div class="trust-badge-icon">&#8383;</div><div class="trust-badge-text">Crypto Payments</div></div>
         <div class="trust-badge"><div class="trust-badge-icon">&#10070;</div><div class="trust-badge-text">Legal Product</div></div>
       </div>
@@ -288,7 +293,6 @@ a { color: inherit; text-decoration: none; }
     </div>
   </div>
 
-  <!-- REVIEWS SECTION -->
   <div class="reviews-section" id="reviewsSection">
     <hr class="reviews-divider">
     <div class="reviews-header">
@@ -401,20 +405,32 @@ a { color: inherit; text-decoration: none; }
       <button class="checkout-step-btn" id="stepBtn2" onclick="goToStep(2)">2. Payment</button>
     </div>
     <div class="modal-error" id="modalError"></div>
+
+    <!-- STEP 1: SHIPPING -->
     <div class="checkout-panel active" id="panel1">
-      <p class="anon-note">&#10003; All fields optional — checkout anonymously if you prefer</p>
-      <div class="form-field"><label>Email — for order updates only</label><input type="email" id="buyerEmail" placeholder="your@email.com (optional)" autocomplete="off" /></div>
-      <div class="form-field"><label>Ship To — Full Name</label><input type="text" id="shipName" placeholder="Name on package (optional)" autocomplete="off" /></div>
-      <div class="form-field"><label>Street Address</label><input type="text" id="shipAddress" placeholder="123 Main St (optional)" autocomplete="off" /></div>
+      <div class="anon-callout">
+        <div class="anon-callout-icon">🔒</div>
+        <div class="anon-callout-text"><strong>100% Anonymous Checkout.</strong> Every field below is optional. Skip them all and pay with crypto — no name, no address, no account required.</div>
+      </div>
+      <div class="form-field"><label>Email — for order updates only (optional)</label><input type="email" id="buyerEmail" placeholder="your@email.com" autocomplete="off" /></div>
+      <div class="form-field"><label>Ship To — Full Name (optional)</label><input type="text" id="shipName" placeholder="Name on package" autocomplete="off" /></div>
+      <div class="form-field"><label>Street Address (optional)</label><input type="text" id="shipAddress" placeholder="123 Main St" autocomplete="off" /></div>
       <div class="form-row">
         <div class="form-field"><label>City</label><input type="text" id="shipCity" placeholder="City" autocomplete="off" /></div>
         <div class="form-field"><label>State</label><input type="text" id="shipState" placeholder="OH" maxlength="2" autocomplete="off" /></div>
       </div>
-      <div class="form-field"><label>ZIP Code</label><input type="text" id="shipZip" placeholder="44223" maxlength="10" autocomplete="off" /></div>
+      <div class="form-field"><label>ZIP Code (optional)</label><input type="text" id="shipZip" placeholder="44223" maxlength="10" autocomplete="off" /></div>
       <button class="modal-proceed" onclick="goToStep(2)">Continue to Payment &rarr;</button>
-      <p class="modal-note">Your shipping info is used only to fulfill your order.</p>
+      <p class="modal-note">Shipping info is used only to fulfill your order. We store nothing else.</p>
     </div>
+
+    <!-- STEP 2: PAYMENT -->
     <div class="checkout-panel" id="panel2">
+      <button class="modal-back" onclick="goToStep(1)">&larr; Back to Shipping</button>
+      <div class="anon-callout">
+        <div class="anon-callout-icon">🔒</div>
+        <div class="anon-callout-text"><strong>Anonymous crypto payment.</strong> No account. No identity. Powered by NOWPayments — 8 currencies accepted.</div>
+      </div>
       <p style="font-family:var(--font-ui);font-size:9px;letter-spacing:1px;color:var(--sand-muted);text-transform:uppercase;margin-bottom:12px;">Select Cryptocurrency</p>
       <div class="crypto-grid">
         <div class="crypto-opt selected" onclick="selectCrypto(this,'btc')"><div class="crypto-sym">&#8383;</div><div class="crypto-lbl">Bitcoin</div></div>
@@ -544,7 +560,6 @@ function renderReviews(reviews) {
   document.getElementById('avgNum').textContent = avg.toFixed(1);
   document.getElementById('avgCount').textContent = `(${reviews.length} review${reviews.length !== 1 ? 's' : ''})`;
   avgEl.style.display = 'flex';
-
   list.innerHTML = reviews.map(r => `
     <div class="review-card">
       <div class="review-top">
@@ -564,53 +579,34 @@ function setRating(val) {
 }
 
 async function submitReview() {
-  if (!selectedRating) {
-    document.getElementById('reviewError').style.display = 'block';
-    return;
-  }
+  if (!selectedRating) { document.getElementById('reviewError').style.display = 'block'; return; }
   if (!currentProduct) return;
-
   const btn = document.getElementById('reviewSubmitBtn');
-  btn.disabled = true;
-  btn.textContent = 'Submitting...';
+  btn.disabled = true; btn.textContent = 'Submitting...';
   document.getElementById('reviewError').style.display = 'none';
-
   try {
     const res = await fetch(`${SUPABASE_URL}/rest/v1/reviews`, {
       method: 'POST',
-      headers: {
-        'apikey': SUPABASE_ANON_KEY,
-        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
-        'Content-Type': 'application/json',
-        'Prefer': 'return=minimal'
-      },
+      headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}`, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
       body: JSON.stringify({
-        product_id: currentProduct.id,
-        seller_id: currentProduct.seller_id,
-        product_name: currentProduct.name,
-        rating: selectedRating,
+        product_id: currentProduct.id, seller_id: currentProduct.seller_id,
+        product_name: currentProduct.name, rating: selectedRating,
         body: document.getElementById('reviewBody').value.trim() || null,
         buyer_email: document.getElementById('reviewEmail').value.trim() || null
       })
     });
-
     if (!res.ok) throw new Error('Failed to submit');
-
     document.getElementById('reviewSuccess').style.display = 'block';
     document.getElementById('reviewBody').value = '';
     document.getElementById('reviewEmail').value = '';
     selectedRating = 0;
     document.querySelectorAll('.star-pick').forEach(s => s.classList.remove('selected'));
     btn.textContent = 'Review Submitted ✓';
-
-    // Reload reviews
     setTimeout(() => loadReviews(currentProduct.id), 800);
-
   } catch {
     document.getElementById('reviewError').textContent = 'Failed to submit. Please try again.';
     document.getElementById('reviewError').style.display = 'block';
-    btn.disabled = false;
-    btn.textContent = 'Submit Review →';
+    btn.disabled = false; btn.textContent = 'Submit Review →';
   }
 }
 
@@ -663,7 +659,12 @@ function openModal() {
 
 function closeModal() { document.getElementById('modal').classList.remove('open'); document.body.style.overflow = ''; }
 function closeModalOutside(e) { if (e.target === document.getElementById('modal')) closeModal(); }
-function goToStep(step) { document.querySelectorAll('.checkout-panel').forEach(p => p.classList.remove('active')); document.querySelectorAll('.checkout-step-btn').forEach(b => b.classList.remove('active')); document.getElementById('panel' + step).classList.add('active'); document.getElementById('stepBtn' + step).classList.add('active'); }
+function goToStep(step) {
+  document.querySelectorAll('.checkout-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.checkout-step-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('panel' + step).classList.add('active');
+  document.getElementById('stepBtn' + step).classList.add('active');
+}
 function selectCrypto(el, currency) { document.querySelectorAll('.crypto-opt').forEach(o => o.classList.remove('selected')); el.classList.add('selected'); selCrypto = currency; }
 
 async function proceedToPayment() {
