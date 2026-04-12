@@ -403,7 +403,6 @@
     .mini-btn:hover { border-color: var(--gold-dim); color: var(--gold); }
     .mini-btn.danger:hover { border-color: var(--red); color: var(--red-text); }
 
-    /* ── ORDER ROWS ── */
     .order-row {
       background: var(--charcoal);
       border: 1px solid var(--border);
@@ -455,7 +454,6 @@
       margin-bottom: 2px;
     }
 
-    /* ── TRACKING SECTION ── */
     .tracking-section {
       border-top: 1px solid var(--border);
       padding-top: 14px;
@@ -520,7 +518,6 @@
       display: none;
     }
 
-    /* payout rows */
     .payout-row {
       background: var(--charcoal);
       border: 1px solid var(--border);
@@ -835,7 +832,6 @@
   let sellerOrders = [];
   let sellerPayouts = [];
 
-  // ── LOGIN ──
   async function sellerLogin() {
     const email = document.getElementById('loginEmail').value.trim().toLowerCase();
     if (!email) return;
@@ -869,7 +865,6 @@
     switchTab('overview', document.querySelector('.dash-tab'));
   }
 
-  // ── TABS ──
   function switchTab(name, btn) {
     document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('.dash-tab').forEach(t => t.classList.remove('active'));
@@ -877,7 +872,6 @@
     btn.classList.add('active');
   }
 
-  // ── LOAD DATA ──
   async function loadAllData() {
     await Promise.all([loadProducts(), loadOrders(), loadPayouts()]);
     renderOverview();
@@ -916,10 +910,9 @@
     } catch { document.getElementById('payoutList').innerHTML = '<div class="empty-state">Failed to load payouts.</div>'; }
   }
 
-  // ── OVERVIEW ──
   function renderOverview() {
     const totalRevenue = sellerOrders.reduce((s, o) => s + (parseFloat(o.amount_usd) || 0), 0);
-    const totalEarnings = sellerPayouts.reduce((s, p) => s + (parseFloat(p.seller_amount) || 0), 0);
+    const totalEarnings = sellerPayouts.reduce((s, p) => s + (parseFloat(p.amount_usd) || 0), 0);
     const activeProducts = sellerProducts.filter(p => p.status === 'active').length;
 
     document.getElementById('ovTotalOrders').textContent = sellerOrders.length;
@@ -938,7 +931,6 @@
     document.getElementById('ovCrypto').textContent = currentSeller.crypto_currency || 'Not set';
   }
 
-  // ── PRODUCTS ──
   function renderProducts() {
     const el = document.getElementById('productList');
     if (sellerProducts.length === 0) {
@@ -1079,7 +1071,6 @@
     el.textContent = msg;
   }
 
-  // ── ORDERS ──
   function renderOrders() {
     const el = document.getElementById('orderList');
     if (sellerOrders.length === 0) {
@@ -1102,7 +1093,7 @@
           </div>
           <div>
             <div class="order-detail-label">Payment</div>
-            <div><span class="badge ${o.payment_status}">${o.payment_status || '—'}</span></div>
+            <div><span class="badge ${o.status}">${o.status || '—'}</span></div>
           </div>
           <div>
             <div class="order-detail-label">Fulfillment</div>
@@ -1118,7 +1109,7 @@
           </div>
           <div>
             <div class="order-detail-label">Product</div>
-            <div style="font-size:0.82rem">${esc(o.product_id ? o.product_id.substring(0,8).toUpperCase() : '—')}</div>
+            <div style="font-size:0.82rem">${esc(o.product_name || o.product_id?.substring(0,8).toUpperCase() || '—')}</div>
           </div>
         </div>
         <div class="tracking-section">
@@ -1141,7 +1132,6 @@
     `).join('');
   }
 
-  // ── SAVE TRACKING ──
   async function saveTracking(orderId, buyerEmail) {
     const input = document.getElementById(`tracking-${orderId}`);
     const btn = document.getElementById(`tracking-btn-${orderId}`);
@@ -1154,7 +1144,6 @@
     btn.textContent = 'Saving...';
 
     try {
-      // Save tracking number to order and update fulfillment status to shipped
       const res = await fetch(`${SUPABASE_URL}/rest/v1/orders?id=eq.${orderId}`, {
         method: 'PATCH',
         headers: {
@@ -1171,14 +1160,12 @@
 
       if (!res.ok) throw new Error('Save failed');
 
-      // Update local order data
       const order = sellerOrders.find(o => o.id === orderId);
       if (order) {
         order.tracking_number = trackingNumber;
         order.fulfillment_status = 'shipped';
       }
 
-      // Fire buyer notification if they have an email
       if (buyerEmail) {
         try {
           await fetch('https://silqueroad.com/.netlify/functions/send-notification', {
@@ -1193,9 +1180,7 @@
               }
             })
           });
-        } catch {
-          // Notification failure doesn't block the save
-        }
+        } catch {}
       }
 
       savedMsg.style.display = 'block';
@@ -1210,7 +1195,6 @@
     }
   }
 
-  // ── PAYOUTS ──
   function renderPayouts() {
     const el = document.getElementById('payoutList');
     if (sellerPayouts.length === 0) {
@@ -1220,11 +1204,10 @@
     el.innerHTML = sellerPayouts.map(p => `
       <div class="payout-row">
         <div>
-          <div class="payout-amount">$${parseFloat(p.seller_amount || 0).toFixed(2)}</div>
+          <div class="payout-amount">$${parseFloat(p.amount_usd || 0).toFixed(2)}</div>
           <div class="payout-info">
-            Gross: $${parseFloat(p.gross_amount || 0).toFixed(2)} &nbsp;·&nbsp;
-            Commission: $${parseFloat(p.commission_amount || 0).toFixed(2)} &nbsp;·&nbsp;
-            ${esc(p.crypto_currency || '—')}
+            Commission: $${parseFloat(p.commission_usd || 0).toFixed(2)} &nbsp;·&nbsp;
+            ${esc(p.currency || '—')}
           </div>
           ${p.tx_hash ? `<div class="payout-info" style="margin-top:4px">TX: ${esc(p.tx_hash)}</div>` : ''}
           <div class="payout-info" style="margin-top:4px">${formatDate(p.created_at)}</div>
@@ -1234,7 +1217,6 @@
     `).join('');
   }
 
-  // ── UTILS ──
   function formatDate(ts) {
     if (!ts) return '—';
     return new Date(ts).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' });
