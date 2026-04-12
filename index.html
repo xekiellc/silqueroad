@@ -98,8 +98,6 @@ a { color: inherit; text-decoration: none; }
 .section-title { font-family: var(--font-display); font-size: clamp(26px, 4vw, 38px); font-weight: 600; letter-spacing: 5px; color: var(--gold); text-transform: uppercase; margin-bottom: 12px; }
 .section-body { font-family: var(--font-body); font-size: 18px; font-style: italic; color: var(--sand-muted); max-width: 520px; margin: 0 auto; line-height: 1.6; }
 .gold-rule { width: 100px; height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent); margin: 18px auto 0; }
-
-/* CATEGORY CARDS */
 .cat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); max-width: var(--max-w); margin: 0 auto; }
 .cat-card { background: var(--ink-mid); padding: 28px 22px; cursor: pointer; transition: background var(--transition); position: relative; display: flex; flex-direction: column; gap: 8px; }
 .cat-card:hover { background: var(--ink-light); }
@@ -110,15 +108,11 @@ a { color: inherit; text-decoration: none; }
 .cat-card:hover .cat-arrow { opacity: 1; }
 .cat-badge { position: absolute; top: 10px; right: 10px; font-family: var(--font-ui); font-size: 8px; letter-spacing: 1px; font-weight: 700; padding: 3px 8px; text-transform: uppercase; }
 .badge-hot { background: var(--crimson); color: var(--sand); } .badge-new { background: var(--green-ok); color: var(--sand); }
-
-/* STEPS */
 .steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 1px solid var(--border); max-width: 960px; margin: 0 auto; }
 .step { padding: 36px 28px; border-right: 1px solid var(--border); } .step:last-child { border-right: none; }
 .step-num { font-family: var(--font-display); font-size: 52px; font-weight: 700; color: var(--gold-dark); opacity: 0.25; line-height: 1; margin-bottom: 14px; }
 .step-title { font-family: var(--font-display); font-size: 13px; font-weight: 600; letter-spacing: 1.5px; color: var(--gold); text-transform: uppercase; margin-bottom: 10px; }
 .step-body { font-family: var(--font-body); font-size: 15px; color: var(--sand-muted); line-height: 1.6; }
-
-/* PRODUCTS */
 .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: var(--max-w); margin: 0 auto; }
 .product-card { background: var(--ink-mid); border: 1px solid var(--border); padding: 24px 22px; cursor: pointer; transition: border-color var(--transition); display: flex; flex-direction: column; gap: 10px; }
 .product-card:hover { border-color: var(--border-strong); }
@@ -133,8 +127,6 @@ a { color: inherit; text-decoration: none; }
 .product-add:hover { background: var(--gold-faint); }
 .products-loading { text-align: center; padding: 60px 20px; font-family: var(--font-ui); font-size: 10px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; opacity: 0.5; }
 .products-empty { text-align: center; padding: 60px 20px; font-family: var(--font-body); font-size: 18px; font-style: italic; color: var(--sand-muted); opacity: 0.5; }
-
-/* TELEHEALTH */
 .telehealth-wrap { max-width: var(--max-w); margin: 0 auto; display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: center; }
 .telehealth-label { font-family: var(--font-ui); font-size: 9px; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; opacity: 0.6; margin-bottom: 12px; }
 .telehealth-title { font-family: var(--font-display); font-size: clamp(22px, 3vw, 32px); font-weight: 600; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 14px; }
@@ -143,16 +135,12 @@ a { color: inherit; text-decoration: none; }
 .pill { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--gold); border: 1px solid var(--border); padding: 5px 14px; border-radius: 20px; text-transform: uppercase; white-space: nowrap; }
 .telehealth-right { text-align: center; }
 .rx-display { font-family: var(--font-display); font-size: 80px; font-weight: 700; color: var(--gold); opacity: 0.12; line-height: 1; margin-bottom: 16px; }
-
-/* PAYMENT */
 .payment-section { background: var(--ink); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 52px 24px; text-align: center; }
 .payment-title { font-family: var(--font-display); font-size: clamp(18px, 2.5vw, 26px); font-weight: 600; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 10px; }
 .payment-sub { font-family: var(--font-body); font-size: 17px; font-style: italic; color: var(--sand-muted); margin-bottom: 28px; max-width: 520px; margin-left: auto; margin-right: auto; }
 .payment-grid { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
 .payment-badge { font-family: var(--font-ui); font-size: 10px; letter-spacing: 1px; color: var(--gold); border: 1px solid var(--border-strong); padding: 8px 18px; text-transform: uppercase; }
 .payment-note { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--sand-muted); opacity: 0.4; text-transform: uppercase; }
-
-/* EMAIL */
 .email-section { background: var(--smoke); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 60px 24px; text-align: center; }
 .email-title { font-family: var(--font-display); font-size: clamp(20px, 3vw, 28px); font-weight: 600; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 10px; }
 .email-sub { font-family: var(--font-body); font-size: 17px; font-style: italic; color: var(--sand-muted); margin-bottom: 28px; }
@@ -164,16 +152,12 @@ a { color: inherit; text-decoration: none; }
 .email-submit:hover { background: var(--gold-light); }
 .email-disclaimer { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--sand-muted); opacity: 0.4; margin-top: 12px; text-transform: uppercase; }
 #email-success { display: none; font-family: var(--font-ui); font-size: 11px; letter-spacing: 2px; color: var(--green-ok); text-transform: uppercase; margin-top: 16px; }
-
-/* SELLER */
 .seller-section { background: var(--smoke); padding: 72px 24px; text-align: center; border-top: 1px solid var(--border); }
 .seller-title { font-family: var(--font-display); font-size: clamp(22px, 3.5vw, 36px); font-weight: 600; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 14px; }
 .seller-body { font-family: var(--font-body); font-size: 18px; font-style: italic; color: var(--sand-muted); line-height: 1.6; max-width: 560px; margin: 0 auto 32px; }
 .seller-perks { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; margin-bottom: 36px; }
 .seller-perk { font-family: var(--font-ui); font-size: 9px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; opacity: 0.7; display: flex; align-items: center; gap: 8px; }
 .perk-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); opacity: 0.5; flex-shrink: 0; }
-
-/* MODAL */
 .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 2000; align-items: center; justify-content: center; padding: 24px; overflow-y: auto; }
 .modal-overlay.open { display: flex; }
 .modal { background: var(--ink-mid); border: 1px solid var(--border-strong); max-width: 560px; width: 100%; padding: 40px; position: relative; max-height: 90vh; overflow-y: auto; margin: auto; }
@@ -210,8 +194,6 @@ a { color: inherit; text-decoration: none; }
 .order-summary { background: var(--ink-light); border: 1px solid var(--border); padding: 14px 16px; margin-bottom: 16px; }
 .order-summary-row { display: flex; justify-content: space-between; font-family: var(--font-ui); font-size: 10px; letter-spacing: 1px; color: var(--sand-muted); margin-bottom: 6px; }
 .order-summary-row:last-child { margin-bottom: 0; color: var(--gold); font-weight: 700; border-top: 1px solid var(--border); padding-top: 6px; margin-top: 6px; }
-
-/* FOOTER */
 .footer { background: var(--ink); border-top: 1px solid var(--border); padding: 52px 24px 32px; }
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; max-width: var(--max-w); margin: 0 auto 40px; }
 .footer-brand-name { font-family: var(--font-display); font-size: 20px; font-weight: 700; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; display: block; margin-bottom: 12px; }
@@ -230,7 +212,6 @@ a { color: inherit; text-decoration: none; }
 .footer-legal-links a:hover { opacity: 0.7; }
 .disclaimer-bar { background: var(--ink-mid); border-top: 1px solid var(--border); padding: 12px 24px; text-align: center; }
 .disclaimer-bar p { font-family: var(--font-ui); font-size: 9px; letter-spacing: 0.5px; color: var(--sand-muted); opacity: 0.3; line-height: 1.6; max-width: 900px; margin: 0 auto; }
-
 @media (max-width: 900px) {
   .cat-grid { grid-template-columns: repeat(2, 1fr); }
   .steps-grid { grid-template-columns: repeat(2, 1fr); }
@@ -271,7 +252,6 @@ a { color: inherit; text-decoration: none; }
     </div>
   </a>
   <div class="nav-links">
-    <!-- SHOP DROPDOWN -->
     <div class="nav-dropdown" id="shopDropdown">
       <button class="nav-dropdown-toggle" onclick="toggleDropdown('shopDropdown')">
         Shop
@@ -282,7 +262,7 @@ a { color: inherit; text-decoration: none; }
         <a href="/psychedelic.html"><span class="nav-cat-emoji">🍄</span>Psychedelic Adjacent</a>
         <a href="/cannabis.html"><span class="nav-cat-emoji">🌱</span>Cannabis Adjacent</a>
         <a href="/longevity.html"><span class="nav-cat-emoji">⚗️</span>Longevity &amp; Biohack</a>
-        <a href="/privacy.html"><span class="nav-cat-emoji">🔒</span>Privacy &amp; Comms</a>
+        <a href="/privacy-comms.html"><span class="nav-cat-emoji">🔒</span>Privacy &amp; Comms</a>
         <a href="/weapons.html"><span class="nav-cat-emoji">⚔️</span>Weapons Adjacent</a>
         <a href="/mens-health.html"><span class="nav-cat-emoji">💪</span>Men's Health</a>
         <a href="/womens-wellness.html"><span class="nav-cat-emoji">🌸</span>Women's Wellness</a>
@@ -321,7 +301,7 @@ a { color: inherit; text-decoration: none; }
   <a href="/psychedelic.html" onclick="toggleMobile()">🍄 Psychedelic Adjacent</a>
   <a href="/cannabis.html" onclick="toggleMobile()">🌱 Cannabis Adjacent</a>
   <a href="/longevity.html" onclick="toggleMobile()">⚗️ Longevity &amp; Biohack</a>
-  <a href="/privacy.html" onclick="toggleMobile()">🔒 Privacy &amp; Comms</a>
+  <a href="/privacy-comms.html" onclick="toggleMobile()">🔒 Privacy &amp; Comms</a>
   <a href="/weapons.html" onclick="toggleMobile()">⚔️ Weapons Adjacent</a>
   <a href="/mens-health.html" onclick="toggleMobile()">💪 Men's Health</a>
   <a href="/womens-wellness.html" onclick="toggleMobile()">🌸 Women's Wellness</a>
@@ -381,78 +361,62 @@ a { color: inherit; text-decoration: none; }
   </div>
   <div class="cat-grid">
     <div class="cat-card" onclick="window.location.href='/health-freedom.html'">
-      <span class="cat-emoji">🌿</span>
-      <div class="cat-name">Health Freedom</div>
+      <span class="cat-emoji">🌿</span><div class="cat-name">Health Freedom</div>
       <div class="cat-desc">Ivermectin · Peptides · Methylene Blue · Fenbendazole</div>
-      <div class="cat-arrow">Shop &rarr;</div>
-      <span class="cat-badge badge-hot">Hot</span>
+      <div class="cat-arrow">Shop &rarr;</div><span class="cat-badge badge-hot">Hot</span>
     </div>
     <div class="cat-card" onclick="window.location.href='/psychedelic.html'">
-      <span class="cat-emoji">🍄</span>
-      <div class="cat-name">Psychedelic Adjacent</div>
+      <span class="cat-emoji">🍄</span><div class="cat-name">Psychedelic Adjacent</div>
       <div class="cat-desc">Kratom · Amanita · Kava · Blue Lotus · Salvia</div>
       <div class="cat-arrow">Shop &rarr;</div>
     </div>
     <div class="cat-card" onclick="window.location.href='/cannabis.html'">
-      <span class="cat-emoji">🌱</span>
-      <div class="cat-name">Cannabis Adjacent</div>
+      <span class="cat-emoji">🌱</span><div class="cat-name">Cannabis Adjacent</div>
       <div class="cat-desc">Delta-8 · THCA · HHC · CBN · Hemp Flower</div>
-      <div class="cat-arrow">Shop &rarr;</div>
-      <span class="cat-badge badge-new">New</span>
+      <div class="cat-arrow">Shop &rarr;</div><span class="cat-badge badge-new">New</span>
     </div>
     <div class="cat-card" onclick="window.location.href='/longevity.html'">
-      <span class="cat-emoji">⚗️</span>
-      <div class="cat-name">Longevity &amp; Biohack</div>
+      <span class="cat-emoji">⚗️</span><div class="cat-name">Longevity &amp; Biohack</div>
       <div class="cat-desc">NAD+ · Turkesterone · Nootropics · Shilajit</div>
       <div class="cat-arrow">Shop &rarr;</div>
     </div>
-    <div class="cat-card" onclick="window.location.href='/privacy.html'">
-      <span class="cat-emoji">🔒</span>
-      <div class="cat-name">Privacy &amp; Comms</div>
+    <div class="cat-card" onclick="window.location.href='/privacy-comms.html'">
+      <span class="cat-emoji">🔒</span><div class="cat-name">Privacy &amp; Comms</div>
       <div class="cat-desc">Burner Phones · Faraday Bags · Counter-Surveillance</div>
       <div class="cat-arrow">Shop &rarr;</div>
     </div>
     <div class="cat-card" onclick="window.location.href='/weapons.html'">
-      <span class="cat-emoji">⚔️</span>
-      <div class="cat-name">Weapons Adjacent</div>
+      <span class="cat-emoji">⚔️</span><div class="cat-name">Weapons Adjacent</div>
       <div class="cat-desc">Blades · Accessories · Fireworks · Stun Guns</div>
       <div class="cat-arrow">Shop &rarr;</div>
     </div>
     <div class="cat-card" onclick="window.location.href='/mens-health.html'">
-      <span class="cat-emoji">💪</span>
-      <div class="cat-name">Men's Health</div>
+      <span class="cat-emoji">💪</span><div class="cat-name">Men's Health</div>
       <div class="cat-desc">Tongkat Ali · Enhancement · Fadogia · TRT Support</div>
-      <div class="cat-arrow">Shop &rarr;</div>
-      <span class="cat-badge badge-hot">Hot</span>
+      <div class="cat-arrow">Shop &rarr;</div><span class="cat-badge badge-hot">Hot</span>
     </div>
     <div class="cat-card" onclick="window.location.href='/womens-wellness.html'">
-      <span class="cat-emoji">🌸</span>
-      <div class="cat-name">Women's Wellness</div>
+      <span class="cat-emoji">🌸</span><div class="cat-name">Women's Wellness</div>
       <div class="cat-desc">Hormonal Balance · Libido · HRT Support · CBD Intimacy</div>
-      <div class="cat-arrow">Shop &rarr;</div>
-      <span class="cat-badge badge-new">New</span>
+      <div class="cat-arrow">Shop &rarr;</div><span class="cat-badge badge-new">New</span>
     </div>
     <div class="cat-card" onclick="window.location.href='/taboo-foods.html'">
-      <span class="cat-emoji">🥛</span>
-      <div class="cat-name">Taboo Foods</div>
+      <span class="cat-emoji">🥛</span><div class="cat-name">Taboo Foods</div>
       <div class="cat-desc">Raw Dairy · Exotic Meats · Absinthe · High-Proof Spirits</div>
       <div class="cat-arrow">Shop &rarr;</div>
     </div>
     <div class="cat-card" onclick="window.location.href='/tobacco.html'">
-      <span class="cat-emoji">🚬</span>
-      <div class="cat-name">Tobacco &amp; Nicotine</div>
+      <span class="cat-emoji">🚬</span><div class="cat-name">Tobacco &amp; Nicotine</div>
       <div class="cat-desc">Flavored Vape · High-Proof · Nicotine Pouches</div>
       <div class="cat-arrow">Shop &rarr;</div>
     </div>
     <div class="cat-card" onclick="window.location.href='/off-grid.html'">
-      <span class="cat-emoji">🏕️</span>
-      <div class="cat-name">Off-Grid &amp; Prepper</div>
+      <span class="cat-emoji">🏕️</span><div class="cat-name">Off-Grid &amp; Prepper</div>
       <div class="cat-desc">Homestead · Seed Banks · Survival · Lockpicking</div>
       <div class="cat-arrow">Shop &rarr;</div>
     </div>
     <div class="cat-card" onclick="window.location.href='/adult.html'">
-      <span class="cat-emoji">🔞</span>
-      <div class="cat-name">Adult Products</div>
+      <span class="cat-emoji">🔞</span><div class="cat-name">Adult Products</div>
       <div class="cat-desc">Enhancement · Wellness · Intimacy · Age-Verified</div>
       <div class="cat-arrow">Shop &rarr;</div>
     </div>
@@ -556,7 +520,7 @@ a { color: inherit; text-decoration: none; }
         <li><a href="/psychedelic.html">🍄 Psychedelic Adjacent</a></li>
         <li><a href="/cannabis.html">🌱 Cannabis Adjacent</a></li>
         <li><a href="/longevity.html">⚗️ Longevity &amp; Biohack</a></li>
-        <li><a href="/privacy.html">🔒 Privacy &amp; Comms</a></li>
+        <li><a href="/privacy-comms.html">🔒 Privacy &amp; Comms</a></li>
         <li><a href="/weapons.html">⚔️ Weapons Adjacent</a></li>
         <li><a href="/mens-health.html">💪 Men's Health</a></li>
         <li><a href="/womens-wellness.html">🌸 Women's Wellness</a></li>
@@ -617,8 +581,6 @@ a { color: inherit; text-decoration: none; }
       <button class="checkout-step-btn" id="stepBtn2" onclick="goToStep(2)">2. Payment</button>
     </div>
     <div class="modal-error" id="modalError"></div>
-
-    <!-- STEP 1: SHIPPING -->
     <div class="checkout-panel active" id="panel1">
       <div class="anon-callout">
         <div class="anon-callout-icon">🔒</div>
@@ -635,8 +597,6 @@ a { color: inherit; text-decoration: none; }
       <button class="modal-proceed" onclick="goToStep(2)">Continue to Payment &rarr;</button>
       <p class="modal-note">Shipping info is used only to fulfill your order. We store nothing else.</p>
     </div>
-
-    <!-- STEP 2: PAYMENT -->
     <div class="checkout-panel" id="panel2">
       <button class="modal-back" onclick="goToStep(1)">&larr; Back to Shipping</button>
       <div class="anon-callout">
@@ -672,11 +632,8 @@ function toggleDropdown(id) {
   document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('open'));
   if (!isOpen) el.classList.add('open');
 }
-
 document.addEventListener('click', function(e) {
-  if (!e.target.closest('.nav-dropdown')) {
-    document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('open'));
-  }
+  if (!e.target.closest('.nav-dropdown')) document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('open'));
 });
 
 async function loadProducts() {
