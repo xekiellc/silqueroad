@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
 <meta name="description" content="Check your order status — Silque Road">
 <title>Order Status — Silque Road</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -109,7 +110,7 @@ a { color: inherit; text-decoration: none; }
 </main>
 
 <footer class="footer">
-  <p>Silque Road &nbsp;&bull;&nbsp; XEKIE LLC &nbsp;&bull;&nbsp; No tracking. No cookies. No analytics.</p>
+  <p>Silque Road &nbsp;&bull;&nbsp; Legal &amp; Available &nbsp;&bull;&nbsp; No tracking. No cookies. No analytics.</p>
 </footer>
 
 <script>
@@ -159,7 +160,6 @@ async function lookupOrder() {
     if (email) {
       url = `${SUPABASE_URL}/rest/v1/orders?buyer_email=eq.${encodeURIComponent(email)}&order=created_at.desc&limit=10&select=*`;
     } else {
-      // Match first 8 chars of UUID
       url = `${SUPABASE_URL}/rest/v1/orders?id=ilike.${encodeURIComponent(ref)}*&order=created_at.desc&limit=10&select=*`;
     }
 
