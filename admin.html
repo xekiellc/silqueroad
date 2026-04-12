@@ -589,16 +589,17 @@
         </div>
 
         <div class="app-actions">
-          <button class="action-btn approve" onclick="updateStatus('${app.id}', 'approved', '${esc(app.email)}', '${esc(app.business_name)}')" ${app.status === 'approved' ? 'disabled' : ''}>✓ Approve</button>
-          <button class="action-btn review" onclick="updateStatus('${app.id}', 'reviewed', '', '')" ${app.status === 'reviewed' ? 'disabled' : ''}>Mark Reviewed</button>
-          <button class="action-btn reject" onclick="updateStatus('${app.id}', 'rejected', '', '')" ${app.status === 'rejected' ? 'disabled' : ''}>✕ Reject</button>
+          <button class="action-btn approve" onclick="updateStatus('${app.id}', 'approved', ${JSON.stringify(app)})" ${app.status === 'approved' ? 'disabled' : ''}>✓ Approve</button>
+          <button class="action-btn review" onclick="updateStatus('${app.id}', 'reviewed', null)" ${app.status === 'reviewed' ? 'disabled' : ''}>Mark Reviewed</button>
+          <button class="action-btn reject" onclick="updateStatus('${app.id}', 'rejected', null)" ${app.status === 'rejected' ? 'disabled' : ''}>✕ Reject</button>
         </div>
       </div>
     `).join('');
   }
 
-  async function updateStatus(id, newStatus, email, businessName) {
+  async function updateStatus(id, newStatus, appData) {
     try {
+      // Update application status
       const res = await fetch(
         `${SUPABASE_URL}/rest/v1/seller_applications?id=eq.${id}`,
         {
@@ -615,15 +616,44 @@
 
       if (!res.ok) throw new Error('Update failed');
 
-      // If approving, fire the approval notification email
-      if (newStatus === 'approved' && email) {
+      if (newStatus === 'approved' && appData) {
+        // Auto-create seller record
+        try {
+          await fetch(`${SUPABASE_URL}/rest/v1/sellers`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'apikey': SERVICE_KEY,
+              'Authorization': `Bearer ${SERVICE_KEY}`,
+              'Prefer': 'return=minimal'
+            },
+            body: JSON.stringify({
+              business_name: appData.business_name,
+              contact_name: appData.contact_name || null,
+              email: appData.email,
+              category: appData.category || null,
+              crypto_wallet: appData.crypto_wallet || null,
+              crypto_currency: appData.crypto_currency || null,
+              commission_rate: 0.10,
+              status: 'approved'
+            })
+          });
+        } catch (sellerErr) {
+          console.error('Seller record creation failed:', sellerErr);
+          // Non-fatal — continue with notification
+        }
+
+        // Fire approval notification email
         try {
           await fetch('/.netlify/functions/send-notification', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
               type: 'seller_approved',
-              data: { email, business_name: businessName }
+              data: {
+                email: appData.email,
+                business_name: appData.business_name
+              }
             })
           });
         } catch (notifErr) {
@@ -636,7 +666,12 @@
 
       updateStats();
       renderApplications();
-      showToast(newStatus === 'approved' ? 'Approved — seller notified' : `Marked as ${newStatus}`, 'success');
+      showToast(
+        newStatus === 'approved'
+          ? 'Approved — seller record created & notified'
+          : `Marked as ${newStatus}`,
+        'success'
+      );
 
     } catch (err) {
       showToast('Update failed — try again', 'error');
