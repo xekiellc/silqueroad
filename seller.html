@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
 <meta name="description" content="Seller Profile — Silque Road">
 <title>Seller Profile — Silque Road</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -69,6 +70,8 @@ a { color: inherit; text-decoration: none; }
 .error-state p { font-family: var(--font-body); font-size: 17px; font-style: italic; color: var(--sand-muted); margin-bottom: 24px; }
 .btn-primary { display: inline-block; background: var(--gold); color: var(--ink); font-family: var(--font-ui); font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 13px 28px; border: none; cursor: pointer; transition: background var(--transition); }
 .btn-primary:hover { background: var(--gold-light); }
+
+/* MODAL */
 .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 2000; align-items: center; justify-content: center; padding: 24px; overflow-y: auto; }
 .modal-overlay.open { display: flex; }
 .modal { background: var(--ink-mid); border: 1px solid var(--border-strong); max-width: 560px; width: 100%; padding: 40px; position: relative; max-height: 90vh; overflow-y: auto; margin: auto; }
@@ -78,14 +81,18 @@ a { color: inherit; text-decoration: none; }
 .checkout-steps { display: flex; gap: 0; margin-bottom: 24px; border-bottom: 1px solid var(--border); }
 .checkout-step-btn { flex: 1; padding: 10px; font-family: var(--font-ui); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; background: transparent; border: none; color: var(--sand-muted); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: all var(--transition); }
 .checkout-step-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
-.checkout-panel { display: none; } .checkout-panel.active { display: block; }
+.checkout-panel { display: none; }
+.checkout-panel.active { display: block; }
 .form-field { margin-bottom: 14px; }
 .form-field label { display: block; font-family: var(--font-ui); font-size: 8px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 6px; }
 .form-field input { width: 100%; background: var(--ink-light); border: 1px solid var(--border-strong); color: var(--sand); font-family: var(--font-ui); font-size: 12px; padding: 11px 14px; outline: none; transition: border-color var(--transition); border-radius: 0; -webkit-appearance: none; }
 .form-field input:focus { border-color: var(--gold); }
 .form-field input::placeholder { color: var(--sand-muted); opacity: 0.4; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.anon-note { font-family: var(--font-ui); font-size: 8px; letter-spacing: 1px; color: var(--green-ok); text-transform: uppercase; opacity: 0.7; margin-bottom: 16px; }
+.anon-callout { background: rgba(58,138,58,0.12); border: 1px solid rgba(58,138,58,0.35); padding: 12px 16px; margin-bottom: 18px; display: flex; align-items: flex-start; gap: 10px; }
+.anon-callout-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+.anon-callout-text { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--green-ok); text-transform: uppercase; line-height: 1.6; }
+.anon-callout-text strong { color: var(--green-ok); font-weight: 700; }
 .crypto-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 16px; }
 .crypto-opt { background: var(--ink-light); border: 1px solid var(--border); padding: 10px 6px; cursor: pointer; transition: border-color var(--transition); text-align: center; }
 .crypto-opt:hover { border-color: var(--gold); }
@@ -95,6 +102,8 @@ a { color: inherit; text-decoration: none; }
 .modal-proceed { width: 100%; background: var(--gold); color: var(--ink); font-family: var(--font-ui); font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 15px; border: none; cursor: pointer; transition: background var(--transition); margin-top: 8px; margin-bottom: 10px; }
 .modal-proceed:hover { background: var(--gold-light); }
 .modal-proceed:disabled { opacity: 0.5; cursor: not-allowed; }
+.modal-back { background: transparent; border: none; color: var(--sand-muted); font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; padding: 0 0 12px 0; display: flex; align-items: center; gap: 6px; transition: color var(--transition); }
+.modal-back:hover { color: var(--gold); }
 .modal-note { font-family: var(--font-ui); font-size: 8px; letter-spacing: 1px; color: var(--sand-muted); opacity: 0.35; text-align: center; text-transform: uppercase; }
 .modal-error { display: none; padding: 10px 14px; background: rgba(139,34,34,0.2); border: 1px solid #8b2222; color: #e07070; font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; margin-bottom: 12px; }
 .order-summary { background: var(--ink-light); border: 1px solid var(--border); padding: 14px 16px; margin-bottom: 16px; }
@@ -142,20 +151,32 @@ a { color: inherit; text-decoration: none; }
       <button class="checkout-step-btn" id="stepBtn2" onclick="goToStep(2)">2. Payment</button>
     </div>
     <div class="modal-error" id="modalError"></div>
+
+    <!-- STEP 1: SHIPPING -->
     <div class="checkout-panel active" id="panel1">
-      <p class="anon-note">&#10003; All fields optional — checkout anonymously if you prefer</p>
-      <div class="form-field"><label>Email — for order updates only</label><input type="email" id="buyerEmail" placeholder="your@email.com (optional)" autocomplete="off" /></div>
-      <div class="form-field"><label>Ship To — Full Name</label><input type="text" id="shipName" placeholder="Name on package (optional)" autocomplete="off" /></div>
-      <div class="form-field"><label>Street Address</label><input type="text" id="shipAddress" placeholder="123 Main St (optional)" autocomplete="off" /></div>
+      <div class="anon-callout">
+        <div class="anon-callout-icon">🔒</div>
+        <div class="anon-callout-text"><strong>100% Anonymous Checkout.</strong> Every field below is optional. Skip them all and pay with crypto — no name, no address, no account required.</div>
+      </div>
+      <div class="form-field"><label>Email — for order updates only (optional)</label><input type="email" id="buyerEmail" placeholder="your@email.com" autocomplete="off" /></div>
+      <div class="form-field"><label>Ship To — Full Name (optional)</label><input type="text" id="shipName" placeholder="Name on package" autocomplete="off" /></div>
+      <div class="form-field"><label>Street Address (optional)</label><input type="text" id="shipAddress" placeholder="123 Main St" autocomplete="off" /></div>
       <div class="form-row">
         <div class="form-field"><label>City</label><input type="text" id="shipCity" placeholder="City" autocomplete="off" /></div>
         <div class="form-field"><label>State</label><input type="text" id="shipState" placeholder="OH" maxlength="2" autocomplete="off" /></div>
       </div>
-      <div class="form-field"><label>ZIP Code</label><input type="text" id="shipZip" placeholder="44223" maxlength="10" autocomplete="off" /></div>
+      <div class="form-field"><label>ZIP Code (optional)</label><input type="text" id="shipZip" placeholder="44223" maxlength="10" autocomplete="off" /></div>
       <button class="modal-proceed" onclick="goToStep(2)">Continue to Payment &rarr;</button>
-      <p class="modal-note">Your shipping info is used only to fulfill your order.</p>
+      <p class="modal-note">Shipping info is used only to fulfill your order. We store nothing else.</p>
     </div>
+
+    <!-- STEP 2: PAYMENT -->
     <div class="checkout-panel" id="panel2">
+      <button class="modal-back" onclick="goToStep(1)">&larr; Back to Shipping</button>
+      <div class="anon-callout">
+        <div class="anon-callout-icon">🔒</div>
+        <div class="anon-callout-text"><strong>Anonymous crypto payment.</strong> No account. No identity. Powered by NOWPayments — 8 currencies accepted.</div>
+      </div>
       <p style="font-family:var(--font-ui);font-size:9px;letter-spacing:1px;color:var(--sand-muted);text-transform:uppercase;margin-bottom:12px;">Select Cryptocurrency</p>
       <div class="crypto-grid">
         <div class="crypto-opt selected" onclick="selectCrypto(this,'btc')"><div class="crypto-sym">&#8383;</div><div class="crypto-lbl">Bitcoin</div></div>
@@ -196,7 +217,6 @@ async function loadProfile() {
   if (!sellerId) { showError('No seller ID provided.'); return; }
 
   try {
-    // Load seller
     const sellerRes = await fetch(`${SUPABASE_URL}/rest/v1/sellers?id=eq.${encodeURIComponent(sellerId)}&select=*`, {
       headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` }
     });
@@ -204,13 +224,11 @@ async function loadProfile() {
     if (!sellers || sellers.length === 0) { showError('Seller not found.'); return; }
     const seller = sellers[0];
 
-    // Load products
     const productsRes = await fetch(`${SUPABASE_URL}/rest/v1/products?seller_id=eq.${encodeURIComponent(sellerId)}&status=eq.active&order=featured.desc,created_at.desc&select=*`, {
       headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` }
     });
     const products = await productsRes.json() || [];
 
-    // Load reviews
     let reviews = [];
     try {
       const reviewsRes = await fetch(`${SUPABASE_URL}/rest/v1/reviews?seller_id=eq.${encodeURIComponent(sellerId)}&order=created_at.desc&select=*`, {
@@ -220,7 +238,6 @@ async function loadProfile() {
     } catch {}
 
     const avgRating = reviews.length > 0 ? reviews.reduce((s, r) => s + (r.rating || 0), 0) / reviews.length : 0;
-
     document.title = `${seller.business_name || 'Seller'} — Silque Road`;
 
     document.getElementById('mainContent').innerHTML = `
@@ -244,7 +261,7 @@ async function loadProfile() {
       </div>
 
       <div class="section-title">Products from this Seller</div>
-      <div class="product-grid" id="productGrid">
+      <div class="product-grid">
         ${products.length === 0
           ? `<div style="grid-column:1/-1;text-align:center;padding:40px;font-family:var(--font-body);font-size:17px;font-style:italic;color:var(--sand-muted);opacity:0.5;">No active listings yet.</div>`
           : products.map(p => {
@@ -256,9 +273,7 @@ async function loadProfile() {
               <div class="product-name">${esc(p.name)}</div>
               <div class="product-desc">${esc(p.description || '')}</div>
               <div class="product-footer">
-                <div>
-                  <div class="product-price">$${price}</div>
-                </div>
+                <div class="product-price">$${price}</div>
                 <button class="product-add" onclick='event.stopPropagation(); openModal(${JSON.stringify({id: p.id, seller_id: p.seller_id, name: p.name, price: parseFloat(price), category: p.category})})'>Buy Now</button>
               </div>
             </div>`;
@@ -305,6 +320,8 @@ function openModal(product) {
   document.getElementById('orderSummary').style.display = 'block';
   document.getElementById('summaryProduct').textContent = product.name;
   document.getElementById('summaryPrice').textContent = `$${parseFloat(product.price).toFixed(2)}`;
+  document.querySelectorAll('.crypto-opt').forEach(o => o.classList.remove('selected'));
+  document.querySelector('.crypto-opt').classList.add('selected');
   goToStep(1);
   document.getElementById('modalError').style.display = 'none';
   document.getElementById('modal').classList.add('open');
@@ -312,8 +329,13 @@ function openModal(product) {
 }
 function closeModal() { document.getElementById('modal').classList.remove('open'); document.body.style.overflow = ''; currentProduct = null; }
 function closeModalOutside(e) { if (e.target === document.getElementById('modal')) closeModal(); }
-function goToStep(step) { document.querySelectorAll('.checkout-panel').forEach(p=>p.classList.remove('active')); document.querySelectorAll('.checkout-step-btn').forEach(b=>b.classList.remove('active')); document.getElementById('panel'+step).classList.add('active'); document.getElementById('stepBtn'+step).classList.add('active'); }
-function selectCrypto(el, currency) { document.querySelectorAll('.crypto-opt').forEach(o=>o.classList.remove('selected')); el.classList.add('selected'); selCrypto = currency; }
+function goToStep(step) {
+  document.querySelectorAll('.checkout-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.checkout-step-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('panel' + step).classList.add('active');
+  document.getElementById('stepBtn' + step).classList.add('active');
+}
+function selectCrypto(el, currency) { document.querySelectorAll('.crypto-opt').forEach(o => o.classList.remove('selected')); el.classList.add('selected'); selCrypto = currency; }
 function showModalError(msg) { const el = document.getElementById('modalError'); el.textContent = msg; el.style.display = 'block'; }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
@@ -321,7 +343,16 @@ async function proceedToPayment() {
   if (!currentProduct) { showModalError('No product selected.'); return; }
   const btn = document.getElementById('payBtn'); btn.disabled = true; btn.textContent = 'Creating order...';
   document.getElementById('modalError').style.display = 'none';
-  const payload = { product_id: currentProduct.id, seller_id: currentProduct.seller_id, buyer_email: document.getElementById('buyerEmail').value.trim()||null, shipping_name: document.getElementById('shipName').value.trim()||null, shipping_address: document.getElementById('shipAddress').value.trim()||null, shipping_city: document.getElementById('shipCity').value.trim()||null, shipping_state: document.getElementById('shipState').value.trim()||null, shipping_zip: document.getElementById('shipZip').value.trim()||null, amount_usd: currentProduct.price, crypto_currency: selCrypto, product_name: currentProduct.name };
+  const payload = {
+    product_id: currentProduct.id, seller_id: currentProduct.seller_id,
+    buyer_email: document.getElementById('buyerEmail').value.trim() || null,
+    shipping_name: document.getElementById('shipName').value.trim() || null,
+    shipping_address: document.getElementById('shipAddress').value.trim() || null,
+    shipping_city: document.getElementById('shipCity').value.trim() || null,
+    shipping_state: document.getElementById('shipState').value.trim() || null,
+    shipping_zip: document.getElementById('shipZip').value.trim() || null,
+    amount_usd: currentProduct.price, crypto_currency: selCrypto, product_name: currentProduct.name
+  };
   try {
     const res = await fetch('/.netlify/functions/create-order', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
     const data = await res.json();
