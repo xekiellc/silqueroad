@@ -78,6 +78,7 @@ a { color: inherit; text-decoration: none; }
 .btn-primary:hover { background: var(--gold-light); }
 .footer { background: var(--ink); border-top: 1px solid var(--border); padding: 20px 24px; text-align: center; }
 .footer p { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--sand-muted); opacity: 0.3; text-transform: uppercase; }
+.footer p + p { margin-top: 6px; }
 
 /* MODAL */
 .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 2000; align-items: center; justify-content: center; padding: 24px; overflow-y: auto; }
@@ -193,7 +194,8 @@ a { color: inherit; text-decoration: none; }
 </main>
 
 <footer class="footer">
-  <p>Silque Road &nbsp;&bull;&nbsp; Legal &amp; Available &nbsp;&bull;&nbsp; No tracking. No cookies. No analytics.</p>
+  <p>Silque Road, LLC &nbsp;&bull;&nbsp; Ohio Charter No. 5591799 &nbsp;&bull;&nbsp; An Ohio limited liability company</p>
+  <p>Legal &amp; Available &nbsp;&bull;&nbsp; No tracking. No cookies. No analytics.</p>
 </footer>
 
 <div class="modal-overlay" id="modal" onclick="closeModalOutside(event)">
