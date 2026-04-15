@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<meta name="description" content="Weapons Adjacent marketplace — Legal blades, stun guns, self-defense tools, tactical accessories and more. Legal products, anonymous checkout, crypto payments. Silque Road.">
+<meta name="description" content="Weapons Adjacent marketplace — Legal blades, stun guns, self-defense tools, tactical gear and more. Legal products, anonymous checkout, crypto payments. Silque Road.">
 <title>Weapons Adjacent — Silque Road</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,11 +40,29 @@ a { color: inherit; text-decoration: none; }
 .age-gate-btn-leave:hover { border-color: var(--crimson); color: #e07070; }
 .age-gate-legal { font-family: var(--font-ui); font-size: 8px; letter-spacing: 1px; color: var(--sand-muted); opacity: 0.4; text-transform: uppercase; margin-top: 24px; line-height: 1.6; }
 body.age-gate-active { overflow: hidden; }
+.age21-gate-overlay { position: fixed; inset: 0; background: rgba(16,13,5,0.98); z-index: 10000; display: none; align-items: center; justify-content: center; padding: 24px; backdrop-filter: blur(8px); }
+.age21-gate-overlay.open { display: flex; }
+.age21-gate-modal { background: var(--ink-mid); border: 2px solid var(--gold); max-width: 480px; width: 100%; padding: 48px 40px; text-align: center; position: relative; box-shadow: 0 0 80px rgba(201,168,76,0.25); }
+.age21-seal { font-family: var(--font-display); font-size: 72px; font-weight: 700; color: var(--gold); opacity: 0.18; line-height: 1; margin-bottom: 8px; }
+.age21-label { font-family: var(--font-ui); font-size: 10px; letter-spacing: 5px; color: var(--gold); text-transform: uppercase; opacity: 0.7; margin-bottom: 16px; }
+.age21-title { font-family: var(--font-display); font-size: 26px; font-weight: 700; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 16px; line-height: 1.2; }
+.age21-rule { width: 80px; height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent); margin: 0 auto 20px; }
+.age21-body { font-family: var(--font-body); font-size: 17px; font-style: italic; color: var(--sand-muted); line-height: 1.6; margin-bottom: 12px; }
+.age21-law { background: rgba(201,168,76,0.08); border: 1px solid var(--border-strong); padding: 12px 16px; margin-bottom: 20px; }
+.age21-law p { font-family: var(--font-ui); font-size: 8px; letter-spacing: 1.5px; color: var(--gold); text-transform: uppercase; opacity: 0.75; line-height: 1.7; }
+.age21-confirm { font-family: var(--font-ui); font-size: 10px; letter-spacing: 2px; color: var(--sand-muted); text-transform: uppercase; line-height: 1.7; margin-bottom: 28px; opacity: 0.75; }
+.age21-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.age21-btn-enter { background: var(--gold); color: var(--ink); font-family: var(--font-ui); font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 16px 32px; border: none; cursor: pointer; transition: background var(--transition); }
+.age21-btn-enter:hover { background: var(--gold-light); }
+.age21-btn-leave { background: transparent; color: var(--sand-muted); font-family: var(--font-ui); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; padding: 16px 32px; border: 1px solid var(--border-strong); cursor: pointer; transition: border-color var(--transition), color var(--transition); }
+.age21-btn-leave:hover { border-color: var(--crimson); color: #e07070; }
+.age21-legal { font-family: var(--font-ui); font-size: 8px; letter-spacing: 1px; color: var(--sand-muted); opacity: 0.4; text-transform: uppercase; margin-top: 24px; line-height: 1.6; }
 @media (max-width: 500px) {
-  .age-gate-modal { padding: 36px 24px; }
+  .age-gate-modal, .age21-gate-modal { padding: 36px 24px; }
   .age-gate-title { font-size: 22px; letter-spacing: 3px; }
-  .age-gate-buttons { flex-direction: column; }
-  .age-gate-btn-enter, .age-gate-btn-leave { width: 100%; }
+  .age21-title { font-size: 20px; letter-spacing: 3px; }
+  .age-gate-buttons, .age21-buttons { flex-direction: column; }
+  .age-gate-btn-enter, .age-gate-btn-leave, .age21-btn-enter, .age21-btn-leave { width: 100%; }
 }
 .announce-bar { background: var(--gold); color: var(--ink); text-align: center; padding: 9px 16px; font-family: var(--font-ui); font-size: 11px; letter-spacing: 2px; font-weight: 700; text-transform: uppercase; }
 .announce-bar a { color: var(--ink); text-decoration: underline; }
@@ -186,6 +204,7 @@ body.age-gate-active { overflow: hidden; }
 </head>
 <body>
 
+<!-- 18+ AGE GATE -->
 <div class="age-gate-overlay" id="ageGate" role="dialog" aria-modal="true" aria-labelledby="ageGateTitle">
   <div class="age-gate-modal">
     <div class="age-gate-seal">18+</div>
@@ -198,7 +217,27 @@ body.age-gate-active { overflow: hidden; }
       <button class="age-gate-btn-enter" onclick="ageGateEnter()">I am 18 or older &mdash; Enter</button>
       <button class="age-gate-btn-leave" onclick="ageGateLeave()">I am under 18 &mdash; Leave</button>
     </div>
-    <p class="age-gate-legal">Silque Road, LLC &nbsp;&bull;&nbsp; Ohio Charter No. 5591799<br>Some products restricted to 21+ at checkout</p>
+    <p class="age-gate-legal">Silque Road, LLC &nbsp;&bull;&nbsp; Ohio Charter No. 5591799<br>Products restricted to 21+ at checkout</p>
+  </div>
+</div>
+
+<!-- 21+ CHECKOUT GATE -->
+<div class="age21-gate-overlay" id="age21Gate" role="dialog" aria-modal="true" aria-labelledby="age21GateTitle">
+  <div class="age21-gate-modal">
+    <div class="age21-seal">21+</div>
+    <p class="age21-label">Additional Age Verification Required</p>
+    <h2 class="age21-title" id="age21GateTitle">21+ Required to Purchase</h2>
+    <div class="age21-rule"></div>
+    <p class="age21-body">Legal blades, stun guns, and self-defense products require additional age verification under applicable state and local regulations.</p>
+    <div class="age21-law">
+      <p>State Self-Defense &amp; Weapons Laws &nbsp;&bull;&nbsp; Local Ordinances<br>Age restrictions on self-defense tools vary by state. We require 21+ for all purchases.</p>
+    </div>
+    <p class="age21-confirm">By continuing, you confirm that you are 21 years of age or older and legally permitted to purchase self-defense and weapons-adjacent products in your state.</p>
+    <div class="age21-buttons">
+      <button class="age21-btn-enter" onclick="age21GateEnter()">I am 21 or older &mdash; Continue</button>
+      <button class="age21-btn-leave" onclick="age21GateLeave()">I am under 21 &mdash; Cancel</button>
+    </div>
+    <p class="age21-legal">Buyers are responsible for compliance with all applicable state and local laws &nbsp;&bull;&nbsp; Silque Road, LLC</p>
   </div>
 </div>
 
@@ -273,14 +312,14 @@ body.age-gate-active { overflow: hidden; }
     </div>
     <div class="cat-hero-emoji">⚔️</div>
     <h1 class="cat-hero-title">Weapons Adjacent</h1>
-    <p class="cat-hero-tagline">Legal blades. Stun guns. Self-defense tools. Tactical accessories. Everything that's legal to own and impossible to buy without a lecture from a platform that's decided you can't be trusted.</p>
+    <p class="cat-hero-tagline">Legal blades. Stun guns. Self-defense tools. Tactical gear. Legal products for personal protection that mainstream platforms quietly refuse to carry.</p>
     <div class="cat-hero-rule"></div>
     <p style="font-family:var(--font-ui);font-size:9px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;opacity:0.65;">Vetted Sellers &nbsp;&bull;&nbsp; Anonymous Checkout &nbsp;&bull;&nbsp; Crypto Payments</p>
   </div>
 </div>
 
 <div class="cat-why-bar">
-  <p>Fixed-blade knives are legal. Stun guns are legal in most states. Tactical gear is sold at Walmart. <strong>But try selling self-defense tools online</strong> — payment processors decline, platforms suspend accounts, and sellers get flagged for carrying products that protect people. Not here.</p>
+  <p>Fixed-blade knives are legal in most states. Stun guns are legal in 48 states. Tactical flashlights are sold at every outdoor retailer. <strong>But try selling these products online</strong> — payment processors decline, marketplaces delist, and ad platforms reject. Legal means available here.</p>
 </div>
 
 <div class="products-section">
@@ -292,7 +331,7 @@ body.age-gate-active { overflow: hidden; }
     <div class="empty-state">
       <div class="empty-state-emoji">⚔️</div>
       <div class="empty-state-title">This Shelf Is Yours</div>
-      <p class="empty-state-body">No Weapons Adjacent products are listed yet. If you sell legal blades, stun guns, self-defense tools, tactical accessories, or legal fireworks — this is your market. Be the first seller.</p>
+      <p class="empty-state-body">No Weapons Adjacent products are listed yet. If you sell legal blades, stun guns, self-defense tools, or tactical gear — this is your market. Be the first seller.</p>
       <a href="/seller-apply.html" class="btn-primary" style="margin-bottom:12px;display:inline-block;">Apply as a Founding Seller</a>
     </div>
   </div>
@@ -301,7 +340,7 @@ body.age-gate-active { overflow: hidden; }
 <div class="founding-cta">
   <p class="founding-cta-label">For Sellers</p>
   <h2 class="founding-cta-title">Own This Market</h2>
-  <p class="founding-cta-body">Self-defense and tactical sellers get deplatformed constantly. PayPal drops you. Etsy bans you. Square declines your account. You sell legal products that help people protect themselves — and the platforms punish you for it. Not anymore.</p>
+  <p class="founding-cta-body">Self-defense sellers know the frustration. Your products are completely legal. Your customers are law-abiding adults. Yet payment processors decline, Amazon removes your listings, and Shopify reviews your account for selling a pocket knife. Sell here instead.</p>
   <div class="founding-perks">
     <div class="founding-perk"><div class="perk-dot"></div>First to list in this category</div>
     <div class="founding-perk"><div class="perk-dot"></div>Crypto payouts weekly</div>
@@ -324,21 +363,21 @@ body.age-gate-active { overflow: hidden; }
       <div class="related-emoji">🏕️</div>
       <div>
         <div class="related-name">Off-Grid &amp; Prepper</div>
-        <div class="related-desc">Survival · Emergency · Seed Banks · Comms</div>
+        <div class="related-desc">Survival · Emergency · Homestead · Seed Banks</div>
       </div>
     </div>
     <div class="related-card" onclick="window.location.href='/privacy-comms.html'">
       <div class="related-emoji">🔒</div>
       <div>
         <div class="related-name">Privacy &amp; Comms</div>
-        <div class="related-desc">Faraday Bags · Counter-Surveillance · Encrypted Tools</div>
+        <div class="related-desc">Faraday · Encrypted Tools · Signal Privacy</div>
       </div>
     </div>
     <div class="related-card" onclick="window.location.href='/mens-health.html'">
       <div class="related-emoji">💪</div>
       <div>
         <div class="related-name">Men's Health</div>
-        <div class="related-desc">TRT Support · Performance · Hormone Optimization</div>
+        <div class="related-desc">TRT Support · Performance · Wellness</div>
       </div>
     </div>
   </div>
@@ -360,7 +399,7 @@ body.age-gate-active { overflow: hidden; }
 </footer>
 
 <div class="disclaimer-bar">
-  <p>Silque Road, LLC, an Ohio limited liability company (Charter No. 5591799), operates this platform connecting buyers and vetted sellers of legal products. All products listed are legal under applicable federal and state law. State and local laws regarding blades, stun guns, and self-defense tools vary — buyers are responsible for knowing and complying with their local laws.</p>
+  <p>Silque Road, LLC, an Ohio limited liability company (Charter No. 5591799), operates this platform connecting buyers and vetted sellers of legal products. All self-defense and weapons-adjacent products listed are legal under applicable federal law. State and local laws vary — buyers are solely responsible for knowing and complying with all applicable laws in their jurisdiction before purchasing.</p>
 </div>
 
 <div class="modal-overlay" id="modal" onclick="closeModalOutside(event)">
@@ -428,27 +467,38 @@ function srSetCookie(name, value, days) {
   d.setTime(d.getTime() + (days*24*60*60*1000));
   document.cookie = `${name}=${value}; expires=${d.toUTCString()}; path=/; SameSite=Lax`;
 }
+function srSetSessionCookie(name, value) {
+  document.cookie = `${name}=${value}; path=/; SameSite=Lax`;
+}
 function ageGateEnter() {
   srSetCookie('sr_age_18_verified', 'true', 30);
   document.getElementById('ageGate').classList.remove('open');
   document.body.classList.remove('age-gate-active');
 }
-function ageGateLeave() {
-  window.location.href = 'https://www.google.com';
-}
+function ageGateLeave() { window.location.href = 'https://www.google.com'; }
 (function srAgeGateInit() {
   if (srGetCookie('sr_age_18_verified') !== 'true') {
     document.getElementById('ageGate').classList.add('open');
     document.body.classList.add('age-gate-active');
   }
 })();
-
+let _pendingProduct = null;
+function age21GateEnter() {
+  srSetSessionCookie('sr_age_21_verified', 'true');
+  document.getElementById('age21Gate').classList.remove('open');
+  document.body.classList.remove('age-gate-active');
+  if (_pendingProduct) { _openModal(_pendingProduct); _pendingProduct = null; }
+}
+function age21GateLeave() {
+  document.getElementById('age21Gate').classList.remove('open');
+  document.body.classList.remove('age-gate-active');
+  _pendingProduct = null;
+}
 const SUPABASE_URL = 'https://pmtfqbefrsplvoriirru.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBtdGZxYmVmcnNwbHZvcmlpcnJ1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU4Mzk5MzEsImV4cCI6MjA5MTQxNTkzMX0.xgIVCGtB1Elp8ywjQhUAHdAVXOMoZJRmxWXM6vpZBB0';
 const CATEGORY = 'Weapons Adjacent';
 let currentProduct = null;
 let selCrypto = 'btc';
-
 function toggleDropdown(id) {
   const el = document.getElementById(id);
   const isOpen = el.classList.contains('open');
@@ -459,7 +509,6 @@ document.addEventListener('click', function(e) {
   if (!e.target.closest('.nav-dropdown')) document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('open'));
 });
 function toggleMobile() { document.getElementById('mobile-menu').classList.toggle('open'); }
-
 async function loadProducts() {
   try {
     const res = await fetch(
@@ -485,10 +534,17 @@ async function loadProducts() {
     }).join('');
   } catch {}
 }
-
 function esc(str) { if (!str) return ''; return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
-
 function openModal(product) {
+  if (srGetCookie('sr_age_21_verified') !== 'true') {
+    _pendingProduct = product;
+    document.getElementById('age21Gate').classList.add('open');
+    document.body.classList.add('age-gate-active');
+    return;
+  }
+  _openModal(product);
+}
+function _openModal(product) {
   currentProduct = product; selCrypto = 'btc';
   document.getElementById('modalTitle').textContent = product.name;
   document.getElementById('modalSub').textContent = `$${parseFloat(product.price).toFixed(2)} — ${product.category || ''}`;
@@ -511,7 +567,6 @@ function goToStep(step) {
   document.getElementById('stepBtn' + step).classList.add('active');
 }
 function selectCrypto(el, currency) { document.querySelectorAll('.crypto-opt').forEach(o => o.classList.remove('selected')); el.classList.add('selected'); selCrypto = currency; }
-
 async function proceedToPayment() {
   if (!currentProduct) return;
   const btn = document.getElementById('payBtn'); btn.disabled = true; btn.textContent = 'Creating order...';
@@ -536,8 +591,7 @@ async function proceedToPayment() {
     btn.disabled = false; btn.textContent = 'Pay with Crypto →';
   }
 }
-
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal(); age21GateLeave(); } });
 loadProducts();
 </script>
 </body>
