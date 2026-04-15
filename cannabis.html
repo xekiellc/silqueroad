@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<meta name="description" content="Cannabis Adjacent marketplace — Delta-8, THCA, HHC, CBN, Hemp Flower and more. Legal products, anonymous checkout, crypto payments. Silque Road.">
-<title>Cannabis Adjacent — Silque Road</title>
+<meta name="description" content="Psychedelic Adjacent marketplace — Kratom, Kava, Blue Lotus, Amanita and more. Legal products, anonymous checkout, crypto payments. Silque Road.">
+<title>Psychedelic Adjacent — Silque Road</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -40,11 +40,29 @@ a { color: inherit; text-decoration: none; }
 .age-gate-btn-leave:hover { border-color: var(--crimson); color: #e07070; }
 .age-gate-legal { font-family: var(--font-ui); font-size: 8px; letter-spacing: 1px; color: var(--sand-muted); opacity: 0.4; text-transform: uppercase; margin-top: 24px; line-height: 1.6; }
 body.age-gate-active { overflow: hidden; }
+.age21-gate-overlay { position: fixed; inset: 0; background: rgba(16,13,5,0.98); z-index: 10000; display: none; align-items: center; justify-content: center; padding: 24px; backdrop-filter: blur(8px); }
+.age21-gate-overlay.open { display: flex; }
+.age21-gate-modal { background: var(--ink-mid); border: 2px solid var(--gold); max-width: 480px; width: 100%; padding: 48px 40px; text-align: center; position: relative; box-shadow: 0 0 80px rgba(201,168,76,0.25); }
+.age21-seal { font-family: var(--font-display); font-size: 72px; font-weight: 700; color: var(--gold); opacity: 0.18; line-height: 1; margin-bottom: 8px; }
+.age21-label { font-family: var(--font-ui); font-size: 10px; letter-spacing: 5px; color: var(--gold); text-transform: uppercase; opacity: 0.7; margin-bottom: 16px; }
+.age21-title { font-family: var(--font-display); font-size: 26px; font-weight: 700; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 16px; line-height: 1.2; }
+.age21-rule { width: 80px; height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent); margin: 0 auto 20px; }
+.age21-body { font-family: var(--font-body); font-size: 17px; font-style: italic; color: var(--sand-muted); line-height: 1.6; margin-bottom: 12px; }
+.age21-law { background: rgba(201,168,76,0.08); border: 1px solid var(--border-strong); padding: 12px 16px; margin-bottom: 20px; }
+.age21-law p { font-family: var(--font-ui); font-size: 8px; letter-spacing: 1.5px; color: var(--gold); text-transform: uppercase; opacity: 0.75; line-height: 1.7; }
+.age21-confirm { font-family: var(--font-ui); font-size: 10px; letter-spacing: 2px; color: var(--sand-muted); text-transform: uppercase; line-height: 1.7; margin-bottom: 28px; opacity: 0.75; }
+.age21-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.age21-btn-enter { background: var(--gold); color: var(--ink); font-family: var(--font-ui); font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 16px 32px; border: none; cursor: pointer; transition: background var(--transition); }
+.age21-btn-enter:hover { background: var(--gold-light); }
+.age21-btn-leave { background: transparent; color: var(--sand-muted); font-family: var(--font-ui); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; padding: 16px 32px; border: 1px solid var(--border-strong); cursor: pointer; transition: border-color var(--transition), color var(--transition); }
+.age21-btn-leave:hover { border-color: var(--crimson); color: #e07070; }
+.age21-legal { font-family: var(--font-ui); font-size: 8px; letter-spacing: 1px; color: var(--sand-muted); opacity: 0.4; text-transform: uppercase; margin-top: 24px; line-height: 1.6; }
 @media (max-width: 500px) {
-  .age-gate-modal { padding: 36px 24px; }
+  .age-gate-modal, .age21-gate-modal { padding: 36px 24px; }
   .age-gate-title { font-size: 22px; letter-spacing: 3px; }
-  .age-gate-buttons { flex-direction: column; }
-  .age-gate-btn-enter, .age-gate-btn-leave { width: 100%; }
+  .age21-title { font-size: 20px; letter-spacing: 3px; }
+  .age-gate-buttons, .age21-buttons { flex-direction: column; }
+  .age-gate-btn-enter, .age-gate-btn-leave, .age21-btn-enter, .age21-btn-leave { width: 100%; }
 }
 .announce-bar { background: var(--gold); color: var(--ink); text-align: center; padding: 9px 16px; font-family: var(--font-ui); font-size: 11px; letter-spacing: 2px; font-weight: 700; text-transform: uppercase; }
 .announce-bar a { color: var(--ink); text-decoration: underline; }
@@ -82,7 +100,6 @@ body.age-gate-active { overflow: hidden; }
 .cat-breadcrumb a:hover { color: var(--gold); }
 .cat-breadcrumb-sep { opacity: 0.4; }
 .cat-hero-emoji { font-size: 52px; margin-bottom: 16px; line-height: 1; }
-.cat-hero-badge { display: inline-block; font-family: var(--font-ui); font-size: 8px; letter-spacing: 2px; font-weight: 700; padding: 4px 12px; text-transform: uppercase; background: var(--green-ok); color: var(--sand); margin-bottom: 16px; }
 .cat-hero-title { font-family: var(--font-display); font-size: clamp(32px, 5vw, 54px); font-weight: 700; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 16px; line-height: 1.1; }
 .cat-hero-tagline { font-family: var(--font-body); font-size: clamp(17px, 2.5vw, 22px); font-style: italic; color: var(--sand-muted); margin-bottom: 24px; line-height: 1.5; max-width: 560px; margin-left: auto; margin-right: auto; }
 .cat-hero-rule { width: 100px; height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent); margin: 0 auto 24px; }
@@ -187,6 +204,7 @@ body.age-gate-active { overflow: hidden; }
 </head>
 <body>
 
+<!-- 18+ AGE GATE -->
 <div class="age-gate-overlay" id="ageGate" role="dialog" aria-modal="true" aria-labelledby="ageGateTitle">
   <div class="age-gate-modal">
     <div class="age-gate-seal">18+</div>
@@ -200,6 +218,26 @@ body.age-gate-active { overflow: hidden; }
       <button class="age-gate-btn-leave" onclick="ageGateLeave()">I am under 18 &mdash; Leave</button>
     </div>
     <p class="age-gate-legal">Silque Road, LLC &nbsp;&bull;&nbsp; Ohio Charter No. 5591799<br>Some products restricted to 21+ at checkout</p>
+  </div>
+</div>
+
+<!-- 21+ CHECKOUT GATE -->
+<div class="age21-gate-overlay" id="age21Gate" role="dialog" aria-modal="true" aria-labelledby="age21GateTitle">
+  <div class="age21-gate-modal">
+    <div class="age21-seal">21+</div>
+    <p class="age21-label">Additional Age Verification Required</p>
+    <h2 class="age21-title" id="age21GateTitle">21+ Required to Purchase</h2>
+    <div class="age21-rule"></div>
+    <p class="age21-body">Kratom, kava, and certain botanical products require additional age verification under state regulations in applicable jurisdictions.</p>
+    <div class="age21-law">
+      <p>State Kratom &amp; Botanical Regulations &nbsp;&bull;&nbsp; Kratom Consumer Protection Acts<br>Kratom is restricted to persons 21 and older in Tennessee, Vermont, and other states.</p>
+    </div>
+    <p class="age21-confirm">By continuing, you confirm that you are 21 years of age or older and legally permitted to purchase kratom and botanical products in your state.</p>
+    <div class="age21-buttons">
+      <button class="age21-btn-enter" onclick="age21GateEnter()">I am 21 or older &mdash; Continue</button>
+      <button class="age21-btn-leave" onclick="age21GateLeave()">I am under 21 &mdash; Cancel</button>
+    </div>
+    <p class="age21-legal">State kratom regulations vary &nbsp;&bull;&nbsp; Buyers are responsible for local compliance &nbsp;&bull;&nbsp; Silque Road, LLC</p>
   </div>
 </div>
 
@@ -270,31 +308,30 @@ body.age-gate-active { overflow: hidden; }
       <span class="cat-breadcrumb-sep">/</span>
       <a href="/marketplace.html">Marketplace</a>
       <span class="cat-breadcrumb-sep">/</span>
-      <span style="color:var(--gold)">Cannabis Adjacent</span>
+      <span style="color:var(--gold)">Psychedelic Adjacent</span>
     </div>
-    <div class="cat-hero-emoji">🌱</div>
-    <span class="cat-hero-badge">New</span>
-    <h1 class="cat-hero-title">Cannabis Adjacent</h1>
-    <p class="cat-hero-tagline">Delta-8. THCA. HHC. CBN. Hemp flower. Federally legal hemp-derived cannabinoids that mainstream platforms refuse to carry.</p>
+    <div class="cat-hero-emoji">🍄</div>
+    <h1 class="cat-hero-title">Psychedelic Adjacent</h1>
+    <p class="cat-hero-tagline">Kratom. Kava. Blue Lotus. Amanita. Legal botanicals with ancient roots that mainstream platforms reflexively ban without legal basis.</p>
     <div class="cat-hero-rule"></div>
     <p style="font-family:var(--font-ui);font-size:9px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;opacity:0.65;">Vetted Sellers &nbsp;&bull;&nbsp; Anonymous Checkout &nbsp;&bull;&nbsp; Crypto Payments</p>
   </div>
 </div>
 
 <div class="cat-why-bar">
-  <p>The 2018 Farm Bill made hemp-derived cannabinoids federally legal. <strong>Amazon still bans them.</strong> Shopify suspends sellers. Payment processors decline. The law says legal. The platforms say no. We say yes.</p>
+  <p>Kratom is federally legal in most states. Kava bars operate openly across the US. Blue lotus has been used for millennia. <strong>Yet payment processors decline kratom sellers outright</strong> — not because of any law, but because of internal risk policies. Legal means available here.</p>
 </div>
 
 <div class="products-section">
   <div class="section-header">
-    <p class="section-label">Cannabis Adjacent Market</p>
+    <p class="section-label">Psychedelic Adjacent Market</p>
     <h2 class="section-title">Available Now</h2>
   </div>
   <div class="product-grid" id="productGrid">
     <div class="empty-state">
-      <div class="empty-state-emoji">🌱</div>
+      <div class="empty-state-emoji">🍄</div>
       <div class="empty-state-title">This Shelf Is Yours</div>
-      <p class="empty-state-body">No Cannabis Adjacent products are listed yet. If you sell Delta-8, THCA, HHC, CBN, hemp flower, or any legal hemp-derived cannabinoid — this is your market. Be the first seller.</p>
+      <p class="empty-state-body">No Psychedelic Adjacent products are listed yet. If you sell kratom, kava, blue lotus, amanita, or any legal botanical — this is your market. Be the first seller.</p>
       <a href="/seller-apply.html" class="btn-primary" style="margin-bottom:12px;display:inline-block;">Apply as a Founding Seller</a>
     </div>
   </div>
@@ -303,7 +340,7 @@ body.age-gate-active { overflow: hidden; }
 <div class="founding-cta">
   <p class="founding-cta-label">For Sellers</p>
   <h2 class="founding-cta-title">Own This Market</h2>
-  <p class="founding-cta-body">Hemp-derived cannabinoid sellers get deplatformed constantly despite being federally legal. Stripe declines you. Amazon bans you. Your Shopify store disappears overnight. Build your business on a platform that won't pull the rug.</p>
+  <p class="founding-cta-body">Kratom and botanical sellers face the harshest deplatforming of any legal product category. Stripe won't touch you. PayPal bans you. Amazon removes your listings. You sell something legal that has been used for centuries — sell here instead.</p>
   <div class="founding-perks">
     <div class="founding-perk"><div class="perk-dot"></div>First to list in this category</div>
     <div class="founding-perk"><div class="perk-dot"></div>Crypto payouts weekly</div>
@@ -322,11 +359,11 @@ body.age-gate-active { overflow: hidden; }
     <h2 class="section-title">Related Markets</h2>
   </div>
   <div class="related-grid">
-    <div class="related-card" onclick="window.location.href='/psychedelic.html'">
-      <div class="related-emoji">🍄</div>
+    <div class="related-card" onclick="window.location.href='/cannabis.html'">
+      <div class="related-emoji">🌱</div>
       <div>
-        <div class="related-name">Psychedelic Adjacent</div>
-        <div class="related-desc">Kratom · Kava · Amanita · Blue Lotus</div>
+        <div class="related-name">Cannabis Adjacent</div>
+        <div class="related-desc">Delta-8 · THCA · HHC · Hemp Flower</div>
       </div>
     </div>
     <div class="related-card" onclick="window.location.href='/health-freedom.html'">
@@ -362,7 +399,7 @@ body.age-gate-active { overflow: hidden; }
 </footer>
 
 <div class="disclaimer-bar">
-  <p>Silque Road, LLC, an Ohio limited liability company (Charter No. 5591799), operates this platform connecting buyers and vetted sellers of legal products. Hemp-derived cannabinoids are federally legal under the 2018 Farm Bill. State laws vary — buyers are responsible for knowing their local laws. Nothing on this site constitutes legal advice.</p>
+  <p>Silque Road, LLC, an Ohio limited liability company (Charter No. 5591799), operates this platform connecting buyers and vetted sellers of legal products. Kratom and botanical products are legal under federal law; state laws vary. Buyers are responsible for knowing their local laws. Nothing on this site constitutes medical or legal advice.</p>
 </div>
 
 <div class="modal-overlay" id="modal" onclick="closeModalOutside(event)">
@@ -430,27 +467,38 @@ function srSetCookie(name, value, days) {
   d.setTime(d.getTime() + (days*24*60*60*1000));
   document.cookie = `${name}=${value}; expires=${d.toUTCString()}; path=/; SameSite=Lax`;
 }
+function srSetSessionCookie(name, value) {
+  document.cookie = `${name}=${value}; path=/; SameSite=Lax`;
+}
 function ageGateEnter() {
   srSetCookie('sr_age_18_verified', 'true', 30);
   document.getElementById('ageGate').classList.remove('open');
   document.body.classList.remove('age-gate-active');
 }
-function ageGateLeave() {
-  window.location.href = 'https://www.google.com';
-}
+function ageGateLeave() { window.location.href = 'https://www.google.com'; }
 (function srAgeGateInit() {
   if (srGetCookie('sr_age_18_verified') !== 'true') {
     document.getElementById('ageGate').classList.add('open');
     document.body.classList.add('age-gate-active');
   }
 })();
-
+let _pendingProduct = null;
+function age21GateEnter() {
+  srSetSessionCookie('sr_age_21_verified', 'true');
+  document.getElementById('age21Gate').classList.remove('open');
+  document.body.classList.remove('age-gate-active');
+  if (_pendingProduct) { _openModal(_pendingProduct); _pendingProduct = null; }
+}
+function age21GateLeave() {
+  document.getElementById('age21Gate').classList.remove('open');
+  document.body.classList.remove('age-gate-active');
+  _pendingProduct = null;
+}
 const SUPABASE_URL = 'https://pmtfqbefrsplvoriirru.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBtdGZxYmVmcnNwbHZvcmlpcnJ1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU4Mzk5MzEsImV4cCI6MjA5MTQxNTkzMX0.xgIVCGtB1Elp8ywjQhUAHdAVXOMoZJRmxWXM6vpZBB0';
-const CATEGORY = 'Cannabis Adjacent';
+const CATEGORY = 'Psychedelic Adjacent';
 let currentProduct = null;
 let selCrypto = 'btc';
-
 function toggleDropdown(id) {
   const el = document.getElementById(id);
   const isOpen = el.classList.contains('open');
@@ -461,7 +509,6 @@ document.addEventListener('click', function(e) {
   if (!e.target.closest('.nav-dropdown')) document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('open'));
 });
 function toggleMobile() { document.getElementById('mobile-menu').classList.toggle('open'); }
-
 async function loadProducts() {
   try {
     const res = await fetch(
@@ -487,10 +534,17 @@ async function loadProducts() {
     }).join('');
   } catch {}
 }
-
 function esc(str) { if (!str) return ''; return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
-
 function openModal(product) {
+  if (srGetCookie('sr_age_21_verified') !== 'true') {
+    _pendingProduct = product;
+    document.getElementById('age21Gate').classList.add('open');
+    document.body.classList.add('age-gate-active');
+    return;
+  }
+  _openModal(product);
+}
+function _openModal(product) {
   currentProduct = product; selCrypto = 'btc';
   document.getElementById('modalTitle').textContent = product.name;
   document.getElementById('modalSub').textContent = `$${parseFloat(product.price).toFixed(2)} — ${product.category || ''}`;
@@ -513,7 +567,6 @@ function goToStep(step) {
   document.getElementById('stepBtn' + step).classList.add('active');
 }
 function selectCrypto(el, currency) { document.querySelectorAll('.crypto-opt').forEach(o => o.classList.remove('selected')); el.classList.add('selected'); selCrypto = currency; }
-
 async function proceedToPayment() {
   if (!currentProduct) return;
   const btn = document.getElementById('payBtn'); btn.disabled = true; btn.textContent = 'Creating order...';
@@ -538,8 +591,7 @@ async function proceedToPayment() {
     btn.disabled = false; btn.textContent = 'Pay with Crypto →';
   }
 }
-
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal(); age21GateLeave(); } });
 loadProducts();
 </script>
 </body>
