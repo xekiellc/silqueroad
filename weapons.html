@@ -24,6 +24,28 @@ body { font-family: var(--font-body); background: var(--ink); color: var(--sand)
 img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
 ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: var(--ink); } ::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 3px; }
+.age-gate-overlay { position: fixed; inset: 0; background: rgba(16,13,5,0.98); z-index: 9999; display: none; align-items: center; justify-content: center; padding: 24px; backdrop-filter: blur(8px); }
+.age-gate-overlay.open { display: flex; }
+.age-gate-modal { background: var(--ink-mid); border: 1px solid var(--gold); max-width: 520px; width: 100%; padding: 48px 40px; text-align: center; position: relative; box-shadow: 0 0 60px rgba(201,168,76,0.15); }
+.age-gate-seal { font-family: var(--font-display); font-size: 64px; font-weight: 700; color: var(--gold); opacity: 0.15; line-height: 1; margin-bottom: 8px; }
+.age-gate-label { font-family: var(--font-ui); font-size: 10px; letter-spacing: 5px; color: var(--gold); text-transform: uppercase; opacity: 0.7; margin-bottom: 16px; }
+.age-gate-title { font-family: var(--font-display); font-size: 28px; font-weight: 700; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 16px; line-height: 1.2; }
+.age-gate-rule { width: 80px; height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent); margin: 0 auto 20px; }
+.age-gate-body { font-family: var(--font-body); font-size: 17px; font-style: italic; color: var(--sand-muted); line-height: 1.6; margin-bottom: 12px; }
+.age-gate-confirm { font-family: var(--font-ui); font-size: 10px; letter-spacing: 2px; color: var(--sand-muted); text-transform: uppercase; line-height: 1.7; margin-bottom: 28px; opacity: 0.75; }
+.age-gate-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.age-gate-btn-enter { background: var(--gold); color: var(--ink); font-family: var(--font-ui); font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 16px 32px; border: none; cursor: pointer; transition: background var(--transition); }
+.age-gate-btn-enter:hover { background: var(--gold-light); }
+.age-gate-btn-leave { background: transparent; color: var(--sand-muted); font-family: var(--font-ui); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; padding: 16px 32px; border: 1px solid var(--border-strong); cursor: pointer; transition: border-color var(--transition), color var(--transition); }
+.age-gate-btn-leave:hover { border-color: var(--crimson); color: #e07070; }
+.age-gate-legal { font-family: var(--font-ui); font-size: 8px; letter-spacing: 1px; color: var(--sand-muted); opacity: 0.4; text-transform: uppercase; margin-top: 24px; line-height: 1.6; }
+body.age-gate-active { overflow: hidden; }
+@media (max-width: 500px) {
+  .age-gate-modal { padding: 36px 24px; }
+  .age-gate-title { font-size: 22px; letter-spacing: 3px; }
+  .age-gate-buttons { flex-direction: column; }
+  .age-gate-btn-enter, .age-gate-btn-leave { width: 100%; }
+}
 .announce-bar { background: var(--gold); color: var(--ink); text-align: center; padding: 9px 16px; font-family: var(--font-ui); font-size: 11px; letter-spacing: 2px; font-weight: 700; text-transform: uppercase; }
 .announce-bar a { color: var(--ink); text-decoration: underline; }
 .nav { position: sticky; top: 0; z-index: 1000; background: var(--ink); border-bottom: 1px solid var(--border); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 68px; }
@@ -163,6 +185,22 @@ a { color: inherit; text-decoration: none; }
 </style>
 </head>
 <body>
+
+<div class="age-gate-overlay" id="ageGate" role="dialog" aria-modal="true" aria-labelledby="ageGateTitle">
+  <div class="age-gate-modal">
+    <div class="age-gate-seal">18+</div>
+    <p class="age-gate-label">Age Verification Required</p>
+    <h2 class="age-gate-title" id="ageGateTitle">Adults Only</h2>
+    <div class="age-gate-rule"></div>
+    <p class="age-gate-body">Silque Road is a marketplace for legal products intended exclusively for adult buyers.</p>
+    <p class="age-gate-confirm">By entering, you confirm that you are 18 years of age or older and legally permitted to view and purchase these products in your jurisdiction.</p>
+    <div class="age-gate-buttons">
+      <button class="age-gate-btn-enter" onclick="ageGateEnter()">I am 18 or older &mdash; Enter</button>
+      <button class="age-gate-btn-leave" onclick="ageGateLeave()">I am under 18 &mdash; Leave</button>
+    </div>
+    <p class="age-gate-legal">Silque Road, LLC &nbsp;&bull;&nbsp; Ohio Charter No. 5591799<br>Some products restricted to 21+ at checkout</p>
+  </div>
+</div>
 
 <div class="announce-bar">
   Founding Sellers Wanted — <a href="/seller-apply.html">Apply now &rarr;</a>
@@ -379,6 +417,32 @@ a { color: inherit; text-decoration: none; }
 </div>
 
 <script>
+function srGetCookie(name) {
+  const v = `; ${document.cookie}`;
+  const parts = v.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
+  return null;
+}
+function srSetCookie(name, value, days) {
+  const d = new Date();
+  d.setTime(d.getTime() + (days*24*60*60*1000));
+  document.cookie = `${name}=${value}; expires=${d.toUTCString()}; path=/; SameSite=Lax`;
+}
+function ageGateEnter() {
+  srSetCookie('sr_age_18_verified', 'true', 30);
+  document.getElementById('ageGate').classList.remove('open');
+  document.body.classList.remove('age-gate-active');
+}
+function ageGateLeave() {
+  window.location.href = 'https://www.google.com';
+}
+(function srAgeGateInit() {
+  if (srGetCookie('sr_age_18_verified') !== 'true') {
+    document.getElementById('ageGate').classList.add('open');
+    document.body.classList.add('age-gate-active');
+  }
+})();
+
 const SUPABASE_URL = 'https://pmtfqbefrsplvoriirru.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBtdGZxYmVmcnNwbHZvcmlpcnJ1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU4Mzk5MzEsImV4cCI6MjA5MTQxNTkzMX0.xgIVCGtB1Elp8ywjQhUAHdAVXOMoZJRmxWXM6vpZBB0';
 const CATEGORY = 'Weapons Adjacent';
