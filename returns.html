@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Returns & Refunds Policy — How returns and refunds work on Silque Road. Eligibility, process, timelines, and exceptions. Silque Road, LLC.">
+<title>Returns &amp; Refunds — Silque Road</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #C9A84C; --gold-light: #E8C97A; --gold-dark: #8B6914; --gold-faint: rgba(201,168,76,0.12);
+  --ink: #100d05; --ink-mid: #1a1208; --ink-light: #2a2015; --smoke: #1e180a;
+  --sand: #F0E6CC; --sand-muted: rgba(240,230,204,0.6); --crimson: #8B1A1A; --green-ok: #3a8a3a;
+  --border: rgba(201,168,76,0.2); --border-strong: rgba(201,168,76,0.4);
+  --font-display: 'Cinzel', 'Georgia', serif; --font-body: 'Crimson Pro', 'Georgia', serif;
+  --font-ui: 'Space Mono', 'Courier New', monospace; --transition: 0.2s ease; --max-w: 1100px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); background: var(--ink); color: var(--sand); line-height: 1.6; overflow-x: hidden; }
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: var(--ink); } ::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 3px; }
+.age-gate-overlay { position: fixed; inset: 0; background: rgba(16,13,5,0.98); z-index: 9999; display: none; align-items: center; justify-content: center; padding: 24px; backdrop-filter: blur(8px); }
+.age-gate-overlay.open { display: flex; }
+.age-gate-modal { background: var(--ink-mid); border: 1px solid var(--gold); max-width: 520px; width: 100%; padding: 48px 40px; text-align: center; position: relative; box-shadow: 0 0 60px rgba(201,168,76,0.15); }
+.age-gate-seal { font-family: var(--font-display); font-size: 64px; font-weight: 700; color: var(--gold); opacity: 0.15; line-height: 1; margin-bottom: 8px; }
+.age-gate-label { font-family: var(--font-ui); font-size: 10px; letter-spacing: 5px; color: var(--gold); text-transform: uppercase; opacity: 0.7; margin-bottom: 16px; }
+.age-gate-title { font-family: var(--font-display); font-size: 28px; font-weight: 700; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 16px; line-height: 1.2; }
+.age-gate-rule { width: 80px; height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent); margin: 0 auto 20px; }
+.age-gate-body { font-family: var(--font-body); font-size: 17px; font-style: italic; color: var(--sand-muted); line-height: 1.6; margin-bottom: 12px; }
+.age-gate-confirm { font-family: var(--font-ui); font-size: 10px; letter-spacing: 2px; color: var(--sand-muted); text-transform: uppercase; line-height: 1.7; margin-bottom: 28px; opacity: 0.75; }
+.age-gate-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.age-gate-btn-enter { background: var(--gold); color: var(--ink); font-family: var(--font-ui); font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 16px 32px; border: none; cursor: pointer; transition: background var(--transition); }
+.age-gate-btn-enter:hover { background: var(--gold-light); }
+.age-gate-btn-leave { background: transparent; color: var(--sand-muted); font-family: var(--font-ui); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; padding: 16px 32px; border: 1px solid var(--border-strong); cursor: pointer; transition: border-color var(--transition), color var(--transition); }
+.age-gate-btn-leave:hover { border-color: var(--crimson); color: #e07070; }
+.age-gate-legal { font-family: var(--font-ui); font-size: 8px; letter-spacing: 1px; color: var(--sand-muted); opacity: 0.4; text-transform: uppercase; margin-top: 24px; line-height: 1.6; }
+body.age-gate-active { overflow: hidden; }
+@media (max-width: 500px) {
+  .age-gate-modal { padding: 36px 24px; }
+  .age-gate-title { font-size: 22px; letter-spacing: 3px; }
+  .age-gate-buttons { flex-direction: column; }
+  .age-gate-btn-enter, .age-gate-btn-leave { width: 100%; }
+}
+.announce-bar { background: var(--gold); color: var(--ink); text-align: center; padding: 9px 16px; font-family: var(--font-ui); font-size: 11px; letter-spacing: 2px; font-weight: 700; text-transform: uppercase; }
+.announce-bar a { color: var(--ink); text-decoration: underline; }
+.nav { position: sticky; top: 0; z-index: 1000; background: var(--ink); border-bottom: 1px solid var(--border); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.nav-logo-name { font-family: var(--font-display); font-size: 20px; font-weight: 700; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; display: block; }
+.nav-logo-tagline { font-family: var(--font-ui); font-size: 7px; letter-spacing: 3px; color: var(--gold-dark); text-transform: uppercase; display: block; }
+.nav-links { display: flex; align-items: center; gap: 28px; }
+.nav-links a { font-family: var(--font-ui); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--sand-muted); transition: color var(--transition); }
+.nav-links a:hover { color: var(--gold); }
+.nav-cta { background: var(--gold) !important; color: var(--ink) !important; padding: 9px 20px; font-weight: 700 !important; }
+.nav-cta:hover { background: var(--gold-light) !important; }
+.nav-dropdown { position: relative; }
+.nav-dropdown-toggle { font-family: var(--font-ui); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--sand-muted); background: none; border: none; cursor: pointer; transition: color var(--transition); display: flex; align-items: center; gap: 6px; padding: 0; }
+.nav-dropdown-toggle:hover { color: var(--gold); }
+.nav-dropdown-toggle svg { transition: transform var(--transition); }
+.nav-dropdown.open .nav-dropdown-toggle { color: var(--gold); }
+.nav-dropdown.open .nav-dropdown-toggle svg { transform: rotate(180deg); }
+.nav-dropdown-menu { display: none; position: absolute; top: calc(100% + 16px); left: 0; background: var(--ink-mid); border: 1px solid var(--border-strong); min-width: 220px; z-index: 200; flex-direction: column; }
+.nav-dropdown.open .nav-dropdown-menu { display: flex; }
+.nav-dropdown-menu a { font-family: var(--font-ui); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--sand-muted); padding: 12px 18px; border-bottom: 1px solid var(--border); transition: background var(--transition), color var(--transition); display: flex; align-items: center; gap: 10px; }
+.nav-dropdown-menu a:last-child { border-bottom: none; }
+.nav-dropdown-menu a:hover { background: var(--gold-faint); color: var(--gold); }
+.nav-dropdown-menu a .nav-cat-emoji { font-size: 14px; }
+.nav-mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; color: var(--gold); font-size: 22px; }
+.mobile-menu { display: none; flex-direction: column; background: var(--smoke); border-bottom: 1px solid var(--border); padding: 16px 24px; gap: 0; }
+.mobile-menu a { font-family: var(--font-ui); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--sand-muted); padding: 14px 0; border-bottom: 1px solid var(--border); display: block; }
+.mobile-menu a:last-child { border-bottom: none; color: var(--gold); }
+.mobile-menu.open { display: flex; }
+.mobile-divider { font-family: var(--font-ui); font-size: 8px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold-dark); opacity: 0.5; padding: 12px 0 4px; border-bottom: none !important; cursor: default; }
+.page-hero { background: var(--smoke); border-bottom: 1px solid var(--border); padding: 64px 24px; text-align: center; position: relative; overflow: hidden; }
+.page-hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 60% 80% at 50% 100%, rgba(201,168,76,0.08) 0%, transparent 70%); pointer-events: none; }
+.page-hero-inner { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
+.page-breadcrumb { font-family: var(--font-ui); font-size: 9px; letter-spacing: 2px; color: var(--sand-muted); text-transform: uppercase; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; gap: 10px; }
+.page-breadcrumb a { color: var(--gold-dark); transition: color var(--transition); }
+.page-breadcrumb a:hover { color: var(--gold); }
+.page-breadcrumb-sep { opacity: 0.4; }
+.page-hero-emoji { font-size: 52px; margin-bottom: 16px; line-height: 1; }
+.page-hero-title { font-family: var(--font-display); font-size: clamp(32px, 5vw, 54px); font-weight: 700; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 16px; line-height: 1.1; }
+.page-hero-tagline { font-family: var(--font-body); font-size: clamp(17px, 2.5vw, 22px); font-style: italic; color: var(--sand-muted); margin-bottom: 24px; line-height: 1.5; max-width: 560px; margin-left: auto; margin-right: auto; }
+.page-hero-rule { width: 100px; height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent); margin: 0 auto 20px; }
+.page-meta { font-family: var(--font-ui); font-size: 9px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; opacity: 0.6; }
+.policy-section { padding: 64px 24px; max-width: 800px; margin: 0 auto; }
+.policy-block { margin-bottom: 48px; }
+.policy-block:last-child { margin-bottom: 0; }
+.policy-label { font-family: var(--font-ui); font-size: 9px; letter-spacing: 5px; color: var(--gold); text-transform: uppercase; opacity: 0.65; margin-bottom: 10px; }
+.policy-title { font-family: var(--font-display); font-size: clamp(22px, 3vw, 28px); font-weight: 600; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 20px; }
+.policy-block p { font-family: var(--font-body); font-size: 17px; color: var(--sand); line-height: 1.7; margin-bottom: 16px; }
+.policy-block p:last-child { margin-bottom: 0; }
+.policy-block strong { color: var(--gold-light); font-weight: 600; }
+.policy-block em { font-style: italic; color: var(--sand-muted); }
+.policy-block ul, .policy-block ol { margin: 14px 0 18px 0; padding-left: 24px; }
+.policy-block li { font-family: var(--font-body); font-size: 17px; color: var(--sand); line-height: 1.7; margin-bottom: 10px; }
+.policy-block li::marker { color: var(--gold); }
+.callout-box { background: var(--ink-mid); border-left: 3px solid var(--gold); padding: 20px 24px; margin: 20px 0; }
+.callout-box p { font-family: var(--font-body); font-size: 15px; font-style: italic; color: var(--sand-muted); margin-bottom: 0; line-height: 1.6; }
+.callout-box strong { color: var(--gold); font-style: normal; }
+.callout-warn { background: rgba(139,26,26,0.12); border-left: 3px solid var(--crimson); padding: 20px 24px; margin: 20px 0; }
+.callout-warn p { font-family: var(--font-body); font-size: 15px; font-style: italic; color: var(--sand-muted); margin-bottom: 0; line-height: 1.6; }
+.callout-warn strong { color: #e07070; font-style: normal; }
+.refund-table { width: 100%; border-collapse: collapse; margin: 18px 0 8px 0; background: var(--ink-mid); border: 1px solid var(--border); }
+.refund-table th { font-family: var(--font-ui); font-size: 9px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; padding: 14px 16px; text-align: left; border-bottom: 1px solid var(--border-strong); background: var(--smoke); }
+.refund-table td { font-family: var(--font-body); font-size: 15px; color: var(--sand); padding: 14px 16px; border-bottom: 1px solid var(--border); vertical-align: top; }
+.refund-table tr:last-child td { border-bottom: none; }
+.refund-table td strong { color: var(--gold-light); }
+.contact-cta { background: var(--smoke); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 56px 24px; text-align: center; }
+.contact-cta-label { font-family: var(--font-ui); font-size: 9px; letter-spacing: 5px; color: var(--gold); text-transform: uppercase; opacity: 0.65; margin-bottom: 12px; }
+.contact-cta-title { font-family: var(--font-display); font-size: clamp(22px, 3vw, 30px); font-weight: 600; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; margin-bottom: 14px; }
+.contact-cta-body { font-family: var(--font-body); font-size: 17px; font-style: italic; color: var(--sand-muted); max-width: 520px; margin: 0 auto 24px; line-height: 1.6; }
+.btn-primary { display: inline-block; background: var(--gold); color: var(--ink); font-family: var(--font-ui); font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 15px 36px; border: none; cursor: pointer; transition: background var(--transition); margin: 4px 6px; }
+.btn-primary:hover { background: var(--gold-light); }
+.btn-outline { display: inline-block; background: transparent; color: var(--gold); font-family: var(--font-ui); font-size: 11px; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; padding: 14px 36px; border: 1px solid var(--border-strong); cursor: pointer; transition: border-color var(--transition), color var(--transition); margin: 4px 6px; }
+.btn-outline:hover { border-color: var(--gold); color: var(--gold-light); }
+.footer { background: var(--ink); border-top: 1px solid var(--border); padding: 40px 24px 24px; }
+.footer-entity-line { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--sand-muted); opacity: 0.4; text-transform: uppercase; text-align: center; max-width: var(--max-w); margin: 0 auto 20px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; max-width: var(--max-w); margin: 0 auto; flex-wrap: wrap; gap: 12px; }
+.footer-copy { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--sand-muted); opacity: 0.3; }
+.footer-links-row { display: flex; gap: 20px; flex-wrap: wrap; }
+.footer-links-row a { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--sand-muted); opacity: 0.3; text-transform: uppercase; transition: opacity var(--transition); }
+.footer-links-row a:hover { opacity: 0.7; }
+.disclaimer-bar { background: var(--ink-mid); border-top: 1px solid var(--border); padding: 12px 24px; text-align: center; }
+.disclaimer-bar p { font-family: var(--font-ui); font-size: 9px; letter-spacing: 0.5px; color: var(--sand-muted); opacity: 0.3; line-height: 1.6; max-width: 900px; margin: 0 auto; }
+@media (max-width: 700px) {
+  .nav-links { display: none; }
+  .nav-mobile-toggle { display: block; }
+  .refund-table th, .refund-table td { padding: 10px 12px; font-size: 13px; }
+}
+</style>
+</head>
+<body>
+
+<div class="age-gate-overlay" id="ageGate" role="dialog" aria-modal="true" aria-labelledby="ageGateTitle">
+  <div class="age-gate-modal">
+    <div class="age-gate-seal">18+</div>
+    <p class="age-gate-label">Age Verification Required</p>
+    <h2 class="age-gate-title" id="ageGateTitle">Adults Only</h2>
+    <div class="age-gate-rule"></div>
+    <p class="age-gate-body">Silque Road is a marketplace for legal products intended exclusively for adult buyers.</p>
+    <p class="age-gate-confirm">By entering, you confirm that you are 18 years of age or older and legally permitted to view and purchase these products in your jurisdiction.</p>
+    <div class="age-gate-buttons">
+      <button class="age-gate-btn-enter" onclick="ageGateEnter()">I am 18 or older &mdash; Enter</button>
+      <button class="age-gate-btn-leave" onclick="ageGateLeave()">I am under 18 &mdash; Leave</button>
+    </div>
+    <p class="age-gate-legal">Silque Road, LLC &nbsp;&bull;&nbsp; Ohio Charter No. 5591799<br>Some products restricted to 21+ at checkout</p>
+  </div>
+</div>
+
+<div class="announce-bar">
+  Founding Sellers Wanted — <a href="/seller-apply.html">Apply now &rarr;</a>
+</div>
+
+<nav class="nav">
+  <a href="/" style="display:flex;flex-direction:column;">
+    <span class="nav-logo-name">Silque Road</span>
+    <span class="nav-logo-tagline">Legal &amp; Available</span>
+  </a>
+  <div class="nav-links">
+    <div class="nav-dropdown" id="shopDropdown">
+      <button class="nav-dropdown-toggle" onclick="toggleDropdown('shopDropdown')">
+        Shop
+        <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+      <div class="nav-dropdown-menu">
+        <a href="/health-freedom.html"><span class="nav-cat-emoji">🌿</span>Health Freedom</a>
+        <a href="/psychedelic.html"><span class="nav-cat-emoji">🍄</span>Psychedelic Adjacent</a>
+        <a href="/cannabis.html"><span class="nav-cat-emoji">🌱</span>Cannabis Adjacent</a>
+        <a href="/longevity.html"><span class="nav-cat-emoji">⚗️</span>Longevity &amp; Biohack</a>
+        <a href="/privacy-comms.html"><span class="nav-cat-emoji">🔒</span>Privacy &amp; Comms</a>
+        <a href="/weapons.html"><span class="nav-cat-emoji">⚔️</span>Weapons Adjacent</a>
+        <a href="/mens-health.html"><span class="nav-cat-emoji">💪</span>Men's Health</a>
+        <a href="/womens-wellness.html"><span class="nav-cat-emoji">🌸</span>Women's Wellness</a>
+        <a href="/taboo-foods.html"><span class="nav-cat-emoji">🥛</span>Taboo Foods</a>
+        <a href="/tobacco.html"><span class="nav-cat-emoji">🚬</span>Tobacco &amp; Nicotine</a>
+        <a href="/off-grid.html"><span class="nav-cat-emoji">🏕️</span>Off-Grid &amp; Prepper</a>
+        <a href="/adult.html"><span class="nav-cat-emoji">🔞</span>Adult Products</a>
+      </div>
+    </div>
+    <a href="/#health-network">Health Network</a>
+    <a href="/#how-it-works">How It Works</a>
+    <a href="/seller-apply.html">Sell With Us</a>
+    <a href="/seller-dashboard.html">Seller Login</a>
+    <a href="/marketplace.html" class="nav-cta">Shop Now</a>
+  </div>
+  <button class="nav-mobile-toggle" onclick="toggleMobile()" aria-label="Toggle menu">&#9776;</button>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="/" onclick="toggleMobile()">Home</a>
+  <a href="/marketplace.html" onclick="toggleMobile()">Marketplace</a>
+  <span class="mobile-divider">Categories</span>
+  <a href="/health-freedom.html" onclick="toggleMobile()">🌿 Health Freedom</a>
+  <a href="/psychedelic.html" onclick="toggleMobile()">🍄 Psychedelic Adjacent</a>
+  <a href="/cannabis.html" onclick="toggleMobile()">🌱 Cannabis Adjacent</a>
+  <a href="/longevity.html" onclick="toggleMobile()">⚗️ Longevity &amp; Biohack</a>
+  <a href="/privacy-comms.html" onclick="toggleMobile()">🔒 Privacy &amp; Comms</a>
+  <a href="/weapons.html" onclick="toggleMobile()">⚔️ Weapons Adjacent</a>
+  <a href="/mens-health.html" onclick="toggleMobile()">💪 Men's Health</a>
+  <a href="/womens-wellness.html" onclick="toggleMobile()">🌸 Women's Wellness</a>
+  <a href="/taboo-foods.html" onclick="toggleMobile()">🥛 Taboo Foods</a>
+  <a href="/tobacco.html" onclick="toggleMobile()">🚬 Tobacco &amp; Nicotine</a>
+  <a href="/off-grid.html" onclick="toggleMobile()">🏕️ Off-Grid &amp; Prepper</a>
+  <a href="/adult.html" onclick="toggleMobile()">🔞 Adult Products</a>
+  <a href="/seller-apply.html" onclick="toggleMobile()">Sell With Us</a>
+  <a href="/marketplace.html" onclick="toggleMobile()">Shop Now</a>
+</div>
+
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-inner">
+    <div class="page-breadcrumb">
+      <a href="/">Home</a>
+      <span class="page-breadcrumb-sep">/</span>
+      <span style="color:var(--gold)">Returns &amp; Refunds</span>
+    </div>
+    <div class="page-hero-emoji">↩️</div>
+    <h1 class="page-hero-title">Returns &amp; Refunds</h1>
+    <p class="page-hero-tagline">Fair, transparent, and built for a marketplace of independent sellers — with clear timelines and no surprises.</p>
+    <div class="page-hero-rule"></div>
+    <p class="page-meta">Last Updated: April 15, 2026</p>
+  </div>
+</div>
+
+<div class="policy-section">
+
+  <div class="policy-block">
+    <p class="policy-label">Section 1</p>
+    <h2 class="policy-title">The Basics</h2>
+    <p>Silque Road is a marketplace. Each product is sold by an <strong>independent vetted seller</strong>, not by Silque Road, LLC directly. When something goes wrong with an order, the platform mediates between buyer and seller to make it right.</p>
+    <p>You have <strong>14 days from delivery</strong> to open a return, refund, or replacement request. After 14 days, all sales are considered final unless a manufacturing defect surfaces and is documented.</p>
+    <div class="callout-box">
+      <p><strong>The shortest version:</strong> If your order arrives wrong, broken, or never shows up — email <a href="mailto:info@silqueroad.com" style="color:var(--gold);text-decoration:underline;font-style:normal;">info@silqueroad.com</a> with your Order ID. We'll fix it.</p>
+    </div>
+  </div>
+
+  <div class="policy-block">
+    <p class="policy-label">Section 2</p>
+    <h2 class="policy-title">What Qualifies for a Refund</h2>
+    <p>The following situations qualify for a full refund or replacement, at the buyer's choice:</p>
+    <ul>
+      <li><strong>Wrong item shipped.</strong> You received a different product than what you ordered.</li>
+      <li><strong>Damaged in transit.</strong> Item arrived broken, leaking, crushed, or otherwise unusable. Photos required within 48 hours of delivery.</li>
+      <li><strong>Defective on arrival.</strong> Item does not function as described or has a manufacturing defect documented within 14 days.</li>
+      <li><strong>Never delivered.</strong> Tracking shows no delivery, or movement stopped 10+ business days ago with no resolution from the carrier.</li>
+      <li><strong>Significantly not as described.</strong> The item differs materially from the listing &mdash; wrong size, wrong quantity, wrong potency, expired, etc.</li>
+      <li><strong>Seller cannot lawfully ship.</strong> If a seller cannot ship to your state or address due to legal restrictions, your order is refunded automatically.</li>
+    </ul>
+  </div>
+
+  <div class="policy-block">
+    <p class="policy-label">Section 3</p>
+    <h2 class="policy-title">What Does Not Qualify</h2>
+    <p>For health, safety, and category-specific reasons, the following are <strong>final sale</strong> and not eligible for return:</p>
+    <ul>
+      <li><strong>Opened consumables.</strong> Any food, supplement, peptide, tincture, kratom, herbal product, or ingestible item once the seal is broken.</li>
+      <li><strong>Personal-use items.</strong> Adult products, intimacy items, smoking accessories, and similar categories once removed from sealed packaging.</li>
+      <li><strong>Perishables.</strong> Raw dairy, organ meats, fermented foods, and other perishables, regardless of seal status.</li>
+      <li><strong>Custom or made-to-order items.</strong> Anything produced specifically for your order.</li>
+      <li><strong>Buyer's remorse.</strong> "Changed my mind" is not a qualifying reason once the item ships.</li>
+      <li><strong>Delivery to wrong address.</strong> If you provided an incorrect address at checkout, you are responsible for the cost of reshipment.</li>
+    </ul>
+    <div class="callout-warn">
+      <p><strong>Important:</strong> If you receive a defective or contaminated consumable, <em>do not consume it.</em> Photograph the product and seal, then contact us within 48 hours. We will pursue a refund or replacement on your behalf even though opened consumables are normally non-returnable.</p>
+    </div>
+  </div>
+
+  <div class="policy-block">
+    <p class="policy-label">Section 4</p>
+    <h2 class="policy-title">How to Request a Refund</h2>
+    <p>Email <a href="mailto:info@silqueroad.com?subject=Refund%20Request" style="color:var(--gold);text-decoration:underline;">info@silqueroad.com</a> with the subject line <strong>"Refund Request &mdash; [Order ID]"</strong> and include:</p>
+    <ol>
+      <li>Your <strong>Order ID</strong> (shown at checkout and on any order email).</li>
+      <li>The <strong>reason</strong> for the refund (one of the qualifying categories above).</li>
+      <li>Clear <strong>photos</strong> of the product, packaging, and shipping label if the issue is damage, wrong item, or defect.</li>
+      <li>Your <strong>preferred resolution</strong> &mdash; refund or replacement.</li>
+    </ol>
+    <p>We acknowledge every refund request within <strong>1&ndash;2 business days</strong>. Most are resolved within 5&ndash;7 business days. Complex cases (carrier investigations, seller disputes) can take up to 14 business days.</p>
+  </div>
+
+  <div class="policy-block">
+    <p class="policy-label">Section 5</p>
+    <h2 class="policy-title">Refund Methods &amp; Timing</h2>
+    <p>Refunds are issued in the same payment method used at checkout.</p>
+    <table class="refund-table">
+      <thead>
+        <tr>
+          <th>Payment Method</th>
+          <th>Refund Method</th>
+          <th>Timing After Approval</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Credit / Debit Card</strong></td>
+          <td>Refund to original card</td>
+          <td>5&ndash;10 business days to appear on statement</td>
+        </tr>
+        <tr>
+          <td><strong>Cryptocurrency</strong></td>
+          <td>Refund in same cryptocurrency, sent to a wallet address you provide</td>
+          <td>1&ndash;3 business days after wallet confirmation</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="callout-box">
+      <p><strong>About crypto refunds:</strong> Crypto values fluctuate. Refunds are issued at the <em>USD equivalent</em> of your original purchase, converted to crypto at the time of refund. You may receive a slightly different number of coins than you sent. Network fees are deducted from the refund amount.</p>
+    </div>
+  </div>
+
+  <div class="policy-block">
+    <p class="policy-label">Section 6</p>
+    <h2 class="policy-title">Returning the Physical Item</h2>
+    <p>For most defect or wrong-item claims, we do <strong>not</strong> require you to ship the item back. Photo evidence is enough. This keeps the process fast and saves you the cost and hassle of return shipping.</p>
+    <p>If a seller specifically requests the item be returned (rare &mdash; usually for high-value goods), Silque Road will provide a prepaid return label. Do not ship anything back at your own expense without prior written confirmation from us.</p>
+  </div>
+
+  <div class="policy-block">
+    <p class="policy-label">Section 7</p>
+    <h2 class="policy-title">Order Cancellations</h2>
+    <p>You may cancel an order for a <strong>full refund</strong> at any time before the seller marks it as dispatched, which is typically within the 1&ndash;3 business day processing window. Email <a href="mailto:info@silqueroad.com?subject=Cancel%20Order" style="color:var(--gold);text-decoration:underline;">info@silqueroad.com</a> with your Order ID immediately.</p>
+    <p>Once an order has shipped, it cannot be cancelled. You may refuse delivery and request a refund once the package returns to the seller, less original shipping cost.</p>
+  </div>
+
+  <div class="policy-block">
+    <p class="policy-label">Section 8</p>
+    <h2 class="policy-title">Chargebacks</h2>
+    <p>If you have a problem with an order, please contact us first. <strong>Most issues can be resolved within 5&ndash;7 business days</strong> through the refund process described above.</p>
+    <p>Initiating a chargeback with your card issuer before contacting us delays resolution and may result in your account being flagged for review. Fraudulent chargebacks &mdash; disputing a charge for an item you received and kept &mdash; may result in permanent ban from the platform and referral to the card network's fraud database.</p>
+  </div>
+
+  <div class="policy-block">
+    <p class="policy-label">Section 9</p>
+    <h2 class="policy-title">Anonymous Orders</h2>
+    <p>If you checked out anonymously and provided no email at checkout, your <strong>Order ID is the only way</strong> to request a refund. Save it. Without it, we have no way to look up your order or verify the purchase.</p>
+    <p>For refunds on anonymous crypto orders, you will need to provide a wallet address to receive the refund. We will never ask for your private key, seed phrase, or wallet password &mdash; only the public address.</p>
+  </div>
+
+  <div class="policy-block">
+    <p class="policy-label">Section 10</p>
+    <h2 class="policy-title">Disputes Between Buyers &amp; Sellers</h2>
+    <p>Silque Road, LLC mediates all refund and return disputes. Our goal is fair resolution that protects both buyers and sellers. We review evidence from both sides &mdash; photos, tracking, listing description, communication history &mdash; and make a final determination within 14 business days of opening a dispute.</p>
+    <p>Decisions by Silque Road, LLC in mediated disputes are final.</p>
+  </div>
+
+  <div class="policy-block">
+    <p class="policy-label">Section 11</p>
+    <h2 class="policy-title">Questions</h2>
+    <p>For any question about a specific order, refund, or return, email <a href="mailto:info@silqueroad.com" style="color:var(--gold);text-decoration:underline;">info@silqueroad.com</a> with your Order ID. For general questions about how returns work on Silque Road, the <a href="/contact.html" style="color:var(--gold);text-decoration:underline;">contact form</a> is the fastest way to reach us.</p>
+  </div>
+
+</div>
+
+<div class="contact-cta">
+  <p class="contact-cta-label">Need to Start a Refund?</p>
+  <h2 class="contact-cta-title">We've Got You Covered</h2>
+  <p class="contact-cta-body">Email us with your Order ID and we'll take it from there. Most refunds are resolved in under a week.</p>
+  <a href="mailto:info@silqueroad.com?subject=Refund%20Request" class="btn-primary">Email Refund Request</a>
+  <a href="/contact.html" class="btn-outline">Or Use Contact Form</a>
+</div>
+
+<footer class="footer">
+  <p class="footer-entity-line">Silque Road, LLC &nbsp;&bull;&nbsp; Ohio Charter No. 5591799 &nbsp;&bull;&nbsp; An Ohio limited liability company</p>
+  <div class="footer-bottom">
+    <p class="footer-copy">&copy; 2026 Silque Road, LLC &nbsp;&bull;&nbsp; Legal &amp; Available &nbsp;&bull;&nbsp; No tracking. No cookies. No analytics.</p>
+    <div class="footer-links-row">
+      <a href="/marketplace.html">Marketplace</a>
+      <a href="/seller-apply.html">Sell With Us</a>
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/terms.html">Terms</a>
+      <a href="/disclaimer.html">Disclaimer</a>
+      <a href="/contact.html">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<div class="disclaimer-bar">
+  <p>Silque Road, LLC, an Ohio limited liability company (Charter No. 5591799), operates this platform connecting buyers and vetted sellers of legal products. All refund and return decisions are made by Silque Road, LLC as the platform mediator. Buyers are responsible for knowing and complying with their local laws.</p>
+</div>
+
+<script>
+function srGetCookie(name) {
+  const v = `; ${document.cookie}`;
+  const parts = v.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
+  return null;
+}
+function srSetCookie(name, value, days) {
+  const d = new Date();
+  d.setTime(d.getTime() + (days*24*60*60*1000));
+  document.cookie = `${name}=${value}; expires=${d.toUTCString()}; path=/; SameSite=Lax`;
+}
+function ageGateEnter() {
+  srSetCookie('sr_age_18_verified', 'true', 30);
+  document.getElementById('ageGate').classList.remove('open');
+  document.body.classList.remove('age-gate-active');
+}
+function ageGateLeave() {
+  window.location.href = 'https://www.google.com';
+}
+(function srAgeGateInit() {
+  if (srGetCookie('sr_age_18_verified') !== 'true') {
+    document.getElementById('ageGate').classList.add('open');
+    document.body.classList.add('age-gate-active');
+  }
+})();
+
+function toggleDropdown(id) {
+  const el = document.getElementById(id);
+  const isOpen = el.classList.contains('open');
+  document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('open'));
+  if (!isOpen) el.classList.add('open');
+}
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.nav-dropdown')) document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('open'));
+});
+function toggleMobile() { document.getElementById('mobile-menu').classList.toggle('open'); }
+</script>
+</body>
+</html>
