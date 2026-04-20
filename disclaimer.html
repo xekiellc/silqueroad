@@ -3,35 +3,76 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Silque Road Disclaimer — Platform liability limitations, product use disclaimers, and legal notices.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Silque Road Disclaimer — Platform liability limitations, product use disclaimers, and legal notices. Silque Road, LLC.">
 <title>Disclaimer — Silque Road</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --gold: #C9A84C; --gold-light: #E8C97A; --gold-dark: #8B6914; --ink: #100d05; --ink-mid: #1a1208; --ink-light: #2a2015; --smoke: #1e180a; --sand: #F0E6CC; --sand-muted: rgba(240,230,204,0.6); --border: rgba(201,168,76,0.2); --border-strong: rgba(201,168,76,0.4); --green-ok: #3a8a3a; --crimson: #8B1A1A; --font-display: 'Cinzel', 'Georgia', serif; --font-body: 'Crimson Pro', 'Georgia', serif; --font-ui: 'Space Mono', 'Courier New', monospace; --transition: 0.2s ease; --max-w: 1100px;
+  --gold: #C9A84C; --gold-light: #E8C97A; --gold-dark: #8B6914; --gold-faint: rgba(201,168,76,0.12);
+  --ink: #100d05; --ink-mid: #1a1208; --ink-light: #2a2015; --smoke: #1e180a;
+  --sand: #F0E6CC; --sand-muted: rgba(240,230,204,0.6); --crimson: #8B1A1A; --green-ok: #3a8a3a;
+  --border: rgba(201,168,76,0.2); --border-strong: rgba(201,168,76,0.4);
+  --font-display: 'Cinzel', 'Georgia', serif; --font-body: 'Crimson Pro', 'Georgia', serif;
+  --font-ui: 'Space Mono', 'Courier New', monospace; --transition: 0.2s ease; --max-w: 1100px;
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body { font-family: var(--font-body); background: var(--ink); color: var(--sand); line-height: 1.6; overflow-x: hidden; }
 a { color: inherit; text-decoration: none; }
 ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: var(--ink); } ::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 3px; }
+.age-gate-overlay { position: fixed; inset: 0; background: rgba(16,13,5,0.98); z-index: 9999; display: none; align-items: center; justify-content: center; padding: 24px; backdrop-filter: blur(8px); }
+.age-gate-overlay.open { display: flex; }
+.age-gate-modal { background: var(--ink-mid); border: 1px solid var(--gold); max-width: 520px; width: 100%; padding: 48px 40px; text-align: center; position: relative; box-shadow: 0 0 60px rgba(201,168,76,0.15); }
+.age-gate-seal { font-family: var(--font-display); font-size: 64px; font-weight: 700; color: var(--gold); opacity: 0.15; line-height: 1; margin-bottom: 8px; }
+.age-gate-label { font-family: var(--font-ui); font-size: 10px; letter-spacing: 5px; color: var(--gold); text-transform: uppercase; opacity: 0.7; margin-bottom: 16px; }
+.age-gate-title { font-family: var(--font-display); font-size: 28px; font-weight: 700; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-bottom: 16px; line-height: 1.2; }
+.age-gate-rule { width: 80px; height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent); margin: 0 auto 20px; }
+.age-gate-body { font-family: var(--font-body); font-size: 17px; font-style: italic; color: var(--sand-muted); line-height: 1.6; margin-bottom: 12px; }
+.age-gate-confirm { font-family: var(--font-ui); font-size: 10px; letter-spacing: 2px; color: var(--sand-muted); text-transform: uppercase; line-height: 1.7; margin-bottom: 28px; opacity: 0.75; }
+.age-gate-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.age-gate-btn-enter { background: var(--gold); color: var(--ink); font-family: var(--font-ui); font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 16px 32px; border: none; cursor: pointer; transition: background var(--transition); }
+.age-gate-btn-enter:hover { background: var(--gold-light); }
+.age-gate-btn-leave { background: transparent; color: var(--sand-muted); font-family: var(--font-ui); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; padding: 16px 32px; border: 1px solid var(--border-strong); cursor: pointer; transition: border-color var(--transition), color var(--transition); }
+.age-gate-btn-leave:hover { border-color: var(--crimson); color: #e07070; }
+.age-gate-legal { font-family: var(--font-ui); font-size: 8px; letter-spacing: 1px; color: var(--sand-muted); opacity: 0.4; text-transform: uppercase; margin-top: 24px; line-height: 1.6; }
+body.age-gate-active { overflow: hidden; }
+@media (max-width: 500px) {
+  .age-gate-modal { padding: 36px 24px; }
+  .age-gate-title { font-size: 22px; letter-spacing: 3px; }
+  .age-gate-buttons { flex-direction: column; }
+  .age-gate-btn-enter, .age-gate-btn-leave { width: 100%; }
+}
 .announce-bar { background: var(--gold); color: var(--ink); text-align: center; padding: 9px 16px; font-family: var(--font-ui); font-size: 11px; letter-spacing: 2px; font-weight: 700; text-transform: uppercase; }
 .announce-bar a { color: var(--ink); text-decoration: underline; }
 .nav { position: sticky; top: 0; z-index: 1000; background: var(--ink); border-bottom: 1px solid var(--border); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 68px; }
-.nav-logo { display: flex; align-items: center; gap: 12px; }
 .nav-logo-name { font-family: var(--font-display); font-size: 20px; font-weight: 700; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; display: block; }
 .nav-logo-tagline { font-family: var(--font-ui); font-size: 7px; letter-spacing: 3px; color: var(--gold-dark); text-transform: uppercase; display: block; }
-.nav-links { display: flex; align-items: center; gap: 32px; }
+.nav-links { display: flex; align-items: center; gap: 28px; }
 .nav-links a { font-family: var(--font-ui); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--sand-muted); transition: color var(--transition); }
 .nav-links a:hover { color: var(--gold); }
 .nav-cta { background: var(--gold) !important; color: var(--ink) !important; padding: 9px 20px; font-weight: 700 !important; }
+.nav-cta:hover { background: var(--gold-light) !important; }
+.nav-dropdown { position: relative; }
+.nav-dropdown-toggle { font-family: var(--font-ui); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--sand-muted); background: none; border: none; cursor: pointer; transition: color var(--transition); display: flex; align-items: center; gap: 6px; padding: 0; }
+.nav-dropdown-toggle:hover { color: var(--gold); }
+.nav-dropdown-toggle svg { transition: transform var(--transition); }
+.nav-dropdown.open .nav-dropdown-toggle { color: var(--gold); }
+.nav-dropdown.open .nav-dropdown-toggle svg { transform: rotate(180deg); }
+.nav-dropdown-menu { display: none; position: absolute; top: calc(100% + 16px); left: 0; background: var(--ink-mid); border: 1px solid var(--border-strong); min-width: 220px; z-index: 200; flex-direction: column; }
+.nav-dropdown.open .nav-dropdown-menu { display: flex; }
+.nav-dropdown-menu a { font-family: var(--font-ui); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--sand-muted); padding: 12px 18px; border-bottom: 1px solid var(--border); transition: background var(--transition), color var(--transition); display: flex; align-items: center; gap: 10px; }
+.nav-dropdown-menu a:last-child { border-bottom: none; }
+.nav-dropdown-menu a:hover { background: var(--gold-faint); color: var(--gold); }
+.nav-dropdown-menu a .nav-cat-emoji { font-size: 14px; }
 .nav-mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; color: var(--gold); font-size: 22px; }
-.mobile-menu { display: none; flex-direction: column; background: var(--smoke); border-bottom: 1px solid var(--border); padding: 16px 24px; }
+.mobile-menu { display: none; flex-direction: column; background: var(--smoke); border-bottom: 1px solid var(--border); padding: 16px 24px; gap: 0; }
 .mobile-menu a { font-family: var(--font-ui); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--sand-muted); padding: 14px 0; border-bottom: 1px solid var(--border); display: block; }
 .mobile-menu a:last-child { border-bottom: none; color: var(--gold); }
 .mobile-menu.open { display: flex; }
+.mobile-divider { font-family: var(--font-ui); font-size: 8px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold-dark); opacity: 0.5; padding: 12px 0 4px; border-bottom: none !important; cursor: default; }
 .legal-hero { background: var(--smoke); border-bottom: 1px solid var(--border); padding: 64px 24px 52px; text-align: center; }
 .legal-eyebrow { font-family: var(--font-ui); font-size: 9px; letter-spacing: 5px; color: var(--gold); text-transform: uppercase; opacity: 0.65; margin-bottom: 16px; }
 .legal-title { font-family: var(--font-display); font-size: clamp(28px, 5vw, 48px); font-weight: 700; letter-spacing: 6px; color: var(--gold); text-transform: uppercase; margin-bottom: 12px; }
@@ -57,7 +98,7 @@ a { color: inherit; text-decoration: none; }
 .legal-section ul { list-style: none; display: flex; flex-direction: column; gap: 10px; margin: 14px 0; }
 .legal-section ul li { font-family: var(--font-body); font-size: 17px; color: var(--sand-muted); line-height: 1.7; padding-left: 20px; position: relative; }
 .legal-section ul li::before { content: '—'; position: absolute; left: 0; color: var(--gold-dark); opacity: 0.6; }
-.legal-section a { color: var(--gold); opacity: 0.8; }
+.legal-section a { color: var(--gold); opacity: 0.8; transition: opacity var(--transition); }
 .legal-section a:hover { opacity: 1; }
 .legal-callout { background: var(--ink-mid); border: 1px solid var(--border); border-left: 3px solid var(--gold); padding: 20px 24px; margin: 20px 0; }
 .legal-callout p { font-family: var(--font-ui); font-size: 11px; letter-spacing: 0.5px; color: var(--sand-muted); line-height: 1.7; margin: 0; }
@@ -68,47 +109,104 @@ a { color: inherit; text-decoration: none; }
 .legal-contact-box { background: var(--smoke); border: 1px solid var(--border); padding: 32px; text-align: center; margin-top: 52px; }
 .legal-contact-box p { font-family: var(--font-body); font-size: 17px; font-style: italic; color: var(--sand-muted); margin-bottom: 16px; }
 .legal-contact-box a { font-family: var(--font-ui); font-size: 11px; letter-spacing: 1px; color: var(--gold); text-transform: uppercase; border-bottom: 1px solid var(--border-strong); padding-bottom: 2px; }
-.footer { background: var(--ink); border-top: 1px solid var(--border); padding: 52px 24px 32px; }
-.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; max-width: var(--max-w); margin: 0 auto 40px; }
-.footer-brand-name { font-family: var(--font-display); font-size: 20px; font-weight: 700; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; display: block; margin-bottom: 12px; }
-.footer-brand-desc { font-family: var(--font-body); font-size: 14px; font-style: italic; color: var(--sand-muted); opacity: 0.5; line-height: 1.6; margin-bottom: 20px; }
-.footer-col-title { font-family: var(--font-ui); font-size: 9px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; opacity: 0.55; margin-bottom: 18px; }
-.footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-.footer-links li a { font-family: var(--font-body); font-size: 15px; color: var(--sand-muted); opacity: 0.5; transition: opacity var(--transition), color var(--transition); }
-.footer-links li a:hover { opacity: 0.9; color: var(--gold); }
-.footer-bottom { border-top: 1px solid var(--border); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; max-width: var(--max-w); margin: 0 auto; flex-wrap: wrap; gap: 12px; }
+.footer { background: var(--ink); border-top: 1px solid var(--border); padding: 40px 24px 24px; }
+.footer-entity-line { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--sand-muted); opacity: 0.4; text-transform: uppercase; text-align: center; max-width: var(--max-w); margin: 0 auto 20px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; max-width: var(--max-w); margin: 0 auto; flex-wrap: wrap; gap: 12px; }
 .footer-copy { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--sand-muted); opacity: 0.3; }
-.footer-legal-links { display: flex; gap: 20px; }
-.footer-legal-links a { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--sand-muted); opacity: 0.3; text-transform: uppercase; transition: opacity var(--transition); }
-.footer-legal-links a:hover { opacity: 0.7; }
+.footer-links-row { display: flex; gap: 20px; flex-wrap: wrap; }
+.footer-links-row a { font-family: var(--font-ui); font-size: 9px; letter-spacing: 1px; color: var(--sand-muted); opacity: 0.3; text-transform: uppercase; transition: opacity var(--transition); }
+.footer-links-row a:hover { opacity: 0.7; }
 .disclaimer-bar { background: var(--ink-mid); border-top: 1px solid var(--border); padding: 12px 24px; text-align: center; }
-.disclaimer-bar p { font-family: var(--font-ui); font-size: 9px; color: var(--sand-muted); opacity: 0.3; line-height: 1.6; max-width: 900px; margin: 0 auto; }
-@media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr; } .nav-links { display: none; } .nav-mobile-toggle { display: block; } .disclaimer-grid { grid-template-columns: 1fr; } }
-@media (max-width: 600px) { .footer-grid { grid-template-columns: 1fr; } }
+.disclaimer-bar p { font-family: var(--font-ui); font-size: 9px; letter-spacing: 0.5px; color: var(--sand-muted); opacity: 0.3; line-height: 1.6; max-width: 900px; margin: 0 auto; }
+@media (max-width: 900px) { .nav-links { display: none; } .nav-mobile-toggle { display: block; } .disclaimer-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
+
+<div class="age-gate-overlay" id="ageGate" role="dialog" aria-modal="true" aria-labelledby="ageGateTitle">
+  <div class="age-gate-modal">
+    <div class="age-gate-seal">18+</div>
+    <p class="age-gate-label">Age Verification Required</p>
+    <h2 class="age-gate-title" id="ageGateTitle">Adults Only</h2>
+    <div class="age-gate-rule"></div>
+    <p class="age-gate-body">Silque Road is a marketplace for legal products intended exclusively for adult buyers.</p>
+    <p class="age-gate-confirm">By entering, you confirm that you are 18 years of age or older and legally permitted to view and purchase these products in your jurisdiction.</p>
+    <div class="age-gate-buttons">
+      <button class="age-gate-btn-enter" onclick="ageGateEnter()">I am 18 or older &mdash; Enter</button>
+      <button class="age-gate-btn-leave" onclick="ageGateLeave()">I am under 18 &mdash; Leave</button>
+    </div>
+    <p class="age-gate-legal">Silque Road, LLC &nbsp;&bull;&nbsp; Ohio Charter No. 5591799<br>Some products restricted to 21+ at checkout</p>
+  </div>
+</div>
+
 <div class="announce-bar">Founding Sellers Wanted — <a href="/seller-apply.html">Apply now &rarr;</a></div>
+
 <nav class="nav">
-  <a href="/" class="nav-logo"><div><span class="nav-logo-name">Silque Road</span><span class="nav-logo-tagline">Legal &amp; Available</span></div></a>
-  <div class="nav-links"><a href="/#marketplace">Marketplace</a><a href="/#health-network">Health Network</a><a href="/#how-it-works">How It Works</a><a href="/seller-apply.html">Sell With Us</a><a href="/#featured" class="nav-cta">Shop Now</a></div>
-  <button class="nav-mobile-toggle" onclick="document.getElementById('mobile-menu').classList.toggle('open')" aria-label="Toggle menu">&#9776;</button>
+  <a href="/" style="display:flex;flex-direction:column;">
+    <span class="nav-logo-name">Silque Road</span>
+    <span class="nav-logo-tagline">Legal &amp; Available</span>
+  </a>
+  <div class="nav-links">
+    <div class="nav-dropdown" id="shopDropdown">
+      <button class="nav-dropdown-toggle" onclick="toggleDropdown('shopDropdown')">
+        Shop
+        <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+      <div class="nav-dropdown-menu">
+        <a href="/health-freedom.html"><span class="nav-cat-emoji">🌿</span>Health Freedom</a>
+        <a href="/psychedelic.html"><span class="nav-cat-emoji">🍄</span>Psychedelic Adjacent</a>
+        <a href="/cannabis.html"><span class="nav-cat-emoji">🌱</span>Cannabis Adjacent</a>
+        <a href="/longevity.html"><span class="nav-cat-emoji">⚗️</span>Longevity &amp; Biohack</a>
+        <a href="/privacy-comms.html"><span class="nav-cat-emoji">🔒</span>Privacy &amp; Comms</a>
+        <a href="/weapons.html"><span class="nav-cat-emoji">⚔️</span>Weapons Adjacent</a>
+        <a href="/mens-health.html"><span class="nav-cat-emoji">💪</span>Men's Health</a>
+        <a href="/womens-wellness.html"><span class="nav-cat-emoji">🌸</span>Women's Wellness</a>
+        <a href="/taboo-foods.html"><span class="nav-cat-emoji">🥛</span>Taboo Foods</a>
+        <a href="/tobacco.html"><span class="nav-cat-emoji">🚬</span>Tobacco &amp; Nicotine</a>
+        <a href="/off-grid.html"><span class="nav-cat-emoji">🏕️</span>Off-Grid &amp; Prepper</a>
+        <a href="/adult.html"><span class="nav-cat-emoji">🔞</span>Adult Products</a>
+      </div>
+    </div>
+    <a href="/#health-network">Health Network</a>
+    <a href="/#how-it-works">How It Works</a>
+    <a href="/seller-apply.html">Sell With Us</a>
+    <a href="/seller-dashboard.html">Seller Login</a>
+    <a href="/marketplace.html" class="nav-cta">Shop Now</a>
+  </div>
+  <button class="nav-mobile-toggle" onclick="toggleMobile()" aria-label="Toggle menu">&#9776;</button>
 </nav>
+
 <div class="mobile-menu" id="mobile-menu">
-  <a href="/#marketplace">Marketplace</a><a href="/#health-network">Health Network</a><a href="/#how-it-works">How It Works</a><a href="/seller-apply.html">Sell With Us</a><a href="/#featured">Shop Now</a>
+  <a href="/" onclick="toggleMobile()">Home</a>
+  <a href="/marketplace.html" onclick="toggleMobile()">Marketplace</a>
+  <span class="mobile-divider">Categories</span>
+  <a href="/health-freedom.html" onclick="toggleMobile()">🌿 Health Freedom</a>
+  <a href="/psychedelic.html" onclick="toggleMobile()">🍄 Psychedelic Adjacent</a>
+  <a href="/cannabis.html" onclick="toggleMobile()">🌱 Cannabis Adjacent</a>
+  <a href="/longevity.html" onclick="toggleMobile()">⚗️ Longevity &amp; Biohack</a>
+  <a href="/privacy-comms.html" onclick="toggleMobile()">🔒 Privacy &amp; Comms</a>
+  <a href="/weapons.html" onclick="toggleMobile()">⚔️ Weapons Adjacent</a>
+  <a href="/mens-health.html" onclick="toggleMobile()">💪 Men's Health</a>
+  <a href="/womens-wellness.html" onclick="toggleMobile()">🌸 Women's Wellness</a>
+  <a href="/taboo-foods.html" onclick="toggleMobile()">🥛 Taboo Foods</a>
+  <a href="/tobacco.html" onclick="toggleMobile()">🚬 Tobacco &amp; Nicotine</a>
+  <a href="/off-grid.html" onclick="toggleMobile()">🏕️ Off-Grid &amp; Prepper</a>
+  <a href="/adult.html" onclick="toggleMobile()">🔞 Adult Products</a>
+  <a href="/seller-apply.html" onclick="toggleMobile()">Sell With Us</a>
+  <a href="/marketplace.html" onclick="toggleMobile()">Shop Now</a>
 </div>
 
 <div class="legal-hero">
-  <p class="legal-eyebrow">Legal Documents &nbsp;&bull;&nbsp; XEKIE LLC</p>
+  <p class="legal-eyebrow">Legal Documents &nbsp;&bull;&nbsp; Silque Road, LLC</p>
   <h1 class="legal-title">Disclaimer</h1>
-  <p class="legal-meta">Effective Date: April 10, 2026 &nbsp;&bull;&nbsp; Last Updated: April 10, 2026</p>
+  <p class="legal-meta">Effective Date: April 15, 2026 &nbsp;&bull;&nbsp; Last Updated: April 15, 2026</p>
   <div class="gold-rule"></div>
 </div>
 
 <div class="legal-wrap">
   <div class="disclaimer-summary">
     <h3>Plain Language Summary</h3>
-    <p>Silque Road is a marketplace platform. We connect buyers with sellers of legal products. We do not manufacture or sell products ourselves. We do not give medical, legal, or financial advice. You are an adult making your own choices about legal products. We respect that — and we ask you to take responsibility for those choices.</p>
+    <p>Silque Road is a marketplace platform operated by Silque Road, LLC. We connect buyers with vetted sellers of legal products. We do not manufacture or sell products ourselves. We do not give medical, legal, or financial advice. You are an adult making your own choices about legal products. We respect that &mdash; and we ask you to take responsibility for those choices.</p>
     <p>Products on this platform are legal. What you do with them, whether they work for you, and whether they are legal in your specific jurisdiction is your responsibility to verify.</p>
   </div>
 
@@ -132,14 +230,14 @@ a { color: inherit; text-decoration: none; }
 
   <div class="legal-section" id="platform-role">
     <h2 class="legal-section-title"><span class="legal-section-num">01</span> Platform Role</h2>
-    <p>Silque Road, operated by XEKIE LLC, is a marketplace platform that facilitates transactions between independent sellers and buyers. Silque Road does not manufacture, warehouse, ship, endorse, or take possession of any product listed on this platform.</p>
-    <p>XEKIE LLC is not the seller of record for any product sold through this platform. All products are sold by independent third-party sellers who are solely responsible for the accuracy of their product descriptions, the legality of their products, the quality of their goods, and the fulfillment of orders.</p>
-    <div class="legal-callout"><p>When you buy on Silque Road, you are buying from an independent seller — not from XEKIE LLC. Our role is to provide the marketplace, facilitate payment, and enforce our seller standards.</p></div>
+    <p>Silque Road, operated by Silque Road, LLC (Ohio Charter No. 5591799), is a marketplace platform that facilitates transactions between independent, vetted sellers and buyers. Silque Road, LLC does not manufacture, warehouse, ship, endorse, or take possession of any product listed on this platform.</p>
+    <p>Silque Road, LLC is not the seller of record for any product sold through this platform. All products are sold by independent third-party sellers who are solely responsible for the accuracy of their product descriptions, the legality of their products, the quality of their goods, and the fulfillment of orders.</p>
+    <div class="legal-callout"><p>When you buy on Silque Road, you are buying from an independent seller &mdash; not from Silque Road, LLC. Our role is to provide the marketplace, facilitate payment, mediate disputes, and enforce our seller standards.</p></div>
   </div>
 
   <div class="legal-section" id="no-medical-advice">
     <h2 class="legal-section-title"><span class="legal-section-num">02</span> No Medical Advice</h2>
-    <p>Nothing on this platform constitutes medical advice, diagnosis, or treatment recommendations. Always consult a qualified healthcare provider before starting, stopping, or changing any supplement, medication, or treatment regimen — especially if you are pregnant, nursing, or have a pre-existing health condition.</p>
+    <p>Nothing on this platform constitutes medical advice, diagnosis, or treatment recommendations. Always consult a qualified healthcare provider before starting, stopping, or changing any supplement, medication, or treatment regimen &mdash; especially if you are pregnant, nursing, or have a pre-existing health condition.</p>
     <div class="disclaimer-grid">
       <div class="disclaimer-card">
         <p class="disclaimer-card-title">FDA Notice</p>
@@ -154,7 +252,7 @@ a { color: inherit; text-decoration: none; }
 
   <div class="legal-section" id="no-legal-advice">
     <h2 class="legal-section-title"><span class="legal-section-num">03</span> No Legal Advice</h2>
-    <p>Nothing on this platform constitutes legal advice. Silque Road makes good-faith efforts to tag products with state availability information, but this information is not a legal opinion. Laws governing products sold here — including kratom, delta-8 THC, peptides, ivermectin, stun guns, fireworks, raw dairy, and all other categories — vary significantly by state, county, and municipality and change frequently.</p>
+    <p>Nothing on this platform constitutes legal advice. Silque Road makes good-faith efforts to tag products with state availability information, but this information is not a legal opinion. Laws governing products sold here &mdash; including kratom, delta-8 THC, peptides, ivermectin, stun guns, fireworks, raw dairy, and all other categories &mdash; vary significantly by state, county, and municipality and change frequently.</p>
     <p>If you have questions about the legality of a specific product in your jurisdiction, consult a licensed attorney. Do not rely solely on the state availability information provided on this platform.</p>
   </div>
 
@@ -171,34 +269,35 @@ a { color: inherit; text-decoration: none; }
 
   <div class="legal-section" id="product-claims">
     <h2 class="legal-section-title"><span class="legal-section-num">05</span> Product Claims</h2>
-    <p>Product descriptions, efficacy claims, and testimonials are the responsibility of the individual sellers who submitted them. XEKIE LLC does not independently verify the accuracy of product claims or ingredient lists. The presence of a product on this platform does not constitute Silque Road's endorsement of any health claim made by a seller.</p>
+    <p>Product descriptions, efficacy claims, and testimonials are the responsibility of the individual sellers who submitted them. Silque Road, LLC does not independently verify the accuracy of product claims or ingredient lists. The presence of a product on this platform does not constitute Silque Road's endorsement of any health claim made by a seller.</p>
     <p>Many products on this platform are in categories where scientific evidence is limited, contested, or evolving. Buyers are encouraged to conduct independent research before making purchasing decisions.</p>
   </div>
 
   <div class="legal-section" id="research-use">
     <h2 class="legal-section-title"><span class="legal-section-num">06</span> Research &amp; Veterinary Use</h2>
-    <p>Certain products are sold and labeled exclusively for research purposes or veterinary use. By purchasing a product so labeled, you represent that you are purchasing it for those stated purposes only. Silque Road and its sellers are not responsible for the misuse of products outside their labeled intended use.</p>
+    <p>Certain products are sold and labeled exclusively for research purposes or veterinary use. By purchasing a product so labeled, you represent that you are purchasing it for those stated purposes only. Silque Road, LLC and its sellers are not responsible for the misuse of products outside their labeled intended use.</p>
   </div>
 
   <div class="legal-section" id="telehealth">
     <h2 class="legal-section-title"><span class="legal-section-num">07</span> Telehealth Referrals</h2>
-    <p>Silque Road maintains a curated network of telehealth providers and may earn referral fees when buyers are connected to their services. These referral relationships are disclosed. Silque Road does not endorse, guarantee, or take responsibility for the services, diagnoses, prescriptions, or outcomes provided by any telehealth provider in our network. Telehealth providers are independent licensed practitioners.</p>
+    <p>Silque Road maintains a curated network of telehealth providers and may earn referral fees when buyers are connected to their services. These referral relationships are disclosed. Silque Road, LLC does not endorse, guarantee, or take responsibility for the services, diagnoses, prescriptions, or outcomes provided by any telehealth provider in our network. Telehealth providers are independent licensed practitioners.</p>
   </div>
 
   <div class="legal-section" id="adult-content">
     <h2 class="legal-section-title"><span class="legal-section-num">08</span> Adult Products</h2>
-    <p>Certain product categories are intended for adults aged 18 or older, with some requiring age verification of 21 or older in accordance with applicable law. By accessing adult product categories, you confirm that you are of legal age to purchase those products in your jurisdiction.</p>
+    <p>This platform requires all visitors to be 18 years of age or older, confirmed through a site-wide age verification gate. Certain product categories &mdash; including Tobacco &amp; Nicotine, Taboo Foods (absinthe and high-proof spirits), Cannabis Adjacent, Psychedelic Adjacent, and Weapons Adjacent &mdash; require buyers to be 21 years of age or older, with a separate age verification at checkout.</p>
+    <p>By accessing any product category, you confirm that you are of legal age to purchase those products in your jurisdiction.</p>
   </div>
 
   <div class="legal-section" id="no-warranty">
     <h2 class="legal-section-title"><span class="legal-section-num">09</span> No Warranty</h2>
-    <p>THIS PLATFORM AND ALL CONTENT ON IT ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND. XEKIE LLC EXPRESSLY DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, ACCURACY, AND NON-INFRINGEMENT.</p>
-    <p>TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, XEKIE LLC SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES ARISING FROM YOUR USE OF THIS PLATFORM OR ANY PRODUCT PURCHASED THROUGH IT.</p>
+    <p>THIS PLATFORM AND ALL CONTENT ON IT ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND. SILQUE ROAD, LLC EXPRESSLY DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, ACCURACY, AND NON-INFRINGEMENT.</p>
+    <p>TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, SILQUE ROAD, LLC SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES ARISING FROM YOUR USE OF THIS PLATFORM OR ANY PRODUCT PURCHASED THROUGH IT.</p>
   </div>
 
   <div class="legal-section" id="third-party">
     <h2 class="legal-section-title"><span class="legal-section-num">10</span> Third-Party Links &amp; Content</h2>
-    <p>This platform may contain links to third-party websites including payment processors, telehealth providers, and other external resources. XEKIE LLC does not control and is not responsible for the content, privacy practices, or accuracy of any third-party website. The inclusion of any link does not imply endorsement. You access third-party websites at your own risk.</p>
+    <p>This platform may contain links to third-party websites including payment processors (NOWPayments, Bankful), telehealth providers, and other external resources. Silque Road, LLC does not control and is not responsible for the content, privacy practices, or accuracy of any third-party website. The inclusion of any link does not imply endorsement. You access third-party websites at your own risk.</p>
   </div>
 
   <div class="legal-section" id="buyer-responsibility">
@@ -209,39 +308,85 @@ a { color: inherit; text-decoration: none; }
       <li>You are an adult making a legal purchasing decision with full awareness of applicable laws in your jurisdiction</li>
       <li>You have conducted whatever research you deem appropriate before purchasing</li>
       <li>You understand that product effects, legality, and safety are your responsibility to evaluate</li>
-      <li>Silque Road has provided a platform — not a recommendation or endorsement for your specific situation</li>
+      <li>Silque Road has provided a platform &mdash; not a recommendation or endorsement for your specific situation</li>
       <li>You will use purchased products only in compliance with applicable law and for lawful purposes</li>
-      <li>XEKIE LLC is not responsible for any harm, legal consequence, or outcome arising from your purchasing decision or product use</li>
+      <li>Silque Road, LLC is not responsible for any harm, legal consequence, or outcome arising from your purchasing decision or product use</li>
     </ul>
-    <div class="legal-callout"><p>We trust you. You're an adult. We built this platform for people who take responsibility for their own choices. That's the deal — and we think it's a good one.</p></div>
+    <div class="legal-callout"><p>We trust you. You're an adult. We built this platform for people who take responsibility for their own choices. That's the deal &mdash; and we think it's a good one.</p></div>
   </div>
 
   <div class="legal-section" id="contact-disclaimer">
     <h2 class="legal-section-title"><span class="legal-section-num">12</span> Contact</h2>
     <ul>
       <li>Email: <a href="mailto:info@silqueroad.com">info@silqueroad.com</a></li>
-      <li>Entity: XEKIE LLC — Ohio Limited Liability Company</li>
+      <li>Contact Form: <a href="/contact.html">silqueroad.com/contact</a></li>
+      <li>Entity: Silque Road, LLC &mdash; Ohio Charter No. 5591799</li>
     </ul>
   </div>
 
   <div class="legal-contact-box">
     <p>Questions? We're straightforward people.</p>
-    <a href="mailto:info@silqueroad.com">info@silqueroad.com</a>
+    <a href="/contact.html">Contact Us</a>
   </div>
 </div>
 
 <footer class="footer">
-  <div class="footer-grid">
-    <div><span class="footer-brand-name">Silque Road</span><p class="footer-brand-desc">The marketplace for legal products mainstream platforms won't carry. State-compliant. Seller-vetted. Buyer-anonymous.</p></div>
-    <div><p class="footer-col-title">Markets</p><ul class="footer-links"><li><a href="/#marketplace">Health Freedom</a></li><li><a href="/#marketplace">Cannabis Adjacent</a></li><li><a href="/#marketplace">Men's Health</a></li><li><a href="/#marketplace">All Categories</a></li></ul></div>
-    <div><p class="footer-col-title">Platform</p><ul class="footer-links"><li><a href="/#how-it-works">How It Works</a></li><li><a href="/seller-apply.html">Sell With Us</a></li><li><a href="/#health-network">Health Network</a></li><li><a href="/#newsletter">Newsletter</a></li></ul></div>
-    <div><p class="footer-col-title">Legal</p><ul class="footer-links"><li><a href="/terms.html">Terms of Service</a></li><li><a href="/seller-agreement.html">Seller Agreement</a></li><li><a href="/privacy.html">Privacy Policy</a></li><li><a href="/disclaimer.html">Disclaimer</a></li><li><a href="mailto:info@silqueroad.com">Contact</a></li></ul></div>
-  </div>
+  <p class="footer-entity-line">Silque Road, LLC &nbsp;&bull;&nbsp; Ohio Charter No. 5591799 &nbsp;&bull;&nbsp; An Ohio limited liability company</p>
   <div class="footer-bottom">
-    <p class="footer-copy">&copy; 2026 Silque Road &nbsp;&bull;&nbsp; XEKIE LLC &nbsp;&bull;&nbsp; No tracking. No cookies. No analytics.</p>
-    <div class="footer-legal-links"><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/disclaimer.html">Disclaimer</a></div>
+    <p class="footer-copy">&copy; 2026 Silque Road, LLC &nbsp;&bull;&nbsp; Legal &amp; Available &nbsp;&bull;&nbsp; All charges appear as SILQUEROAD on your statement</p>
+    <div class="footer-links-row">
+      <a href="/marketplace.html">Marketplace</a>
+      <a href="/seller-apply.html">Sell With Us</a>
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/terms.html">Terms</a>
+      <a href="/shipping.html">Shipping</a>
+      <a href="/returns.html">Returns</a>
+      <a href="/contact.html">Contact</a>
+    </div>
   </div>
 </footer>
-<div class="disclaimer-bar"><p>Silque Road is a platform connecting buyers and sellers of legal products. Nothing on this site constitutes medical, legal, or financial advice. Buyers are responsible for knowing and complying with their local laws.</p></div>
+
+<div class="disclaimer-bar">
+  <p>Silque Road, LLC, an Ohio limited liability company (Charter No. 5591799), operates this platform connecting buyers and vetted sellers of legal products. All products listed are legal under applicable federal and state law. Buyers are responsible for knowing and complying with their local laws. Nothing on this site constitutes medical, legal, or financial advice.</p>
+</div>
+
+<script>
+function srGetCookie(name) {
+  const v = `; ${document.cookie}`;
+  const parts = v.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
+  return null;
+}
+function srSetCookie(name, value, days) {
+  const d = new Date();
+  d.setTime(d.getTime() + (days*24*60*60*1000));
+  document.cookie = `${name}=${value}; expires=${d.toUTCString()}; path=/; SameSite=Lax`;
+}
+function ageGateEnter() {
+  srSetCookie('sr_age_18_verified', 'true', 30);
+  document.getElementById('ageGate').classList.remove('open');
+  document.body.classList.remove('age-gate-active');
+}
+function ageGateLeave() {
+  window.location.href = 'https://www.google.com';
+}
+(function srAgeGateInit() {
+  if (srGetCookie('sr_age_18_verified') !== 'true') {
+    document.getElementById('ageGate').classList.add('open');
+    document.body.classList.add('age-gate-active');
+  }
+})();
+
+function toggleDropdown(id) {
+  const el = document.getElementById(id);
+  const isOpen = el.classList.contains('open');
+  document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('open'));
+  if (!isOpen) el.classList.add('open');
+}
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.nav-dropdown')) document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('open'));
+});
+function toggleMobile() { document.getElementById('mobile-menu').classList.toggle('open'); }
+</script>
 </body>
 </html>
